@@ -1,0 +1,2 @@
+# SatisfactoryTaskEfficiency
+Satisfactoryで手順化や効率化を模索するプロジェクト
