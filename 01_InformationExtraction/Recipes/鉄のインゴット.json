@@ -1,0 +1,14 @@
+{
+  "recipe":{
+    "recipename":"鉄のインゴット",
+    "product":[
+	    { "name":"製錬炉" }
+	    ],
+    "output":[
+	    { "name":"鉄のインゴット", "num":30.0 }
+	    ],
+    "input":[
+	    { "name":"鉄鉱石", "num":30.0 }
+	    ],
+  }
+}
