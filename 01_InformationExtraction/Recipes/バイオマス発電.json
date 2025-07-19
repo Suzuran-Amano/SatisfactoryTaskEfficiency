@@ -1,0 +1,11 @@
+{
+    "recipeName" :"バイオマス発電",
+    "productName":"バイオマス発電機" ,
+    "output":[
+	    { "itemName":"電力", "itemNum":30 }
+	    ],
+    "input":[
+	    { "itemName":"バイオマス", "itemNum":30 }
+	    ]
+
+}
