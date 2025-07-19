@@ -1,0 +1,11 @@
+{
+    "recipeName" :"バイオマス葉",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"バイオマス", "itemNum":60 }
+	    ],
+    "input":[
+	    { "itemName":"葉", "itemNum":120 }
+	    ]
+
+}

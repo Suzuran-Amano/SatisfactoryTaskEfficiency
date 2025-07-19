@@ -1,0 +1,12 @@
+{
+    "recipeName" :"スマートプレート",
+    "productName":"工作機" ,
+    "output":[
+	    { "itemName":"スマートプレート", "itemNum":2 }
+	    ],
+    "input":[
+	    { "itemName":"ローター", "itemNum":2 },
+	    { "itemName":"強化鉄板", "itemNum":2 }
+	    ]
+
+}
