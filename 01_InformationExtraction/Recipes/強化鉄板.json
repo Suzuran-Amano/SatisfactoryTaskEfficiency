@@ -1,0 +1,12 @@
+{
+    "recipeName" :"強化鉄板",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"強化鉄板", "itemNum":5 }
+	    ],
+    "input":[
+	    { "itemName":"鉄板", "itemNum":30 },
+	    { "itemName":"ネジ", "itemNum":60 }
+	    ]
+
+}
