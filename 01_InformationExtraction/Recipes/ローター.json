@@ -1,0 +1,12 @@
+{
+    "recipeName" :"ローター",
+    "productName":"工作機" ,
+    "output":[
+	    { "itemName":"ローター", "itemNum":4 }
+	    ],
+    "input":[
+	    { "itemName":"鉄のロッド", "itemNum":5 },        
+	    { "itemName":"ネジ", "itemNum":25 }
+	    ]
+
+}
