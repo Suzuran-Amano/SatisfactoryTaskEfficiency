@@ -1,4 +1,3 @@
-import csv
 import os
 import json
 
@@ -85,11 +84,10 @@ with open(inputTextFileName, encoding="utf-8") as f:
 
 
 # input data
-recipes = recipeManager.RecipeList()
 os.chdir(os.path.dirname(__file__) + "/../")
 lineData = json.load(open('./IndividualLine.json','r', encoding="utf-8"))
+recipes = recipeManager.RecipeReader()
 recipe = recipes.GetRecipe(lineData["recipeName"])
-
 
 # Calc TotalOutput,TotalInput
 inputNum = recipe.GetInputItemList()[0]["itemNum"]

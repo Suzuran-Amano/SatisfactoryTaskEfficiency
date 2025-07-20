@@ -3,7 +3,7 @@ import json
 
 
 # レシピ集
-class RecipeList:
+class RecipeReader:
 
     # 定数
 
@@ -13,12 +13,6 @@ class RecipeList:
     # レシピを保存しておくディレクトリの名前
     RECIPES_DIRECTORY_NAME = "Recipes"
 
-
-    # コンストラクタ
-    # レシピ集を作成する
-    def __init__(self):
-        return
-        
 
     # レシピ集のディレクトリを返す
     def GetRecipesDirectory(self):
@@ -36,15 +30,7 @@ class RecipeList:
     def GetRecipe(self,recipeName):
         os.chdir(self.GetRecipesDirectory())
         openFile = open("./" + recipeName + ".json",'r', encoding="utf-8")
-
-        jsonFile = ""
-        try:
-            jsonFile = json.load(openFile)
-            return RecipeItem(jsonFile)
-
-        except Exception:
-            pass
-        return
+        return RecipeItem(json.load(openFile))
         
 
 
