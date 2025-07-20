@@ -12,8 +12,6 @@ class IndividualLineDesignMaker:
     outputFileName = './個別製造ライン設計書_var_outputName製造ライン.md'
 
 
-
-    lines=[]
     data=[]
 
     inputNum = 0
@@ -81,11 +79,13 @@ class IndividualLineDesignMaker:
 
 
     def Main(self):
+        lines = []
+
         # input file read
         os.chdir(os.path.dirname(__file__) + "/../")
         with open(self.inputTextFileName, encoding="utf-8") as f:
             for line in f:
-                self.lines.append(line.rstrip())
+                lines.append(line.rstrip())
 
 
         # input data
@@ -116,27 +116,27 @@ class IndividualLineDesignMaker:
 
         # MakeFlowChart
         insertNum = 0
-        for index, item in enumerate(self.lines):
+        for index, item in enumerate(lines):
             if item == "## 製造ライン":
                 insertNum = index + 1
 
         flowChart = self.MakeFlowChart()
 
         for chartLine in flowChart:
-            self.lines.insert(insertNum,chartLine)
+            lines.insert(insertNum,chartLine)
             insertNum += 1
 
 
         # replace
-        for index, item in enumerate(self.lines):
-            self.lines[index] = self.Replace(self.lines[index])
+        for index, item in enumerate(lines):
+            lines[index] = self.Replace(lines[index])
 
 
         # text output
         os.chdir(os.path.dirname(__file__) + "/../")
         fileName = self.Replace(self.outputFileName)
         with open(fileName,"w", encoding="utf-8") as o:
-            for line in self.lines:
+            for line in lines:
                 print(line,file=o)
 
 
