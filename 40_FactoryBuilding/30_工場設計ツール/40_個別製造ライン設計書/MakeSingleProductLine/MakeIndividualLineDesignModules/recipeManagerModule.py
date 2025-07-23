@@ -55,7 +55,7 @@ class RecipeItem:
 
     def GetRecipeName(self):
         return self.jsonData[self.RECIPE_NAME_KEY]
-    
+        
     def GetProductName(self):
         return self.jsonData[self.PRODUCT_NAME_KEY]
         

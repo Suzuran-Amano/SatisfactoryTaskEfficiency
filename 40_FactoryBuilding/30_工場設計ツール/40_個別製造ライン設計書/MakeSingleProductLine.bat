@@ -1,4 +1,4 @@
 @echo off
 
-python %~n0\main.py
+python %~p0\MakeSingleProductLine\main.py %~1 %~p1
 pause
