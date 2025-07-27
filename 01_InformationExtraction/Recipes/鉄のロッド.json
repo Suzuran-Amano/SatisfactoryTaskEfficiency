@@ -1,0 +1,11 @@
+{
+    "recipeName" :"鉄のロッド",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"鉄のロッド", "itemNum":15 }
+	    ],
+    "input":[
+	    { "itemName":"鉄のインゴット", "itemNum":15 }
+	    ]
+
+}

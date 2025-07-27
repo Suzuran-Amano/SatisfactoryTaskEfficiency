@@ -1,0 +1,11 @@
+{
+    "recipeName" :"ネジ",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"ネジ", "itemNum":40 }
+	    ],
+    "input":[
+	    { "itemName":"鉄のロッド", "itemNum":10 }
+	    ]
+
+}

@@ -1,0 +1,11 @@
+{
+    "recipeName" :"銅板",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"銅板", "itemNum":15 }
+	    ],
+    "input":[
+	    { "itemName":"銅のインゴット", "itemNum":30 }
+	    ]
+
+}
