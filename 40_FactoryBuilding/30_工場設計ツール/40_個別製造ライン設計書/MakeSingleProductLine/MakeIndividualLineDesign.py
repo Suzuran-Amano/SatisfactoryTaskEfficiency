@@ -148,7 +148,6 @@ class IndividualLineDesignMaker:
 
     # 置き換え
     def Replace(self,text,replaceData):
-        print(text)
         for key in replaceData.GetKeys():
             text = text.replace(replaceData.GetReplaceKey(key),str(replaceData.value[key]))
         return text
