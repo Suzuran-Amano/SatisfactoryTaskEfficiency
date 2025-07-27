@@ -58,10 +58,40 @@ class RecipeItem:
         
     def GetProductName(self):
         return self.jsonData[self.PRODUCT_NAME_KEY]
-        
+    
+    
+    # InputItem
     def GetInputItemList(self):
         return self.jsonData[self.INPUT_KEY]
     
+    def GetInputItemLength(self):
+        return len(self.GetInputItemList())
+    
+    def GetInputItemName(self,index):
+        if index >= self.GetInputItemLength():
+            return None
+        return self.GetInputItemList(index)[self.ITEM_NAME_KEY]
+    
+    def GetInputItemName(self,index):
+        if index >= self.GetInputItemLength():
+            return None
+        return self.GetInputItemList(index)[self.ITEM_NUM_KEY]
+
+
+    # OutputItem
     def GetOutputItemList(self):
         return self.jsonData[self.OUTPUT_KEY]
+    
+    def GetOutputItemLength(self):
+        return len(self.GetOutputItemList())
+    
+    def GetOutputItemName(self,index):
+        if index >= self.GetOutputItemLength():
+            return None
+        return self.GetOutputItemList(index)[self.ITEM_NAME_KEY]
+    
+    def GetOutputItemName(self,index):
+        if index >= self.GetOutputItemLength():
+            return None
+        return self.GetOutputItemList(index)[self.ITEM_NUM_KEY]
     

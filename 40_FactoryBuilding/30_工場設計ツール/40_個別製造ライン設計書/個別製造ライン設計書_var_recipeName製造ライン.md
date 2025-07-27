@@ -1,7 +1,7 @@
 # 個別製造ライン設計書 var_outputName製造ライン
 
 ## 概要
-var_inputNameからvar_outputNameを製造するライン
+var_outputNameを製造するライン
 
 ## Input
 - var_inputName var_totalInput/m
@@ -10,11 +10,12 @@ var_inputNameからvar_outputNameを製造するライン
 - var_outputName var_totalOutput/m
 
 ## 必要設備
-- var_productName var_recipeNumケ
+- 製錬炉 4ケ
 - ベルトコンベア類 適量
 
 
 ## 製造ライン
+
 
 ## 情報
 書類テンプレートバージョン : 1.5.0
