@@ -10,7 +10,7 @@ var_outputNameを製造するライン
 - var_outputName var_totalOutput/m
 
 ## 必要設備
-- 製錬炉 4ケ
+- var_productName var_recipeNumケ
 - ベルトコンベア類 適量
 
 
