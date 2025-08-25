@@ -1,0 +1,11 @@
+{
+    "recipeName" :"鋼管",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"鋼管", "itemNum":20 }
+	    ],
+    "input":[
+	    { "itemName":"鋼鉄のインゴット", "itemNum":30 }
+	    ]
+
+}

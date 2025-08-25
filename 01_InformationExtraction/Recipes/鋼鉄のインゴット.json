@@ -1,0 +1,11 @@
+{
+    "recipeName" :"鋼鉄のインゴット",
+    "productName":"鋳造炉" ,
+    "output":[
+	    { "itemName":"鋼鉄のインゴット", "itemNum":45 }
+	    ],
+    "input":[
+	    { "itemName":"鉄鉱石", "itemNum":45 },
+	    { "itemName":"石炭", "itemNum":45 }
+	    ]
+}

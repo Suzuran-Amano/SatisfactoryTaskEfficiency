@@ -1,0 +1,12 @@
+{
+    "recipeName" :"モジュラーフレーム",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"モジュラーフレーム", "itemNum":2 }
+	    ],
+    "input":[
+	    { "itemName":"鉄のロッド", "itemNum":12 },
+	    { "itemName":"強化鉄板", "itemNum":3 }
+	    ]
+
+}
