@@ -5,7 +5,7 @@ from MakeIndividualLineDesignModules import recipeManagerModule
 from MakeIndividualLineDesignModules import individualLineDataModule
 from MakeIndividualLineDesignModules import replaceDataModule
 
-
+# 個別製造ライン設計書作成用クラス
 class IndividualLineDesignMaker:
 
     # constans

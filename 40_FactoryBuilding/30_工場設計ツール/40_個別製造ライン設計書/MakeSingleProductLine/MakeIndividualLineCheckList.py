@@ -5,7 +5,7 @@ from MakeIndividualLineDesignModules import recipeManagerModule
 from MakeIndividualLineDesignModules import individualLineDataModule
 from MakeIndividualLineDesignModules import replaceDataModule
 
-
+# 個別製造ラインテスト項目書作成
 class MakeIndividualLineCheckList:
 
     # constans

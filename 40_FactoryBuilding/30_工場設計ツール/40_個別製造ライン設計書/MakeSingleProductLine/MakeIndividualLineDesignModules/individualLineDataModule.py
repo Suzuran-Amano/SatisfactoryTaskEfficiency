@@ -1,3 +1,4 @@
+
 class IndividualLineData:
     # 定数
     RECIPE_NAME_KEY = "recipeName"

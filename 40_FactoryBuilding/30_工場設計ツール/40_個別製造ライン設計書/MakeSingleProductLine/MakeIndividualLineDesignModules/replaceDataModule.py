@@ -1,7 +1,7 @@
 
 
 class ReplaceData:
-    # 定数
+    ### 定数 ###
     REPLACE_KEY_HEADER = "var_"
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
@@ -14,9 +14,13 @@ class ReplaceData:
     TOTAL_OUTPUT_KEY = "totalOutput"
 
 
-    # 変数
+    ### 変数 ###
     value = dict([])
 
+
+    ### 関数 ###
+
+    
     def Append(self,key,val):
         self.value[key] = val
         return
