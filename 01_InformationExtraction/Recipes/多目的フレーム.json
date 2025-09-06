@@ -1,0 +1,12 @@
+{
+    "recipeName" :"多目的フレーム板",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"多目的フレーム", "itemNum":5 }
+	    ],
+    "input":[
+	    { "itemName":"モジュラーフレーム", "itemNum":2.5 },
+	    { "itemName":"鋼梁", "itemNum":30 }
+	    ]
+
+}
