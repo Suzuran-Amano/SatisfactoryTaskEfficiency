@@ -1,0 +1,12 @@
+{
+    "recipeName" :"固定子",
+    "productName":"工作機" ,
+    "output":[
+	    { "itemName":"固定子", "itemNum":5 }
+	    ],
+    "input":[
+	    { "itemName":"鋼管", "itemNum":15 },
+	    { "itemName":"ワイヤー", "itemNum":40 }
+	    ]
+
+}

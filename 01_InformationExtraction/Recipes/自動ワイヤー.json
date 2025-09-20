@@ -1,0 +1,12 @@
+{
+    "recipeName" :"自動ワイヤー",
+    "productName":"工作機" ,
+    "output":[
+	    { "itemName":"自動ワイヤー", "itemNum":2.5 }
+	    ],
+    "input":[
+	    { "itemName":"固定子", "itemNum":2.5 },
+	    { "itemName":"ケーブル", "itemNum":50 }
+	    ]
+
+}
