@@ -1,0 +1,11 @@
+{
+    "recipeName" :"コンクリート",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"コンクリート", "itemNum":15 }
+    ],
+    "input":[
+        { "itemName":"石灰岩", "itemNum":45 }
+	    ]
+
+}
