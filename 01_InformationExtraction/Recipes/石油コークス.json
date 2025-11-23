@@ -1,0 +1,11 @@
+{
+    "recipeName" :"石油コークス",
+    "productName":"精製機" ,
+    "output":[
+	    { "itemName":"石油コークス", "itemNum":120 }
+	    ],
+    "input":[
+	    { "itemName":"廃重油", "itemNum":40 }
+	    ]
+
+}

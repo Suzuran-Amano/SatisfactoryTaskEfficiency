@@ -1,0 +1,12 @@
+{
+    "recipeName" :"ゴム",
+    "productName":"精製機" ,
+    "output":[
+	    { "itemName":"ゴム", "itemNum":20 },
+	    { "itemName":"廃重油", "itemNum":20 }
+	    ],
+    "input":[
+	    { "itemName":"原油", "itemNum":30 }
+	    ]
+
+}

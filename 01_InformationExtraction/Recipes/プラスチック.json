@@ -1,0 +1,12 @@
+{
+    "recipeName" :"プラスチック",
+    "productName":"精製機" ,
+    "output":[
+	    { "itemName":"プラスチック", "itemNum":20 },
+	    { "itemName":"廃重油", "itemNum":10 }
+	    ],
+    "input":[
+	    { "itemName":"原油", "itemNum":30 }
+	    ]
+
+}
