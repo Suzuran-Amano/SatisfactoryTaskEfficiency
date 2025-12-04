@@ -1,0 +1,11 @@
+{
+    "recipeName" :"クイックワイヤー",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"クイックワイヤー", "itemNum":60 }
+	    ],
+    "input":[
+	    { "itemName":"カテリウムのインゴット", "itemNum":12 }
+	    ]
+
+}

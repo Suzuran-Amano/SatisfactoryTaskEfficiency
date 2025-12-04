@@ -1,0 +1,11 @@
+{
+    "recipeName" :"カテリウムのインゴット",
+    "productName":"製錬機" ,
+    "output":[
+	    { "itemName":"カテリウムのインゴット", "itemNum":15 }
+	    ],
+    "input":[
+	    { "itemName":"カテリウム鉱石", "itemNum":45 }
+	    ]
+
+}
