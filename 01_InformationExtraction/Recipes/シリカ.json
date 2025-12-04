@@ -1,0 +1,11 @@
+{
+    "recipeName" :"シリカ",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"シリカ", "itemNum":37.5 }
+	    ],
+    "input":[
+	    { "itemName":"未加工石英", "itemNum":22.5 }
+	    ]
+
+}

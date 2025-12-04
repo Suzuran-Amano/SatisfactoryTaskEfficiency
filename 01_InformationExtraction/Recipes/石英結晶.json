@@ -1,0 +1,11 @@
+{
+    "recipeName" :"石英結晶",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"石英結晶", "itemNum":22.5 }
+	    ],
+    "input":[
+	    { "itemName":"未加工石英", "itemNum":37.5 }
+	    ]
+
+}
