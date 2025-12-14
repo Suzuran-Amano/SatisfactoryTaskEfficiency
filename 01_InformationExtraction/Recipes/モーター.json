@@ -1,0 +1,12 @@
+{
+    "recipeName" :"モーター",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"モーター", "itemNum":5 }
+	    ],
+    "input":[
+	    { "itemName":"固定子", "itemNum":10 },
+	    { "itemName":"ローター", "itemNum":10 }
+	    ]
+
+}
