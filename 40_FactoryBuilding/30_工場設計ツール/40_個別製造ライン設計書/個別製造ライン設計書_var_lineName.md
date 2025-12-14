@@ -1,7 +1,9 @@
-# 個別製造ライン設計書 var_outputName製造ライン
+# 個別製造ライン設計書 var_lineName
 
 ## 概要
-var_outputNameを製造するライン
+以下の物品を生産する
+
+- var_outputName
 
 ## Input
 - var_inputName var_totalInput/m

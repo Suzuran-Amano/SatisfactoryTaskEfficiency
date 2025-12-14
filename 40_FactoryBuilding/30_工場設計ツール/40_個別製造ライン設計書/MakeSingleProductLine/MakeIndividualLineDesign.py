@@ -10,9 +10,9 @@ from MakeIndividualLineDesignModules import pathDataModule
 class IndividualLineDesignMaker:
 
     # constans
-    inputTextFileName = './個別製造ライン設計書_var_recipeName製造ライン.md'
+    inputTextFileName = './個別製造ライン設計書_var_lineName.md'
     inputDataFileName = './IndividualLine.json'
-    outputFileName = '個別製造ライン設計書_var_recipeName製造ライン.md'
+    outputFileName = '個別製造ライン設計書_var_lineName.md'
     
 
 
@@ -99,6 +99,9 @@ class IndividualLineDesignMaker:
     # 置き換え用データを作成
     def MakeReplaceData(self,individualLine,recipeData):
         replaceData = replaceDataModule.ReplaceData()
+
+        # ライン名を追加
+        replaceData.Append(replaceData.LINE_NAME_KEY,individualLine.GetLineName())
 
         # レシピ名を追加
         replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())

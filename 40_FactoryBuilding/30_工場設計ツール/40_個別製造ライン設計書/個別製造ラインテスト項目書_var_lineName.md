@@ -1,4 +1,4 @@
-# 個別製造ラインテスト項目書_var_recipeName
+# 個別製造ラインテスト項目書_var_lineName
 
 ## レシピ確認
 ### input

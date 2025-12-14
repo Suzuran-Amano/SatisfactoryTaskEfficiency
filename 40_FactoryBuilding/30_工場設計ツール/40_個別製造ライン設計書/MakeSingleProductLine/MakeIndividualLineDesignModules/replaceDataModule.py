@@ -3,6 +3,7 @@
 class ReplaceData:
     ### 定数 ###
     REPLACE_KEY_HEADER = "var_"
+    LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
     PRODUCT_NAME_KEY = "productName"
@@ -24,6 +25,9 @@ class ReplaceData:
     def Append(self,key,val):
         self.value[key] = val
         return
+    
+    def GetLineName(self):
+        return self.value[self.LINE_NAME_KEY]
     
     def GetRecipeName(self):
         return self.value[self.RECIPE_NAME_KEY]

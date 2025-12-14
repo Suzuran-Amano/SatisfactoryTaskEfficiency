@@ -10,9 +10,9 @@ from MakeIndividualLineDesignModules import pathDataModule
 class MakeIndividualLineCheckList:
 
     # constans
-    inputTextFileName = './個別製造ラインテスト項目書_var_recipeName製造ライン.md'
+    inputTextFileName = './個別製造ラインテスト項目書_var_lineName.md'
     inputDataFileName = './IndividualLine.json'
-    outputFileName = '個別製造ラインテスト項目書_var_recipeName製造ライン.md'
+    outputFileName = '個別製造ラインテスト項目書_var_lineName.md'
     
 
 
