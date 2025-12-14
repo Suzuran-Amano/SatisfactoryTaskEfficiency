@@ -4,6 +4,7 @@ import json
 from MakeIndividualLineDesignModules import recipeManagerModule
 from MakeIndividualLineDesignModules import individualLineDataModule
 from MakeIndividualLineDesignModules import replaceDataModule
+from MakeIndividualLineDesignModules import pathDataModule
 
 # 個別製造ライン設計書作成用クラス
 class IndividualLineDesignMaker:
@@ -19,12 +20,12 @@ class IndividualLineDesignMaker:
     outputNum = 0
 
 
-    def Main(self,argv):
+    def Main(self,pathData : pathDataModule.PathData):
 
-        inputDataFileName = self.inputDataFileName
-        if len(argv) != 1:
-            if argv[1] != "":
-                inputDataFileName = argv[1]
+        # ファイルのフルパスを取得
+        inputDataFileName = pathData.GetFullPath()
+        if inputDataFileName == "":
+            inputDataFileName = self.inputDataFileName
 
         # input file read
         templateLines = self.ReadTemplateFile()
@@ -56,9 +57,7 @@ class IndividualLineDesignMaker:
 
 
         # text output
-        filePath = "./"
-        if len(argv) != 1:
-            filePath = argv[2]
+        filePath = pathData.GetPath()
         fileName = self.Replace(self.outputFileName,replaceData)
         self.WriteFile(filePath,fileName,templateLines)
 

@@ -5,14 +5,13 @@ import MakeIndividualLineDesign
 import MakeIndividualLineCheckList
 
 
+# パス情報を作成
 pathData = pathDataModule.PathData(sys.argv)
-print(pathData.GetFileName())
-print(pathData.GetFilePath())
 
 # 個別製造ライン設計書作成
 designMaker = MakeIndividualLineDesign.IndividualLineDesignMaker()
-designMaker.Main(sys.argv)
+designMaker.Main(pathData)
 
 # 個別製造ラインテスト項目書作成
 checkListMaker = MakeIndividualLineCheckList.MakeIndividualLineCheckList()
-checkListMaker.Main(sys.argv)
+checkListMaker.Main(pathData)
