@@ -1,0 +1,8 @@
+{
+    "buildingName" :"製錬炉",
+    "usePower": 4,
+    "cost":[
+	    { "itemName":"鉄のロッド", "itemNum":5 },
+	    { "itemName":"ワイヤー", "itemNum":8 }
+	    ]
+}

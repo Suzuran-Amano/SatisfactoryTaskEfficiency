@@ -1,0 +1,9 @@
+{
+    "buildingName" :"揚水ポンプ",
+    "usePower": 20,
+    "cost":[
+	    { "itemName":"銅板", "itemNum":20 },
+	    { "itemName":"強化鉄板", "itemNum":10 },
+	    { "itemName":"ローター", "itemNum":10 }
+	    ]
+}

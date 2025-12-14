@@ -1,0 +1,9 @@
+{
+    "buildingName" :"採掘機Mk.1",
+    "usePower": 5,
+    "cost":[
+	    { "itemName":"携帯式採鉱機", "itemNum":1 },
+	    { "itemName":"鉄板", "itemNum":10 },
+	    { "itemName":"コンクリート", "itemNum":10 }
+	    ]
+}

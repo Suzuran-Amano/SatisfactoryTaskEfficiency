@@ -1,0 +1,8 @@
+{
+    "buildingName" :"製作機",
+    "usePower": 4,
+    "cost":[
+	    { "itemName":"強化鉄板", "itemNum":2 },
+	    { "itemName":"ケーブル", "itemNum":8 }
+	    ]
+}

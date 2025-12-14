@@ -1,0 +1,10 @@
+{
+    "buildingName" :"組立機",
+    "usePower": 30,
+    "cost":[
+	    { "itemName":"モーター", "itemNum":10 },
+	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":10 },
+	    { "itemName":"鋼管", "itemNum":30 },
+	    { "itemName":"銅板", "itemNum":20 }
+	    ]
+}

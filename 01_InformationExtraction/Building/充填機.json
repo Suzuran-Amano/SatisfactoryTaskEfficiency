@@ -1,0 +1,9 @@
+{
+    "buildingName" :"充填機",
+    "usePower": 10,
+    "cost":[
+	    { "itemName":"鋼梁", "itemNum":20 },
+	    { "itemName":"ゴム", "itemNum":10 },
+	    { "itemName":"プラスチック", "itemNum":10 }
+	    ]
+}

@@ -1,0 +1,9 @@
+{
+    "buildingName" :"組立機",
+    "usePower": 15,
+    "cost":[
+	    { "itemName":"強化鉄板", "itemNum":8 },
+	    { "itemName":"ローター", "itemNum":4 },
+	    { "itemName":"ケーブル", "itemNum":10 }
+	    ]
+}

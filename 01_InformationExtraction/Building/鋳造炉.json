@@ -1,0 +1,9 @@
+{
+    "buildingName" :"鋳造炉",
+    "usePower": 16,
+    "cost":[
+	    { "itemName":"モジュラーフレーム", "itemNum":10 },
+	    { "itemName":"ローター", "itemNum":10 },
+	    { "itemName":"コンクリート", "itemNum":20 }
+	    ]
+}
