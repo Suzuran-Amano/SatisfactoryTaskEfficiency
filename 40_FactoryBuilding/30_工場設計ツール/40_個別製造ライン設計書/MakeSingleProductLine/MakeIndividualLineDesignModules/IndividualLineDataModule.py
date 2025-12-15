@@ -1,4 +1,4 @@
-
+import json
 
 class IndividualLineData:
     ### 定数 ###
@@ -65,4 +65,12 @@ class IndividualLineData:
     
     def GetReplaceKey(self,key):
         return self.REPLACE_KEY_HEADER + key
+    
+    # ファイルを出力
+    def Output(self,path:str):
+        # 書き込み
+        jsonfile = open(path + '/' + self.GetLineName() + '.json', 'w',encoding='utf-8')
+        json.dump(self.value, jsonfile, indent=4,ensure_ascii=False)
+
+        return
     

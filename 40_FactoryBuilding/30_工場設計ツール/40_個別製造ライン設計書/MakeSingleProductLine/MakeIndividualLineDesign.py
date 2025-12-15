@@ -35,7 +35,9 @@ class IndividualLineDesignMaker:
         buildingData = self.ReadBuildingInfoFile(recipeData)
         
         # 置換用データを作成
-        replaceData = self.MakeReplaceData(individualLine,recipeData)
+        individualLineData = self.MakeIndividualLineData(individualLine,recipeData)
+        individualLineData.Output(pathData.GetPath())
+        
 
         # MakeFlowChart
         insertNum = 0
@@ -44,7 +46,7 @@ class IndividualLineDesignMaker:
                 insertNum = index + 1
                 break
 
-        flowChart = self.MakeFlowChart(replaceData)
+        flowChart = self.MakeFlowChart(individualLineData)
 
         for chartLine in flowChart:
             templateLines.insert(insertNum,chartLine)
@@ -52,15 +54,15 @@ class IndividualLineDesignMaker:
 
 
         # replace
-        templateLines = self.DuplicateInputItem(templateLines,recipeData,replaceData)
-        templateLines = self.DuplicateOutputItem(templateLines,recipeData,replaceData)
+        templateLines = self.DuplicateInputItem(templateLines,recipeData,individualLineData)
+        templateLines = self.DuplicateOutputItem(templateLines,recipeData,individualLineData)
         for index, item in enumerate(templateLines):
-            templateLines[index] = self.Replace(templateLines[index],replaceData)
+            templateLines[index] = self.Replace(templateLines[index],individualLineData)
 
 
         # text output
         filePath = pathData.GetPath()
-        fileName = self.Replace(self.outputFileName,replaceData)
+        fileName = self.Replace(self.outputFileName,individualLineData)
         self.WriteFile(filePath,fileName,templateLines)
 
 
@@ -74,7 +76,7 @@ class IndividualLineDesignMaker:
         return lines
 
 
-    # 個別ラインデータを読み込み
+    # 個別ライン本質ファイルを読み込み
     def ReadIndividualLineFile(self,inputDataFileName):
         jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
         individualLine = IndividualLineEssenceModule.IndividualLineEssence(jsonData)
@@ -104,8 +106,8 @@ class IndividualLineDesignMaker:
         return
 
 
-    # 置き換え用データを作成
-    def MakeReplaceData(self,individualLine,recipeData):
+    # 個別ラインデータを作成
+    def MakeIndividualLineData(self,individualLine,recipeData):
         replaceData = IndividualLineDataModule.IndividualLineData()
 
         # ライン名を追加
@@ -131,7 +133,7 @@ class IndividualLineDesignMaker:
             replaceData.Append(inputNumKey ,inputNum)
             
             inputTotalKey = replaceData.TOTAL_INPUT_KEY + str(index+1)
-            inputTotal = str(recipeNum*inputNum)
+            inputTotal = recipeNum*inputNum
             replaceData.Append(inputTotalKey,inputTotal)
             
             index = index + 1
@@ -148,7 +150,7 @@ class IndividualLineDesignMaker:
             replaceData.Append(outputNumKey ,outputNum)
             
             outputTotalKey = replaceData.TOTAL_OUTPUT_KEY + str(index+1)
-            outputTotal = str(recipeNum*outputNum)
+            outputTotal = recipeNum*outputNum
             replaceData.Append(outputTotalKey,outputTotal)
 
             index = index + 1
