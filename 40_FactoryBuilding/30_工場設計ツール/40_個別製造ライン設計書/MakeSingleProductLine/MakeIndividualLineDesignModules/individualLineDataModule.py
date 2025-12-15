@@ -1,7 +1,7 @@
 
-class IndividualLineData:
+class IndividualLineEssence:
     # 定数
-    LINE_NAME_KEY = "lineData"
+    LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
 

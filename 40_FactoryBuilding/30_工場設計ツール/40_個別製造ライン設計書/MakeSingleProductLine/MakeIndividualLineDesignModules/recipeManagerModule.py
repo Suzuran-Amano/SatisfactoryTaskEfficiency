@@ -62,11 +62,11 @@ class RecipeItem:
 
 
     # レシピ名
-    def GetRecipeName(self):
+    def GetRecipeName(self) -> str:
         return self.jsonData[self.RECIPE_NAME_KEY]
     
     # 製造機器名
-    def GetProductName(self):
+    def GetProductName(self) -> str:
         return self.jsonData[self.PRODUCT_NAME_KEY]
     
     
