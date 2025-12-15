@@ -1,5 +1,5 @@
 {
-    "buildingName" :"組立機",
+    "buildingName" :"精製機",
     "usePower": 30,
     "cost":[
 	    { "itemName":"モーター", "itemNum":10 },
