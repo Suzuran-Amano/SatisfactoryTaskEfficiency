@@ -4,7 +4,7 @@ import json
 from MakeIndividualLineDesignModules import recipeManagerModule
 from MakeIndividualLineDesignModules import BuildingDataManagerModule
 from MakeIndividualLineDesignModules import IndividualLineEssenceModule
-from MakeIndividualLineDesignModules import replaceDataModule
+from MakeIndividualLineDesignModules import IndividualLineDataModule
 from MakeIndividualLineDesignModules import pathDataModule
 
 # 個別製造ライン設計書作成用クラス
@@ -106,7 +106,7 @@ class IndividualLineDesignMaker:
 
     # 置き換え用データを作成
     def MakeReplaceData(self,individualLine,recipeData):
-        replaceData = replaceDataModule.ReplaceData()
+        replaceData = IndividualLineDataModule.IndividualLineData()
 
         # ライン名を追加
         replaceData.Append(replaceData.LINE_NAME_KEY,individualLine.GetLineName())

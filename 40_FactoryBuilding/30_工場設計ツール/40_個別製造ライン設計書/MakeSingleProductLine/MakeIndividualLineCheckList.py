@@ -3,7 +3,7 @@ import json
 
 from MakeIndividualLineDesignModules import recipeManagerModule
 from MakeIndividualLineDesignModules import IndividualLineEssenceModule
-from MakeIndividualLineDesignModules import replaceDataModule
+from MakeIndividualLineDesignModules import IndividualLineDataModule
 from MakeIndividualLineDesignModules import pathDataModule
 
 # 個別製造ラインテスト項目書作成
@@ -86,7 +86,7 @@ class MakeIndividualLineCheckList:
 
     # 置き換え用データを作成
     def MakeReplaceData(self,individualLine,recipeData):
-        replaceData = replaceDataModule.ReplaceData()
+        replaceData = IndividualLineDataModule.IndividualLineData()
 
         # レシピ名を追加
         replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())

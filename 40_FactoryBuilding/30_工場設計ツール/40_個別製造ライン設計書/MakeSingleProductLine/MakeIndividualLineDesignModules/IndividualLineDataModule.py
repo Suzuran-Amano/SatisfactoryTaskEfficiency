@@ -1,6 +1,6 @@
 
 
-class ReplaceData:
+class IndividualLineData:
     ### 定数 ###
     REPLACE_KEY_HEADER = "var_"
     LINE_NAME_KEY = "lineName"
