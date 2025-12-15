@@ -7,6 +7,7 @@ class IndividualLineData:
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
     PRODUCT_NAME_KEY = "productName"
+    TOTAL_USE_POWER_KEY = "totalUsePower"
     INPUT_NAME_KEY = "inputName"
     INPUT_NUM_KEY = "inputNum"
     OUTPUT_NAME_KEY = "outputName"
@@ -37,6 +38,9 @@ class IndividualLineData:
         
     def GetProductName(self):
         return self.value[self.PRODUCT_NAME_KEY]
+    
+    def GetTotalUsePowerName(self):
+        return self.value[self.TOTAL_USE_POWER_KEY]
     
 
     def GetInputName(self,index):

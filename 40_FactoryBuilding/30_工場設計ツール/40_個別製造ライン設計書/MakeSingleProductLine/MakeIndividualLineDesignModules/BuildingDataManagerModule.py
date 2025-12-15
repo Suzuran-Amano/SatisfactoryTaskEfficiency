@@ -65,8 +65,8 @@ class BuildingDataItem:
     def GetBuildingName(self):
         return self.jsonData[self.BUILDING_NAME_KEY]
     
-    # 製造機器名
-    def GetUsePowerName(self):
+    # 消費電力
+    def GetUsePower(self):
         return self.jsonData[self.USE_POWER_KEY]
     
     

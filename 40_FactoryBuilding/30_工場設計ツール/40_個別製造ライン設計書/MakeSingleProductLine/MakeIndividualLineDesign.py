@@ -35,7 +35,7 @@ class IndividualLineDesignMaker:
         buildingData = self.ReadBuildingInfoFile(recipeData)
         
         # 置換用データを作成
-        individualLineData = self.MakeIndividualLineData(individualLine,recipeData)
+        individualLineData = self.MakeIndividualLineData(individualLine,recipeData,buildingData)
         individualLineData.Output(pathData.GetPath())
         
 
@@ -107,7 +107,7 @@ class IndividualLineDesignMaker:
 
 
     # 個別ラインデータを作成
-    def MakeIndividualLineData(self,individualLine,recipeData):
+    def MakeIndividualLineData(self,individualLine,recipeData,buildingData):
         replaceData = IndividualLineDataModule.IndividualLineData()
 
         # ライン名を追加
@@ -120,6 +120,10 @@ class IndividualLineDesignMaker:
 
         # 制作物を追加
         replaceData.Append(replaceData.PRODUCT_NAME_KEY,recipeData.GetProductName())
+
+        # 合計消費電力を追加
+        totalUsePower = buildingData.GetUsePower() * recipeNum
+        replaceData.Append(replaceData.TOTAL_USE_POWER_KEY,totalUsePower)
 
         # 搬入物を追加
         index = 0
