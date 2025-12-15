@@ -2,7 +2,7 @@ import os
 import json
 
 from MakeIndividualLineDesignModules import recipeManagerModule
-from MakeIndividualLineDesignModules import individualLineDataModule
+from MakeIndividualLineDesignModules import IndividualLineEssenceModule
 from MakeIndividualLineDesignModules import replaceDataModule
 from MakeIndividualLineDesignModules import pathDataModule
 
@@ -63,7 +63,7 @@ class MakeIndividualLineCheckList:
     # 個別ラインデータを読み込み
     def ReadIndividualLineFile(self,inputDataFileName):
         jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
-        individualLine = individualLineDataModule.IndividualLineData(jsonData)
+        individualLine = IndividualLineEssenceModule.IndividualLineEssence(jsonData)
         return individualLine
 
 

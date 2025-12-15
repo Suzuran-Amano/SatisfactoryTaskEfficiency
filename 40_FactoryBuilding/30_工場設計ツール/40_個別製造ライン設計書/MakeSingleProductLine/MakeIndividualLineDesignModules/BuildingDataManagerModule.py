@@ -32,8 +32,8 @@ class BuildingDataReader:
         os.chdir(self.GetBuildingsDirectory())
         openFile = open("./" + buildingName + ".json",'r', encoding="utf-8")
         loadedfile = json.load(openFile)
-        print(buildingName)
-        print(loadedfile)
+        # print(buildingName)
+        # print(loadedfile)
         return BuildingDataItem(loadedfile)
         
 

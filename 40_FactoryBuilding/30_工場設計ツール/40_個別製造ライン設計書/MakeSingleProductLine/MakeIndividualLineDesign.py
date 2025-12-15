@@ -2,7 +2,8 @@ import os
 import json
 
 from MakeIndividualLineDesignModules import recipeManagerModule
-from MakeIndividualLineDesignModules import individualLineDataModule
+from MakeIndividualLineDesignModules import BuildingDataManagerModule
+from MakeIndividualLineDesignModules import IndividualLineEssenceModule
 from MakeIndividualLineDesignModules import replaceDataModule
 from MakeIndividualLineDesignModules import pathDataModule
 
@@ -31,7 +32,8 @@ class IndividualLineDesignMaker:
         templateLines = self.ReadTemplateFile()
         individualLine = self.ReadIndividualLineFile(inputDataFileName)
         recipeData = self.ReadRecipeFile(individualLine)
-
+        buildingData = self.ReadBuildingInfoFile(recipeData)
+        
         # 置換用データを作成
         replaceData = self.MakeReplaceData(individualLine,recipeData)
 
@@ -75,7 +77,7 @@ class IndividualLineDesignMaker:
     # 個別ラインデータを読み込み
     def ReadIndividualLineFile(self,inputDataFileName):
         jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
-        individualLine = individualLineDataModule.IndividualLineData(jsonData)
+        individualLine = IndividualLineEssenceModule.IndividualLineEssence(jsonData)
         return individualLine
 
 
@@ -84,6 +86,12 @@ class IndividualLineDesignMaker:
         recipes = recipeManagerModule.RecipeReader()
         recipe = recipes.GetRecipe(individualLine.GetRecipeName())
         return recipe
+    
+    # 設備データを読み込み
+    def ReadBuildingInfoFile(self,recipe:recipeManagerModule.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
+        buildingInfo = BuildingDataManagerModule.BuildingDataReader()
+        buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetProductName())
+        return buildingInfo
     
 
     # 保存
