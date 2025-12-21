@@ -1,4 +1,5 @@
 import sys
+import json
 
 from DesignModules import pathDataModule
 import MakeOverallLineDesign
@@ -11,16 +12,32 @@ pathData = pathDataModule.PathData(sys.argv)
 
 # 全体製造ライン設計書作成
 oDesignMaker = MakeOverallLineDesign.OverallLineDesignMaker()
-oDesignMaker.Main(pathData)
+oLineData = oDesignMaker.Main(pathData)
 
 
 # 個別製造ライン設計書作成
-iLines = oDesignMaker.individualLineEssences
-for iLine in iLines:
+iLineEssences = oDesignMaker.individualLineEssences
+iLineDataList = []
+for iLineEssence in iLineEssences:
     iDesignMaker = MakeIndividualLineDesign.IndividualLineDesignMaker()
-    iDesignMaker.Main(pathData,iLine)
+    iLineData = iDesignMaker.Main(pathData,iLineEssence)
+    iLineDataList.append(iLineData)
 
 # 個別製造ラインテスト項目書作成
-for iLine in iLines:
+for iLineEssence in iLineEssences:
     checkListMaker = MakeIndividualLineCheckList.MakeIndividualLineCheckList()
-    checkListMaker.Main(pathData,iLine)
+    checkListMaker.Main(pathData,iLineEssence)
+
+
+# 消費電力を出力
+    factoryData = {}
+
+    factoryData["factoryName"] = oLineData.GetValue(oLineData.FACTORY_NAME_KEY)
+
+    usePow = 0
+    for iLine in iLineDataList:
+        usePow += iLine.GetTotalUsePowerName()
+    factoryData["usePower"] = usePow
+
+    jsonfile = open(pathData.GetPath() + '/' + "FactoryData" + '.json', 'w',encoding='utf-8')
+    json.dump(factoryData, jsonfile, indent=4,ensure_ascii=False)

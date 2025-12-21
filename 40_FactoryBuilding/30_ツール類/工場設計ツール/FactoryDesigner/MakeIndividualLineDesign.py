@@ -25,7 +25,7 @@ class IndividualLineDesignMaker:
             self,
             pathData : pathDataModule.PathData,
             iLineData : IndividualLineEssenceModule.IndividualLineEssence
-            ):
+            ) -> IndividualLineDataModule.IndividualLineData:
 
         # ファイルのフルパスを取得
         inputDataFileName = pathData.GetPath() + "/" + self.inputDataFileName
@@ -66,6 +66,8 @@ class IndividualLineDesignMaker:
         filePath = pathData.GetPath()
         fileName = self.Replace(self.outputFileName,individualLineData)
         self.WriteFile(filePath,fileName,templateLines)
+
+        return individualLineData
 
 
     # テンプレートファイルを読み込み

@@ -29,7 +29,7 @@ class OverallLineDesignMaker:
     individualLineEssences = 0
     
 
-    def Main(self,pathData : pathDataModule.PathData):
+    def Main(self,pathData : pathDataModule.PathData) -> OverallLineDataModule.OverallLineData:
 
         # ファイルのフルパスを取得
         inputDataFileName = pathData.GetFullPath()
@@ -68,7 +68,7 @@ class OverallLineDesignMaker:
         fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
         self.WriteFile(filePath,fileName,result)
 
-        return
+        return overallLineData
 
 
     # テンプレートファイルを読み込み
