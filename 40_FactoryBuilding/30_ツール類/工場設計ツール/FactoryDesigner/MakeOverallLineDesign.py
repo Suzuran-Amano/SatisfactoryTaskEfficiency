@@ -19,8 +19,16 @@ class OverallLineDesignMaker:
     RECIPIES_KEY_WORD = "var_recipies"
     LINES_KEY_WORD = "var_lines"
     FLOWCHART_KEY_WORD = "var_flowChart"
+
+    # クラス変数
+
+    # 全体ラインデータ
+    overallLineData = 0
     
+    # 個別ライン本質リスト
+    individualLineEssences = 0
     
+
     def Main(self,pathData : pathDataModule.PathData):
 
         # ファイルのフルパスを取得
@@ -30,6 +38,10 @@ class OverallLineDesignMaker:
 
         # 全体ラインデータを読み込み
         overallLineData = self.ReadOverallLineData(self.OVERALL_LINE_DATA_NAME)
+        self.overallLineData = overallLineData
+
+        # 個別ライン本質リストの作成
+        self.individualLineEssences = self.MakeILineEssence(overallLineData)
 
         # 全体ラインテンプレートを読み込み
         templateLines = self.ReadTemplateFile()
@@ -70,10 +82,29 @@ class OverallLineDesignMaker:
 
 
     # 全体ラインデータファイルを読み込み
-    def ReadOverallLineData(self,overallLineDataName):
+    def ReadOverallLineData(self,overallLineDataName) -> OverallLineDataModule.OverallLineData:
         jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
-        individualLine = OverallLineDataModule.OverallLineData(jsonData)
-        return individualLine
+        overallLine = OverallLineDataModule.OverallLineData(jsonData)
+        return overallLine
+    
+
+    # 個別ライン本質ファイルの作成
+    def MakeILineEssence(self,oLineData :OverallLineDataModule.OverallLineData) -> list:
+        result = []
+
+        # 個別ラインの情報を取得
+        iLines = oLineData.GetValue(oLineData.INDIVIDUAL_LINE_LIST)
+
+        # 個別ラインの情報から、個別ライン本質を作成し、リストへ加える
+        iLineDefine = IndividualLineEssenceModule.IndividualLineEssence([])
+        for iLine in iLines:
+            lineEssense = {}
+            lineEssense[iLineDefine.LINE_NAME_KEY] = iLine[oLineData.INDIVIDUAL_LINE_NAME]
+            lineEssense[iLineDefine.RECIPE_NAME_KEY] = iLine[oLineData.RECIPE_NAME_KEY]
+            lineEssense[iLineDefine.RECIPE_NUM_KEY] = iLine[oLineData.RECIPE_NUM_KEY]
+            result.append(IndividualLineEssenceModule.IndividualLineEssence(lineEssense))
+
+        return result
 
 
     # レシピデータを読み込み
@@ -82,6 +113,7 @@ class OverallLineDesignMaker:
         recipe = recipes.GetRecipe(recipeName)
         return recipe
     
+
     # 設備データを読み込み
     def ReadBuildingDataFile(self,recipe:recipeManagerModule.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
         buildingInfo = BuildingDataManagerModule.BuildingDataReader()
@@ -98,6 +130,7 @@ class OverallLineDesignMaker:
                 print(line,file=o)
         return
     
+
     # レシピ群の置き換え用の文字列を返す
     def MakeRecipesText(self,overallData:OverallLineDataModule.OverallLineData) -> list:
         
@@ -113,6 +146,7 @@ class OverallLineDesignMaker:
         
         return result
     
+
     # レシピ単体の置き換え用文字列を返す
     def MakeRecipeText(self,recipeName:str) -> str:
         
@@ -191,6 +225,7 @@ class OverallLineDesignMaker:
         result += "\n"
 
         return result
+
 
     # フローチャート作成
     def MakeFlowChart(self,overallData:OverallLineDataModule.OverallLineData) -> str:

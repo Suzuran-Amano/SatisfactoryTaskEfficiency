@@ -21,16 +21,18 @@ class IndividualLineDesignMaker:
     outputNum = 0
 
 
-    def Main(self,pathData : pathDataModule.PathData):
+    def Main(
+            self,
+            pathData : pathDataModule.PathData,
+            iLineData : IndividualLineEssenceModule.IndividualLineEssence
+            ):
 
         # ファイルのフルパスを取得
-        inputDataFileName = pathData.GetFullPath()
-        if inputDataFileName == "":
-            inputDataFileName = self.inputDataFileName
+        inputDataFileName = pathData.GetPath() + "/" + self.inputDataFileName
 
         # input file read
         templateLines = self.ReadTemplateFile()
-        individualLine = self.ReadIndividualLineFile(inputDataFileName)
+        individualLine = iLineData
         recipeData = self.ReadRecipeFile(individualLine)
         buildingData = self.ReadBuildingInfoFile(recipeData)
         

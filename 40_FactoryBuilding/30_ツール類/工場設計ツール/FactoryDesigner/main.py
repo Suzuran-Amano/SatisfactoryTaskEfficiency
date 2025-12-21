@@ -15,9 +15,12 @@ oDesignMaker.Main(pathData)
 
 
 # 個別製造ライン設計書作成
-iDesignMaker = MakeIndividualLineDesign.IndividualLineDesignMaker()
-iDesignMaker.Main(pathData)
+iLines = oDesignMaker.individualLineEssences
+for iLine in iLines:
+    iDesignMaker = MakeIndividualLineDesign.IndividualLineDesignMaker()
+    iDesignMaker.Main(pathData,iLine)
 
 # 個別製造ラインテスト項目書作成
-checkListMaker = MakeIndividualLineCheckList.MakeIndividualLineCheckList()
-checkListMaker.Main(pathData)
+for iLine in iLines:
+    checkListMaker = MakeIndividualLineCheckList.MakeIndividualLineCheckList()
+    checkListMaker.Main(pathData,iLine)

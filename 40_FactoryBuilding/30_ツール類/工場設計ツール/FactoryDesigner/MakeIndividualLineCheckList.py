@@ -20,16 +20,17 @@ class MakeIndividualLineCheckList:
     outputNum = 0
 
 
-    def Main(self,pathData : pathDataModule.PathData):
+    def Main(self,
+            pathData : pathDataModule.PathData,
+            iLineData : IndividualLineEssenceModule.IndividualLineEssence
+            ):
 
         # ファイルのフルパスを取得
-        inputDataFileName = pathData.GetFullPath()
-        if inputDataFileName == "":
-            inputDataFileName = self.inputDataFileName
+        inputDataFileName = pathData.GetFullPath() + "\\" + iLineData.GetLineName() + ".json"
 
         # input file read
         templateLines = self.ReadTemplateFile()
-        individualLine = self.ReadIndividualLineFile(inputDataFileName)
+        individualLine = iLineData
         recipeData = self.ReadRecipeFile(individualLine)
 
         # 置換用データを作成
@@ -88,8 +89,12 @@ class MakeIndividualLineCheckList:
     def MakeReplaceData(self,individualLine,recipeData):
         replaceData = IndividualLineDataModule.IndividualLineData()
 
+        # ライン名を追加
+        replaceData.Append(replaceData.LINE_NAME_KEY,individualLine.value[individualLine.LINE_NAME_KEY])
+
         # レシピ名を追加
         replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
+        print(replaceData.value)
         recipeNum = individualLine.GetRecipeNum()
         replaceData.Append(replaceData.RECIPE_NUM_KEY,recipeNum)
 
