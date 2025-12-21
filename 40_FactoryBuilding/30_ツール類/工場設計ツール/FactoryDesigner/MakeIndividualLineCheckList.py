@@ -94,7 +94,6 @@ class MakeIndividualLineCheckList:
 
         # レシピ名を追加
         replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
-        print(replaceData.value)
         recipeNum = individualLine.GetRecipeNum()
         replaceData.Append(replaceData.RECIPE_NUM_KEY,recipeNum)
 
