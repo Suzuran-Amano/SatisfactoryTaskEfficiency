@@ -27,8 +27,13 @@ class BuildingDataReader:
 
         return os.getcwd() + "\\" + self.INFOMATION_FILE_NAME + "\\" + self.BUILDING_DIRECTORY_NAME
 
-    # 設備情報を追加
+    # 設備情報を追加 削除予定
     def GetBuildingInfo(self,buildingName):
+        
+        return self.GetBuildingData(buildingName)
+    
+    # 設備情報を追加
+    def GetBuildingData(self,buildingName:str):
         os.chdir(self.GetBuildingsDirectory())
         openFile = open("./" + buildingName + ".json",'r', encoding="utf-8")
         loadedfile = json.load(openFile)

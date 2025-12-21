@@ -1,19 +1,18 @@
 import os
 import json
 
-from MakeIndividualLineDesignModules import recipeManagerModule
-from MakeIndividualLineDesignModules import BuildingDataManagerModule
-from MakeIndividualLineDesignModules import IndividualLineEssenceModule
-from MakeIndividualLineDesignModules import IndividualLineDataModule
-from MakeIndividualLineDesignModules import pathDataModule
+from DesignModules import recipeManagerModule
+from DesignModules import IndividualLineEssenceModule
+from DesignModules import IndividualLineDataModule
+from DesignModules import pathDataModule
 
-# 個別製造ライン設計書作成用クラス
-class IndividualLineDesignMaker:
+# 個別製造ラインテスト項目書作成
+class MakeIndividualLineCheckList:
 
     # constans
-    inputTextFileName = './個別製造ライン設計書_var_lineName.md'
+    inputTextFileName = './個別製造ラインテスト項目書_var_lineName.md'
     inputDataFileName = './IndividualLine.json'
-    outputFileName = '個別製造ライン設計書_var_lineName.md'
+    outputFileName = '個別製造ラインテスト項目書_var_lineName.md'
     
 
 
@@ -32,37 +31,22 @@ class IndividualLineDesignMaker:
         templateLines = self.ReadTemplateFile()
         individualLine = self.ReadIndividualLineFile(inputDataFileName)
         recipeData = self.ReadRecipeFile(individualLine)
-        buildingData = self.ReadBuildingInfoFile(recipeData)
-        
+
         # 置換用データを作成
-        individualLineData = self.MakeIndividualLineData(individualLine,recipeData,buildingData)
-        individualLineData.Output(pathData.GetPath())
-        
-
-        # MakeFlowChart
-        insertNum = 0
-        for index, item in enumerate(templateLines):
-            if item == "## 製造ライン":
-                insertNum = index + 1
-                break
-
-        flowChart = self.MakeFlowChart(individualLineData)
-
-        for chartLine in flowChart:
-            templateLines.insert(insertNum,chartLine)
-            insertNum += 1
+        replaceData = self.MakeReplaceData(individualLine,recipeData)
 
 
         # replace
-        templateLines = self.DuplicateInputItem(templateLines,recipeData,individualLineData)
-        templateLines = self.DuplicateOutputItem(templateLines,recipeData,individualLineData)
+        templateLines = self.DuplicateProductItem(templateLines,individualLine,replaceData)
+        templateLines = self.DuplicateInputItem(templateLines,recipeData,replaceData)
+        templateLines = self.DuplicateOutputItem(templateLines,recipeData,replaceData)
         for index, item in enumerate(templateLines):
-            templateLines[index] = self.Replace(templateLines[index],individualLineData)
+            templateLines[index] = self.Replace(templateLines[index],replaceData)
 
 
         # text output
         filePath = pathData.GetPath()
-        fileName = self.Replace(self.outputFileName,individualLineData)
+        fileName = self.Replace(self.outputFileName,replaceData)
         self.WriteFile(filePath,fileName,templateLines)
 
 
@@ -76,7 +60,7 @@ class IndividualLineDesignMaker:
         return lines
 
 
-    # 個別ライン本質ファイルを読み込み
+    # 個別ラインデータを読み込み
     def ReadIndividualLineFile(self,inputDataFileName):
         jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
         individualLine = IndividualLineEssenceModule.IndividualLineEssence(jsonData)
@@ -89,12 +73,6 @@ class IndividualLineDesignMaker:
         recipe = recipes.GetRecipe(individualLine.GetRecipeName())
         return recipe
     
-    # 設備データを読み込み
-    def ReadBuildingInfoFile(self,recipe:recipeManagerModule.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
-        buildingInfo = BuildingDataManagerModule.BuildingDataReader()
-        buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetProductName())
-        return buildingInfo
-    
 
     # 保存
     def WriteFile(self,filePath,fileName,lines):
@@ -106,12 +84,9 @@ class IndividualLineDesignMaker:
         return
 
 
-    # 個別ラインデータを作成
-    def MakeIndividualLineData(self,individualLine,recipeData,buildingData):
+    # 置き換え用データを作成
+    def MakeReplaceData(self,individualLine,recipeData):
         replaceData = IndividualLineDataModule.IndividualLineData()
-
-        # ライン名を追加
-        replaceData.Append(replaceData.LINE_NAME_KEY,individualLine.GetLineName())
 
         # レシピ名を追加
         replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
@@ -120,10 +95,6 @@ class IndividualLineDesignMaker:
 
         # 制作物を追加
         replaceData.Append(replaceData.PRODUCT_NAME_KEY,recipeData.GetProductName())
-
-        # 合計消費電力を追加
-        totalUsePower = buildingData.GetUsePower() * recipeNum
-        replaceData.Append(replaceData.TOTAL_USE_POWER_KEY,totalUsePower)
 
         # 搬入物を追加
         index = 0
@@ -137,7 +108,7 @@ class IndividualLineDesignMaker:
             replaceData.Append(inputNumKey ,inputNum)
             
             inputTotalKey = replaceData.TOTAL_INPUT_KEY + str(index+1)
-            inputTotal = recipeNum*inputNum
+            inputTotal = str(recipeNum*inputNum)
             replaceData.Append(inputTotalKey,inputTotal)
             
             index = index + 1
@@ -154,7 +125,7 @@ class IndividualLineDesignMaker:
             replaceData.Append(outputNumKey ,outputNum)
             
             outputTotalKey = replaceData.TOTAL_OUTPUT_KEY + str(index+1)
-            outputTotal = recipeNum*outputNum
+            outputTotal = str(recipeNum*outputNum)
             replaceData.Append(outputTotalKey,outputTotal)
 
             index = index + 1
@@ -168,7 +139,27 @@ class IndividualLineDesignMaker:
             text = text.replace(replaceData.GetReplaceKey(key),str(replaceData.value[key]))
         return text
     
-    
+
+    # 複数の Product を記載するため、行を複製
+    def DuplicateProductItem(self,templateLines,individualLine,replaceData):
+        resultLines = []
+        productLength = int(individualLine.GetRecipeNum())
+
+        productNameKey = replaceData.PRODUCT_NAME_KEY
+        productReplaceNameKey = replaceData.GetReplaceKey(productNameKey)
+        
+        for i in range(len(templateLines)):
+            if not(replaceData.PRODUCT_NAME_KEY in templateLines[i]):
+                resultLines.append(templateLines[i])
+                continue
+            
+            for f in range(productLength):
+                line = templateLines[i].replace(productReplaceNameKey, productReplaceNameKey + str(f+1))
+                resultLines.append(line)
+                
+        return resultLines
+
+
     # 複数の Input 物品を記載するため、行を複製
     def DuplicateInputItem(self,templateLines,recipeData,replaceData):
         resultLines = []
@@ -223,50 +214,5 @@ class IndividualLineDesignMaker:
                 resultLines.append(line)
 
         return resultLines
-
-
-    def MakeFlowChart(self,replaceData):
-
-        result = []
-        inputName = replaceData.GetReplaceKey(replaceData.INPUT_NAME_KEY)
-        inputNum = replaceData.GetReplaceKey(replaceData.INPUT_NUM_KEY)
-        outputName = replaceData.GetReplaceKey(replaceData.OUTPUT_NAME_KEY)
-        outputNum = replaceData.GetReplaceKey(replaceData.OUTPUT_NUM_KEY)
-        productName = replaceData.GetReplaceKey(replaceData.PRODUCT_NAME_KEY)
-        productNum = replaceData.GetRecipeNum()
-            
-        # header
-        result.append("```mermaid")
-        result.append("flowchart TD\n")
-
-        # input
-        result.append("subgraph Input")
-        result.append("    " + inputName +"([" + inputName + "])")
-        result.append("end\n")
-
-        # product
-        for i in range(productNum):
-
-            result.append(productName + str(i+1) + "[")
-            result.append("    " + productName + str(i+1))
-            result.append("    " + inputName + " " + str(inputNum) + "/m")
-            result.append("    ↓")
-            result.append("    " + outputName + " " + str(outputNum) + "/m" )
-            result.append("]\n")
-
-        # output
-        result.append("subgraph Output")
-        result.append("    " + outputName +"([" + outputName + "])")
-        result.append("end\n")
-
-
-        for i in range(productNum):
-
-            result.append(inputName + "-->|" + str(inputNum) + "|" + productName + str(i+1))
-            result.append(productName + str(i+1) + "-->|" + str(outputNum) + "|" + outputName)
-
-        result.append("```\n")
-        
-        return result
 
 
