@@ -1,0 +1,80 @@
+{
+	"factoryName"	: "シェブデ製油所",
+
+	"recipeList" : [
+		{
+			"recipeName" : "燃料",
+			"inputList" : [
+				{
+					"itemName" : "原油",
+					"itemNum" : 60
+				}
+			],
+			"outputList" : [
+				{
+					"itemName" : "燃料",
+					"itemNum" : 40
+				},
+				{
+					"itemName" : "合成樹脂",
+					"itemNum" : 30
+				}
+			]
+		}
+	],
+
+	"individualLineList" : [
+		{
+			"individualLineName" : "燃料精製ライン",
+			"recipeName" : "燃料",
+			"recipeNum" : 4,
+			"inputList" : [
+				{
+					"itemName" : "原油",
+					"itemNum" : 240
+				}
+			],
+			"outputList" : [
+				{
+					"itemName" : "燃料",
+					"itemNum" : 160
+				},
+				{
+					"itemName" : "合成樹脂",
+					"itemNum" : 120
+				}
+			]
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道輸送_原油"
+	],
+
+	"outputLineList" :[
+		"タンク_燃料",
+		"AWESOMEシンク"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道輸送_原油",
+			"destinationLine" : "燃料精製ライン",
+			"supplyItem" : "原油",
+			"supplyNum" : 240
+		},
+		{
+			"supplierLine" : "燃料精製ライン",
+			"destinationLine" : "タンク_燃料",
+			"supplyItem" : "燃料",
+			"supplyNum" : 160
+		},
+		{
+			"supplierLine" : "燃料精製ライン",
+			"destinationLine" : "AWESOMEシンク",
+			"supplyItem" : "合成樹脂",
+			"supplyNum" : 120
+		}
+
+	]
+}

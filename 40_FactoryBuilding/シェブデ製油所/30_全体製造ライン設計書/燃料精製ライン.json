@@ -1,0 +1,16 @@
+{
+    "lineName": "燃料精製ライン",
+    "recipeName": "燃料",
+    "recipeNum": 4,
+    "productName": "精製機",
+    "totalUsePower": 120,
+    "inputName1": "原油",
+    "inputNum1": 60,
+    "totalInput1": 240,
+    "outputName1": "燃料",
+    "outputNum1": 40,
+    "totalOutput1": 160,
+    "outputName2": "合成樹脂",
+    "outputNum2": 30,
+    "totalOutput2": 120
+}
