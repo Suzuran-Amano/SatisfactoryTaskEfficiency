@@ -1,0 +1,60 @@
+{
+	"factoryName"	: "ローター工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "ローター",
+			"recipeNum" : 2
+		},
+		{
+			"recipeName" : "ネジ",
+			"recipeNum" : 5
+		},
+		{
+			"recipeName" : "鉄のロッド",
+			"recipeNum" : 10
+		}
+	],
+
+	"inputlLineList" : [
+		"コンテナ_鉄のインゴット"
+	],
+
+	"outputLineList" :[
+		"コンテナ_ローター"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "ローター製造ライン",
+			"destinationLine" : "コンテナ_ローター",
+			"supplyItem" : "ローター",
+			"supplyNum" : 8
+		},
+		{
+			"supplierLine" : "ネジ製造ライン",
+			"destinationLine" : "ローター製造ライン",
+			"supplyItem" : "ネジ",
+			"supplyNum" : 200
+		},
+		{
+			"supplierLine" : "鉄のロッド製造ライン",
+			"destinationLine" : "ローター製造ライン",
+			"supplyItem" : "鉄のロッド",
+			"supplyNum" : 40
+		},
+		{
+			"supplierLine" : "鉄のロッド製造ライン",
+			"destinationLine" : "ネジ製造ライン",
+			"supplyItem" : "鉄のロッド",
+			"supplyNum" : 100
+		},
+		{
+			"supplierLine" : "コンテナ_鉄のインゴット",
+			"destinationLine" : "鉄のロッド製造ライン",
+			"supplyItem" : "鉄のインゴット",
+			"supplyNum" : 140
+		}
+
+	]
+}
