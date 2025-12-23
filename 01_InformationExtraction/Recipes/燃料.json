@@ -1,0 +1,12 @@
+{
+    "recipeName" :"燃料",
+    "productName":"精製機" ,
+    "output":[
+	    { "itemName":"燃料", "itemNum":40 },
+	    { "itemName":"合成樹脂", "itemNum":30 }
+	    ],
+    "input":[
+	    { "itemName":"原油", "itemNum":60 }
+	    ]
+
+}
