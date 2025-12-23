@@ -1,0 +1,12 @@
+{
+    "recipeName" :"包装済み燃料",
+    "productName":"充填機" ,
+    "output":[
+	    { "itemName":"包装済み燃料", "itemNum":40 }
+	    ],
+    "input":[
+	    { "itemName":"燃料", "itemNum":40 },        
+	    { "itemName":"空の容器", "itemNum":40 }
+	    ]
+
+}
