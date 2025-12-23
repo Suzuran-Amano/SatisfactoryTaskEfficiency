@@ -12,9 +12,11 @@ from DesignModules import pathDataModule
 class OverallLineDesignMaker:
 
     # constans
+    OVERALL_LINE_DIRECTORY_NAME = "30_全体製造ライン設計書"
+    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
+
     TEMPLATE_FILE_NAME = './全体製造ライン設計書_var_factoryName.md'
-    OVERALL_LINE_ESSENCE_NAME = './OverallLineESSENCE.json'
-    OVERALL_LINE_DATA_NAME = './OverallLineData.json'
+    OVERALL_LINE_ESSENCE_NAME = './OverallLineEssence.json'
     OUTPUT_FILE_NAME = '全体製造ライン設計書_var_factoryName.md'
 
     FACTORY_NAME_KEY_WORD = "var_factoryName"
@@ -49,7 +51,10 @@ class OverallLineDesignMaker:
         overallLineData.Output(pathData.GetPath())
 
         # 個別ライン本質リストの作成
-        self.individualLineEssences = self.MakeILineEssence(overallLineData)
+        individualLineEssences = self.MakeILineEssence(overallLineData)
+        self.individualLineEssences = individualLineEssences
+        for iLineEssence in individualLineEssences :
+            iLineEssence.Output(pathData.GetPath())
 
         # 全体ラインテンプレートを読み込み
         templateLines = self.ReadTemplateFile()
@@ -72,7 +77,7 @@ class OverallLineDesignMaker:
         # print(result)
 
         # text output
-        filePath = pathData.GetPath()
+        filePath = pathData.GetPath() + "\\" + self.OVERALL_LINE_DIRECTORY_NAME
         fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
         self.WriteFile(filePath,fileName,result)
 

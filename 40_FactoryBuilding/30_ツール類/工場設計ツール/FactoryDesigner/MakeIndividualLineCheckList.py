@@ -10,10 +10,13 @@ from DesignModules import pathDataModule
 class MakeIndividualLineCheckList:
 
     # constans
+    INDIVIDUAL_TEST_DIRECTORY_NAME = "60_個別製造ラインテスト項目書"
+
     inputTextFileName = './個別製造ラインテスト項目書_var_lineName.md'
     inputDataFileName = './IndividualLine.json'
     outputFileName = '個別製造ラインテスト項目書_var_lineName.md'
     
+
 
 
     inputNum = 0
@@ -46,7 +49,7 @@ class MakeIndividualLineCheckList:
 
 
         # text output
-        filePath = pathData.GetPath()
+        filePath = pathData.GetPath() + self.INDIVIDUAL_TEST_DIRECTORY_NAME
         fileName = self.Replace(self.outputFileName,replaceData)
         self.WriteFile(filePath,fileName,templateLines)
 
@@ -77,6 +80,7 @@ class MakeIndividualLineCheckList:
 
     # 保存
     def WriteFile(self,filePath,fileName,lines):
+        os.makedirs(filePath, exist_ok=True)
         os.chdir(os.path.dirname(__file__) + "/../")
         os.chdir(filePath)
         with open(fileName,"w", encoding="utf-8") as o:

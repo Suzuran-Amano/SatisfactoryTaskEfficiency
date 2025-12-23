@@ -1,8 +1,10 @@
+import os
 import json
 
 class OverallLineData:
     ### 定数 ###
     FILE_NAME = "OverallLineData.json"
+    OVERALL_LINE_DIRECTORY_NAME = "30_全体製造ライン設計書"
 
     REPLACE_KEY_HEADER = "var_"
     
@@ -44,8 +46,12 @@ class OverallLineData:
     
     # ファイルを出力
     def Output(self,path:str):
+
+        outputPath = path + self.OVERALL_LINE_DIRECTORY_NAME
+        
         # 書き込み
-        jsonfile = open(path + '/' + self.FILE_NAME , 'w',encoding='utf-8')
+        os.makedirs(outputPath, exist_ok=True)
+        jsonfile = open(outputPath + "\\" + self.FILE_NAME , 'w',encoding='utf-8')
         json.dump(self.value, jsonfile, indent=4,ensure_ascii=False)
 
         return

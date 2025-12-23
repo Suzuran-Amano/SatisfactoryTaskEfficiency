@@ -1,6 +1,12 @@
+import os
+import json
 
 class IndividualLineEssence:
     # 定数
+    FILE_NAME = "IndividualLineEssence_var_lineName.json"
+    LINE_NAME_REPLACE_TEXT = "var_lineName"
+    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
+
     LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
@@ -24,3 +30,18 @@ class IndividualLineEssence:
     # レシピ数を返す
     def GetRecipeNum(self):
         return self.value[self.RECIPE_NUM_KEY]
+    
+    # ファイルを出力
+    def Output(self,path:str):
+        # パス計算
+        outputPath = path + self.INDIVIDUAL_LINE_DIRECTORY_NAME
+        
+        # ファイル名作成
+        fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetLineName())
+
+        # 書き込み
+        os.makedirs(outputPath, exist_ok=True)
+        jsonfile = open(outputPath + "\\" + fileName , 'w',encoding='utf-8')
+        json.dump(self.value, jsonfile, indent=4,ensure_ascii=False)
+
+        return

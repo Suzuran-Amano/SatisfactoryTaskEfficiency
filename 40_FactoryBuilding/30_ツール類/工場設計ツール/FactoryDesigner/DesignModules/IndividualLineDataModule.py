@@ -1,7 +1,13 @@
+import os
 import json
 
+
 class IndividualLineData:
-    ### 定数 ###
+    # 定数
+    FILE_NAME = "IndividualLineData_var_lineName.json"
+    LINE_NAME_REPLACE_TEXT = "var_lineName"
+    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
+    
     REPLACE_KEY_HEADER = "var_"
     LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
@@ -72,8 +78,16 @@ class IndividualLineData:
     
     # ファイルを出力
     def Output(self,path:str):
+        
+        # パス計算
+        outputPath = path + self.INDIVIDUAL_LINE_DIRECTORY_NAME
+        
+        # ファイル名作成
+        fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetLineName())
+
         # 書き込み
-        jsonfile = open(path + '/' + self.GetLineName() + '.json', 'w',encoding='utf-8')
+        os.makedirs(outputPath, exist_ok=True)
+        jsonfile = open(outputPath + "\\" + fileName , 'w',encoding='utf-8')
         json.dump(self.value, jsonfile, indent=4,ensure_ascii=False)
 
         return
