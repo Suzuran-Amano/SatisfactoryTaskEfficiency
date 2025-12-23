@@ -1,6 +1,6 @@
 {
     "recipeName" :"ローター",
-    "productName":"工作機" ,
+    "productName":"組立機" ,
     "output":[
 	    { "itemName":"ローター", "itemNum":4 }
 	    ],
