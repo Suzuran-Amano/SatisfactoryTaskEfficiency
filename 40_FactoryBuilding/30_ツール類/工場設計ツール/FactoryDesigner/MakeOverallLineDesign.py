@@ -41,7 +41,7 @@ class OverallLineDesignMaker:
 
 
         # 全体ライン本質を読み込み
-        overallLineEssence = self.ReadOverallLineEssence(pathData.GetFullPath())
+        overallLineEssence = self.ReadOverallLineEssence(inputDataFileName)
         self.overallLineEssence = overallLineEssence
 
         # 全体ラインデータを作成
