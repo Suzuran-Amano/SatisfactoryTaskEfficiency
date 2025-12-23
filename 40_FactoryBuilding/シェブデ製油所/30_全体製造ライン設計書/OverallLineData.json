@@ -19,6 +19,25 @@
                     "itemNum": 30
                 }
             ]
+        },
+        {
+            "recipeName": "包装済み燃料",
+            "inputList": [
+                {
+                    "itemName": "燃料",
+                    "itemNum": 40
+                },
+                {
+                    "itemName": "空の容器",
+                    "itemNum": 40
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "包装済み燃料",
+                    "itemNum": 40
+                }
+            ]
         }
     ],
     "individualLineList": [
@@ -42,13 +61,36 @@
                     "itemNum": 120
                 }
             ]
+        },
+        {
+            "individualLineName": "包装済み燃料製造ライン",
+            "recipeName": "包装済み燃料",
+            "recipeNum": 1,
+            "inputList": [
+                {
+                    "itemName": "燃料",
+                    "itemNum": 40
+                },
+                {
+                    "itemName": "空の容器",
+                    "itemNum": 40
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "包装済み燃料",
+                    "itemNum": 40
+                }
+            ]
         }
     ],
     "inputlLineList": [
-        "鉄道輸送_原油"
+        "鉄道輸送_原油",
+        "コンテナ_空の容器"
     ],
     "outputLineList": [
         "タンク_燃料",
+        "コンテナ_包装済み燃料",
         "AWESOMEシンク"
     ],
     "relationships": [
@@ -69,6 +111,24 @@
             "destinationLine": "AWESOMEシンク",
             "supplyItem": "合成樹脂",
             "supplyNum": 120
+        },
+        {
+            "supplierLine": "コンテナ_空の容器",
+            "destinationLine": "包装済み燃料製造ライン",
+            "supplyItem": "空の容器",
+            "supplyNum": 40
+        },
+        {
+            "supplierLine": "燃料製造ライン",
+            "destinationLine": "包装済み燃料製造ライン",
+            "supplyItem": "燃料",
+            "supplyNum": 40
+        },
+        {
+            "supplierLine": "包装済み燃料製造ライン",
+            "destinationLine": "コンテナ_包装済み燃料",
+            "supplyItem": "包装済み燃料",
+            "supplyNum": 40
         }
     ]
 }

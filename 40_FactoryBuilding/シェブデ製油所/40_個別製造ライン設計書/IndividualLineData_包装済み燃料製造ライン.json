@@ -1,0 +1,19 @@
+{
+    "lineName": "包装済み燃料製造ライン",
+    "recipeName": "包装済み燃料",
+    "recipeNum": 1,
+    "productName": "充填機",
+    "totalUsePower": 10,
+    "inputName1": "燃料",
+    "inputNum1": 40,
+    "totalInput1": 40,
+    "outputName1": "包装済み燃料",
+    "outputNum1": 40,
+    "totalOutput1": 40,
+    "outputName2": "合成樹脂",
+    "outputNum2": 30,
+    "totalOutput2": 120,
+    "inputName2": "空の容器",
+    "inputNum2": 40,
+    "totalInput2": 40
+}

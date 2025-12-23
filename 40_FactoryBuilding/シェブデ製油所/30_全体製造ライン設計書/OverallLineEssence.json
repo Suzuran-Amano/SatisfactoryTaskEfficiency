@@ -5,15 +5,21 @@
 		{
 			"recipeName" : "燃料",
 			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "包装済み燃料",
+			"recipeNum" : 1
 		}
 	],
 
 	"inputlLineList" : [
-		"鉄道輸送_原油"
+		"鉄道輸送_原油",
+		"コンテナ_空の容器"
 	],
 
 	"outputLineList" :[
 		"タンク_燃料",
+		"コンテナ_包装済み燃料",
 		"AWESOMEシンク"
 	],
 
@@ -35,6 +41,24 @@
 			"destinationLine" : "AWESOMEシンク",
 			"supplyItem" : "合成樹脂",
 			"supplyNum" : 120
+		},
+		{
+			"supplierLine" : "コンテナ_空の容器",
+			"destinationLine" : "包装済み燃料製造ライン",
+			"supplyItem" : "空の容器",
+			"supplyNum" : 40
+		},
+		{
+			"supplierLine" : "燃料製造ライン",
+			"destinationLine" : "包装済み燃料製造ライン",
+			"supplyItem" : "燃料",
+			"supplyNum" : 40
+		},
+		{
+			"supplierLine" : "包装済み燃料製造ライン",
+			"destinationLine" : "コンテナ_包装済み燃料",
+			"supplyItem" : "包装済み燃料",
+			"supplyNum" : 40
 		}
 
 	]
