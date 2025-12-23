@@ -7,7 +7,7 @@ class IndividualLineData:
     FILE_NAME = "IndividualLineData_var_lineName.json"
     LINE_NAME_REPLACE_TEXT = "var_lineName"
     INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
-    
+
     REPLACE_KEY_HEADER = "var_"
     LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
@@ -45,7 +45,7 @@ class IndividualLineData:
     def GetProductName(self):
         return self.value[self.PRODUCT_NAME_KEY]
     
-    def GetTotalUsePowerName(self):
+    def GetTotalUsePower(self):
         return self.value[self.TOTAL_USE_POWER_KEY]
     
 
