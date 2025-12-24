@@ -1,6 +1,6 @@
 {
     "recipeName" :"スマートプレート",
-    "productName":"工作機" ,
+    "productName":"組立機" ,
     "output":[
 	    { "itemName":"スマートプレート", "itemNum":2 }
 	    ],
