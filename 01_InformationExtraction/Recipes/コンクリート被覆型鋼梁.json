@@ -1,6 +1,6 @@
 {
     "recipeName" :"コンクリート被覆型鋼梁",
-    "productName":"工作機" ,
+    "productName":"組立機" ,
     "output":[
 	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":6 }
 	    ],

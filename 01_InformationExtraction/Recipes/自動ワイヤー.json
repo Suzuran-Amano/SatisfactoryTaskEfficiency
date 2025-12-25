@@ -1,6 +1,6 @@
 {
     "recipeName" :"自動ワイヤー",
-    "productName":"工作機" ,
+    "productName":"組立機" ,
     "output":[
 	    { "itemName":"自動ワイヤー", "itemNum":2.5 }
 	    ],

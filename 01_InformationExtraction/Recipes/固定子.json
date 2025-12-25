@@ -1,6 +1,6 @@
 {
     "recipeName" :"固定子",
-    "productName":"工作機" ,
+    "productName":"組立機" ,
     "output":[
 	    { "itemName":"固定子", "itemNum":5 }
 	    ],
