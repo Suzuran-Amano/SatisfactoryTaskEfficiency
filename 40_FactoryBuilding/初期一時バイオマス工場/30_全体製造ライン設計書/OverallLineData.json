@@ -1,0 +1,104 @@
+{
+    "factoryName": "初期一時バイオマス工場",
+    "recipeList": [
+        {
+            "recipeName": "バイオマス葉",
+            "inputList": [
+                {
+                    "itemName": "葉",
+                    "itemNum": 120
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "バイオマス",
+                    "itemNum": 60
+                }
+            ]
+        },
+        {
+            "recipeName": "バイオマス木",
+            "inputList": [
+                {
+                    "itemName": "木",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "バイオマス",
+                    "itemNum": 300
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "バイオマス葉製造ライン",
+            "recipeName": "バイオマス葉",
+            "recipeNum": 1,
+            "inputList": [
+                {
+                    "itemName": "葉",
+                    "itemNum": 120
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "バイオマス",
+                    "itemNum": 60
+                }
+            ]
+        },
+        {
+            "individualLineName": "バイオマス木製造ライン",
+            "recipeName": "バイオマス木",
+            "recipeNum": 1,
+            "inputList": [
+                {
+                    "itemName": "木",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "バイオマス",
+                    "itemNum": 300
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "コンテナ_葉",
+        "コンテナ_木"
+    ],
+    "outputLineList": [
+        "コンテナ_バイオマス"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "コンテナ_葉",
+            "destinationLine": "バイオマス葉製造ライン",
+            "supplyItem": "葉",
+            "supplyNum": 120
+        },
+        {
+            "supplierLine": "コンテナ_木",
+            "destinationLine": "バイオマス木製造ライン",
+            "supplyItem": "木",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "バイオマス葉製造ライン",
+            "destinationLine": "コンテナ_バイオマス",
+            "supplyItem": "バイオマス",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "バイオマス木製造ライン",
+            "destinationLine": "コンテナ_バイオマス",
+            "supplyItem": "バイオマス",
+            "supplyNum": 300
+        }
+    ]
+}

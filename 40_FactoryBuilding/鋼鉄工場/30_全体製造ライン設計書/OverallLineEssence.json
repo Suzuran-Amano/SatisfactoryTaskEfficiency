@@ -1,0 +1,112 @@
+{
+	"factoryName"	: "鋼鉄工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "鋼鉄のインゴット",
+			"recipeNum" : 3
+		},
+		{
+			"recipeName" : "鋼管",
+			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "鋼梁",
+			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "コンクリート",
+			"recipeNum" : 3
+		},
+		{
+			"recipeName" : "コンクリート被覆型鋼梁",
+			"recipeNum" : 2
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_鉄鉱石",
+		"採掘機_石炭",
+		"採掘機_石灰岩"
+
+	],
+
+	"outputLineList" :[
+		"コンテナ_鋼鉄のインゴット",
+		"コンテナ_鋼管",
+		"コンテナ_鋼梁",
+		"コンテナ_コンクリート被覆型鋼梁"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_鉄鉱石",
+			"destinationLine" : "鋼鉄のインゴット製造ライン",
+			"supplyItem" : "鉄鉱石",
+			"supplyNum" : 240
+		},
+		{
+			"supplierLine" : "採掘機_石炭",
+			"destinationLine" : "鋼鉄のインゴット製造ライン",
+			"supplyItem" : "石炭",
+			"supplyNum" : 240
+		},
+		{
+			"supplierLine" : "採掘機_石灰岩",
+			"destinationLine" : "コンクリート製造ライン",
+			"supplyItem" : "石灰岩",
+			"supplyNum" : 120
+		},
+		
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "鋼管製造ライン",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 240
+		},
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "鋼梁製造ライン",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 240
+		},
+		{
+			"supplierLine" : "コンクリート製造ライン",
+			"destinationLine" : "コンクリート被覆型鋼梁製造ライン",
+			"supplyItem" : "コンクリート",
+			"supplyNum" : 40
+		},
+		{
+			"supplierLine" : "鋼梁製造ライン",
+			"destinationLine" : "コンクリート被覆型鋼梁製造ライン",
+			"supplyItem" : "鋼梁",
+			"supplyNum" : 60
+		},
+
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "コンテナ_鋼鉄のインゴット",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 120
+		},
+		{
+			"supplierLine" : "鋼管製造ライン",
+			"destinationLine" : "コンテナ_鋼管",
+			"supplyItem" : "鋼管",
+			"supplyNum" : 80
+		},
+		{
+			"supplierLine" : "鋼梁製造ライン",
+			"destinationLine" : "コンテナ_鋼梁",
+			"supplyItem" : "鋼梁",
+			"supplyNum" : 60
+		},
+		{
+			"supplierLine" : "コンクリート被覆型鋼梁製造ライン",
+			"destinationLine" : "コンテナ_コンクリート被覆型鋼梁",
+			"supplyItem" : "コンクリート被覆型鋼梁",
+			"supplyNum" : 10
+		}
+
+	]
+}

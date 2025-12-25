@@ -1,0 +1,51 @@
+{
+	"factoryName"	: "初期一時石英工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "シリカ",
+			"recipeNum" : 1
+		},
+		{
+			"recipeName" : "石英結晶",
+			"recipeNum" : 1
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_未加工石英"
+	],
+
+	"outputLineList" :[
+		"コンテナ_シリカ",
+		"コンテナ_石英結晶"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_未加工石英",
+			"destinationLine" : "シリカ製造ライン",
+			"supplyItem" : "未加工石英",
+			"supplyNum" : 22.5
+		},
+		{
+			"supplierLine" : "採掘機_未加工石英",
+			"destinationLine" : "石英結晶製造ライン",
+			"supplyItem" : "未加工石英",
+			"supplyNum" : 37.5
+		},
+		{
+			"supplierLine" : "シリカ製造ライン",
+			"destinationLine" : "コンテナ_シリカ",
+			"supplyItem" : "シリカ",
+			"supplyNum" : 37.5
+		},
+		{
+			"supplierLine" : "石英結晶製造ライン",
+			"destinationLine" : "コンテナ_石英結晶",
+			"supplyItem" : "石英結晶",
+			"supplyNum" : 22.5
+		}
+
+	]
+}

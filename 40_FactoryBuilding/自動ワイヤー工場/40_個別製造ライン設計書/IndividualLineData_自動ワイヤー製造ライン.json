@@ -1,0 +1,16 @@
+{
+    "lineName": "自動ワイヤー製造ライン",
+    "recipeName": "自動ワイヤー",
+    "recipeNum": 4,
+    "productName": "組立機",
+    "totalUsePower": 60,
+    "inputName1": "固定子",
+    "inputNum1": 2.5,
+    "totalInput1": 10.0,
+    "inputName2": "ケーブル",
+    "inputNum2": 50,
+    "totalInput2": 200,
+    "outputName1": "自動ワイヤー",
+    "outputNum1": 2.5,
+    "totalOutput1": 10.0
+}

@@ -1,0 +1,65 @@
+{
+	"factoryName"	: "初期一時鉄板工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "鉄のインゴット",
+			"recipeNum" : 2
+		},
+		{
+			"recipeName" : "鉄板",
+			"recipeNum" : 2
+		},
+		{
+			"recipeName" : "強化鉄板",
+			"recipeNum" : 2
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_鉄鉱石"
+	],
+
+	"outputLineList" :[
+		"コンテナ_鉄板",
+		"コンテナ_強化鉄板"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_鉄鉱石",
+			"destinationLine" : "鉄のインゴット製造ライン",
+			"supplyItem" : "鉄鉱石",
+			"supplyNum" : 30
+		},
+		
+		{
+			"supplierLine" : "鉄のインゴット製造ライン",
+			"destinationLine" : "鉄板製造ライン",
+			"supplyItem" : "鉄のインゴット",
+			"supplyNum" : 30
+		},
+		
+		{
+			"supplierLine" : "鉄板製造ライン",
+			"destinationLine" : "コンテナ_鉄板",
+			"supplyItem" : "鉄板",
+			"supplyNum" : 20
+		},
+		
+		{
+			"supplierLine" : "鉄板製造ライン",
+			"destinationLine" : "強化鉄板製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 20
+		},
+
+		{
+			"supplierLine" : "強化鉄板製造ライン",
+			"destinationLine" : "コンテナ_強化鉄板",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 10
+		}
+
+	]
+}

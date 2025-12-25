@@ -1,0 +1,110 @@
+{
+    "factoryName": "初期一時ワイヤー工場",
+    "recipeList": [
+        {
+            "recipeName": "銅のインゴット",
+            "inputList": [
+                {
+                    "itemName": "銅鉱石",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 30
+                }
+            ]
+        },
+        {
+            "recipeName": "ケーブル",
+            "inputList": [
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 30
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "銅のインゴット製造ライン",
+            "recipeName": "銅のインゴット",
+            "recipeNum": 2,
+            "inputList": [
+                {
+                    "itemName": "銅鉱石",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 60
+                }
+            ]
+        },
+        {
+            "individualLineName": "ケーブル製造ライン",
+            "recipeName": "ケーブル",
+            "recipeNum": 1,
+            "inputList": [
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 30
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "採掘機_銅鉱石"
+    ],
+    "outputLineList": [
+        "コンテナ_ワイヤー",
+        "コンテナ_ケーブル"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "採掘機_銅鉱石",
+            "destinationLine": "銅のインゴット製造ライン",
+            "supplyItem": "銅鉱石",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "銅のインゴット製造ライン",
+            "destinationLine": "ワイヤー製造ライン",
+            "supplyItem": "銅のインゴット",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "ワイヤー製造ライン",
+            "destinationLine": "ケーブル製造ライン",
+            "supplyItem": "ワイヤー",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "ワイヤー製造ライン",
+            "destinationLine": "コンテナ_ワイヤー",
+            "supplyItem": "ワイヤー",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "ケーブル製造ライン",
+            "destinationLine": "コンテナ_ケーブル",
+            "supplyItem": "ケーブル",
+            "supplyNum": 30
+        }
+    ]
+}

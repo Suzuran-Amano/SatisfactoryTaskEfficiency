@@ -1,0 +1,61 @@
+{
+	"factoryName"	: "初期一時ワイヤー工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "銅のインゴット",
+			"recipeNum" : 2
+		},
+		{
+			"recipeName" : "ケーブル",
+			"recipeNum" : 1
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_銅鉱石"
+	],
+
+	"outputLineList" :[
+		"コンテナ_ワイヤー",
+		"コンテナ_ケーブル"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_銅鉱石",
+			"destinationLine" : "銅のインゴット製造ライン",
+			"supplyItem" : "銅鉱石",
+			"supplyNum" : 60
+		},
+
+		{
+			"supplierLine" : "銅のインゴット製造ライン",
+			"destinationLine" : "ワイヤー製造ライン",
+			"supplyItem" : "銅のインゴット",
+			"supplyNum" : 60
+		},
+
+		{
+			"supplierLine" : "ワイヤー製造ライン",
+			"destinationLine" : "ケーブル製造ライン",
+			"supplyItem" : "ワイヤー",
+			"supplyNum" : 60
+		},
+
+		{
+			"supplierLine" : "ワイヤー製造ライン",
+			"destinationLine" : "コンテナ_ワイヤー",
+			"supplyItem" : "ワイヤー",
+			"supplyNum" : 60
+		},
+
+		{
+			"supplierLine" : "ケーブル製造ライン",
+			"destinationLine" : "コンテナ_ケーブル",
+			"supplyItem" : "ケーブル",
+			"supplyNum" : 30
+		}
+
+	]
+}

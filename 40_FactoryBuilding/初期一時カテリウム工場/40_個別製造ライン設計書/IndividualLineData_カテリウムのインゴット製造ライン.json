@@ -1,0 +1,13 @@
+{
+    "lineName": "カテリウムのインゴット製造ライン",
+    "recipeName": "カテリウムのインゴット",
+    "recipeNum": 1,
+    "productName": "製錬炉",
+    "totalUsePower": 4,
+    "inputName1": "カテリウム鉱石",
+    "inputNum1": 45,
+    "totalInput1": 45,
+    "outputName1": "カテリウムのインゴット",
+    "outputNum1": 15,
+    "totalOutput1": 15
+}

@@ -1,0 +1,13 @@
+{
+    "lineName": "銅板製造ライン",
+    "recipeName": "銅板",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "銅のインゴット",
+    "inputNum1": 30,
+    "totalInput1": 30,
+    "outputName1": "銅板",
+    "outputNum1": 15,
+    "totalOutput1": 15
+}

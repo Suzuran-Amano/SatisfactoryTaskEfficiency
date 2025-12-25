@@ -1,0 +1,253 @@
+{
+    "factoryName": "モジュラーフレーム第01工場",
+    "recipeList": [
+        {
+            "recipeName": "モジュラーフレーム",
+            "inputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 12
+                },
+                {
+                    "itemName": "強化鉄板",
+                    "itemNum": 3
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "モジュラーフレーム",
+                    "itemNum": 2
+                }
+            ]
+        },
+        {
+            "recipeName": "強化鉄板",
+            "inputList": [
+                {
+                    "itemName": "鉄板",
+                    "itemNum": 30
+                },
+                {
+                    "itemName": "ネジ",
+                    "itemNum": 60
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "強化鉄板",
+                    "itemNum": 5
+                }
+            ]
+        },
+        {
+            "recipeName": "ネジ",
+            "inputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 10
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ネジ",
+                    "itemNum": 40
+                }
+            ]
+        },
+        {
+            "recipeName": "鉄のロッド",
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 15
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 15
+                }
+            ]
+        },
+        {
+            "recipeName": "鉄板",
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄板",
+                    "itemNum": 20
+                }
+            ]
+        },
+        {
+            "recipeName": "鉄のインゴット",
+            "inputList": [
+                {
+                    "itemName": "鉄鉱石",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 30
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "モジュラーフレーム製造ライン",
+            "recipeName": "モジュラーフレーム",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 84
+                },
+                {
+                    "itemName": "強化鉄板",
+                    "itemNum": 21
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "モジュラーフレーム",
+                    "itemNum": 14
+                }
+            ]
+        },
+        {
+            "individualLineName": "強化鉄板製造ライン",
+            "recipeName": "強化鉄板",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄板",
+                    "itemNum": 210
+                },
+                {
+                    "itemName": "ネジ",
+                    "itemNum": 420
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "強化鉄板",
+                    "itemNum": 35
+                }
+            ]
+        },
+        {
+            "individualLineName": "ネジ製造ライン",
+            "recipeName": "ネジ",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 70
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ネジ",
+                    "itemNum": 280
+                }
+            ]
+        },
+        {
+            "individualLineName": "鉄のロッド製造ライン",
+            "recipeName": "鉄のロッド",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 105
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 105
+                }
+            ]
+        },
+        {
+            "individualLineName": "鉄板製造ライン",
+            "recipeName": "鉄板",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 210
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄板",
+                    "itemNum": 140
+                }
+            ]
+        },
+        {
+            "individualLineName": "鉄のインゴット製造ライン",
+            "recipeName": "鉄のインゴット",
+            "recipeNum": 7,
+            "inputList": [
+                {
+                    "itemName": "鉄鉱石",
+                    "itemNum": 210
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 210
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "採掘機_鉄鉱石"
+    ],
+    "outputLineList": [
+        "コンテナ_鉄板"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "採掘機_鉄鉱石",
+            "destinationLine": "鉄のインゴット製造ライン",
+            "supplyItem": "鉄鉱石",
+            "supplyNum": 240
+        },
+        {
+            "supplierLine": "鉄のインゴット製造ライン",
+            "destinationLine": "鉄板製造ライン",
+            "supplyItem": "ネジ",
+            "supplyNum": 200
+        },
+        {
+            "supplierLine": "鉄のロッド製造ライン",
+            "destinationLine": "ローター製造ライン",
+            "supplyItem": "鉄のロッド",
+            "supplyNum": 40
+        },
+        {
+            "supplierLine": "鉄のロッド製造ライン",
+            "destinationLine": "ネジ製造ライン",
+            "supplyItem": "鉄のロッド",
+            "supplyNum": 100
+        },
+        {
+            "supplierLine": "コンテナ_鉄のインゴット",
+            "destinationLine": "鉄のロッド製造ライン",
+            "supplyItem": "鉄のインゴット",
+            "supplyNum": 140
+        }
+    ]
+}

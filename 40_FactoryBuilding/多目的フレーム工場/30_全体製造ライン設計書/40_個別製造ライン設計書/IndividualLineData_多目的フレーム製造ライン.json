@@ -1,0 +1,16 @@
+{
+    "lineName": "多目的フレーム製造ライン",
+    "recipeName": "多目的フレーム",
+    "recipeNum": 4,
+    "productName": "組立機",
+    "totalUsePower": 60,
+    "inputName1": "モジュラーフレーム",
+    "inputNum1": 2.5,
+    "totalInput1": 10.0,
+    "inputName2": "鋼梁",
+    "inputNum2": 30,
+    "totalInput2": 120,
+    "outputName1": "多目的フレーム",
+    "outputNum1": 5,
+    "totalOutput1": 20
+}

@@ -1,0 +1,16 @@
+{
+    "lineName": "鋼梁製造ライン",
+    "recipeName": "鋼梁",
+    "recipeNum": 4,
+    "productName": "製作機",
+    "totalUsePower": 16,
+    "inputName1": "鋼鉄のインゴット",
+    "inputNum1": 60,
+    "totalInput1": 240,
+    "inputName2": "石炭",
+    "inputNum2": 45,
+    "totalInput2": 135,
+    "outputName1": "鋼梁",
+    "outputNum1": 15,
+    "totalOutput1": 60
+}

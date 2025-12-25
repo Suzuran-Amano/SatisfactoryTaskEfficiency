@@ -1,0 +1,16 @@
+{
+    "lineName": "ネジ製造ライン",
+    "recipeName": "ネジ",
+    "recipeNum": 7,
+    "productName": "製作機",
+    "totalUsePower": 28,
+    "inputName1": "鉄のロッド",
+    "inputNum1": 10,
+    "totalInput1": 70,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 420,
+    "outputName1": "ネジ",
+    "outputNum1": 40,
+    "totalOutput1": 280
+}

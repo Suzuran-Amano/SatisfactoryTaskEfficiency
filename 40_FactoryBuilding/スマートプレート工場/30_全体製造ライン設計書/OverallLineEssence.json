@@ -1,0 +1,41 @@
+{
+	"factoryName"	: "スマートプレート工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "スマートプレート",
+			"recipeNum" : 5
+		}
+	],
+
+	"inputlLineList" : [
+		"コンテナ_強化鉄板",
+		"コンテナ_ローター"
+	],
+
+	"outputLineList" :[
+		"コンテナ_スマートプレート"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "コンテナ_強化鉄板",
+			"destinationLine" : "スマートプレート製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 10
+		},
+		{
+			"supplierLine" : "コンテナ_ローター",
+			"destinationLine" : "スマートプレート製造ライン",
+			"supplyItem" : "ローター",
+			"supplyNum" : 10
+		},
+		{
+			"supplierLine" : "スマートプレート製造ライン",
+			"destinationLine" : "コンテナ_スマートプレート",
+			"supplyItem" : "スマートプレート",
+			"supplyNum" : 10
+		}
+
+	]
+}

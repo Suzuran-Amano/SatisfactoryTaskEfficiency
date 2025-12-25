@@ -1,0 +1,44 @@
+{
+	"factoryName"	: "初期一時銅板工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "銅のインゴット",
+			"recipeNum" : 1
+		},
+		{
+			"recipeName" : "銅板",
+			"recipeNum" : 1
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_銅鉱石"
+	],
+
+	"outputLineList" :[
+		"コンテナ_銅板"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_銅鉱石",
+			"destinationLine" : "銅のインゴット製造ライン",
+			"supplyItem" : "銅鉱石",
+			"supplyNum" : 30
+		},
+		{
+			"supplierLine" : "銅のインゴット製造ライン",
+			"destinationLine" : "銅板製造ライン",
+			"supplyItem" : "銅のインゴット",
+			"supplyNum" : 30
+		},
+		{
+			"supplierLine" : "銅板製造ライン",
+			"destinationLine" : "コンテナ_銅板",
+			"supplyItem" : "銅板",
+			"supplyNum" : 15
+		}
+
+	]
+}

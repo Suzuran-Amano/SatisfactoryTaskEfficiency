@@ -1,0 +1,16 @@
+{
+    "lineName": "鋼管製造ライン",
+    "recipeName": "鋼管",
+    "recipeNum": 4,
+    "productName": "製作機",
+    "totalUsePower": 16,
+    "inputName1": "鋼鉄のインゴット",
+    "inputNum1": 30,
+    "totalInput1": 120,
+    "inputName2": "石炭",
+    "inputNum2": 45,
+    "totalInput2": 135,
+    "outputName1": "鋼管",
+    "outputNum1": 20,
+    "totalOutput1": 80
+}

@@ -1,0 +1,16 @@
+{
+    "lineName": "スマートプレート製造ライン",
+    "recipeName": "スマートプレート",
+    "recipeNum": 5,
+    "productName": "組立機",
+    "totalUsePower": 75,
+    "inputName1": "ローター",
+    "inputNum1": 2,
+    "totalInput1": 10,
+    "inputName2": "強化鉄板",
+    "inputNum2": 2,
+    "totalInput2": 10,
+    "outputName1": "スマートプレート",
+    "outputNum1": 2,
+    "totalOutput1": 10
+}

@@ -1,0 +1,16 @@
+{
+    "lineName": "ローター製造ライン",
+    "recipeName": "ローター",
+    "recipeNum": 2,
+    "productName": "組立機",
+    "totalUsePower": 30,
+    "inputName1": "鉄のロッド",
+    "inputNum1": 5,
+    "totalInput1": 10,
+    "outputName1": "ローター",
+    "outputNum1": 4,
+    "totalOutput1": 8,
+    "inputName2": "ネジ",
+    "inputNum2": 25,
+    "totalInput2": 50
+}

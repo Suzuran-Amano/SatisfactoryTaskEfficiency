@@ -1,0 +1,13 @@
+{
+    "lineName": "バイオマス葉製造ライン",
+    "recipeName": "バイオマス葉",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "葉",
+    "inputNum1": 120,
+    "totalInput1": 120,
+    "outputName1": "バイオマス",
+    "outputNum1": 60,
+    "totalOutput1": 60
+}

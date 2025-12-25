@@ -1,0 +1,13 @@
+{
+    "lineName": "シリカ製造ライン",
+    "recipeName": "シリカ",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "未加工石英",
+    "inputNum1": 22.5,
+    "totalInput1": 22.5,
+    "outputName1": "シリカ",
+    "outputNum1": 37.5,
+    "totalOutput1": 37.5
+}

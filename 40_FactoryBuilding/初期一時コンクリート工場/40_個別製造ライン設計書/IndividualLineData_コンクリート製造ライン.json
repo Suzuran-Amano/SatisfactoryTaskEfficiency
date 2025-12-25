@@ -1,0 +1,13 @@
+{
+    "lineName": "コンクリート製造ライン",
+    "recipeName": "コンクリート",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "石灰岩",
+    "inputNum1": 45,
+    "totalInput1": 45,
+    "outputName1": "コンクリート",
+    "outputNum1": 15,
+    "totalOutput1": 15
+}

@@ -1,0 +1,16 @@
+{
+    "lineName": "モーター製造ライン",
+    "recipeName": "モーター",
+    "recipeNum": 2,
+    "productName": "組立機",
+    "totalUsePower": 30,
+    "inputName1": "固定子",
+    "inputNum1": 10,
+    "totalInput1": 20,
+    "inputName2": "ローター",
+    "inputNum2": 10,
+    "totalInput2": 20,
+    "outputName1": "モーター",
+    "outputNum1": 5,
+    "totalOutput1": 10
+}

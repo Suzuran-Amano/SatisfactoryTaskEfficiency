@@ -1,0 +1,187 @@
+{
+    "factoryName": "自動ワイヤー工場",
+    "recipeList": [
+        {
+            "recipeName": "自動ワイヤー",
+            "inputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 2.5
+                },
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 50
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "自動ワイヤー",
+                    "itemNum": 2.5
+                }
+            ]
+        },
+        {
+            "recipeName": "固定子",
+            "inputList": [
+                {
+                    "itemName": "鋼管",
+                    "itemNum": 15
+                },
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 40
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 5
+                }
+            ]
+        },
+        {
+            "recipeName": "モーター",
+            "inputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 10
+                },
+                {
+                    "itemName": "ローター",
+                    "itemNum": 10
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "モーター",
+                    "itemNum": 5
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "自動ワイヤー製造ライン",
+            "recipeName": "自動ワイヤー",
+            "recipeNum": 4,
+            "inputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 10.0
+                },
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 200
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "自動ワイヤー",
+                    "itemNum": 10.0
+                }
+            ]
+        },
+        {
+            "individualLineName": "固定子製造ライン",
+            "recipeName": "固定子",
+            "recipeNum": 4,
+            "inputList": [
+                {
+                    "itemName": "鋼管",
+                    "itemNum": 60
+                },
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 160
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 20
+                }
+            ]
+        },
+        {
+            "individualLineName": "モーター製造ライン",
+            "recipeName": "モーター",
+            "recipeNum": 2,
+            "inputList": [
+                {
+                    "itemName": "固定子",
+                    "itemNum": 20
+                },
+                {
+                    "itemName": "ローター",
+                    "itemNum": 20
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "モーター",
+                    "itemNum": 10
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "コンテナ_鋼管",
+        "コンテナ_ワイヤー",
+        "コンテナ_ケーブル",
+        "コンテナ_ローター"
+    ],
+    "outputLineList": [
+        "コンテナ_自動ワイヤー",
+        "コンテナ_モーター"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "コンテナ_鋼管",
+            "destinationLine": "固定子製造ライン",
+            "supplyItem": "鋼管",
+            "supplyNum": 30
+        },
+        {
+            "supplierLine": "コンテナ_ワイヤー",
+            "destinationLine": "固定子製造ライン",
+            "supplyItem": "ワイヤー",
+            "supplyNum": 80
+        },
+        {
+            "supplierLine": "固定子製造ライン",
+            "destinationLine": "自動ワイヤー製造ライン",
+            "supplyItem": "固定子",
+            "supplyNum": 10
+        },
+        {
+            "supplierLine": "コンテナ_ケーブル",
+            "destinationLine": "自動ワイヤー製造ライン",
+            "supplyItem": "ケーブル",
+            "supplyNum": 200
+        },
+        {
+            "supplierLine": "コンテナ_ローター",
+            "destinationLine": "モーター製造ライン",
+            "supplyItem": "ローター",
+            "supplyNum": 20
+        },
+        {
+            "supplierLine": "固定子製造ライン",
+            "destinationLine": "モーター製造ライン",
+            "supplyItem": "固定子",
+            "supplyNum": 20
+        },
+        {
+            "supplierLine": "自動ワイヤー製造ライン",
+            "destinationLine": "コンテナ_自動ワイヤー",
+            "supplyItem": "自動ワイヤー",
+            "supplyNum": 10
+        },
+        {
+            "supplierLine": "モーター製造ライン",
+            "destinationLine": "コンテナ_モーター",
+            "supplyItem": "モーター",
+            "supplyNum": 10
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+	"factoryName"	: "初期一時カテリウム工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "カテリウムのインゴット",
+			"recipeNum" : 1
+		},
+		{
+			"recipeName" : "クイックワイヤー",
+			"recipeNum" : 1
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_カテリウム鉱石"
+	],
+
+	"outputLineList" :[
+		"コンテナ_クイックワイヤー",		
+		"コンテナ_カテリウムのインゴット"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "採掘機_カテリウム鉱石",
+			"destinationLine" : "カテリウムのインゴット製造ライン",
+			"supplyItem" : "カテリウム鉱石",
+			"supplyNum" : 45
+		},
+
+		{
+			"supplierLine" : "カテリウムのインゴット製造ライン",
+			"destinationLine" : "クイックワイヤー製造ライン",
+			"supplyItem" : "カテリウムのインゴット",
+			"supplyNum" : 15
+		},
+
+		{
+			"supplierLine" : "カテリウムのインゴット製造ライン",
+			"destinationLine" : "コンテナ_カテリウムのインゴット",
+			"supplyItem" : "カテリウムのインゴット",
+			"supplyNum" : 15
+		},
+
+		{
+			"supplierLine" : "クイックワイヤー製造ライン",
+			"destinationLine" : "コンテナ_クイックワイヤー",
+			"supplyItem" : "クイックワイヤー",
+			"supplyNum" : 60
+		}
+
+	]
+}

@@ -1,0 +1,16 @@
+{
+    "lineName": "コンクリート被覆型鋼梁製造ライン",
+    "recipeName": "コンクリート被覆型鋼梁",
+    "recipeNum": 2,
+    "productName": "組立機",
+    "totalUsePower": 30,
+    "inputName1": "鋼梁",
+    "inputNum1": 18,
+    "totalInput1": 36,
+    "inputName2": "コンクリート",
+    "inputNum2": 36,
+    "totalInput2": 72,
+    "outputName1": "コンクリート被覆型鋼梁",
+    "outputNum1": 6,
+    "totalOutput1": 12
+}

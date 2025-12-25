@@ -1,0 +1,13 @@
+{
+    "lineName": "鉄のインゴット製造ライン",
+    "recipeName": "鉄のインゴット",
+    "recipeNum": 1,
+    "productName": "製錬炉",
+    "totalUsePower": 4,
+    "inputName1": "鉄鉱石",
+    "inputNum1": 30,
+    "totalInput1": 30,
+    "outputName1": "鉄のインゴット",
+    "outputNum1": 30,
+    "totalOutput1": 30
+}

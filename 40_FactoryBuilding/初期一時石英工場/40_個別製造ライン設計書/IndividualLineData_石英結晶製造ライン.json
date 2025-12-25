@@ -1,0 +1,13 @@
+{
+    "lineName": "石英結晶製造ライン",
+    "recipeName": "石英結晶",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "未加工石英",
+    "inputNum1": 37.5,
+    "totalInput1": 37.5,
+    "outputName1": "石英結晶",
+    "outputNum1": 22.5,
+    "totalOutput1": 22.5
+}

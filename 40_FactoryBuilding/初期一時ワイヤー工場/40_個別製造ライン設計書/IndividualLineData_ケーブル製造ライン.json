@@ -1,0 +1,13 @@
+{
+    "lineName": "ケーブル製造ライン",
+    "recipeName": "ケーブル",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "ワイヤー",
+    "inputNum1": 60,
+    "totalInput1": 60,
+    "outputName1": "ケーブル",
+    "outputNum1": 30,
+    "totalOutput1": 30
+}

@@ -1,0 +1,44 @@
+{
+	"factoryName"	: "多目的フレーム工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "多目的フレーム",
+			"recipeNum" : 4
+		}
+	],
+
+	"inputlLineList" : [
+		"コンテナ_モジュラーフレーム",
+		"コンテナ_鋼梁"
+
+	],
+
+	"outputLineList" :[
+		"コンテナ_多目的フレーム"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "コンテナ_モジュラーフレーム",
+			"destinationLine" : "多目的フレーム製造ライン",
+			"supplyItem" : "モジュラーフレーム",
+			"supplyNum" : 10
+		},
+
+		{
+			"supplierLine" : "コンテナ_鋼梁",
+			"destinationLine" : "多目的フレーム製造ライン",
+			"supplyItem" : "鋼梁",
+			"supplyNum" : 120
+		},
+		
+		{
+			"supplierLine" : "多目的フレーム製造ライン",
+			"destinationLine" : "コンテナ_多目的フレーム",
+			"supplyItem" : "多目的フレーム",
+			"supplyNum" : 20
+		}
+
+	]
+}

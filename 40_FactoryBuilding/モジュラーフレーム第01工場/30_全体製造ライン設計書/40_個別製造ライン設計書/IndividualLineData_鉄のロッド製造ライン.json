@@ -1,0 +1,16 @@
+{
+    "lineName": "鉄のロッド製造ライン",
+    "recipeName": "鉄のロッド",
+    "recipeNum": 7,
+    "productName": "製作機",
+    "totalUsePower": 28,
+    "inputName1": "鉄のインゴット",
+    "inputNum1": 15,
+    "totalInput1": 105,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 420,
+    "outputName1": "鉄のロッド",
+    "outputNum1": 15,
+    "totalOutput1": 105
+}

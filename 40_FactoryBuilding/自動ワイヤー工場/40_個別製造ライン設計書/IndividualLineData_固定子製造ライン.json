@@ -1,0 +1,16 @@
+{
+    "lineName": "固定子製造ライン",
+    "recipeName": "固定子",
+    "recipeNum": 4,
+    "productName": "組立機",
+    "totalUsePower": 60,
+    "inputName1": "鋼管",
+    "inputNum1": 15,
+    "totalInput1": 60,
+    "inputName2": "ワイヤー",
+    "inputNum2": 40,
+    "totalInput2": 160,
+    "outputName1": "固定子",
+    "outputNum1": 5,
+    "totalOutput1": 20
+}

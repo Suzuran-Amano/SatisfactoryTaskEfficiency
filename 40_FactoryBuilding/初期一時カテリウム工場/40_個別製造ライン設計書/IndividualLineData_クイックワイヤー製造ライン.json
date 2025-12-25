@@ -1,0 +1,13 @@
+{
+    "lineName": "クイックワイヤー製造ライン",
+    "recipeName": "クイックワイヤー",
+    "recipeNum": 1,
+    "productName": "製作機",
+    "totalUsePower": 4,
+    "inputName1": "カテリウムのインゴット",
+    "inputNum1": 12,
+    "totalInput1": 12,
+    "outputName1": "クイックワイヤー",
+    "outputNum1": 60,
+    "totalOutput1": 60
+}

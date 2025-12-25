@@ -1,0 +1,59 @@
+{
+    "factoryName": "初期一時コンクリート工場",
+    "recipeList": [
+        {
+            "recipeName": "コンクリート",
+            "inputList": [
+                {
+                    "itemName": "石灰岩",
+                    "itemNum": 45
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "コンクリート",
+                    "itemNum": 15
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "コンクリート製造ライン",
+            "recipeName": "コンクリート",
+            "recipeNum": 1,
+            "inputList": [
+                {
+                    "itemName": "石灰岩",
+                    "itemNum": 45
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "コンクリート",
+                    "itemNum": 15
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "採掘機_石灰岩"
+    ],
+    "outputLineList": [
+        "コンテナ_コンクリート"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "採掘機_石灰岩",
+            "destinationLine": "コンクリート製造ライン",
+            "supplyItem": "石灰岩",
+            "supplyNum": 45
+        },
+        {
+            "supplierLine": "コンクリート製造ライン",
+            "destinationLine": "コンテナ_コンクリート",
+            "supplyItem": "コンクリート",
+            "supplyNum": 15
+        }
+    ]
+}
