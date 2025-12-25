@@ -1,0 +1,11 @@
+{
+    "recipeName" :"ケーブル",
+    "productName":"製作機" ,
+    "input":[
+        { "itemName":"ワイヤー", "itemNum":60 }
+    ],
+    "output":[
+        { "itemName":"ケーブル", "itemNum":30 }
+    ]
+
+}

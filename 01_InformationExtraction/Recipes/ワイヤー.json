@@ -1,0 +1,11 @@
+{
+    "recipeName" :"ケーブル",
+    "productName":"製作機" ,
+    "input":[
+        { "itemName":"銅のインゴット", "itemNum":15 }
+    ],
+    "output":[
+        { "itemName":"ワイヤー", "itemNum":30 }
+    ]
+
+}
