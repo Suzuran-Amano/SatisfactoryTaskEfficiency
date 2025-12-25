@@ -1,5 +1,5 @@
 {
-    "recipeName" :"多目的フレーム板",
+    "recipeName" :"多目的フレーム",
     "productName":"組立機" ,
     "output":[
 	    { "itemName":"多目的フレーム", "itemNum":5 }
