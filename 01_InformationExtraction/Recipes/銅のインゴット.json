@@ -1,6 +1,6 @@
 {
     "recipeName" :"銅のインゴット",
-    "productName":"製錬機" ,
+    "productName":"製錬炉" ,
     "output":[
 	    { "itemName":"銅のインゴット", "itemNum":30 }
 	    ],
