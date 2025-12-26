@@ -3,6 +3,20 @@
     "recipeName": "包装済み燃料",
     "recipeNum": 1,
     "productName": "充填機",
+    "costList": [
+        {
+            "itemName": "鋼梁",
+            "itemNum": 20
+        },
+        {
+            "itemName": "ゴム",
+            "itemNum": 10
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 10
+        }
+    ],
     "totalUsePower": 10,
     "inputName1": "燃料",
     "inputNum1": 40,
