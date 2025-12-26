@@ -1,0 +1,26 @@
+{
+    "lineName": "鉄板製造ライン",
+    "recipeName": "鉄板",
+    "recipeNum": 4,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 8
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 32
+        }
+    ],
+    "totalUsePower": 16,
+    "inputName1": "鉄のインゴット",
+    "inputNum1": 30,
+    "totalInput1": 120,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 480,
+    "outputName1": "鉄板",
+    "outputNum1": 20,
+    "totalOutput1": 80
+}

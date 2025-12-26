@@ -1,0 +1,26 @@
+{
+    "lineName": "ネジ製造ライン",
+    "recipeName": "ネジ",
+    "recipeNum": 4,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 8
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 32
+        }
+    ],
+    "totalUsePower": 16,
+    "inputName1": "鉄のロッド",
+    "inputNum1": 10,
+    "totalInput1": 40,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 480,
+    "outputName1": "ネジ",
+    "outputNum1": 40,
+    "totalOutput1": 160
+}

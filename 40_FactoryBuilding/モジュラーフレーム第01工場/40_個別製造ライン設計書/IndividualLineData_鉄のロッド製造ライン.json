@@ -1,0 +1,26 @@
+{
+    "lineName": "鉄のロッド製造ライン",
+    "recipeName": "鉄のロッド",
+    "recipeNum": 8,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 16
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 64
+        }
+    ],
+    "totalUsePower": 32,
+    "inputName1": "鉄のインゴット",
+    "inputNum1": 15,
+    "totalInput1": 120,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 480,
+    "outputName1": "鉄のロッド",
+    "outputNum1": 15,
+    "totalOutput1": 120
+}

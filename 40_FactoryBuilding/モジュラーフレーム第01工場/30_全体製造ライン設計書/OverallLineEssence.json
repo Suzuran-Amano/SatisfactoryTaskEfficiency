@@ -1,0 +1,111 @@
+{
+	"factoryName"	: "モジュラーフレーム第01工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "モジュラーフレーム",
+			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "強化鉄板",
+			"recipeNum" : 8
+		},
+		{
+			"recipeName" : "鉄板",
+			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "ネジ",
+			"recipeNum" : 4
+		},
+		{
+			"recipeName" : "鉄のロッド",
+			"recipeNum" : 8
+		},
+		{
+			"recipeName" : "鉄のインゴット",
+			"recipeNum" : 8
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_鉄鉱石"
+	],
+
+	"outputLineList" :[
+		"コンテナ_モジュラーフレーム",
+		"コンテナ_強化鉄板"
+	],
+
+	"relationships"	: [
+		{
+			"destinationLine" : "コンテナ_モジュラーフレーム",
+			"supplierLine" : "モジュラーフレーム製造ライン",
+			"supplyItem" : "モジュラーフレーム",
+			"supplyNum" : 8
+		},
+		
+		{
+			"destinationLine" : "モジュラーフレーム製造ライン",
+			"supplierLine" : "強化鉄板製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 12
+		},
+		{
+			"destinationLine" : "モジュラーフレーム製造ライン",
+			"supplierLine" : "鉄のロッド製造ライン",
+			"supplyItem" : "鉄のロッド",
+			"supplyNum" : 48
+		},
+		
+		{
+			"destinationLine" : "コンテナ_強化鉄板",
+			"supplierLine" : "強化鉄板製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 28
+		},
+
+		{
+			"destinationLine" : "強化鉄板製造ライン",
+			"supplierLine" : "ネジ製造ライン",
+			"supplyItem" : "ネジ",
+			"supplyNum" : 480
+		},
+		{
+			"destinationLine" : "強化鉄板製造ライン",
+			"supplierLine" : "鉄板製造ライン",
+			"supplyItem" : "鉄板",
+			"supplyNum" : 240
+		},
+		
+		{
+			"destinationLine" : "ネジ製造ライン",
+			"supplierLine" : "鉄のロッド製造ライン",
+			"supplyItem" : "鉄のロッド",
+			"supplyNum" : 40
+		},
+		
+		{
+			"destinationLine" : "鉄のロッド製造ライン",
+			"supplierLine" : "鉄のインゴット製造ライン",
+			"supplyItem" : "鉄のインゴット",
+			"supplyNum" : 60
+		},
+
+		{
+			"destinationLine" : "鉄板製造ライン",
+			"supplierLine" : "鉄のインゴット製造ライン",
+			"supplyItem" : "鉄のインゴット",
+			"supplyNum" : 120
+		},
+
+		{
+			"destinationLine" : "鉄のインゴット製造ライン",
+			"supplierLine" : "採掘機_鉄鉱石",
+			"supplyItem" : "鉄鉱石",
+			"supplyNum" : 240
+		}
+		
+
+	]
+}

@@ -1,0 +1,30 @@
+{
+    "lineName": "モジュラーフレーム製造ライン",
+    "recipeName": "モジュラーフレーム",
+    "recipeNum": 4,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 32
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 16
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 40
+        }
+    ],
+    "totalUsePower": 60,
+    "inputName1": "鉄のロッド",
+    "inputNum1": 12,
+    "totalInput1": 48,
+    "inputName2": "強化鉄板",
+    "inputNum2": 3,
+    "totalInput2": 12,
+    "outputName1": "モジュラーフレーム",
+    "outputNum1": 2,
+    "totalOutput1": 8
+}
