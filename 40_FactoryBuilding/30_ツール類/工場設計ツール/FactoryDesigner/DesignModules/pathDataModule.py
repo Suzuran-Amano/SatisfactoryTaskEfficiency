@@ -1,4 +1,4 @@
-
+import os
 
 class PathData:
 
@@ -20,7 +20,11 @@ class PathData:
             return ""
         return self.argument[2]
     
+    def GetFileName(self):
+        return os.path.basename(self.argument[1])
+    
     # デバッグ用に表示する
     def Print(self):
         print(self.GetFullPath())
         print(self.GetPath())
+        print(self.GetFileName())
