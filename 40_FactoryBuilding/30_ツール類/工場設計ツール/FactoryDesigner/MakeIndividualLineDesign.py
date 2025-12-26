@@ -125,7 +125,20 @@ class IndividualLineDesignMaker:
         replaceData.Append(replaceData.RECIPE_NUM_KEY,recipeNum)
 
         # 制作物を追加
-        replaceData.Append(replaceData.PRODUCT_NAME_KEY,recipeData.GetProductName())
+        productName = recipeData.GetProductName()
+        replaceData.Append(replaceData.PRODUCT_NAME_KEY,productName)
+
+        # 合計コストを追加
+        buildingReader = BuildingDataManagerModule.BuildingDataReader()
+        buildingData = buildingReader.GetBuildingData(productName)
+        costList = []
+        for cost in buildingData.GetCostList():
+            costList.append({
+                replaceData.ITEM_NAME_KEY : cost[buildingData.ITEM_NAME_KEY],
+                replaceData.ITEM_NUM_KEY : cost[buildingData.ITEM_NUM_KEY] * recipeNum
+
+            })
+        replaceData.Append(replaceData.COST_LIST_KEY,costList)
 
         # 合計消費電力を追加
         totalUsePower = buildingData.GetUsePower() * recipeNum
@@ -164,6 +177,7 @@ class IndividualLineDesignMaker:
             replaceData.Append(outputTotalKey,outputTotal)
 
             index = index + 1
+
                     
         return replaceData
 

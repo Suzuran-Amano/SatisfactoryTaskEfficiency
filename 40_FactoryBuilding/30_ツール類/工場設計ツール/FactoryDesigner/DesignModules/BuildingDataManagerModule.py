@@ -53,6 +53,8 @@ class BuildingDataItem:
     USE_POWER_KEY = "usePower"
     COST_KEY = "cost"
 
+    ITEM_NAME_KEY = "itemName"
+    ITEM_NUM_KEY = "itemNum"
 
     ### 変数 ###
 

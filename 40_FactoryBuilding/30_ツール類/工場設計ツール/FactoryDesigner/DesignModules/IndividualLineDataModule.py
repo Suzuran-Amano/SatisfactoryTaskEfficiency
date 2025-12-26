@@ -21,6 +21,10 @@ class IndividualLineData:
     TOTAL_INPUT_KEY = "totalInput"
     TOTAL_OUTPUT_KEY = "totalOutput"
 
+    COST_LIST_KEY = "costList"
+    ITEM_NAME_KEY = "itemName"
+    ITEM_NUM_KEY = "itemNum"
+
 
     ### 変数 ###
     value = dict([])
@@ -69,6 +73,11 @@ class IndividualLineData:
     
     def GetTotalOutput(self):
         return self.value[self.TOTAL_OUTPUT_KEY]
+    
+
+    def GetCostList(self):
+        return self.value[self.COST_LIST_KEY]
+
     
     def GetKeys(self):
         return self.value.keys()
