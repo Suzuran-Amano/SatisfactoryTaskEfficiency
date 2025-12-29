@@ -1,0 +1,9 @@
+{
+    "recipeName" :"燃料発電",
+    "productName":"燃料式発電機" ,
+    "input":[
+	    { "itemName":"燃料", "itemNum":20 }
+	],
+    "supplyPower" : 250
+
+}

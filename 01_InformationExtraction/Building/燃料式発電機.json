@@ -1,0 +1,11 @@
+{
+    "buildingName" :"燃料式発電機",
+    "usePower": 0,
+    "cost":[
+	    { "itemName":"モーター", "itemNum":15 },
+	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":15 },
+	    { "itemName":"銅板", "itemNum":30 },
+	    { "itemName":"ゴム", "itemNum":50 },
+	    { "itemName":"クイックワイヤー", "itemNum":50 }
+	    ]
+}

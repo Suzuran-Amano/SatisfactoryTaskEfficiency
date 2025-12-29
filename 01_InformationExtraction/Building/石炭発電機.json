@@ -1,0 +1,9 @@
+{
+    "buildingName" :"石炭発電機",
+    "usePower": 0,
+    "cost":[
+	    { "itemName":"強化鉄板", "itemNum":20 },
+	    { "itemName":"ローター", "itemNum":10 },
+	    { "itemName":"ケーブル", "itemNum":30 }
+	    ]
+}
