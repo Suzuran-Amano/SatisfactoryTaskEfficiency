@@ -1,0 +1,28 @@
+{
+    "lineName": "石炭発電製造ライン",
+    "recipeName": "石炭発電",
+    "recipeNum": 16,
+    "productName": "石炭発電機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 320
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 160
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 480
+        }
+    ],
+    "totalUsePower": 0,
+    "inputName1": "石炭",
+    "inputNum1": 15,
+    "totalInput1": 240,
+    "inputName2": "水",
+    "inputNum2": 45,
+    "totalInput2": 720,
+    "supplyPower": 1200
+}

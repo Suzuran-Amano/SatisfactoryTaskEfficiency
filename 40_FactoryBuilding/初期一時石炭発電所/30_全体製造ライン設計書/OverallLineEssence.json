@@ -1,0 +1,42 @@
+{
+	"factoryName"	: "初期一時石炭発電所",
+
+	"recipeList" : [
+		{
+			"recipeName" : "石炭発電",
+			"recipeNum" : 16
+		}
+	],
+
+	"inputlLineList" : [
+		"採掘機_石炭",		
+		"揚水ポンプ"
+	],
+
+	"outputLineList" :[
+		"電力"
+	],
+
+	"relationships"	: [
+		{
+			"destinationLine" : "電力",
+			"supplierLine" : "石炭発電製造ライン",
+			"supplyItem" : "電力",
+			"supplyNum" : 1200
+		},
+		
+		{
+			"destinationLine" : "石炭発電製造ライン",
+			"supplierLine" : "採掘機_石炭",
+			"supplyItem" : "石炭",
+			"supplyNum" : 240
+		},
+		{
+			"destinationLine" : "石炭発電製造ライン",
+			"supplierLine" : "揚水ポンプ",
+			"supplyItem" : "水",
+			"supplyNum" : 720
+		}
+
+	]
+}
