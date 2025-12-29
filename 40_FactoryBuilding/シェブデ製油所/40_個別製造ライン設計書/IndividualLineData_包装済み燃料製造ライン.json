@@ -26,7 +26,8 @@
     "totalOutput1": 40,
     "outputName2": "合成樹脂",
     "outputNum2": 30,
-    "totalOutput2": 120,
+    "totalOutput2": 240,
+    "supplyPower": 0,
     "inputName2": "空の容器",
     "inputNum2": 40,
     "totalInput2": 40

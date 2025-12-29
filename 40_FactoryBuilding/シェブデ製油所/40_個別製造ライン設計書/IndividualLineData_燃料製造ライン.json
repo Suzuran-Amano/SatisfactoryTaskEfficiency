@@ -1,34 +1,35 @@
 {
     "lineName": "燃料製造ライン",
     "recipeName": "燃料",
-    "recipeNum": 4,
+    "recipeNum": 8,
     "productName": "精製機",
     "costList": [
         {
             "itemName": "モーター",
-            "itemNum": 40
+            "itemNum": 80
         },
         {
             "itemName": "コンクリート被覆型鋼梁",
-            "itemNum": 40
+            "itemNum": 80
         },
         {
             "itemName": "鋼管",
-            "itemNum": 120
+            "itemNum": 240
         },
         {
             "itemName": "銅板",
-            "itemNum": 80
+            "itemNum": 160
         }
     ],
-    "totalUsePower": 120,
+    "totalUsePower": 240,
     "inputName1": "原油",
     "inputNum1": 60,
-    "totalInput1": 240,
+    "totalInput1": 480,
     "outputName1": "燃料",
     "outputNum1": 40,
-    "totalOutput1": 160,
+    "totalOutput1": 320,
     "outputName2": "合成樹脂",
     "outputNum2": 30,
-    "totalOutput2": 120
+    "totalOutput2": 240,
+    "supplyPower": 0
 }

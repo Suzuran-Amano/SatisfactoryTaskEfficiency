@@ -44,21 +44,21 @@
         {
             "individualLineName": "燃料製造ライン",
             "recipeName": "燃料",
-            "recipeNum": 4,
+            "recipeNum": 8,
             "inputList": [
                 {
                     "itemName": "原油",
-                    "itemNum": 240
+                    "itemNum": 480
                 }
             ],
             "outputList": [
                 {
                     "itemName": "燃料",
-                    "itemNum": 160
+                    "itemNum": 320
                 },
                 {
                     "itemName": "合成樹脂",
-                    "itemNum": 120
+                    "itemNum": 240
                 }
             ]
         },
