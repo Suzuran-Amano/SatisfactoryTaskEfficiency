@@ -1,0 +1,34 @@
+{
+	"factoryName"	: "ティルブルフ燃料式発電所",
+
+	"recipeList" : [
+		{
+			"recipeName" : "燃料発電",
+			"recipeNum" : 16
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_燃料"
+	],
+
+	"outputLineList" :[
+		"電線"
+	],
+
+	"relationships"	: [
+		{
+			"destinationLine" : "電線",
+			"supplierLine" : "燃料発電製造ライン",
+			"supplyItem" : "電気",
+			"supplyNum" : 4000
+		},
+		{
+			"destinationLine" : "燃料発電製造ライン",
+			"supplierLine" : "鉄道駅_燃料",
+			"supplyItem" : "燃料",
+			"supplyNum" : 320
+		}
+
+	]
+}

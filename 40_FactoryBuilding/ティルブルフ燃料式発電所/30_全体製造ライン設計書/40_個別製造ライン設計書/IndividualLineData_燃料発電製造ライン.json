@@ -1,0 +1,33 @@
+{
+    "lineName": "燃料発電製造ライン",
+    "recipeName": "燃料発電",
+    "recipeNum": 16,
+    "productName": "燃料式発電機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 240
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 240
+        },
+        {
+            "itemName": "銅板",
+            "itemNum": 480
+        },
+        {
+            "itemName": "ゴム",
+            "itemNum": 800
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 800
+        }
+    ],
+    "totalUsePower": 0,
+    "inputName1": "燃料",
+    "inputNum1": 20,
+    "totalInput1": 320,
+    "supplyPower": 4000
+}
