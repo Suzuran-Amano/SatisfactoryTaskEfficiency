@@ -1,12 +1,10 @@
 {
     "recipeName" :"石炭発電",
     "productName":"石炭発電機" ,
-    "output":[
-	    { "itemName":"電力", "itemNum":75 }
-	    ],
     "input":[
 	    { "itemName":"石炭", "itemNum":15 },
-	    { "itemName":"水", "itemNum":50 }
-	    ]
+	    { "itemName":"水", "itemNum":45 }
+	],
+    "supplyPower" : 75
 
 }
