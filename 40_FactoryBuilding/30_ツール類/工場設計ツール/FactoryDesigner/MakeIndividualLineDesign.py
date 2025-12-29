@@ -178,6 +178,10 @@ class IndividualLineDesignMaker:
 
             index = index + 1
 
+        # 供給電力を追加
+        supplyPower = recipeData.GetSupplyPower() * recipeNum
+        replaceData.Append(replaceData.SUPPLY_POWER_KEY,supplyPower)
+
                     
         return replaceData
 

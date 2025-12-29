@@ -13,6 +13,7 @@ pathData = pathDataModule.PathData(sys.argv)
 # 工場データの準備
 usePow = 0
 costList = {}
+supplyPower = 0
 
 
 # 全体製造ライン設計書作成
@@ -30,6 +31,7 @@ for iLineEssence in iLineEssences:
 
     # 工場データ計算
     usePow += iLineData.GetTotalUsePower()
+    supplyPower += iLineData.GetSupplyPower()
 
     itemNameKey = iLineData.ITEM_NAME_KEY
     itemNumKey = iLineData.ITEM_NUM_KEY
@@ -50,6 +52,7 @@ factoryData = {}
 factoryData["factoryName"] = oLineData.GetValue(oLineData.FACTORY_NAME_KEY) # 工場名
 factoryData["usePower"] = usePow    # 消費電力
 factoryData["costList"] = costList
+factoryData["supplyPower"] = supplyPower
 
 jsonfile = open(pathData.GetPath() + '/' + "FactoryData" + '.json', 'w',encoding='utf-8')
 json.dump(factoryData, jsonfile, indent=4,ensure_ascii=False)

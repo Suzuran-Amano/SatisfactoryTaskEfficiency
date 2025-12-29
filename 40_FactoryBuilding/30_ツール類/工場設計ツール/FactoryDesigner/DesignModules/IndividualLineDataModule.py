@@ -24,6 +24,7 @@ class IndividualLineData:
     COST_LIST_KEY = "costList"
     ITEM_NAME_KEY = "itemName"
     ITEM_NUM_KEY = "itemNum"
+    SUPPLY_POWER_KEY = "supplyPower"
 
 
     ### 変数 ###
@@ -77,6 +78,12 @@ class IndividualLineData:
 
     def GetCostList(self):
         return self.value[self.COST_LIST_KEY]
+    
+    def GetSupplyPower(self):
+        if self.SUPPLY_POWER_KEY in self.value:
+            return self.value[self.SUPPLY_POWER_KEY]
+        else:
+            return 0
 
     
     def GetKeys(self):

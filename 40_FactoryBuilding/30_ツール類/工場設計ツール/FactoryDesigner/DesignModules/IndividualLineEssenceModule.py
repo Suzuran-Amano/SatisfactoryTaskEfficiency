@@ -10,6 +10,7 @@ class IndividualLineEssence:
     LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
     RECIPE_NUM_KEY = "recipeNum"
+    SUPPLY_POWER_KEY = "supplyPower"
 
 
     # 変数
@@ -30,6 +31,10 @@ class IndividualLineEssence:
     # レシピ数を返す
     def GetRecipeNum(self):
         return self.value[self.RECIPE_NUM_KEY]
+    
+    # 供給電力を返す
+    def GetSupplyPower(self):
+        return self.value[self.SUPPLY_POWER_KEY]
     
     # ファイルを出力
     def Output(self,path:str):

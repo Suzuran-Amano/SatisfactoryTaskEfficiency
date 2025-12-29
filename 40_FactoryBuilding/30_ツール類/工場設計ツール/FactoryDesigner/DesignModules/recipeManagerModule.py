@@ -47,6 +47,7 @@ class RecipeItem:
     OUTPUT_KEY = "output"
     ITEM_NAME_KEY = "itemName"
     ITEM_NUM_KEY = "itemNum"
+    SUPPLY_POWER_KEY = "supplyPower"
 
 
     ### 変数 ###
@@ -93,7 +94,9 @@ class RecipeItem:
 
     # 加工後アイテムのリスト
     def GetOutputItemList(self):
-        return self.jsonData[self.OUTPUT_KEY]
+        if self.OUTPUT_KEY in self.jsonData:
+            return self.jsonData[self.OUTPUT_KEY]
+        return []
     
     # 加工後アイテムのリスト長
     def GetOutputItemLength(self):
@@ -110,4 +113,11 @@ class RecipeItem:
         if index >= self.GetOutputItemLength():
             return None
         return self.GetOutputItemList(index)[self.ITEM_NUM_KEY]
+    
+    # 供給電力を返す
+    def GetSupplyPower(self):
+        if self.SUPPLY_POWER_KEY in self.jsonData:
+            return self.jsonData[self.SUPPLY_POWER_KEY]
+        else:
+            return 0
     
