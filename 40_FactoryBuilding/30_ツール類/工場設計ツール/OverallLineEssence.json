@@ -1,6 +1,16 @@
 {
 	"factoryName"	: "ローター工場",
 
+	"productionList" :[
+		{
+			"recipeName" : "鉄鉱石",
+			"buildingName" : "採掘機Mk1",
+			"resourceRatio" : 1,
+			"overclockRatio" : 1
+		}
+
+	],
+
 	"recipeList" : [
 		{
 			"recipeName" : "ローター",
