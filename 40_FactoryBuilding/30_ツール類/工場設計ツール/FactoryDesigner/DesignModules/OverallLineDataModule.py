@@ -1,6 +1,8 @@
 import os
 import json
 
+from . import pathDataModule
+
 class OverallLineData:
     ### 定数 ###
     FILE_NAME = "OverallLineData.json"
@@ -46,7 +48,7 @@ class OverallLineData:
     # ファイルを出力
     def Output(self,path:str):
 
-        outputPath = path + path.OVERALL_LINE_DIRECTORY_NAME
+        outputPath = path + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
         
         # 書き込み
         os.makedirs(outputPath, exist_ok=True)

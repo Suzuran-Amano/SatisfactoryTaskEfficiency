@@ -1,6 +1,7 @@
 import os
 import json
 
+from . import pathDataModule
 from .pathDataModule import PathData
 
 class IndividualLineData:
@@ -96,7 +97,7 @@ class IndividualLineData:
     def Output(self,path:str):
         
         # パス計算
-        outputPath = path + PathData().INDIVIDUAL_LINE_DIRECTORY_NAME
+        outputPath = path + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
         
         # ファイル名作成
         fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetLineName())

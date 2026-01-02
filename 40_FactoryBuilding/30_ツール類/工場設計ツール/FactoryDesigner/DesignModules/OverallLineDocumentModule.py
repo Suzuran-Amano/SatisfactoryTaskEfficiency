@@ -1,6 +1,7 @@
 import os
 
 from .OverallLineDataModule import OverallLineData as OLineData
+from . import  pathDataModule
 from .pathDataModule import  PathData
 from .recipeManagerModule import RecipeItem
 from .recipeManagerModule import RecipeReader
@@ -52,7 +53,7 @@ class OverallLineDocument():
         # print(result)
 
         # text output
-        filePath = pathData.GetPath() + "\\" + pathData.OVERALL_LINE_DIRECTORY_NAME
+        filePath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
         fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
         self._WriteFile(filePath,fileName,result)
 

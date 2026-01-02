@@ -63,7 +63,7 @@ class IndividualLineDesignMaker:
 
 
         # text output
-        filePath = pathData.GetPath() + "\\" + pathData.INDIVIDUAL_LINE_DIRECTORY_NAME
+        filePath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
         fileName = self.Replace(self.outputFileName,individualLineData)
         self.WriteFile(filePath,fileName,templateLines)
 

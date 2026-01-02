@@ -47,7 +47,7 @@ class MakeIndividualLineCheckList:
 
 
         # text output
-        filePath = pathData.GetPath() + pathData.INDIVIDUAL_TEST_DIRECTORY_NAME
+        filePath = pathData.GetPath() + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
         fileName = self.Replace(self.outputFileName,replaceData)
         self.WriteFile(filePath,fileName,templateLines)
 
