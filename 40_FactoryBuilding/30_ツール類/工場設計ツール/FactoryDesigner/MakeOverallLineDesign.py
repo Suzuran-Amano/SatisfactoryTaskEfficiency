@@ -13,9 +13,6 @@ from DesignModules import pathDataModule
 class OverallLineDesignMaker:
 
     # constans
-    OVERALL_LINE_DIRECTORY_NAME = "30_全体製造ライン設計書"
-    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
-
     OVERALL_LINE_ESSENCE_NAME = './OverallLineEssence.json'
 
     # クラス変数

@@ -11,8 +11,6 @@ from DesignModules import pathDataModule
 class IndividualLineDesignMaker:
 
     # constans
-    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
-
     inputTextFileName = './個別製造ライン設計書_var_lineName.md'
     inputDataFileName = './IndividualLine.json'
     outputFileName = '個別製造ライン設計書_var_lineName.md'
@@ -65,7 +63,7 @@ class IndividualLineDesignMaker:
 
 
         # text output
-        filePath = pathData.GetPath() + "\\" + self.INDIVIDUAL_LINE_DIRECTORY_NAME
+        filePath = pathData.GetPath() + "\\" + pathData.INDIVIDUAL_LINE_DIRECTORY_NAME
         fileName = self.Replace(self.outputFileName,individualLineData)
         self.WriteFile(filePath,fileName,templateLines)
 

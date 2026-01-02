@@ -2,6 +2,12 @@ import os
 
 class PathData:
 
+    # 定数
+    OVERALL_LINE_DIRECTORY_NAME = "30_全体製造ライン設計書"
+    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
+    INDIVIDUAL_TEST_DIRECTORY_NAME = "60_個別製造ラインテスト項目書"
+
+    # 変数
     argument = {}
 
 

@@ -1,11 +1,12 @@
 import os
 import json
 
+from .pathDataModule import PathData
+
 class IndividualLineEssence:
     # 定数
     FILE_NAME = "IndividualLineEssence_var_lineName.json"
     LINE_NAME_REPLACE_TEXT = "var_lineName"
-    INDIVIDUAL_LINE_DIRECTORY_NAME = "40_個別製造ライン設計書"
 
     LINE_NAME_KEY = "lineName"
     RECIPE_NAME_KEY = "recipeName"
@@ -39,7 +40,7 @@ class IndividualLineEssence:
     # ファイルを出力
     def Output(self,path:str):
         # パス計算
-        outputPath = path + self.INDIVIDUAL_LINE_DIRECTORY_NAME
+        outputPath = path + PathData().INDIVIDUAL_LINE_DIRECTORY_NAME
         
         # ファイル名作成
         fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetLineName())

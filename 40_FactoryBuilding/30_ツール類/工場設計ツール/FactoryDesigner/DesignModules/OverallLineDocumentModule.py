@@ -10,8 +10,6 @@ from .recipeManagerModule import RecipeReader
 class OverallLineDocument():
 
     # 定数
-    OVERALL_LINE_DIRECTORY_NAME = "30_全体製造ライン設計書"
-
     TEMPLATE_FILE_NAME = './全体製造ライン設計書_var_factoryName.md'
     OUTPUT_FILE_NAME = '全体製造ライン設計書_var_factoryName.md'
 
@@ -54,7 +52,7 @@ class OverallLineDocument():
         # print(result)
 
         # text output
-        filePath = pathData.GetPath() + "\\" + self.OVERALL_LINE_DIRECTORY_NAME
+        filePath = pathData.GetPath() + "\\" + pathData.OVERALL_LINE_DIRECTORY_NAME
         fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
         self._WriteFile(filePath,fileName,result)
 
