@@ -24,11 +24,14 @@ class OverallLineEssence:
 
     ### 関数 ###
 
-    def __init__(self,value:dict):
-        self.value = value
+    def __init__(self,overallLineEssenceName:str):
+        self._ReadOverallLineEssence(overallLineEssenceName)
         return
     
     def GetValue(self,key:str):
         return self.value[key]
     
-    
+    # 全体ライン本質ファイルを読み込み
+    def _ReadOverallLineEssence(self,overallLineEssenceName):
+        self.value = json.load(open(overallLineEssenceName,'r', encoding="utf-8"))
+        return

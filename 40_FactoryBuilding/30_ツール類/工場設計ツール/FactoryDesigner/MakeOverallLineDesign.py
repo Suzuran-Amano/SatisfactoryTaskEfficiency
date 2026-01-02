@@ -3,8 +3,8 @@ import json
 
 from DesignModules import recipeManagerModule
 from DesignModules import BuildingDataManagerModule
-from DesignModules import OverallLineEssenceModule
-from DesignModules import OverallLineDataModule
+from DesignModules.OverallLineEssenceModule import OverallLineEssence as OLineEssence
+from DesignModules.OverallLineDataModule import OverallLineData as OLineData
 from DesignModules.OverallLineDocumentModule import OverallLineDocument as OLineDoc
 from DesignModules import IndividualLineEssenceModule
 from DesignModules import pathDataModule
@@ -25,20 +25,20 @@ class OverallLineDesignMaker:
     individualLineEssences = 0
     
 
-    def Main(self,pathData : pathDataModule.PathData) -> OverallLineDataModule.OverallLineData:
+    def Main(self,pathData : pathDataModule.PathData) -> OLineData:
 
         # ファイルのフルパスを取得
         inputDataFileName = pathData.GetFullPath()
         if inputDataFileName == "":
-            inputDataFileName = self.inputDataFileName
+            inputDataFileName = self.OVERALL_LINE_ESSENCE_NAME
 
 
         # 全体ライン本質を読み込み
-        overallLineEssence = self.ReadOverallLineEssence(inputDataFileName)
-        self.overallLineEssence = overallLineEssence
+        oLineEssence = OLineEssence(inputDataFileName)
+        self.overallLineEssence = oLineEssence
 
         # 全体ラインデータを作成
-        overallLineData = self.MakeOLineData(overallLineEssence)
+        overallLineData = self.MakeOLineData(oLineEssence)
         overallLineData.Output(pathData.GetPath())
 
         # 全体ライン書類を出力
@@ -55,23 +55,16 @@ class OverallLineDesignMaker:
         return overallLineData
     
 
-    # 全体ライン本質ファイルを読み込み
-    def ReadOverallLineEssence(self,overallLineEssenceName) -> OverallLineEssenceModule.OverallLineEssence:
-        jsonData = json.load(open(overallLineEssenceName,'r', encoding="utf-8"))
-        overallLine = OverallLineEssenceModule.OverallLineEssence(jsonData)
-        return overallLine
-
-
     # 全体ラインデータファイルを読み込み
-    def ReadOverallLineData(self,overallLineDataName) -> OverallLineDataModule.OverallLineData:
+    def ReadOverallLineData(self,overallLineDataName) -> OLineData:
         jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
-        overallLine = OverallLineDataModule.OverallLineData(jsonData)
+        overallLine = OLineData(jsonData)
         return overallLine
     
     # 全体ラインデータファイルの作成
-    def MakeOLineData(self,oLineEssence :OverallLineEssenceModule.OverallLineEssence) -> OverallLineDataModule.OverallLineData:
+    def MakeOLineData(self,oLineEssence :OLineEssence) -> OLineData:
 
-        oLineDefine = OverallLineDataModule.OverallLineData([])
+        oLineDefine = OLineData([])
 
         # 返す用データを作成
         result = {}
@@ -164,10 +157,10 @@ class OverallLineDesignMaker:
         # 製造ライン関係性
         result[oLineDefine.RELATIONSHIPS_KEY] = oLineEssence.GetValue(oLineEssence.RELATIONSHIPS_KEY)
 
-        return OverallLineDataModule.OverallLineData(result)
+        return OLineData(result)
 
     # 個別ライン本質ファイルの作成
-    def MakeILineEssence(self,oLineData :OverallLineDataModule.OverallLineData) -> list:
+    def MakeILineEssence(self,oLineData :OLineData) -> list:
         result = []
 
         # 個別ラインの情報を取得
