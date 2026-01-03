@@ -3,8 +3,8 @@ import json
 
 from DesignModules import RecipeReaderModule as RecipeReader
 from DesignModules import RecipeItemModule as RecipeItem
-from DesignModules import IndividualLineEssenceModule
-from DesignModules import IndividualLineDataModule
+from DesignModules import IndividualLineEssenceModule as ILineEssence
+from DesignModules import IndividualLineDataModule as ILineData
 from DesignModules import pathDataModule
 
 
@@ -25,32 +25,28 @@ class MakeIndividualLineCheckList:
 
     def Main(self,
             pathData : pathDataModule.PathData,
-            iLineData : IndividualLineEssenceModule.IndividualLineEssence
+            iLineEssence : ILineEssence.IndividualLineEssence
             ):
-
-        # ファイルのフルパスを取得
-        inputDataFileName = pathData.GetFullPath() + "\\" + iLineData.GetLineName() + ".json"
 
         # input file read
         templateLines = self.ReadTemplateFile()
-        individualLine = iLineData
-        recipeData = RecipeReader.GetRecipe(individualLine.GetRecipeName())
+        recipeData = RecipeReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
 
         # 置換用データを作成
-        replaceData = self.MakeReplaceData(individualLine,recipeData)
+        iLineData = self.MakeReplaceData(iLineEssence,recipeData)
 
 
         # replace
-        templateLines = self.DuplicateProductItem(templateLines,individualLine,replaceData)
-        templateLines = self.DuplicateInputItem(templateLines,recipeData,replaceData)
-        templateLines = self.DuplicateOutputItem(templateLines,recipeData,replaceData)
+        templateLines = self.DuplicateProductItem(templateLines,iLineEssence,iLineData)
+        templateLines = self.DuplicateInputItem(templateLines,recipeData,iLineData)
+        templateLines = self.DuplicateOutputItem(templateLines,recipeData,iLineData)
         for index, item in enumerate(templateLines):
-            templateLines[index] = self.Replace(templateLines[index],replaceData)
+            templateLines[index] = self.Replace(templateLines[index],iLineData)
 
 
         # text output
         filePath = pathData.GetPath() + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
-        fileName = self.Replace(self.outputFileName,replaceData)
+        fileName = self.Replace(self.outputFileName,iLineData)
         self.WriteFile(filePath,fileName,templateLines)
 
 
@@ -67,8 +63,8 @@ class MakeIndividualLineCheckList:
     # 個別ラインデータを読み込み
     def ReadIndividualLineFile(self,inputDataFileName):
         jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
-        individualLine = IndividualLineEssenceModule.IndividualLineEssence(jsonData)
-        return individualLine
+        iLineEssence = ILineEssence.IndividualLineEssence(jsonData)
+        return iLineEssence
 
 
     # 保存
@@ -83,74 +79,86 @@ class MakeIndividualLineCheckList:
 
 
     # 置き換え用データを作成
-    def MakeReplaceData(self,individualLine,recipeData):
-        replaceData = IndividualLineDataModule.IndividualLineData()
+    def MakeReplaceData(self,
+            iLineEssence :ILineEssence.IndividualLineEssence,
+            recipeData):
+        
+
+        iLineData = ILineData.IndividualLineData()
 
         # ライン名を追加
-        replaceData.Append(replaceData.LINE_NAME_KEY,individualLine.value[individualLine.LINE_NAME_KEY])
+        iLineData.Append(
+            iLineData.LINE_NAME_KEY,
+            iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
 
         # レシピ名を追加
-        replaceData.Append(replaceData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
-        recipeNum = individualLine.GetRecipeNum()
-        replaceData.Append(replaceData.RECIPE_NUM_KEY,recipeNum)
+        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
+        recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
+        iLineData.Append(iLineData.RECIPE_NUM_KEY,recipeNum)
 
         # 制作物を追加
-        replaceData.Append(replaceData.PRODUCT_NAME_KEY,recipeData.GetProductName())
+        iLineData.Append(iLineData.PRODUCT_NAME_KEY,recipeData.GetProductName())
 
         # 搬入物を追加
         index = 0
         for data in recipeData.GetInputItemList():
-            inputNameKey = replaceData.INPUT_NAME_KEY + str(index+1)
+            inputNameKey = iLineData.INPUT_NAME_KEY + str(index+1)
             inputName = data[RecipeItem.ITEM_NAME_KEY]
-            replaceData.Append(inputNameKey, inputName)
+            iLineData.Append(inputNameKey, inputName)
             
-            inputNumKey = replaceData.INPUT_NUM_KEY + str(index+1)
+            inputNumKey = iLineData.INPUT_NUM_KEY + str(index+1)
             inputNum = data[RecipeItem.ITEM_NUM_KEY]
-            replaceData.Append(inputNumKey ,inputNum)
+            iLineData.Append(inputNumKey ,inputNum)
             
-            inputTotalKey = replaceData.TOTAL_INPUT_KEY + str(index+1)
+            inputTotalKey = iLineData.TOTAL_INPUT_KEY + str(index+1)
             inputTotal = str(recipeNum*inputNum)
-            replaceData.Append(inputTotalKey,inputTotal)
+            iLineData.Append(inputTotalKey,inputTotal)
             
             index = index + 1
         
         # 搬出物を追加
         index = 0
         for data in recipeData.GetOutputItemList():
-            outputNameKey = replaceData.OUTPUT_NAME_KEY + str(index+1)
+            outputNameKey = iLineData.OUTPUT_NAME_KEY + str(index+1)
             outputName = data[RecipeItem.ITEM_NAME_KEY]
-            replaceData.Append(outputNameKey, outputName)
+            iLineData.Append(outputNameKey, outputName)
             
-            outputNumKey = replaceData.OUTPUT_NUM_KEY + str(index+1)
+            outputNumKey = iLineData.OUTPUT_NUM_KEY + str(index+1)
             outputNum = data[RecipeItem.ITEM_NUM_KEY]
-            replaceData.Append(outputNumKey ,outputNum)
+            iLineData.Append(outputNumKey ,outputNum)
             
-            outputTotalKey = replaceData.TOTAL_OUTPUT_KEY + str(index+1)
+            outputTotalKey = iLineData.TOTAL_OUTPUT_KEY + str(index+1)
             outputTotal = str(recipeNum*outputNum)
-            replaceData.Append(outputTotalKey,outputTotal)
+            iLineData.Append(outputTotalKey,outputTotal)
 
             index = index + 1
                     
-        return replaceData
+        return iLineData
 
 
     # 置き換え
-    def Replace(self,text,replaceData):
-        for key in replaceData.GetKeys():
-            text = text.replace(replaceData.GetReplaceKey(key),str(replaceData.value[key]))
+    def Replace(self,text,iLineData):
+        for key in iLineData.GetKeys():
+            text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.value[key]))
         return text
     
 
     # 複数の Product を記載するため、行を複製
-    def DuplicateProductItem(self,templateLines,individualLine,replaceData):
-        resultLines = []
-        productLength = int(individualLine.GetRecipeNum())
+    def DuplicateProductItem(
+            self,
+            templateLines,
+            iLineEssence : ILineEssence.IndividualLineEssence,
+            iLineData):
 
-        productNameKey = replaceData.PRODUCT_NAME_KEY
-        productReplaceNameKey = replaceData.GetReplaceKey(productNameKey)
+
+        resultLines = []
+        productLength = int(iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY))
+
+        productNameKey = iLineData.PRODUCT_NAME_KEY
+        productReplaceNameKey = iLineData.GetReplaceKey(productNameKey)
         
         for i in range(len(templateLines)):
-            if not(replaceData.PRODUCT_NAME_KEY in templateLines[i]):
+            if not(iLineData.PRODUCT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             
@@ -162,21 +170,21 @@ class MakeIndividualLineCheckList:
 
 
     # 複数の Input 物品を記載するため、行を複製
-    def DuplicateInputItem(self,templateLines,recipeData,replaceData):
+    def DuplicateInputItem(self,templateLines,recipeData,iLineData):
         resultLines = []
         inputLength = int(recipeData.GetInputItemLength())
 
-        inputNameKey = replaceData.INPUT_NAME_KEY
-        inputReplaceNameKey = replaceData.GetReplaceKey(inputNameKey)
+        inputNameKey = iLineData.INPUT_NAME_KEY
+        inputReplaceNameKey = iLineData.GetReplaceKey(inputNameKey)
         
-        inputNumKey = replaceData.INPUT_NUM_KEY
-        inputReplaceNumKey = replaceData.GetReplaceKey(inputNumKey)
+        inputNumKey = iLineData.INPUT_NUM_KEY
+        inputReplaceNumKey = iLineData.GetReplaceKey(inputNumKey)
 
-        inputTotalKey = replaceData.TOTAL_INPUT_KEY
-        inputReplaceTotalKey = replaceData.GetReplaceKey(inputTotalKey)
+        inputTotalKey = iLineData.TOTAL_INPUT_KEY
+        inputReplaceTotalKey = iLineData.GetReplaceKey(inputTotalKey)
         
         for i in range(len(templateLines)):
-            if not(replaceData.INPUT_NAME_KEY in templateLines[i]):
+            if not(iLineData.INPUT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             
@@ -190,21 +198,21 @@ class MakeIndividualLineCheckList:
         
     
     # 複数の Output 物品を記載するため、行を複製
-    def DuplicateOutputItem(self,templateLines,recipeData,replaceData):
+    def DuplicateOutputItem(self,templateLines,recipeData,iLineData):
         resultLines = []
         outputLength = int(recipeData.GetOutputItemLength())
 
-        outputNameKey = replaceData.OUTPUT_NAME_KEY
-        outputReplaceNameKey = replaceData.GetReplaceKey(outputNameKey)
+        outputNameKey = iLineData.OUTPUT_NAME_KEY
+        outputReplaceNameKey = iLineData.GetReplaceKey(outputNameKey)
         
-        outputNumKey = replaceData.OUTPUT_NUM_KEY
-        outputReplaceNumKey = replaceData.GetReplaceKey(outputNumKey)
+        outputNumKey = iLineData.OUTPUT_NUM_KEY
+        outputReplaceNumKey = iLineData.GetReplaceKey(outputNumKey)
 
-        outputTotalKey = replaceData.TOTAL_OUTPUT_KEY
-        outputReplaceTotalKey = replaceData.GetReplaceKey(outputTotalKey)
+        outputTotalKey = iLineData.TOTAL_OUTPUT_KEY
+        outputReplaceTotalKey = iLineData.GetReplaceKey(outputTotalKey)
         
         for i in range(len(templateLines)):
-            if not(replaceData.OUTPUT_NAME_KEY in templateLines[i]):
+            if not(iLineData.OUTPUT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             

@@ -4,15 +4,18 @@ import json
 from . import pathDataModule
 from .pathDataModule import PathData
 
+
+# 定数
+LINE_NAME_KEY = "lineName"
+RECIPE_NAME_KEY = "recipeName"
+RECIPE_NUM_KEY = "recipeNum"
+SUPPLY_POWER_KEY = "supplyPower"
+
+
 class IndividualLineEssence:
     # 定数
     FILE_NAME = "IndividualLineEssence_var_lineName.json"
     LINE_NAME_REPLACE_TEXT = "var_lineName"
-
-    LINE_NAME_KEY = "lineName"
-    RECIPE_NAME_KEY = "recipeName"
-    RECIPE_NUM_KEY = "recipeNum"
-    SUPPLY_POWER_KEY = "supplyPower"
 
 
     # 変数
@@ -22,29 +25,21 @@ class IndividualLineEssence:
         self.value = jsonData
         return
     
-    # 個別製造ラインの名前を返す
-    def GetLineName(self):
-        return self.value[self.LINE_NAME_KEY]
     
-    # レシピ名を返す
-    def GetRecipeName(self):
-        return self.value[self.RECIPE_NAME_KEY]
+    # 値を返す
+    def GetValue(self,key:str):
+        if key in self.value:
+            return self.value[key]
+        return None
     
-    # レシピ数を返す
-    def GetRecipeNum(self):
-        return self.value[self.RECIPE_NUM_KEY]
-    
-    # 供給電力を返す
-    def GetSupplyPower(self):
-        return self.value[self.SUPPLY_POWER_KEY]
-    
+
     # ファイルを出力
     def Output(self,path:str):
         # パス計算
         outputPath = path + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
         
         # ファイル名作成
-        fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetLineName())
+        fileName = self.FILE_NAME.replace(self.LINE_NAME_REPLACE_TEXT,self.GetValue(LINE_NAME_KEY))
 
         # 書き込み
         os.makedirs(outputPath, exist_ok=True)

@@ -7,7 +7,7 @@ from DesignModules import BuildingDataManagerModule
 from DesignModules import OverallLineEssenceModule as OLineEssence
 from DesignModules import OverallLineDataModule as OLineData
 from DesignModules import OverallLineDocumentModule as OLineDoc
-from DesignModules import IndividualLineEssenceModule
+from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import pathDataModule
 
 # 全体製造ライン設計書作成用クラス
@@ -71,13 +71,13 @@ class OverallLineDesignMaker:
         iLines = oLineData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
 
         # 個別ラインの情報から、個別ライン本質を作成し、リストへ加える
-        iLineDefine = IndividualLineEssenceModule.IndividualLineEssence([])
+        iLineDefine = ILineEssence.IndividualLineEssence([])
         for iLine in iLines:
             lineEssense = {}
-            lineEssense[iLineDefine.LINE_NAME_KEY] = iLine[OLineData.INDIVIDUAL_LINE_NAME]
-            lineEssense[iLineDefine.RECIPE_NAME_KEY] = iLine[OLineData.RECIPE_NAME_KEY]
-            lineEssense[iLineDefine.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]
-            result.append(IndividualLineEssenceModule.IndividualLineEssence(lineEssense))
+            lineEssense[ILineEssence.LINE_NAME_KEY] = iLine[OLineData.INDIVIDUAL_LINE_NAME]
+            lineEssense[ILineEssence.RECIPE_NAME_KEY] = iLine[OLineData.RECIPE_NAME_KEY]
+            lineEssense[ILineEssence.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]
+            result.append(ILineEssence.IndividualLineEssence(lineEssense))
 
         return result
 
