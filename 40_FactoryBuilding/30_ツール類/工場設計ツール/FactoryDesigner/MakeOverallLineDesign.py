@@ -1,11 +1,12 @@
 import os
 import json
 
-from DesignModules import recipeManagerModule
+from DesignModules import RecipeReaderModule as RecipeReader
+from DesignModules import RecipeItemModule as RecipeItem
 from DesignModules import BuildingDataManagerModule
-from DesignModules.OverallLineEssenceModule import OverallLineEssence as OLineEssence
-from DesignModules.OverallLineDataModule import OverallLineData as OLineData
-from DesignModules.OverallLineDocumentModule import OverallLineDocument as OLineDoc
+from DesignModules import OverallLineEssenceModule as OLineEssence
+from DesignModules import OverallLineDataModule as OLineData
+from DesignModules import OverallLineDocumentModule as OLineDoc
 from DesignModules import IndividualLineEssenceModule
 from DesignModules import pathDataModule
 
@@ -34,16 +35,16 @@ class OverallLineDesignMaker:
 
 
         # 全体ライン本質を読み込み
-        oLineEssence = OLineEssence(inputDataFileName)
+        oLineEssence = OLineEssence.OverallLineEssence(inputDataFileName)
         self.overallLineEssence = oLineEssence
 
         # 全体ラインデータを作成
-        overallLineData = self.MakeOLineData(oLineEssence)
+        overallLineData = OLineData.OverallLineData(oLineEssence)
         overallLineData.Output(pathData.GetPath())
 
         # 全体ライン書類を出力
-        iverallLineDocument = OLineDoc()
-        iverallLineDocument.OutputDocument(pathData,overallLineData)
+        overallLineDocument = OLineDoc.OverallLineDocument()
+        overallLineDocument.OutputDocument(pathData,overallLineData)
 
         # 個別ライン本質リストの作成
         individualLineEssences = self.MakeILineEssence(overallLineData)
@@ -60,133 +61,30 @@ class OverallLineDesignMaker:
         jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
         overallLine = OLineData(jsonData)
         return overallLine
-    
-    # 全体ラインデータファイルの作成
-    def MakeOLineData(self,oLineEssence :OLineEssence) -> OLineData:
 
-        oLineDefine = OLineData([])
-
-        # 返す用データを作成
-        result = {}
-
-        # 工場名
-        result[oLineDefine.FACTORY_NAME_KEY] = oLineEssence.GetValue(oLineEssence.FACTORY_NAME_KEY)
-
-
-        # 使用レシピ
-        recipeList = []
-        for useRecipe in oLineEssence.GetValue(oLineEssence.RECIPE_LIST_KEY):
-
-            recipeData = self.ReadRecipeFile(useRecipe[oLineEssence.RECIPE_NAME_KEY])
-            
-            recipeDict = {}
-
-            # レシピ名
-            recipeDict[oLineDefine.RECIPE_NAME_KEY] = recipeData.GetRecipeName()
-
-            # 要求物品
-            inputList = []
-            for recipeItemData in recipeData.GetInputItemList():
-                overallItemData = {}
-                overallItemData[oLineDefine.ITEM_NAME_KEY] = recipeItemData[recipeData.ITEM_NAME_KEY]
-                overallItemData[oLineDefine.ITEM_NUM_KEY] = recipeItemData[recipeData.ITEM_NUM_KEY]
-                inputList.append(overallItemData)
-            recipeDict[oLineDefine.INPUT_LIST_KEY] = inputList
-
-            # 加工物品
-            outputList = []
-            for recipeItemData in recipeData.GetOutputItemList():
-                overallItemData = {}
-                overallItemData[oLineDefine.ITEM_NAME_KEY] = recipeItemData[recipeData.ITEM_NAME_KEY]
-                overallItemData[oLineDefine.ITEM_NUM_KEY] = recipeItemData[recipeData.ITEM_NUM_KEY]
-                outputList.append(overallItemData)
-            recipeDict[oLineDefine.OUTPUT_LIST_KEY] = outputList
-
-            recipeList.append(recipeDict)
-
-        result[oLineDefine.RECIPE_LIST_KEY] = recipeList
-
-
-        # 個別ラインリスト
-        iLineList = []
-        for useRecipe in oLineEssence.GetValue(oLineEssence.RECIPE_LIST_KEY):
-
-            recipeData = self.ReadRecipeFile(useRecipe[oLineEssence.RECIPE_NAME_KEY])
-
-            iLineDict = {}
-
-            # 製造ライン名
-            iLineDict[oLineDefine.INDIVIDUAL_LINE_NAME] = recipeData.GetRecipeName() + "製造ライン"
-
-            # レシピ名
-            iLineDict[oLineDefine.RECIPE_NAME_KEY] = recipeData.GetRecipeName()
-          
-            # レシピ数
-            recipeNum = useRecipe[oLineEssence.RECIPE_NUM_KEY]
-            iLineDict[oLineDefine.RECIPE_NUM_KEY] = recipeNum
-
-            # 要求物品
-            inputList = []
-            for recipeItemData in recipeData.GetInputItemList():
-                overallItemData = {}
-                overallItemData[oLineDefine.ITEM_NAME_KEY] = recipeItemData[recipeData.ITEM_NAME_KEY]
-                overallItemData[oLineDefine.ITEM_NUM_KEY] = recipeItemData[recipeData.ITEM_NUM_KEY] * recipeNum
-                inputList.append(overallItemData)
-            iLineDict[oLineDefine.INPUT_LIST_KEY] = inputList
-
-            # 加工物品
-            outputList = []
-            for recipeItemData in recipeData.GetOutputItemList():
-                overallItemData = {}
-                overallItemData[oLineDefine.ITEM_NAME_KEY] = recipeItemData[recipeData.ITEM_NAME_KEY]
-                overallItemData[oLineDefine.ITEM_NUM_KEY] = recipeItemData[recipeData.ITEM_NUM_KEY] * recipeNum
-                outputList.append(overallItemData)
-            iLineDict[oLineDefine.OUTPUT_LIST_KEY] = outputList
-
-            iLineList.append(iLineDict)
-
-        result[oLineDefine.INDIVIDUAL_LINE_LIST] = iLineList
-
-
-        # 入力ライン
-        result[oLineDefine.INPUT_LINE_LIST] = oLineEssence.GetValue(oLineEssence.INPUT_LINE_LIST)
-        
-        # 出力ライン
-        result[oLineDefine.OUTPUT_LINE_LIST] = oLineEssence.GetValue(oLineEssence.OUTPUT_LINE_LIST)
-        
-        # 製造ライン関係性
-        result[oLineDefine.RELATIONSHIPS_KEY] = oLineEssence.GetValue(oLineEssence.RELATIONSHIPS_KEY)
-
-        return OLineData(result)
 
     # 個別ライン本質ファイルの作成
     def MakeILineEssence(self,oLineData :OLineData) -> list:
         result = []
 
         # 個別ラインの情報を取得
-        iLines = oLineData.GetValue(oLineData.INDIVIDUAL_LINE_LIST)
+        iLines = oLineData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
 
         # 個別ラインの情報から、個別ライン本質を作成し、リストへ加える
         iLineDefine = IndividualLineEssenceModule.IndividualLineEssence([])
         for iLine in iLines:
             lineEssense = {}
-            lineEssense[iLineDefine.LINE_NAME_KEY] = iLine[oLineData.INDIVIDUAL_LINE_NAME]
-            lineEssense[iLineDefine.RECIPE_NAME_KEY] = iLine[oLineData.RECIPE_NAME_KEY]
-            lineEssense[iLineDefine.RECIPE_NUM_KEY] = iLine[oLineData.RECIPE_NUM_KEY]
+            lineEssense[iLineDefine.LINE_NAME_KEY] = iLine[OLineData.INDIVIDUAL_LINE_NAME]
+            lineEssense[iLineDefine.RECIPE_NAME_KEY] = iLine[OLineData.RECIPE_NAME_KEY]
+            lineEssense[iLineDefine.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]
             result.append(IndividualLineEssenceModule.IndividualLineEssence(lineEssense))
 
         return result
 
-
-    # レシピデータを読み込み
-    def ReadRecipeFile(self,recipeName:str) -> recipeManagerModule.RecipeItem:
-        recipes = recipeManagerModule.RecipeReader()
-        recipe = recipes.GetRecipe(recipeName)
-        return recipe
-    
+   
 
     # 設備データを読み込み
-    def ReadBuildingDataFile(self,recipe:recipeManagerModule.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
+    def ReadBuildingDataFile(self,recipe:RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
         buildingInfo = BuildingDataManagerModule.BuildingDataReader()
         buildingInfo = BuildingDataManagerModule.BuildingDataReader.GetBuildingInfo(recipe.GetProductName())
         return buildingInfo

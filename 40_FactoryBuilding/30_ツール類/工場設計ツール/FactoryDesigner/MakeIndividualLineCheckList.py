@@ -1,10 +1,12 @@
 import os
 import json
 
-from DesignModules import recipeManagerModule
+from DesignModules import RecipeReaderModule as RecipeReader
+from DesignModules import RecipeItemModule as RecipeItem
 from DesignModules import IndividualLineEssenceModule
 from DesignModules import IndividualLineDataModule
 from DesignModules import pathDataModule
+
 
 # 個別製造ラインテスト項目書作成
 class MakeIndividualLineCheckList:
@@ -32,7 +34,7 @@ class MakeIndividualLineCheckList:
         # input file read
         templateLines = self.ReadTemplateFile()
         individualLine = iLineData
-        recipeData = self.ReadRecipeFile(individualLine)
+        recipeData = RecipeReader.GetRecipe(individualLine.GetRecipeName())
 
         # 置換用データを作成
         replaceData = self.MakeReplaceData(individualLine,recipeData)
@@ -69,13 +71,6 @@ class MakeIndividualLineCheckList:
         return individualLine
 
 
-    # レシピデータを読み込み
-    def ReadRecipeFile(self,individualLine):
-        recipes = recipeManagerModule.RecipeReader()
-        recipe = recipes.GetRecipe(individualLine.GetRecipeName())
-        return recipe
-    
-
     # 保存
     def WriteFile(self,filePath,fileName,lines):
         os.makedirs(filePath, exist_ok=True)
@@ -106,11 +101,11 @@ class MakeIndividualLineCheckList:
         index = 0
         for data in recipeData.GetInputItemList():
             inputNameKey = replaceData.INPUT_NAME_KEY + str(index+1)
-            inputName = data[recipeData.ITEM_NAME_KEY]
+            inputName = data[RecipeItem.ITEM_NAME_KEY]
             replaceData.Append(inputNameKey, inputName)
             
             inputNumKey = replaceData.INPUT_NUM_KEY + str(index+1)
-            inputNum = data[recipeData.ITEM_NUM_KEY]
+            inputNum = data[RecipeItem.ITEM_NUM_KEY]
             replaceData.Append(inputNumKey ,inputNum)
             
             inputTotalKey = replaceData.TOTAL_INPUT_KEY + str(index+1)
@@ -123,11 +118,11 @@ class MakeIndividualLineCheckList:
         index = 0
         for data in recipeData.GetOutputItemList():
             outputNameKey = replaceData.OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[recipeData.ITEM_NAME_KEY]
+            outputName = data[RecipeItem.ITEM_NAME_KEY]
             replaceData.Append(outputNameKey, outputName)
             
             outputNumKey = replaceData.OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[recipeData.ITEM_NUM_KEY]
+            outputNum = data[RecipeItem.ITEM_NUM_KEY]
             replaceData.Append(outputNumKey ,outputNum)
             
             outputTotalKey = replaceData.TOTAL_OUTPUT_KEY + str(index+1)

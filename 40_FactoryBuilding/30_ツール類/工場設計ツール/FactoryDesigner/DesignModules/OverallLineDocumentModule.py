@@ -1,10 +1,10 @@
 import os
 
-from .OverallLineDataModule import OverallLineData as OLineData
+from . import OverallLineDataModule as OLineData
 from . import  pathDataModule
 from .pathDataModule import  PathData
-from .recipeManagerModule import RecipeItem
-from .recipeManagerModule import RecipeReader
+from . import RecipeReaderModule as RecipeReader
+from . import RecipeItemModule as RecipeItem
 
 
 # 全体ライン設計書を管理するクラス
@@ -29,7 +29,7 @@ class OverallLineDocument():
     def OutputDocument(
             self,
             pathData : PathData,
-            overallLineData : OLineData):
+            overallLineData : OLineData.OverallLineData):
 
 
         # 全体ラインテンプレートを読み込み
@@ -47,14 +47,14 @@ class OverallLineDocument():
             text = text.replace(self.RECIPIES_KEY_WORD,recipeText)
             text = text.replace(self.LINES_KEY_WORD,linesText)
             text = text.replace(self.FLOWCHART_KEY_WORD,flowchartText)
-            text = text.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
+            text = text.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(OLineData.FACTORY_NAME_KEY))
             result.append(text)
 
         # print(result)
 
         # text output
         filePath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
-        fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(overallLineData.FACTORY_NAME_KEY))
+        fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(OLineData.FACTORY_NAME_KEY))
         self._WriteFile(filePath,fileName,result)
 
 
@@ -84,18 +84,18 @@ class OverallLineDocument():
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(
-            self,overallData:OLineData
+            self,overallData:OLineData.OverallLineData
             ) -> list:
         
         # 返す用変数を作成
         result = ""
 
         # レシピリストの取得 
-        recipeList = overallData.GetValue(overallData.RECIPE_LIST_KEY)
+        recipeList = overallData.GetValue(OLineData.RECIPE_LIST_KEY)
 
         # レシピごとの文章を加算
         for recipe in recipeList:
-            result += self._MakeRecipeText(recipe[overallData.RECIPE_NAME_KEY])
+            result += self._MakeRecipeText(recipe[OLineData.RECIPE_NAME_KEY])
         
         return result
     
@@ -104,7 +104,7 @@ class OverallLineDocument():
     def _MakeRecipeText(self,recipeName:str) -> str:
         
         # レシピデータ取得
-        recipe = self._ReadRecipeFile(recipeName)
+        recipe = RecipeReader.GetRecipe(recipeName)
 
         # ヘッダー
         result = "### " + recipe.GetRecipeName() + "\n"
@@ -115,26 +115,26 @@ class OverallLineDocument():
         # input 
         items = recipe.GetInputItemList()
         for item in items:
-            result += "|input|" + str(item[recipe.ITEM_NAME_KEY]) + "|" + str(item[recipe.ITEM_NUM_KEY]) + "|\n"
+            result += "|input|" + str(item[RecipeItem.ITEM_NAME_KEY]) + "|" + str(item[RecipeItem.ITEM_NUM_KEY]) + "|\n"
 
         result += "|---|---|---|\n"
 
         # input 
         items = recipe.GetOutputItemList()
         for item in items:
-            result += "|output|" + str(item[recipe.ITEM_NAME_KEY]) + "|" + str(item[recipe.ITEM_NUM_KEY]) + "|\n"
+            result += "|output|" + str(item[RecipeItem.ITEM_NAME_KEY]) + "|" + str(item[RecipeItem.ITEM_NUM_KEY]) + "|\n"
 
         return result
     
 
     # 個別ラインリストの置き換え用の文字列を返す
-    def _MakeIndividualLinesText(self,overallData:OLineData) -> list:
+    def _MakeIndividualLinesText(self,overallData:OLineData.OverallLineData) -> list:
         
         # 返す用変数を作成
         result = ""
 
         # 個別ラインリストの取得 
-        lineList = overallData.GetValue(overallData.INDIVIDUAL_LINE_LIST)
+        lineList = overallData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
 
         # 個別ラインごとの文章を加算
         for line in lineList:
@@ -146,15 +146,13 @@ class OverallLineDocument():
     # 個別ライン単体の置き換え用文字列を返す
     def _MakeIndividualLineText(self,iLineData:dict) -> str:
         
-        overall = OLineData([])
-
         # タイトル
-        result = "### " + iLineData[overall.INDIVIDUAL_LINE_NAME] + "\n"
+        result = "### " + iLineData[OLineData.INDIVIDUAL_LINE_NAME] + "\n"
         result += "\n"
         
         # 基本情報
-        result += "レシピ名 : " + iLineData[overall.RECIPE_NAME_KEY] + "  \n"
-        result += "レシピ数 : " + str(iLineData[overall.RECIPE_NUM_KEY]) + "\n"
+        result += "レシピ名 : " + iLineData[OLineData.RECIPE_NAME_KEY] + "  \n"
+        result += "レシピ数 : " + str(iLineData[OLineData.RECIPE_NUM_KEY]) + "\n"
         result += "\n"
         
         # ヘッダー
@@ -163,16 +161,16 @@ class OverallLineDocument():
 
         
         # input 
-        items = iLineData[overall.INPUT_LIST_KEY]
+        items = iLineData[OLineData.INPUT_LIST_KEY]
         for item in items:
-            result += "|input|" + str(item[overall.ITEM_NAME_KEY]) + "|" + str(item[overall.ITEM_NUM_KEY]) + "|\n"
+            result += "|input|" + str(item[OLineData.ITEM_NAME_KEY]) + "|" + str(item[OLineData.ITEM_NUM_KEY]) + "|\n"
 
         result += "|---|---|---|\n"
 
         # output 
-        items = iLineData[overall.OUTPUT_LIST_KEY]
+        items = iLineData[OLineData.OUTPUT_LIST_KEY]
         for item in items:
-            result += "|output|" + str(item[overall.ITEM_NAME_KEY]) + "|" + str(item[overall.ITEM_NUM_KEY]) + "|\n"
+            result += "|output|" + str(item[OLineData.ITEM_NAME_KEY]) + "|" + str(item[OLineData.ITEM_NUM_KEY]) + "|\n"
 
         result += "\n"
         result += "\n"
@@ -181,13 +179,13 @@ class OverallLineDocument():
 
 
     # フローチャート作成
-    def _MakeFlowChart(self,overallData:OLineData) -> str:
+    def _MakeFlowChart(self,overallData:OLineData.OverallLineData) -> str:
 
         result = ""
-        inputList = overallData.GetValue(overallData.INPUT_LINE_LIST)
-        lineList = overallData.GetValue(overallData.INDIVIDUAL_LINE_LIST)
-        outputList = overallData.GetValue(overallData.OUTPUT_LINE_LIST)
-        relationships = overallData.GetValue(overallData.RELATIONSHIPS_KEY)
+        inputList = overallData.GetValue(OLineData.INPUT_LINE_LIST)
+        lineList = overallData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
+        outputList = overallData.GetValue(OLineData.OUTPUT_LINE_LIST)
+        relationships = overallData.GetValue(OLineData.RELATIONSHIPS_KEY)
             
         # header
         result = "```mermaid\n"
@@ -202,7 +200,7 @@ class OverallLineDocument():
 
         # product
         for line in lineList:
-            result += line[overallData.INDIVIDUAL_LINE_NAME] + "\n"
+            result += line[OLineData.INDIVIDUAL_LINE_NAME] + "\n"
         result += "\n"
 
         # output
@@ -214,20 +212,12 @@ class OverallLineDocument():
 
         # flow
         for relation in relationships:
-            supplierLine = relation[overallData.SUPPLYER_LINE_KEY]
-            destinationLine = relation[overallData.DESTINATION_LINE_KEY]
-            supplyItem = relation[overallData.SUPPLY_ITEM_KEY]
-            supplyNum = relation[overallData.SUPPLY_NUM_KEY]
+            supplierLine = relation[OLineData.SUPPLYER_LINE_KEY]
+            destinationLine = relation[OLineData.DESTINATION_LINE_KEY]
+            supplyItem = relation[OLineData.SUPPLY_ITEM_KEY]
+            supplyNum = relation[OLineData.SUPPLY_NUM_KEY]
             result += supplierLine + "-->|" + supplyItem + str(supplyNum) + "|" + destinationLine + "\n"
 
         result += "```\n"
         
         return result
-
-
-    # レシピデータを読み込み
-    def _ReadRecipeFile(self,recipeName:str) -> RecipeItem:
-        recipes = RecipeReader()
-        recipe = recipes.GetRecipe(recipeName)
-        return recipe
-

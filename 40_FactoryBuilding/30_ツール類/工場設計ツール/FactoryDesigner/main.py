@@ -2,6 +2,7 @@ import sys
 import json
 
 from DesignModules import pathDataModule
+from DesignModules import OverallLineDataModule as OLineData
 import MakeOverallLineDesign
 import MakeIndividualLineDesign
 import MakeIndividualLineCheckList
@@ -49,7 +50,7 @@ for iLineEssence in iLineEssences:
 
 # 工場データ出力
 factoryData = {}
-factoryData["factoryName"] = oLineData.GetValue(oLineData.FACTORY_NAME_KEY) # 工場名
+factoryData["factoryName"] = oLineData.GetValue(OLineData.FACTORY_NAME_KEY) # 工場名
 factoryData["usePower"] = usePow    # 消費電力
 factoryData["costList"] = costList
 factoryData["supplyPower"] = supplyPower

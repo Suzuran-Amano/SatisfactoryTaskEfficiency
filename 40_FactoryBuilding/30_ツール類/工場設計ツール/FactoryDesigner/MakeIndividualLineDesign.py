@@ -1,7 +1,8 @@
 import os
 import json
 
-from DesignModules import recipeManagerModule
+from DesignModules import RecipeReaderModule as RecipeReader
+from DesignModules import RecipeItemModule as RecipeItem
 from DesignModules import BuildingDataManagerModule
 from DesignModules import IndividualLineEssenceModule
 from DesignModules import IndividualLineDataModule
@@ -33,7 +34,7 @@ class IndividualLineDesignMaker:
         # input file read
         templateLines = self.ReadTemplateFile()
         individualLine = iLineData
-        recipeData = self.ReadRecipeFile(individualLine)
+        recipeData = RecipeReader.GetRecipe(individualLine.GetRecipeName())
         buildingData = self.ReadBuildingInfoFile(recipeData)
         
         # 置換用データを作成
@@ -87,14 +88,8 @@ class IndividualLineDesignMaker:
         return individualLine
 
 
-    # レシピデータを読み込み
-    def ReadRecipeFile(self,individualLine):
-        recipes = recipeManagerModule.RecipeReader()
-        recipe = recipes.GetRecipe(individualLine.GetRecipeName())
-        return recipe
-    
     # 設備データを読み込み
-    def ReadBuildingInfoFile(self,recipe:recipeManagerModule.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
+    def ReadBuildingInfoFile(self,recipe:RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
         buildingInfo = BuildingDataManagerModule.BuildingDataReader()
         buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetProductName())
         return buildingInfo
@@ -146,11 +141,11 @@ class IndividualLineDesignMaker:
         index = 0
         for data in recipeData.GetInputItemList():
             inputNameKey = replaceData.INPUT_NAME_KEY + str(index+1)
-            inputName = data[recipeData.ITEM_NAME_KEY]
+            inputName = data[RecipeItem.ITEM_NAME_KEY]
             replaceData.Append(inputNameKey, inputName)
             
             inputNumKey = replaceData.INPUT_NUM_KEY + str(index+1)
-            inputNum = data[recipeData.ITEM_NUM_KEY]
+            inputNum = data[RecipeItem.ITEM_NUM_KEY]
             replaceData.Append(inputNumKey ,inputNum)
             
             inputTotalKey = replaceData.TOTAL_INPUT_KEY + str(index+1)
@@ -163,11 +158,11 @@ class IndividualLineDesignMaker:
         index = 0
         for data in recipeData.GetOutputItemList():
             outputNameKey = replaceData.OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[recipeData.ITEM_NAME_KEY]
+            outputName = data[RecipeItem.ITEM_NAME_KEY]
             replaceData.Append(outputNameKey, outputName)
             
             outputNumKey = replaceData.OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[recipeData.ITEM_NUM_KEY]
+            outputNum = data[RecipeItem.ITEM_NUM_KEY]
             replaceData.Append(outputNumKey ,outputNum)
             
             outputTotalKey = replaceData.TOTAL_OUTPUT_KEY + str(index+1)
