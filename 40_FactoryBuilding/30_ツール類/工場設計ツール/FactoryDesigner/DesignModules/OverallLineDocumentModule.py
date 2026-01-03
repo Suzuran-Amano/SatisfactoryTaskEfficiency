@@ -107,20 +107,20 @@ class OverallLineDocument():
         recipe = RecipeReader.GetRecipe(recipeName)
 
         # ヘッダー
-        result = "### " + recipe.GetRecipeName() + "\n"
+        result = "### " + recipe.GetValue(RecipeItem.RECIPE_NAME_KEY) + "\n"
         result += "|I/O|物品名|要求数|\n"
         result += "|---|---|---|\n"
 
         
         # input 
-        items = recipe.GetInputItemList()
+        items = recipe.GetValue(RecipeItem.INPUT_KEY)
         for item in items:
             result += "|input|" + str(item[RecipeItem.ITEM_NAME_KEY]) + "|" + str(item[RecipeItem.ITEM_NUM_KEY]) + "|\n"
 
         result += "|---|---|---|\n"
 
         # input 
-        items = recipe.GetOutputItemList()
+        items = recipe.GetValue(RecipeItem.OUTPUT_KEY)
         for item in items:
             result += "|output|" + str(item[RecipeItem.ITEM_NAME_KEY]) + "|" + str(item[RecipeItem.ITEM_NUM_KEY]) + "|\n"
 

@@ -81,7 +81,8 @@ class MakeIndividualLineCheckList:
     # 置き換え用データを作成
     def MakeReplaceData(self,
             iLineEssence :ILineEssence.IndividualLineEssence,
-            recipeData):
+            recipeData : RecipeItem.RecipeItem
+            ):
         
 
         iLineData = ILineData.IndividualLineData()
@@ -92,16 +93,16 @@ class MakeIndividualLineCheckList:
             iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
 
         # レシピ名を追加
-        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
+        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeData.GetValue(RecipeItem.RECIPE_NAME_KEY))
         recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
         iLineData.Append(iLineData.RECIPE_NUM_KEY,recipeNum)
 
         # 制作物を追加
-        iLineData.Append(iLineData.PRODUCT_NAME_KEY,recipeData.GetProductName())
+        iLineData.Append(iLineData.PRODUCT_NAME_KEY,recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
 
         # 搬入物を追加
         index = 0
-        for data in recipeData.GetInputItemList():
+        for data in recipeData.GetValue(RecipeItem.INPUT_KEY):
             inputNameKey = iLineData.INPUT_NAME_KEY + str(index+1)
             inputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(inputNameKey, inputName)
@@ -118,7 +119,7 @@ class MakeIndividualLineCheckList:
         
         # 搬出物を追加
         index = 0
-        for data in recipeData.GetOutputItemList():
+        for data in recipeData.GetValue(RecipeItem.OUTPUT_KEY):
             outputNameKey = iLineData.OUTPUT_NAME_KEY + str(index+1)
             outputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(outputNameKey, outputName)
@@ -148,7 +149,8 @@ class MakeIndividualLineCheckList:
             self,
             templateLines,
             iLineEssence : ILineEssence.IndividualLineEssence,
-            iLineData):
+            iLineData : ILineData.IndividualLineData
+            ):
 
 
         resultLines = []
@@ -170,9 +172,14 @@ class MakeIndividualLineCheckList:
 
 
     # 複数の Input 物品を記載するため、行を複製
-    def DuplicateInputItem(self,templateLines,recipeData,iLineData):
+    def DuplicateInputItem(
+            self,
+            templateLines,
+            recipeItem : RecipeItem.RecipeItem,
+            iLineData : ILineData.IndividualLineData):
+        
         resultLines = []
-        inputLength = int(recipeData.GetInputItemLength())
+        inputLength = len(recipeItem.GetValue(RecipeItem.INPUT_KEY))
 
         inputNameKey = iLineData.INPUT_NAME_KEY
         inputReplaceNameKey = iLineData.GetReplaceKey(inputNameKey)
@@ -198,9 +205,14 @@ class MakeIndividualLineCheckList:
         
     
     # 複数の Output 物品を記載するため、行を複製
-    def DuplicateOutputItem(self,templateLines,recipeData,iLineData):
+    def DuplicateOutputItem(
+            self,
+            templateLines,
+            recipeItem : RecipeItem.RecipeItem,
+            iLineData : ILineData.IndividualLineData):
+        
         resultLines = []
-        outputLength = int(recipeData.GetOutputItemLength())
+        outputLength = len(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
 
         outputNameKey = iLineData.OUTPUT_NAME_KEY
         outputReplaceNameKey = iLineData.GetReplaceKey(outputNameKey)

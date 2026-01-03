@@ -80,18 +80,18 @@ class OverallLineData:
         recipeList = []
         for useRecipe in oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY):
 
-            recipeData = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeItem = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
             
             recipeDict = {}
 
             # レシピ名
-            recipeDict[RECIPE_NAME_KEY] = recipeData.GetRecipeName()
+            recipeDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY)
 
             # 要求物品
-            recipeDict[INPUT_LIST_KEY] = self.GetItemList(recipeData.GetInputItemList())
+            recipeDict[INPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY))
 
             # 加工物品
-            recipeDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeData.GetOutputItemList())
+            recipeDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
 
             recipeList.append(recipeDict)
 
@@ -102,25 +102,25 @@ class OverallLineData:
         iLineList = []
         for useRecipe in oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY):
 
-            recipeData = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeItem = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
 
             iLineDict = {}
 
             # 製造ライン名
-            iLineDict[INDIVIDUAL_LINE_NAME] = recipeData.GetRecipeName() + "製造ライン"
+            iLineDict[INDIVIDUAL_LINE_NAME] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY) + "製造ライン"
 
             # レシピ名
-            iLineDict[RECIPE_NAME_KEY] = recipeData.GetRecipeName()
+            iLineDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY)
           
             # レシピ数
             recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]
             iLineDict[RECIPE_NUM_KEY] = recipeNum
 
             # 要求物品
-            iLineDict[INPUT_LIST_KEY] = self.GetItemList(recipeData.GetInputItemList(),recipeNum)
+            iLineDict[INPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY),recipeNum)
 
             # 加工物品
-            iLineDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeData.GetOutputItemList(),recipeNum)
+            iLineDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY),recipeNum)
 
             iLineList.append(iLineDict)
 

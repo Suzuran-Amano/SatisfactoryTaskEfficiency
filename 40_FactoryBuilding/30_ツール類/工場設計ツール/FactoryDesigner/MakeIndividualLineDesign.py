@@ -85,9 +85,9 @@ class IndividualLineDesignMaker:
 
 
     # 設備データを読み込み
-    def ReadBuildingInfoFile(self,recipe:RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
+    def ReadBuildingInfoFile(self,recipe:RecipeItem.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
         buildingInfo = BuildingDataManagerModule.BuildingDataReader()
-        buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetProductName())
+        buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetValue(RecipeItem.PRODUCT_NAME_KEY))
         return buildingInfo
     
 
@@ -105,7 +105,7 @@ class IndividualLineDesignMaker:
     def MakeIndividualLineData(
             self,
             iLineEssence : ILineEssence.IndividualLineEssence,
-            recipeData,
+            recipeItem : RecipeItem.RecipeItem,
             buildingData):
         
         iLineData = ILineData.IndividualLineData()
@@ -116,12 +116,12 @@ class IndividualLineDesignMaker:
             iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
 
         # レシピ名を追加
-        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeData.GetRecipeName())
+        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY))
         recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
         iLineData.Append(iLineData.RECIPE_NUM_KEY,recipeNum)
 
         # 制作物を追加
-        productName = recipeData.GetProductName()
+        productName = recipeItem.GetValue(RecipeItem.PRODUCT_NAME_KEY)
         iLineData.Append(iLineData.PRODUCT_NAME_KEY,productName)
 
         # 合計コストを追加
@@ -142,7 +142,7 @@ class IndividualLineDesignMaker:
 
         # 搬入物を追加
         index = 0
-        for data in recipeData.GetInputItemList():
+        for data in recipeItem.GetValue(RecipeItem.INPUT_KEY):
             inputNameKey = iLineData.INPUT_NAME_KEY + str(index+1)
             inputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(inputNameKey, inputName)
@@ -159,7 +159,7 @@ class IndividualLineDesignMaker:
         
         # 搬出物を追加
         index = 0
-        for data in recipeData.GetOutputItemList():
+        for data in recipeItem.GetValue(RecipeItem.OUTPUT_KEY):
             outputNameKey = iLineData.OUTPUT_NAME_KEY + str(index+1)
             outputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(outputNameKey, outputName)
@@ -175,7 +175,10 @@ class IndividualLineDesignMaker:
             index = index + 1
 
         # 供給電力を追加
-        supplyPower = recipeData.GetSupplyPower() * recipeNum
+        supplyPower = recipeItem.GetValue(RecipeItem.SUPPLY_POWER_KEY)
+        if supplyPower == None:
+            supplyPower = 0
+        supplyPower = supplyPower * recipeNum
         iLineData.Append(iLineData.SUPPLY_POWER_KEY,supplyPower)
 
                     
@@ -190,9 +193,15 @@ class IndividualLineDesignMaker:
     
     
     # 複数の Input 物品を記載するため、行を複製
-    def DuplicateInputItem(self,templateLines,recipeData,iLineData):
+    def DuplicateInputItem(
+            self,
+            templateLines,
+            recipeItem : RecipeItem.RecipeItem,
+            iLineData : ILineData.IndividualLineData
+            ):
+        
         resultLines = []
-        inputLength = int(recipeData.GetInputItemLength())
+        inputLength = len(recipeItem.GetValue(RecipeItem.INPUT_KEY))
 
         inputNameKey = iLineData.INPUT_NAME_KEY
         inputReplaceNameKey = iLineData.GetReplaceKey(inputNameKey)
@@ -218,9 +227,16 @@ class IndividualLineDesignMaker:
         
     
     # 複数の Output 物品を記載するため、行を複製
-    def DuplicateOutputItem(self,templateLines,recipeData,iLineData):
+    def DuplicateOutputItem(
+            self,
+            templateLines,
+            recipeItem : RecipeItem.RecipeItem,
+            iLineData :ILineData.IndividualLineData
+            ):
+        
+
         resultLines = []
-        outputLength = int(recipeData.GetOutputItemLength())
+        outputLength = len(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
 
         outputNameKey = iLineData.OUTPUT_NAME_KEY
         outputReplaceNameKey = iLineData.GetReplaceKey(outputNameKey)
@@ -245,7 +261,10 @@ class IndividualLineDesignMaker:
         return resultLines
 
 
-    def MakeFlowChart(self,iLineData):
+    def MakeFlowChart(
+            self,
+            iLineData : ILineData.IndividualLineData
+            ):
 
         result = []
         inputName = iLineData.GetReplaceKey(iLineData.INPUT_NAME_KEY)
