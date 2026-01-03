@@ -3,6 +3,7 @@ import json
 
 from DesignModules import pathDataModule
 from DesignModules import OverallLineDataModule as OLineData
+from DesignModules import IndividualLineDataModule as ILineData
 import MakeOverallLineDesign
 import MakeIndividualLineDesign
 import MakeIndividualLineCheckList
@@ -31,12 +32,12 @@ for iLineEssence in iLineEssences:
     iLineDataList.append(iLineData)
 
     # 工場データ計算
-    usePow += iLineData.GetTotalUsePower()
-    supplyPower += iLineData.GetSupplyPower()
+    usePow += iLineData.GetValue(ILineData.TOTAL_USE_POWER_KEY)
+    supplyPower += iLineData.GetValue(ILineData.SUPPLY_POWER_KEY)
 
-    itemNameKey = iLineData.ITEM_NAME_KEY
-    itemNumKey = iLineData.ITEM_NUM_KEY
-    for cost in iLineData.GetCostList():
+    itemNameKey = ILineData.ITEM_NAME_KEY
+    itemNumKey = ILineData.ITEM_NUM_KEY
+    for cost in iLineData.GetValue(ILineData.COST_LIST_KEY):
         if cost[itemNameKey] in costList:
             costList[cost[itemNameKey]] += cost[itemNumKey]
         else:            

@@ -89,29 +89,29 @@ class MakeIndividualLineCheckList:
 
         # ライン名を追加
         iLineData.Append(
-            iLineData.LINE_NAME_KEY,
+            ILineData.LINE_NAME_KEY,
             iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
 
         # レシピ名を追加
-        iLineData.Append(iLineData.RECIPE_NAME_KEY,recipeData.GetValue(RecipeItem.RECIPE_NAME_KEY))
+        iLineData.Append(ILineData.RECIPE_NAME_KEY,recipeData.GetValue(RecipeItem.RECIPE_NAME_KEY))
         recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
-        iLineData.Append(iLineData.RECIPE_NUM_KEY,recipeNum)
+        iLineData.Append(ILineData.RECIPE_NUM_KEY,recipeNum)
 
         # 制作物を追加
-        iLineData.Append(iLineData.PRODUCT_NAME_KEY,recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
+        iLineData.Append(ILineData.PRODUCT_NAME_KEY,recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
 
         # 搬入物を追加
         index = 0
         for data in recipeData.GetValue(RecipeItem.INPUT_KEY):
-            inputNameKey = iLineData.INPUT_NAME_KEY + str(index+1)
+            inputNameKey = ILineData.INPUT_NAME_KEY + str(index+1)
             inputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(inputNameKey, inputName)
             
-            inputNumKey = iLineData.INPUT_NUM_KEY + str(index+1)
+            inputNumKey = ILineData.INPUT_NUM_KEY + str(index+1)
             inputNum = data[RecipeItem.ITEM_NUM_KEY]
             iLineData.Append(inputNumKey ,inputNum)
             
-            inputTotalKey = iLineData.TOTAL_INPUT_KEY + str(index+1)
+            inputTotalKey = ILineData.TOTAL_INPUT_KEY + str(index+1)
             inputTotal = str(recipeNum*inputNum)
             iLineData.Append(inputTotalKey,inputTotal)
             
@@ -120,15 +120,15 @@ class MakeIndividualLineCheckList:
         # 搬出物を追加
         index = 0
         for data in recipeData.GetValue(RecipeItem.OUTPUT_KEY):
-            outputNameKey = iLineData.OUTPUT_NAME_KEY + str(index+1)
+            outputNameKey = ILineData.OUTPUT_NAME_KEY + str(index+1)
             outputName = data[RecipeItem.ITEM_NAME_KEY]
             iLineData.Append(outputNameKey, outputName)
             
-            outputNumKey = iLineData.OUTPUT_NUM_KEY + str(index+1)
+            outputNumKey = ILineData.OUTPUT_NUM_KEY + str(index+1)
             outputNum = data[RecipeItem.ITEM_NUM_KEY]
             iLineData.Append(outputNumKey ,outputNum)
             
-            outputTotalKey = iLineData.TOTAL_OUTPUT_KEY + str(index+1)
+            outputTotalKey = ILineData.TOTAL_OUTPUT_KEY + str(index+1)
             outputTotal = str(recipeNum*outputNum)
             iLineData.Append(outputTotalKey,outputTotal)
 
@@ -138,9 +138,12 @@ class MakeIndividualLineCheckList:
 
 
     # 置き換え
-    def Replace(self,text,iLineData):
+    def Replace(
+            self,
+            text : str,
+            iLineData : ILineData.IndividualLineData):
         for key in iLineData.GetKeys():
-            text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.value[key]))
+            text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
         return text
     
 
@@ -156,11 +159,11 @@ class MakeIndividualLineCheckList:
         resultLines = []
         productLength = int(iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY))
 
-        productNameKey = iLineData.PRODUCT_NAME_KEY
+        productNameKey = ILineData.PRODUCT_NAME_KEY
         productReplaceNameKey = iLineData.GetReplaceKey(productNameKey)
         
         for i in range(len(templateLines)):
-            if not(iLineData.PRODUCT_NAME_KEY in templateLines[i]):
+            if not(ILineData.PRODUCT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             
@@ -181,17 +184,17 @@ class MakeIndividualLineCheckList:
         resultLines = []
         inputLength = len(recipeItem.GetValue(RecipeItem.INPUT_KEY))
 
-        inputNameKey = iLineData.INPUT_NAME_KEY
+        inputNameKey = ILineData.INPUT_NAME_KEY
         inputReplaceNameKey = iLineData.GetReplaceKey(inputNameKey)
         
-        inputNumKey = iLineData.INPUT_NUM_KEY
+        inputNumKey = ILineData.INPUT_NUM_KEY
         inputReplaceNumKey = iLineData.GetReplaceKey(inputNumKey)
 
-        inputTotalKey = iLineData.TOTAL_INPUT_KEY
+        inputTotalKey = ILineData.TOTAL_INPUT_KEY
         inputReplaceTotalKey = iLineData.GetReplaceKey(inputTotalKey)
         
         for i in range(len(templateLines)):
-            if not(iLineData.INPUT_NAME_KEY in templateLines[i]):
+            if not(ILineData.INPUT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             
@@ -214,17 +217,17 @@ class MakeIndividualLineCheckList:
         resultLines = []
         outputLength = len(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
 
-        outputNameKey = iLineData.OUTPUT_NAME_KEY
+        outputNameKey = ILineData.OUTPUT_NAME_KEY
         outputReplaceNameKey = iLineData.GetReplaceKey(outputNameKey)
         
-        outputNumKey = iLineData.OUTPUT_NUM_KEY
+        outputNumKey = ILineData.OUTPUT_NUM_KEY
         outputReplaceNumKey = iLineData.GetReplaceKey(outputNumKey)
 
-        outputTotalKey = iLineData.TOTAL_OUTPUT_KEY
+        outputTotalKey = ILineData.TOTAL_OUTPUT_KEY
         outputReplaceTotalKey = iLineData.GetReplaceKey(outputTotalKey)
         
         for i in range(len(templateLines)):
-            if not(iLineData.OUTPUT_NAME_KEY in templateLines[i]):
+            if not(ILineData.OUTPUT_NAME_KEY in templateLines[i]):
                 resultLines.append(templateLines[i])
                 continue
             
