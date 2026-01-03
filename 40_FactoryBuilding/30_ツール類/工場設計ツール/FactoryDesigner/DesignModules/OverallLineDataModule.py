@@ -48,6 +48,7 @@ class OverallLineData:
         self.value = self._MakeOLineData(oLineEssence)
         return
     
+    # 値を返す
     def GetValue(self,key:str):
         return self.value[key]
     

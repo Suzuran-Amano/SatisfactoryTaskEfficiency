@@ -21,7 +21,7 @@ SUPPLY_NUM_KEY = "supplyNum"
 class OverallLineEssence:
 
     ### 変数 ###
-    value = dict([])
+    _value = dict([])
 
 
     ### 関数 ###
@@ -30,10 +30,13 @@ class OverallLineEssence:
         self._ReadOverallLineEssence(overallLineEssenceName)
         return
     
-    def GetValue(self,key:str):
-        return self.value[key]
     
     # 全体ライン本質ファイルを読み込み
     def _ReadOverallLineEssence(self,overallLineEssenceName):
-        self.value = json.load(open(overallLineEssenceName,'r', encoding="utf-8"))
+        self._value = json.load(open(overallLineEssenceName,'r', encoding="utf-8"))
         return
+    
+    
+    # 値を返す
+    def GetValue(self,key:str):
+        return self._value[key]
