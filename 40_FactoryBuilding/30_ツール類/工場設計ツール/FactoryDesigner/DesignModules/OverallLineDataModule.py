@@ -143,9 +143,10 @@ class OverallLineData:
     def GetItemList(self,itemList : list,recipeNum = 1):
         result = []
         for recipeItemData in itemList:
-            ItemData = {}
-            ItemData[ITEM_NAME_KEY] = recipeItemData[RecipeItem.ITEM_NAME_KEY]
-            ItemData[ITEM_NUM_KEY] = recipeItemData[RecipeItem.ITEM_NUM_KEY] * recipeNum
+            itemData = {}
+            itemData[ITEM_NAME_KEY] = recipeItemData[RecipeItem.ITEM_NAME_KEY]
+            itemData[ITEM_NUM_KEY] = recipeItemData[RecipeItem.ITEM_NUM_KEY] * recipeNum
+            result.append(itemData)
 
         return result
 
