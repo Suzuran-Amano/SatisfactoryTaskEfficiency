@@ -1,7 +1,3 @@
-import os
-import json
-
-
 ### 定数
 
 # 配列のキー定数

@@ -1,10 +1,9 @@
-import json
-
 from DesignModules import OverallLineEssenceModule as OLineEssence
 from DesignModules import OverallLineDataModule as OLineData
 from DesignModules import OverallLineDocumentModule as OLineDoc
 from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import pathDataModule
+
 
 # 全体製造ライン設計書作成用クラス
 class OverallLineDesignMaker:
