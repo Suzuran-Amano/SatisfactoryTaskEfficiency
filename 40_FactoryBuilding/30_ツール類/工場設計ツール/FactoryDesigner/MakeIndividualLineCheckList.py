@@ -60,13 +60,6 @@ class MakeIndividualLineCheckList:
         return lines
 
 
-    # 個別ラインデータを読み込み
-    def ReadIndividualLineFile(self,inputDataFileName):
-        jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
-        iLineEssence = ILineEssence.IndividualLineEssence(jsonData)
-        return iLineEssence
-
-
     # 保存
     def WriteFile(self,filePath,fileName,lines):
         os.makedirs(filePath, exist_ok=True)

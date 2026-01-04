@@ -75,14 +75,6 @@ class IndividualLineDesignMaker:
             for line in f:
                 lines.append(line.rstrip())
         return lines
-
-
-    # 個別ライン本質ファイルを読み込み
-    def ReadIndividualLineFile(self,inputDataFileName):
-        jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
-        individualLine = ILineEssence.IndividualLineEssence(jsonData)
-        return individualLine
-
   
 
     # 保存

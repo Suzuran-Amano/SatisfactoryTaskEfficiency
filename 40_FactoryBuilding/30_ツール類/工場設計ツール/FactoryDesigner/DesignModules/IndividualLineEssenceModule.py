@@ -12,6 +12,15 @@ RECIPE_NUM_KEY = "recipeNum"
 SUPPLY_POWER_KEY = "supplyPower"
 
 
+
+# 個別ライン本質ファイルを読み込み
+def ReadIndividualLineFile(inputDataFileName):
+    jsonData = json.load(open(inputDataFileName,'r', encoding="utf-8"))
+    individualLine = IndividualLineEssence(jsonData)
+    return individualLine
+
+
+# 個別ライン本質の管理クラス
 class IndividualLineEssence:
     # 定数
     FILE_NAME = "IndividualLineEssence_var_lineName.json"
