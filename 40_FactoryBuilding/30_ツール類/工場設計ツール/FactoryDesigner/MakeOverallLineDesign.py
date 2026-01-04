@@ -52,12 +52,6 @@ class OverallLineDesignMaker:
         return overallLineData
     
 
-    # 全体ラインデータファイルを読み込み
-    def ReadOverallLineData(self,overallLineDataName) -> OLineData:
-        jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
-        overallLine = OLineData(jsonData)
-        return overallLine
-
 
     # 個別ライン本質ファイルの作成
     def MakeILineEssence(self,oLineData :OLineData) -> list:

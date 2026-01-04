@@ -88,10 +88,10 @@ class OverallLineData:
             recipeDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY)
 
             # 要求物品
-            recipeDict[INPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY))
+            recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY))
 
             # 加工物品
-            recipeDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
+            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY))
 
             recipeList.append(recipeDict)
 
@@ -117,10 +117,10 @@ class OverallLineData:
             iLineDict[RECIPE_NUM_KEY] = recipeNum
 
             # 要求物品
-            iLineDict[INPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY),recipeNum)
+            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY),recipeNum)
 
             # 加工物品
-            iLineDict[OUTPUT_LIST_KEY] = self.GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY),recipeNum)
+            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY),recipeNum)
 
             iLineList.append(iLineDict)
 
@@ -140,7 +140,7 @@ class OverallLineData:
     
 
     # レシピ情報から、入出力の物品情報を返す
-    def GetItemList(self,itemList : list,recipeNum = 1):
+    def _GetItemList(self,itemList : list,recipeNum = 1):
         result = []
         for recipeItemData in itemList:
             itemData = {}
@@ -151,3 +151,8 @@ class OverallLineData:
         return result
 
 
+# 全体ラインデータファイルを読み込み
+def ReadOverallLineData(overallLineDataName) -> OverallLineData:
+    jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
+    overallLine = OverallLineData(jsonData)
+    return overallLine
