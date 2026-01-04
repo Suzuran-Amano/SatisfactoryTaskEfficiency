@@ -1,5 +1,4 @@
 import os
-import json
 
 from DesignModules import InfomationReaderModule as RecipeReader
 from DesignModules import RecipeItemModule as RecipeItem
@@ -33,7 +32,7 @@ class MakeIndividualLineCheckList:
         recipeData = RecipeReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
 
         # 置換用データを作成
-        iLineData = self.MakeReplaceData(iLineEssence)
+        iLineData = ILineData.IndividualLineData(iLineEssence)
 
 
         # replace
@@ -69,17 +68,6 @@ class MakeIndividualLineCheckList:
             for line in lines:
                 print(line,file=o)
         return
-
-
-    # 置き換え用データを作成
-    def MakeReplaceData(self,
-            iLineEssence :ILineEssence.IndividualLineEssence
-            ):
-        
-
-        iLineData = ILineData.IndividualLineData(iLineEssence)
-
-        return iLineData
 
 
     # 置き換え
