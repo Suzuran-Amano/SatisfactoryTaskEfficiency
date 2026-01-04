@@ -3,6 +3,7 @@ import json
 
 from DesignModules import InfomationReaderModule as InfoReader
 from DesignModules import RecipeItemModule as RecipeItem
+from DesignModules import BuildingDataManagerModule as BuildingData
 from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import IndividualLineDataModule as ILineData
 from DesignModules import pathDataModule
@@ -120,16 +121,16 @@ class IndividualLineDesignMaker:
         # 合計コストを追加
         buildingData = InfoReader.GetBuildingData(productName)
         costList = []
-        for cost in buildingData.GetCostList():
+        for cost in buildingData.GetValue(BuildingData.COST_KEY):
             costList.append({
-                ILineData.ITEM_NAME_KEY : cost[buildingData.ITEM_NAME_KEY],
-                ILineData.ITEM_NUM_KEY : cost[buildingData.ITEM_NUM_KEY] * recipeNum
+                ILineData.ITEM_NAME_KEY : cost[BuildingData.ITEM_NAME_KEY],
+                ILineData.ITEM_NUM_KEY : cost[BuildingData.ITEM_NUM_KEY] * recipeNum
 
             })
         iLineData.Append(ILineData.COST_LIST_KEY,costList)
 
         # 合計消費電力を追加
-        totalUsePower = buildingData.GetUsePower() * recipeNum
+        totalUsePower = buildingData.GetValue(BuildingData.USE_POWER_KEY) * recipeNum
         iLineData.Append(ILineData.TOTAL_USE_POWER_KEY,totalUsePower)
 
         # 搬入物を追加
