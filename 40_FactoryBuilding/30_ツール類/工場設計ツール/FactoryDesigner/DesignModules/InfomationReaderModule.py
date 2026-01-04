@@ -1,0 +1,51 @@
+import os
+import json
+
+from .RecipeItemModule import RecipeItem
+from .BuildingDataManagerModule import BuildingDataItem as BuildingData
+
+
+### 定数 ###
+
+# 情報を保存しておくディレクトリの名前
+INFOMATION_FILE_NAME = "01_InformationExtraction"
+
+# 各情報を保存しておくディレクトリの名前
+RECIPES_DIRECTORY_NAME = "Recipes"
+BUILDING_DIRECTORY_NAME = "Building"
+
+
+### 関数 ###
+
+# レシピを追加
+def GetRecipe(recipeName:str):
+    return RecipeItem(_OpenFile(_GetRecipesDirectoryPath(),recipeName))
+
+# 設備情報を追加
+def GetBuildingData(buildingName:str):
+    return BuildingData(_OpenFile(_GetBuildingsDirectoryPath(),buildingName))
+
+# ファイルを開く
+def _OpenFile(dirPath:str,fileName:str):
+    openFile = open(dirPath + "\\" + fileName + ".json",'r', encoding="utf-8")
+    return json.load(openFile)
+
+
+# レシピ集のディレクトリを返す
+def _GetRecipesDirectoryPath():
+    return _GetInfomationDirectoryPath() + "\\" + RECIPES_DIRECTORY_NAME
+
+# 設備集のディレクトリを返す
+def _GetBuildingsDirectoryPath():
+    return _GetInfomationDirectoryPath() + "\\" + BUILDING_DIRECTORY_NAME
+
+# 情報ディレクトリのパスを返す
+def _GetInfomationDirectoryPath() -> str:
+    path = __file__
+    while True:
+        if os.path.isdir(path + "\\" + INFOMATION_FILE_NAME):
+            return path + "\\" + INFOMATION_FILE_NAME
+        else:
+            path = os.path.dirname(path)
+    return
+

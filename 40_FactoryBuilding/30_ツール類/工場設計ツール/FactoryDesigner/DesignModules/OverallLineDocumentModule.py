@@ -3,7 +3,7 @@ import os
 from . import OverallLineDataModule as OLineData
 from . import  pathDataModule
 from .pathDataModule import  PathData
-from . import RecipeReaderModule as RecipeReader
+from . import InfomationReaderModule as RecipeReader
 from . import RecipeItemModule as RecipeItem
 
 

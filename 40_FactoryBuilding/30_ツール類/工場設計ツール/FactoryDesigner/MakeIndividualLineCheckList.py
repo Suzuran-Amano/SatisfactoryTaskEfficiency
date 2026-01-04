@@ -1,7 +1,7 @@
 import os
 import json
 
-from DesignModules import RecipeReaderModule as RecipeReader
+from DesignModules import InfomationReaderModule as RecipeReader
 from DesignModules import RecipeItemModule as RecipeItem
 from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import IndividualLineDataModule as ILineData

@@ -1,9 +1,8 @@
 import os
 import json
 
-from DesignModules import RecipeReaderModule as RecipeReader
+from DesignModules import InfomationReaderModule as InfoReader
 from DesignModules import RecipeItemModule as RecipeItem
-from DesignModules import BuildingDataManagerModule
 from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import IndividualLineDataModule as ILineData
 from DesignModules import pathDataModule
@@ -30,8 +29,8 @@ class IndividualLineDesignMaker:
 
         # input file read
         templateLines = self.ReadTemplateFile()
-        recipeData = RecipeReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
-        buildingData = self.ReadBuildingInfoFile(recipeData)
+        recipeData = InfoReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
+        buildingData = InfoReader.GetBuildingData(recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
         
         # 置換用データを作成
         individualLineData = self.MakeIndividualLineData(iLineEssence,recipeData,buildingData)
@@ -83,13 +82,7 @@ class IndividualLineDesignMaker:
         individualLine = ILineEssence.IndividualLineEssence(jsonData)
         return individualLine
 
-
-    # 設備データを読み込み
-    def ReadBuildingInfoFile(self,recipe:RecipeItem.RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
-        buildingInfo = BuildingDataManagerModule.BuildingDataReader()
-        buildingInfo = buildingInfo.GetBuildingInfo(recipe.GetValue(RecipeItem.PRODUCT_NAME_KEY))
-        return buildingInfo
-    
+  
 
     # 保存
     def WriteFile(self,filePath,fileName,lines):
@@ -125,8 +118,7 @@ class IndividualLineDesignMaker:
         iLineData.Append(ILineData.PRODUCT_NAME_KEY,productName)
 
         # 合計コストを追加
-        buildingReader = BuildingDataManagerModule.BuildingDataReader()
-        buildingData = buildingReader.GetBuildingData(productName)
+        buildingData = InfoReader.GetBuildingData(productName)
         costList = []
         for cost in buildingData.GetCostList():
             costList.append({

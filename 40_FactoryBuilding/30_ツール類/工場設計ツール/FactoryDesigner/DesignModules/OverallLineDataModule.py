@@ -3,7 +3,7 @@ import json
 
 from . import pathDataModule
 from . import OverallLineEssenceModule as OLineEssence
-from . import RecipeReaderModule as RecipeReader
+from . import InfomationReaderModule as RecipeReader
 from . import RecipeItemModule as RecipeItem
 
 

@@ -1,9 +1,5 @@
-import os
 import json
 
-from DesignModules import RecipeReaderModule as RecipeReader
-from DesignModules import RecipeItemModule as RecipeItem
-from DesignModules import BuildingDataManagerModule
 from DesignModules import OverallLineEssenceModule as OLineEssence
 from DesignModules import OverallLineDataModule as OLineData
 from DesignModules import OverallLineDocumentModule as OLineDoc
@@ -65,6 +61,7 @@ class OverallLineDesignMaker:
 
     # 個別ライン本質ファイルの作成
     def MakeILineEssence(self,oLineData :OLineData) -> list:
+        
         result = []
 
         # 個別ラインの情報を取得
@@ -80,13 +77,3 @@ class OverallLineDesignMaker:
             result.append(ILineEssence.IndividualLineEssence(lineEssense))
 
         return result
-
-   
-
-    # 設備データを読み込み
-    def ReadBuildingDataFile(self,recipe:RecipeItem) -> BuildingDataManagerModule.BuildingDataItem:
-        buildingInfo = BuildingDataManagerModule.BuildingDataReader()
-        buildingInfo = BuildingDataManagerModule.BuildingDataReader.GetBuildingInfo(recipe.GetProductName())
-        return buildingInfo
-    
-    
