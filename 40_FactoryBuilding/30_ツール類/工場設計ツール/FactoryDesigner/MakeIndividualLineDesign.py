@@ -31,10 +31,10 @@ class IndividualLineDesignMaker:
         # input file read
         templateLines = self.ReadTemplateFile()
         recipeData = InfoReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
-        buildingData = InfoReader.GetBuildingData(recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
+        # buildingData = InfoReader.GetBuildingData(recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
         
         # 置換用データを作成
-        individualLineData = self.MakeIndividualLineData(iLineEssence,recipeData,buildingData)
+        individualLineData = ILineData.IndividualLineData(iLineEssence)
         individualLineData.Output(pathData.GetPath())
         
 
@@ -85,89 +85,6 @@ class IndividualLineDesignMaker:
             for line in lines:
                 print(line,file=o)
         return
-
-
-    # 個別ラインデータを作成
-    def MakeIndividualLineData(
-            self,
-            iLineEssence : ILineEssence.IndividualLineEssence,
-            recipeItem : RecipeItem.RecipeItem,
-            buildingData):
-        
-        iLineData = ILineData.IndividualLineData()
-
-        # ライン名を追加
-        iLineData.Append(
-            ILineData.LINE_NAME_KEY,
-            iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
-
-        # レシピ名を追加
-        iLineData.Append(ILineData.RECIPE_NAME_KEY,recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY))
-        recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
-        iLineData.Append(ILineData.RECIPE_NUM_KEY,recipeNum)
-
-        # 制作物を追加
-        productName = recipeItem.GetValue(RecipeItem.PRODUCT_NAME_KEY)
-        iLineData.Append(ILineData.PRODUCT_NAME_KEY,productName)
-
-        # 合計コストを追加
-        buildingData = InfoReader.GetBuildingData(productName)
-        costList = []
-        for cost in buildingData.GetValue(BuildingData.COST_KEY):
-            costList.append({
-                ILineData.ITEM_NAME_KEY : cost[BuildingData.ITEM_NAME_KEY],
-                ILineData.ITEM_NUM_KEY : cost[BuildingData.ITEM_NUM_KEY] * recipeNum
-
-            })
-        iLineData.Append(ILineData.COST_LIST_KEY,costList)
-
-        # 合計消費電力を追加
-        totalUsePower = buildingData.GetValue(BuildingData.USE_POWER_KEY) * recipeNum
-        iLineData.Append(ILineData.TOTAL_USE_POWER_KEY,totalUsePower)
-
-        # 搬入物を追加
-        index = 0
-        for data in recipeItem.GetValue(RecipeItem.INPUT_KEY):
-            inputNameKey = ILineData.INPUT_NAME_KEY + str(index+1)
-            inputName = data[RecipeItem.ITEM_NAME_KEY]
-            iLineData.Append(inputNameKey, inputName)
-            
-            inputNumKey = ILineData.INPUT_NUM_KEY + str(index+1)
-            inputNum = data[RecipeItem.ITEM_NUM_KEY]
-            iLineData.Append(inputNumKey ,inputNum)
-            
-            inputTotalKey = ILineData.TOTAL_INPUT_KEY + str(index+1)
-            inputTotal = recipeNum*inputNum
-            iLineData.Append(inputTotalKey,inputTotal)
-            
-            index = index + 1
-        
-        # 搬出物を追加
-        index = 0
-        for data in recipeItem.GetValue(RecipeItem.OUTPUT_KEY):
-            outputNameKey = ILineData.OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[RecipeItem.ITEM_NAME_KEY]
-            iLineData.Append(outputNameKey, outputName)
-            
-            outputNumKey = ILineData.OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[RecipeItem.ITEM_NUM_KEY]
-            iLineData.Append(outputNumKey ,outputNum)
-            
-            outputTotalKey = ILineData.TOTAL_OUTPUT_KEY + str(index+1)
-            outputTotal = recipeNum*outputNum
-            iLineData.Append(outputTotalKey,outputTotal)
-
-            index = index + 1
-
-        # 供給電力を追加
-        supplyPower = recipeItem.GetValue(RecipeItem.SUPPLY_POWER_KEY)
-        if supplyPower == None:
-            supplyPower = 0
-        supplyPower = supplyPower * recipeNum
-        iLineData.Append(ILineData.SUPPLY_POWER_KEY,supplyPower)
-
-                    
-        return iLineData
 
 
     # 置き換え

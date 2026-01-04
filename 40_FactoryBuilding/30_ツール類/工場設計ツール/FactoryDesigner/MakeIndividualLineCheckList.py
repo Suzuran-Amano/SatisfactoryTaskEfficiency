@@ -33,7 +33,7 @@ class MakeIndividualLineCheckList:
         recipeData = RecipeReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
 
         # 置換用データを作成
-        iLineData = self.MakeReplaceData(iLineEssence,recipeData)
+        iLineData = self.MakeReplaceData(iLineEssence)
 
 
         # replace
@@ -73,60 +73,12 @@ class MakeIndividualLineCheckList:
 
     # 置き換え用データを作成
     def MakeReplaceData(self,
-            iLineEssence :ILineEssence.IndividualLineEssence,
-            recipeData : RecipeItem.RecipeItem
+            iLineEssence :ILineEssence.IndividualLineEssence
             ):
         
 
-        iLineData = ILineData.IndividualLineData()
+        iLineData = ILineData.IndividualLineData(iLineEssence)
 
-        # ライン名を追加
-        iLineData.Append(
-            ILineData.LINE_NAME_KEY,
-            iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY))
-
-        # レシピ名を追加
-        iLineData.Append(ILineData.RECIPE_NAME_KEY,recipeData.GetValue(RecipeItem.RECIPE_NAME_KEY))
-        recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
-        iLineData.Append(ILineData.RECIPE_NUM_KEY,recipeNum)
-
-        # 制作物を追加
-        iLineData.Append(ILineData.PRODUCT_NAME_KEY,recipeData.GetValue(RecipeItem.PRODUCT_NAME_KEY))
-
-        # 搬入物を追加
-        index = 0
-        for data in recipeData.GetValue(RecipeItem.INPUT_KEY):
-            inputNameKey = ILineData.INPUT_NAME_KEY + str(index+1)
-            inputName = data[RecipeItem.ITEM_NAME_KEY]
-            iLineData.Append(inputNameKey, inputName)
-            
-            inputNumKey = ILineData.INPUT_NUM_KEY + str(index+1)
-            inputNum = data[RecipeItem.ITEM_NUM_KEY]
-            iLineData.Append(inputNumKey ,inputNum)
-            
-            inputTotalKey = ILineData.TOTAL_INPUT_KEY + str(index+1)
-            inputTotal = str(recipeNum*inputNum)
-            iLineData.Append(inputTotalKey,inputTotal)
-            
-            index = index + 1
-        
-        # 搬出物を追加
-        index = 0
-        for data in recipeData.GetValue(RecipeItem.OUTPUT_KEY):
-            outputNameKey = ILineData.OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[RecipeItem.ITEM_NAME_KEY]
-            iLineData.Append(outputNameKey, outputName)
-            
-            outputNumKey = ILineData.OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[RecipeItem.ITEM_NUM_KEY]
-            iLineData.Append(outputNumKey ,outputNum)
-            
-            outputTotalKey = ILineData.TOTAL_OUTPUT_KEY + str(index+1)
-            outputTotal = str(recipeNum*outputNum)
-            iLineData.Append(outputTotalKey,outputTotal)
-
-            index = index + 1
-                    
         return iLineData
 
 

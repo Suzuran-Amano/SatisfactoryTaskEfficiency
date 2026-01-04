@@ -28,7 +28,7 @@ class IndividualLineEssence:
 
 
     # 変数
-    value = []
+    value = {}
 
     def __init__(self,jsonData):
         self.value = jsonData
