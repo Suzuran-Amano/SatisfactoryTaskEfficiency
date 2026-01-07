@@ -24,13 +24,9 @@ class IndividualLineDocument():
         recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineData.RECIPE_NAME_KEY))
 
         lines = self._ReadTemplateFile()
-        print(lines)
         lines = self._MakeFlowChart(lines,iLineData)
-        print(lines)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
-        print(lines)
         lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
-        print(lines)
         for index in range(len(lines)):
             lines[index] = self._Replace(lines[index],iLineData)
 
@@ -78,10 +74,8 @@ class IndividualLineDocument():
             iLineData : ILineData.IndividualLineData
             ):
         
-        print(text)
         for key in iLineData.GetKeys():
             text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
-        print(text)
 
         return text
     
