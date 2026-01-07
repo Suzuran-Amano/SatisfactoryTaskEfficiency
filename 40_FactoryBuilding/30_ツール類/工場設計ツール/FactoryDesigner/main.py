@@ -44,9 +44,9 @@ for iLineEssence in iLineEssences:
             costList[cost[itemNameKey]] = cost[itemNumKey]
 
 # 個別製造ラインテスト項目書作成
-for iLineEssence in iLineEssences:
+for iLineData in iLineDataList:
     checkListMaker = MakeIndividualLineCheckList.MakeIndividualLineCheckList()
-    checkListMaker.Main(pathData,iLineEssence)
+    checkListMaker.Main(pathData,iLineData)
 
 
 # 工場データ出力
