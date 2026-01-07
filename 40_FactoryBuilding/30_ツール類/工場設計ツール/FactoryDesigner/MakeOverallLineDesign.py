@@ -61,7 +61,6 @@ class OverallLineDesignMaker:
         iLines = oLineData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
 
         # 個別ラインの情報から、個別ライン本質を作成し、リストへ加える
-        iLineDefine = ILineEssence.IndividualLineEssence([])
         for iLine in iLines:
             lineEssense = {}
             lineEssense[ILineEssence.LINE_NAME_KEY] = iLine[OLineData.INDIVIDUAL_LINE_NAME]

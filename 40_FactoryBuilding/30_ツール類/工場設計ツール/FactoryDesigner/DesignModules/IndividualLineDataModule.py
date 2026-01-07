@@ -2,10 +2,10 @@ import os
 import json
 
 from . import pathDataModule
-from DesignModules import InfomationReaderModule as InfoReader
-from DesignModules import RecipeItemModule as RecipeItem
-from DesignModules import BuildingDataManagerModule as BuildingData
-from DesignModules import IndividualLineEssenceModule as ILineEssence
+from . import InfomationReaderModule as InfoReader
+from . import RecipeItemModule as RecipeItem
+from . import BuildingDataManagerModule as BuildingData
+from . import IndividualLineEssenceModule as ILineEssence
 
 
 # 定数
