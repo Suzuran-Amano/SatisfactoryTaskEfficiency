@@ -3,7 +3,6 @@ import os
 from . import RecipeItemModule
 from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule as RecipeItem
 from . import IndividualLineDataModule as ILineData
 
 # 個別ライン設計書を管理するクラス
@@ -11,8 +10,7 @@ class IndividualLineDocument():
     
     # constans
     TEMPLATE_FILE_NAME = '個別製造ライン設計書_var_lineName.md'
-    inputDataFileName = 'IndividualLine.json'
-    outputFileName = '個別製造ライン設計書_var_lineName.md'
+    OUTPUT_FILE_NAME = '個別製造ライン設計書_var_lineName.md'
 
 
     def __init__(
@@ -58,7 +56,7 @@ class IndividualLineDocument():
             lines):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
-        fileName = self._Replace(self.outputFileName,iLineData)
+        fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
 
         os.makedirs(outputPath, exist_ok=True)
         with open(outputPath + "\\" + fileName , "w", encoding="utf-8") as o:
@@ -168,6 +166,7 @@ class IndividualLineDocument():
             insertNum += 1
         
         return templateLines
+
 
     def _MakeFlowChartMarmaid(
             self,
