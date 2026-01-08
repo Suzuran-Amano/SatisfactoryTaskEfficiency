@@ -64,7 +64,7 @@ class IndividualLineData:
         self._value[key] = val
         return
     
-    
+
     # 値を取得
     def GetValue(self,key:str):
         if key in self._value:
@@ -183,3 +183,10 @@ class IndividualLineData:
 
                     
         return iLineData
+    
+    
+# 個別ラインデータファイルを読み込み
+def ReadOverallLineData(iLineDataName) -> IndividualLineData:
+    jsonData = json.load(open(iLineDataName,'r', encoding="utf-8"))
+    oLineData = IndividualLineData(jsonData)
+    return oLineData

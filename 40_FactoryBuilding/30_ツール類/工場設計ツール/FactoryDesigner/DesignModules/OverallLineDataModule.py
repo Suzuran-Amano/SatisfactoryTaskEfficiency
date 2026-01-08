@@ -86,7 +86,7 @@ class OverallLineData:
 
     # ファイルを出力
     def Output(self,path:str):
-        
+
         # パス計算
         outputPath = path + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
         
@@ -171,7 +171,7 @@ class OverallLineData:
 
 
 # 全体ラインデータファイルを読み込み
-def ReadOverallLineData(overallLineDataName) -> OverallLineData:
-    jsonData = json.load(open(overallLineDataName,'r', encoding="utf-8"))
-    overallLine = OverallLineData(jsonData)
-    return overallLine
+def ReadOverallLineData(oLineDataName) -> OverallLineData:
+    jsonData = json.load(open(oLineDataName,'r', encoding="utf-8"))
+    oLine = OverallLineData(jsonData)
+    return oLine
