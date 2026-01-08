@@ -1,12 +1,8 @@
-import os
-import json
-
-from DesignModules import InfomationReaderModule as InfoReader
-from DesignModules import RecipeItemModule as RecipeItem
 from DesignModules import IndividualLineEssenceModule as ILineEssence
 from DesignModules import IndividualLineDataModule as ILineData
 from DesignModules import IndividualLineDocumentModule as ILineDoc
 from DesignModules import pathDataModule
+
 
 # 個別製造ライン設計書作成用クラス
 class IndividualLineDesignMaker:
@@ -26,7 +22,8 @@ class IndividualLineDesignMaker:
         individualLineData.Output(pathData.GetPath())
         
         # 個別ライン設計書を出力
-        ILineDoc.IndividualLineDocument(pathData,individualLineData)
+        ILineDoc.IndividualLineDocument().MakeDocument(pathData,individualLineData)
+        
 
         return individualLineData
 

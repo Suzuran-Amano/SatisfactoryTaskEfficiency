@@ -20,7 +20,7 @@ class MakeIndividualLineCheckList:
             iLineData : ILineData.IndividualLineData
             ):
 
-        ILineCheckList.IndividualLineCheckList(pathData,iLineData)
+        ILineCheckList.IndividualLineCheckList().MakeDocument(pathData,iLineData)
 
         return
 
