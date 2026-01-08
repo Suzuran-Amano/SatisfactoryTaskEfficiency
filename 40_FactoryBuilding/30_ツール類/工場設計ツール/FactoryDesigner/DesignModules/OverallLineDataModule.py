@@ -83,20 +83,23 @@ class OverallLineData:
     def GetReplaceKey(self,key):
         return self.REPLACE_KEY_HEADER + key
     
-    
+
     # ファイルを出力
     def Output(self,path:str):
-
+        
+        # パス計算
         outputPath = path + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
         
+        # ファイル名作成
+        fileName = self.FILE_NAME
+
         # 書き込み
         os.makedirs(outputPath, exist_ok=True)
-        jsonfile = open(outputPath + "\\" + self.FILE_NAME , 'w',encoding='utf-8')
+        jsonfile = open(outputPath + "\\" + fileName , 'w',encoding='utf-8')
         json.dump(self._value, jsonfile, indent=4,ensure_ascii=False)
 
         return
     
-
         
     # 全体ラインデータファイルの作成
     def _MakeOLineData(self,oLineEssence :OLineEssence.OverallLineEssence):
