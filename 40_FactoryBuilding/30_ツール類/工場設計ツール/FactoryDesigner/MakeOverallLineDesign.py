@@ -39,7 +39,7 @@ class OverallLineDesignMaker:
 
         # 全体ライン書類を出力
         overallLineDocument = OLineDoc.OverallLineDocument()
-        overallLineDocument.OutputDocument(pathData,overallLineData)
+        overallLineDocument.MakeDocument(pathData,overallLineData)
 
         # 個別ライン本質リストの作成
         individualLineEssences = self.MakeILineEssence(overallLineData)
