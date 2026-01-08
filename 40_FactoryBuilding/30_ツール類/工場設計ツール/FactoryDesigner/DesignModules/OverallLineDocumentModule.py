@@ -81,6 +81,19 @@ class OverallLineDocument():
                 print(line,file=o)
         return
     
+
+    # すべての行の置き換え
+    def _AllLineReplace(
+            self,
+            lines : list,
+            oLineData : OLineDataModule.OverallLineData
+            ) -> list:
+        
+        for index in range(len(lines)):
+            lines[index] = self._Replace(lines[index],oLineData)
+
+        return lines
+
     
     # 置き換え
     def _Replace(
@@ -93,6 +106,7 @@ class OverallLineDocument():
             text = text.replace(oLineData.GetReplaceKey(key),str(oLineData.GetValue(key)))
 
         return text
+
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(

@@ -29,8 +29,7 @@ class IndividualLineDocument():
         lines = self._MakeFlowChart(lines,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
         lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
-        for index in range(len(lines)):
-            lines[index] = self._Replace(lines[index],iLineData)
+        lines = self._AllLineReplace(lines,iLineData)
 
         # 書類の出力
         self._WriteFile(pathData,iLineData, lines)
@@ -69,6 +68,19 @@ class IndividualLineDocument():
 
 
     # 置き換え
+    def _AllLineReplace(
+            self,
+            lines : list,
+            iLineData : ILineDataModule.IndividualLineData
+            ) -> list:
+        
+        for index in range(len(lines)):
+            lines[index] = self._Replace(lines[index],iLineData)
+
+        return lines
+
+
+    # 置き換え
     def _Replace(
             self,
             text : str,
@@ -80,7 +92,7 @@ class IndividualLineDocument():
 
         return text
     
-    
+
     # 供給物品の数分を複製する
     def _DuplicateInputLines(
             self,
@@ -113,6 +125,7 @@ class IndividualLineDocument():
         keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
+
 
     # 物品の数分を複製する
     def _DuplicateLines(

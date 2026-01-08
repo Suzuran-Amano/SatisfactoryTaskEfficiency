@@ -29,8 +29,7 @@ class IndividualLineCheckList:
         lines = self._DuplicateProductItem(lines,iLineData,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
         lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
-        for index in range(len(lines)):
-            lines[index] = self._Replace(lines[index],iLineData)
+        lines = self._AllLineReplace(lines,iLineData)
 
         # 書類の出力
         self._WriteFile(pathData,iLineData, lines)
@@ -68,6 +67,19 @@ class IndividualLineCheckList:
         return
 
 
+    # すべての行の置き換え
+    def _AllLineReplace(
+            self,
+            lines : list,
+            iLineData : ILineDataModule.IndividualLineData
+            ) -> list:
+        
+        for index in range(len(lines)):
+            lines[index] = self._Replace(lines[index],iLineData)
+
+        return lines
+    
+
     # 置き換え
     def _Replace(
             self,
@@ -78,9 +90,7 @@ class IndividualLineCheckList:
         for key in iLineData.GetKeys():
             text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
 
-        return text
-
-  
+        return text  
 
 
     # 複数の Product を記載するため、行を複製
@@ -94,6 +104,7 @@ class IndividualLineCheckList:
         length = recipeItem.GetValue(ILineDataModule.RECIPE_NUM_KEY)
         keys = []
         keys.append(iLineData.GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY))
+
         return self._DuplicateLines(lines,length,keys)
     
     
@@ -129,6 +140,7 @@ class IndividualLineCheckList:
         keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
+
 
     # 物品の数分を複製する
     def _DuplicateLines(
