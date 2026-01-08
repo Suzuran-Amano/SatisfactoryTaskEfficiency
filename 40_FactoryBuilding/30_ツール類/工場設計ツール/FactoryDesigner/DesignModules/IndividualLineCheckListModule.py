@@ -4,10 +4,11 @@ from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
 from . import IndividualLineDataModule as ILineDataModule
+from . import DocumentMakerModule 
 
 
 # 個別造製ライン設計書を作成、出力するクラス
-class IndividualLineCheckList:
+class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
 
     # 定数
     TEMPLATE_FILE_NAME = '個別製造ラインテスト項目書_var_lineName.md'
