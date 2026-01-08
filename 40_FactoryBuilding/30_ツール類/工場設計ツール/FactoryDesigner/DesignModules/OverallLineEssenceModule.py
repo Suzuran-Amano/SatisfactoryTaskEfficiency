@@ -3,6 +3,11 @@ import json
 ### 定数 ###
 FACTORY_NAME_KEY = "factoryName"
 
+PRODUCTION_LIST = "productionList"
+BUILDING_NAME = "buildingName"
+RESOURCE_RATIO = "resourceRatio"
+OVERCLOCK_RATIO = "overclockRatio"
+
 RECIPE_LIST_KEY = "recipeList"
 RECIPE_NAME_KEY = "recipeName"
 RECIPE_NUM_KEY = "recipeNum"

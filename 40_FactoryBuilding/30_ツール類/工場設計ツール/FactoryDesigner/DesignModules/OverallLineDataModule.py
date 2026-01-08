@@ -14,6 +14,13 @@ REPLACE_KEY_HEADER = "var_"
 
 FACTORY_NAME_KEY = "factoryName"
 
+# 一時産品関係
+PRODUCTION_LIST = "productionList"
+BUILDING_NAME = "buildingName"
+RESOURCE_RATIO = "resourceRatio"
+OVERCLOCK_RATIO = "overclockRatio"
+
+# レシピ関係
 RECIPE_LIST_KEY = "recipeList"
 RECIPE_NAME_KEY = "recipeName"
 INPUT_LIST_KEY = "inputList"
@@ -21,13 +28,16 @@ OUTPUT_LIST_KEY = "outputList"
 ITEM_NAME_KEY = "itemName"
 ITEM_NUM_KEY = "itemNum"
 
+# 個別ライン関係
 INDIVIDUAL_LINE_LIST = "individualLineList"
 INDIVIDUAL_LINE_NAME = "individualLineName"
 RECIPE_NUM_KEY = "recipeNum"
 
+# 材料関係
 INPUT_LINE_LIST = "inputlLineList"
 OUTPUT_LINE_LIST = "outputLineList"
 
+# フローチャート関係
 RELATIONSHIPS_KEY = "relationships"
 SUPPLYER_LINE_KEY = "supplierLine"
 DESTINATION_LINE_KEY = "destinationLine"
@@ -75,7 +85,9 @@ class OverallLineData:
         # 工場名
         result[FACTORY_NAME_KEY] = oLineEssence.GetValue(OLineEssence.FACTORY_NAME_KEY)
 
-        
+        # 一時産品リスト
+        result[PRODUCTION_LIST] = oLineEssence.GetValue(OLineEssence.PRODUCTION_LIST)
+
         # 使用レシピ
         recipeList = []
         for useRecipe in oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY):
