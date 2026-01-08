@@ -186,7 +186,7 @@ class IndividualLineData:
     
     
 # 個別ラインデータファイルを読み込み
-def ReadOverallLineData(iLineDataName) -> IndividualLineData:
+def ReadIndividualLineData(iLineDataName) -> IndividualLineData:
     jsonData = json.load(open(iLineDataName,'r', encoding="utf-8"))
     oLineData = IndividualLineData(jsonData)
     return oLineData
