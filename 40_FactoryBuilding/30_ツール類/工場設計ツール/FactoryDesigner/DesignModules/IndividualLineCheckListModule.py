@@ -73,7 +73,7 @@ class IndividualLineCheckList:
             self,
             text : str,
             iLineData : ILineDataModule.IndividualLineData
-            ):
+            ) -> str:
         
         for key in iLineData.GetKeys():
             text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))

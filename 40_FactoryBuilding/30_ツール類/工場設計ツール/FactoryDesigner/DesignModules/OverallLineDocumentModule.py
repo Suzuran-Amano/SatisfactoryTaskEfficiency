@@ -26,9 +26,6 @@ class OverallLineDocument():
             pathData : pathDataModule.PathData,
             oLineData : OLineDataModule.OverallLineData):
 
-        # 使用するデータの読み込み
-        recipeData = InfoReader.GetRecipe(oLineData.GetValue(OLineDataModule.RECIPE_NAME_KEY))
-
         # 全体ラインテンプレートを読み込み
         templateLines = self._ReadTemplateFile()
 
@@ -49,11 +46,8 @@ class OverallLineDocument():
 
         # print(result)
 
-        # text output
-        filePath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
-        fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,oLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
-        self._WriteFile(filePath,fileName,result)
-
+        # 書類の出力
+        self._WriteFile(pathData,oLineData, result)
 
         return 
        
@@ -86,7 +80,19 @@ class OverallLineDocument():
             for line in lines:
                 print(line,file=o)
         return
+    
+    
+    # 置き換え
+    def _Replace(
+            self,
+            text : str,
+            oLineData : OLineDataModule.OverallLineData
+            ) -> str:
+        
+        for key in oLineData.GetKeys():
+            text = text.replace(oLineData.GetReplaceKey(key),str(oLineData.GetValue(key)))
 
+        return text
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(
