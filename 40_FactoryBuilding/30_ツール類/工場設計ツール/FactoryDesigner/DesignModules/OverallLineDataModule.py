@@ -2,16 +2,12 @@ import os
 import json
 
 from . import pathDataModule
+from . import InfomationReaderModule as InfoReader
+from . import RecipeItemModule
 from . import OverallLineEssenceModule as OLineEssence
-from . import InfomationReaderModule as RecipeReader
-from . import RecipeItemModule as RecipeItem
 
 
 ### 定数 ###
-FILE_NAME = "OverallLineData.json"
-
-REPLACE_KEY_HEADER = "var_"
-
 FACTORY_NAME_KEY = "factoryName"
 
 # 一時産品関係
@@ -33,7 +29,7 @@ INDIVIDUAL_LINE_LIST = "individualLineList"
 INDIVIDUAL_LINE_NAME = "individualLineName"
 RECIPE_NUM_KEY = "recipeNum"
 
-# 材料関係
+# 物品関係
 INPUT_LINE_LIST = "inputlLineList"
 OUTPUT_LINE_LIST = "outputLineList"
 
@@ -45,22 +41,28 @@ SUPPLY_ITEM_KEY = "supplyItem"
 SUPPLY_NUM_KEY = "supplyNum"
 
 
+# 全体製造ラインデータを管理するクラス
 class OverallLineData:
+
+    ### 定数 ###
+    REPLACE_KEY_HEADER = "var_"
+
+    FILE_NAME = "OverallLineData.json"
 
 
     ### 変数 ###
-    value = {}
+    _value = {}
 
 
     ### 関数 ###
 
     def __init__(self,oLineEssence :OLineEssence.OverallLineEssence):
-        self.value = self._MakeOLineData(oLineEssence)
+        self._value = self._MakeOLineData(oLineEssence)
         return
     
     # 値を返す
     def GetValue(self,key:str):
-        return self.value[key]
+        return self._value[key]
     
     # ファイルを出力
     def Output(self,path:str):
@@ -69,8 +71,8 @@ class OverallLineData:
         
         # 書き込み
         os.makedirs(outputPath, exist_ok=True)
-        jsonfile = open(outputPath + "\\" + FILE_NAME , 'w',encoding='utf-8')
-        json.dump(self.value, jsonfile, indent=4,ensure_ascii=False)
+        jsonfile = open(outputPath + "\\" + self.FILE_NAME , 'w',encoding='utf-8')
+        json.dump(self._value, jsonfile, indent=4,ensure_ascii=False)
 
         return
     
@@ -92,13 +94,13 @@ class OverallLineData:
         recipeList = []
         for useRecipe in oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY):
 
-            recipeItem = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeItem = InfoReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
             
             # レシピ情報を追加
             recipeDict = {}
-            recipeDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY)   # レシピ名
-            recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY)) # 要求物品
-            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY)) # 加工物品
+            recipeDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)   # レシピ名
+            recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.INPUT_KEY)) # 要求物品
+            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY)) # 加工物品
 
             recipeList.append(recipeDict)
 
@@ -109,16 +111,16 @@ class OverallLineData:
         iLineList = []
         for useRecipe in oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY):
 
-            recipeItem = RecipeReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeItem = InfoReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
 
             # レシピ情報を追加
             iLineDict = {}            
-            iLineDict[INDIVIDUAL_LINE_NAME] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
-            iLineDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItem.RECIPE_NAME_KEY)    # レシピ名
+            iLineDict[INDIVIDUAL_LINE_NAME] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
+            iLineDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)    # レシピ名
             recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  # レシピ数
             iLineDict[RECIPE_NUM_KEY] = recipeNum
-            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.INPUT_KEY),recipeNum)  # 要求物品
-            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItem.OUTPUT_KEY),recipeNum)    # 加工物品
+            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.INPUT_KEY),recipeNum)  # 要求物品
+            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY),recipeNum)    # 加工物品
 
             iLineList.append(iLineDict)
 
@@ -138,8 +140,8 @@ class OverallLineData:
         result = []
         for recipeItemData in itemList:
             itemData = {}
-            itemData[ITEM_NAME_KEY] = recipeItemData[RecipeItem.ITEM_NAME_KEY]
-            itemData[ITEM_NUM_KEY] = recipeItemData[RecipeItem.ITEM_NUM_KEY] * recipeNum
+            itemData[ITEM_NAME_KEY] = recipeItemData[RecipeItemModule.ITEM_NAME_KEY]
+            itemData[ITEM_NUM_KEY] = recipeItemData[RecipeItemModule.ITEM_NUM_KEY] * recipeNum
             result.append(itemData)
 
         return result
