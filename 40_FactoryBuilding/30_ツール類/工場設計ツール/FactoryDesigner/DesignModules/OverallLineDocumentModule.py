@@ -6,7 +6,7 @@ from . import RecipeItemModule
 from . import OverallLineDataModule as OLineDataModule
 
 
-# 全体ライン設計書を管理するクラス
+# 全体造製ライン設計書を作成、出力するクラス
 class OverallLineDocument():
 
     # 定数

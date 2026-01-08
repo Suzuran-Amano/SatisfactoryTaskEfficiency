@@ -6,10 +6,10 @@ from . import RecipeItemModule
 from . import IndividualLineDataModule as ILineDataModule
 
 
-# 個別製造ラインテスト項目書作成
+# 個別造製ライン設計書を作成、出力するクラス
 class IndividualLineCheckList:
 
-    # constans
+    # 定数
     TEMPLATE_FILE_NAME = '個別製造ラインテスト項目書_var_lineName.md'
     OUTPUT_FILE_NAME = '個別製造ラインテスト項目書_var_lineName.md'
 

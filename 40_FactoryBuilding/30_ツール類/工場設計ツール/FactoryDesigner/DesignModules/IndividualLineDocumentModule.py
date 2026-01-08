@@ -5,10 +5,11 @@ from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
 from . import IndividualLineDataModule as ILineDataModule
 
-# 個別ライン設計書を管理するクラス
+
+# 個別造製ライン設計書を作成、出力するクラス
 class IndividualLineDocument():
     
-    # constans
+    # 定数
     TEMPLATE_FILE_NAME = '個別製造ライン設計書_var_lineName.md'
     OUTPUT_FILE_NAME = '個別製造ライン設計書_var_lineName.md'
 
