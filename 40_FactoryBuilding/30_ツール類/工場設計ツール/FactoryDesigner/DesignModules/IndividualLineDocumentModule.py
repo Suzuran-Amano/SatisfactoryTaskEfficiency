@@ -1,9 +1,9 @@
 import os
 
-from . import RecipeItemModule
 from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
-from . import IndividualLineDataModule as ILineData
+from . import RecipeItemModule
+from . import IndividualLineDataModule as ILineDataModule
 
 # 個別ライン設計書を管理するクラス
 class IndividualLineDocument():
@@ -17,10 +17,10 @@ class IndividualLineDocument():
     def MakeDocument(
             self,
             pathData : pathDataModule.PathData,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
         
-        recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineData.RECIPE_NAME_KEY))
+        recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
         lines = self._ReadTemplateFile()
         lines = self._MakeFlowChart(lines,iLineData)
@@ -53,7 +53,7 @@ class IndividualLineDocument():
     def _WriteFile(
             self,
             pathData : pathDataModule.PathData,
-            iLineData : ILineData.IndividualLineData,
+            iLineData : ILineDataModule.IndividualLineData,
             lines):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
@@ -70,7 +70,7 @@ class IndividualLineDocument():
     def _Replace(
             self,
             text : str,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
         
         for key in iLineData.GetKeys():
@@ -83,14 +83,14 @@ class IndividualLineDocument():
             self,
             lines,
             recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineData.IndividualLineData
+            iLineData :ILineDataModule.IndividualLineData
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineData.INPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.INPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.TOTAL_INPUT_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
     
@@ -100,14 +100,14 @@ class IndividualLineDocument():
             self,
             lines,
             recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineData.IndividualLineData
+            iLineData :ILineDataModule.IndividualLineData
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineData.OUTPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.OUTPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.TOTAL_OUTPUT_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
 
@@ -150,7 +150,7 @@ class IndividualLineDocument():
     def _MakeFlowChart(
             self,
             templateLines,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
 
         # MakeFlowChart
@@ -171,16 +171,16 @@ class IndividualLineDocument():
 
     def _MakeFlowChartMarmaid(
             self,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
 
         result = []
-        inputName = iLineData.GetReplaceKey(ILineData.INPUT_NAME_KEY)
-        inputNum = iLineData.GetReplaceKey(ILineData.INPUT_NUM_KEY)
-        outputName = iLineData.GetReplaceKey(ILineData.OUTPUT_NAME_KEY)
-        outputNum = iLineData.GetReplaceKey(ILineData.OUTPUT_NUM_KEY)
-        productName = iLineData.GetReplaceKey(ILineData.PRODUCT_NAME_KEY)
-        productNum = iLineData.GetValue(ILineData.RECIPE_NUM_KEY)
+        inputName = iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY)
+        inputNum = iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY)
+        outputName = iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY)
+        outputNum = iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY)
+        productName = iLineData.GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY)
+        productNum = iLineData.GetValue(ILineDataModule.RECIPE_NUM_KEY)
             
         # header
         result.append("```mermaid")

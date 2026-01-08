@@ -1,9 +1,9 @@
 import os
 
+from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
-from . import IndividualLineDataModule as ILineData
-from . import pathDataModule
+from . import IndividualLineDataModule as ILineDataModule
 
 
 # 個別製造ラインテスト項目書作成
@@ -14,15 +14,15 @@ class IndividualLineCheckList:
     OUTPUT_FILE_NAME = '個別製造ラインテスト項目書_var_lineName.md'
 
 
-    # 書類の作成と出力を行う関数。
+    # 書類の作成と出力を行う関数
     def MakeDocument(
             self,
             pathData : pathDataModule.PathData,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
         
         # input file read
-        recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineData.RECIPE_NAME_KEY))
+        recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
         # replace
         lines = self._ReadTemplateFile()
@@ -56,7 +56,7 @@ class IndividualLineCheckList:
     def _WriteFile(
             self,
             pathData : pathDataModule.PathData,
-            iLineData : ILineData.IndividualLineData,
+            iLineData : ILineDataModule.IndividualLineData,
             lines):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
@@ -73,7 +73,7 @@ class IndividualLineCheckList:
     def _Replace(
             self,
             text : str,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
         
         for key in iLineData.GetKeys():
@@ -89,12 +89,12 @@ class IndividualLineCheckList:
             self,
             lines,
             recipeItem : RecipeItemModule.RecipeItem,
-            iLineData : ILineData.IndividualLineData
+            iLineData : ILineDataModule.IndividualLineData
             ):
 
-        length = recipeItem.GetValue(ILineData.RECIPE_NUM_KEY)
+        length = recipeItem.GetValue(ILineDataModule.RECIPE_NUM_KEY)
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineData.PRODUCT_NAME_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY))
         return self._DuplicateLines(lines,length,keys)
     
     
@@ -103,14 +103,14 @@ class IndividualLineCheckList:
             self,
             lines,
             recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineData.IndividualLineData
+            iLineData :ILineDataModule.IndividualLineData
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineData.INPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.INPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.TOTAL_INPUT_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
     
@@ -120,14 +120,14 @@ class IndividualLineCheckList:
             self,
             lines,
             recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineData.IndividualLineData
+            iLineData :ILineDataModule.IndividualLineData
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineData.OUTPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.OUTPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineData.TOTAL_OUTPUT_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
+        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
 
