@@ -24,16 +24,18 @@ class OverallLineDocument():
     def MakeDocument(
             self,
             pathData : pathDataModule.PathData,
-            overallLineData : OLineDataModule.OverallLineData):
+            oLineData : OLineDataModule.OverallLineData):
 
+        # 使用するデータの読み込み
+        recipeData = InfoReader.GetRecipe(oLineData.GetValue(OLineDataModule.RECIPE_NAME_KEY))
 
         # 全体ラインテンプレートを読み込み
         templateLines = self._ReadTemplateFile()
 
         # 置換用データを作成
-        recipeText = self._MakeRecipesText(overallLineData)
-        linesText = self._MakeIndividualLinesText(overallLineData)
-        flowchartText = self._MakeFlowChart(overallLineData)
+        recipeText = self._MakeRecipesText(oLineData)
+        linesText = self._MakeIndividualLinesText(oLineData)
+        flowchartText = self._MakeFlowChart(oLineData)
 
         # 置き換え
         result = []
@@ -42,19 +44,20 @@ class OverallLineDocument():
             text = text.replace(self.RECIPIES_KEY_WORD,recipeText)
             text = text.replace(self.LINES_KEY_WORD,linesText)
             text = text.replace(self.FLOWCHART_KEY_WORD,flowchartText)
-            text = text.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
+            text = text.replace(self.FACTORY_NAME_KEY_WORD,oLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
             result.append(text)
 
         # print(result)
 
         # text output
         filePath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
-        fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,overallLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
+        fileName = self.OUTPUT_FILE_NAME.replace(self.FACTORY_NAME_KEY_WORD,oLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
         self._WriteFile(filePath,fileName,result)
 
 
         return 
-        
+       
+    
     # テンプレートファイルを読み込み
     def _ReadTemplateFile(self) -> list:
         lines = []
@@ -65,8 +68,8 @@ class OverallLineDocument():
             for line in f:
                 lines.append(line.rstrip())
         return lines
-    
-    
+
+
     # 保存
     def _WriteFile(self,filePath,fileName,lines):
         os.chdir(os.path.dirname(__file__) + "/../")

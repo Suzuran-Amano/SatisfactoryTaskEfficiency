@@ -21,28 +21,26 @@ class IndividualLineCheckList:
             iLineData : ILineDataModule.IndividualLineData
             ):
         
-        # input file read
+        # 使用するデータの読み込み
         recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
-        # replace
+        # テンプレートの読み込みと置換
         lines = self._ReadTemplateFile()
         lines = self._DuplicateProductItem(lines,iLineData,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
         lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
-
         for index in range(len(lines)):
             lines[index] = self._Replace(lines[index],iLineData)
 
-        # text output
+        # 書類の出力
         self._WriteFile(pathData,iLineData, lines)
 
         return
-    
+
 
     # テンプレートファイルを読み込み
-    def _ReadTemplateFile(self):
+    def _ReadTemplateFile(self) -> list:
         lines = []
-        
         abs_path = os.path.abspath(__file__)
         dir_path = os.path.dirname(abs_path)
         filePath = dir_path + "\\" + self.TEMPLATE_FILE_NAME

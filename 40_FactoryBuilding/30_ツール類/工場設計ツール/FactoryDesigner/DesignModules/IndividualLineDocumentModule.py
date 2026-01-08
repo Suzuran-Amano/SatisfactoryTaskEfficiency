@@ -21,8 +21,10 @@ class IndividualLineDocument():
             iLineData : ILineDataModule.IndividualLineData
             ):
         
+        # 使用するデータの読み込み
         recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
+        # テンプレートの読み込みと置換
         lines = self._ReadTemplateFile()
         lines = self._MakeFlowChart(lines,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
@@ -30,17 +32,15 @@ class IndividualLineDocument():
         for index in range(len(lines)):
             lines[index] = self._Replace(lines[index],iLineData)
 
-
-         # text output
+        # 書類の出力
         self._WriteFile(pathData,iLineData, lines)
 
         return
 
 
     # テンプレートファイルを読み込み
-    def _ReadTemplateFile(self):
+    def _ReadTemplateFile(self) -> list:
         lines = []
-        
         abs_path = os.path.abspath(__file__)
         dir_path = os.path.dirname(abs_path)
         filePath = dir_path + "\\" + self.TEMPLATE_FILE_NAME
@@ -48,7 +48,7 @@ class IndividualLineDocument():
             for line in f:
                 lines.append(line.rstrip())
         return lines
-  
+
 
     # 保存
     def _WriteFile(
