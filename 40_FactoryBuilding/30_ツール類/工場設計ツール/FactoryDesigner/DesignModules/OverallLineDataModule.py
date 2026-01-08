@@ -45,8 +45,6 @@ SUPPLY_NUM_KEY = "supplyNum"
 class OverallLineData:
 
     ### 定数 ###
-    REPLACE_KEY_HEADER = "var_"
-
     FILE_NAME = "OverallLineData.json"
 
 
@@ -79,11 +77,7 @@ class OverallLineData:
     def GetKeys(self):
         return self._value.keys()
     
-
-    def GetReplaceKey(self,key):
-        return self.REPLACE_KEY_HEADER + key
     
-
     # ファイルを出力
     def Output(self,path:str):
 

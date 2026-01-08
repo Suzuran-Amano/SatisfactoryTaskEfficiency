@@ -50,7 +50,7 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
         fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
 
         super()._WriteFile(outputPath,fileName,lines)
-        
+
         return
 
 
@@ -75,7 +75,7 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             ) -> str:
         
         for key in iLineData.GetKeys():
-            text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
+            text = text.replace(self._GetReplaceKey(key),str(iLineData.GetValue(key)))
 
         return text
     
@@ -90,9 +90,9 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
     
@@ -107,9 +107,9 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
 
@@ -178,11 +178,11 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             ):
 
         result = []
-        inputName = iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY)
-        inputNum = iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY)
-        outputName = iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY)
-        outputNum = iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY)
-        productName = iLineData.GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY)
+        inputName = self._GetReplaceKey(ILineDataModule.INPUT_NAME_KEY)
+        inputNum = self._GetReplaceKey(ILineDataModule.INPUT_NUM_KEY)
+        outputName = self._GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY)
+        outputNum = self._GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY)
+        productName = self._GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY)
         productNum = iLineData.GetValue(ILineDataModule.RECIPE_NUM_KEY)
             
         # header

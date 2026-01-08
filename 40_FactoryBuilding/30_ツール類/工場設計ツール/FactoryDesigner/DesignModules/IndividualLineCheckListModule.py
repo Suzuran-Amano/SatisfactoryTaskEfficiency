@@ -75,7 +75,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
             ) -> str:
         
         for key in iLineData.GetKeys():
-            text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
+            text = text.replace(self._GetReplaceKey(key),str(iLineData.GetValue(key)))
 
         return text
 
@@ -90,7 +90,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
 
         length = recipeItem.GetValue(ILineDataModule.RECIPE_NUM_KEY)
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.PRODUCT_NAME_KEY))
 
         return self._DuplicateLines(lines,length,keys)
     
@@ -105,9 +105,9 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.TOTAL_INPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
     
@@ -122,9 +122,9 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))
         keys = []
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
-        keys.append(iLineData.GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
+        keys.append(self._GetReplaceKey(ILineDataModule.TOTAL_OUTPUT_KEY))
 
         return self._DuplicateLines(lines,length,keys)
 

@@ -40,8 +40,6 @@ SUPPLY_POWER_KEY = "supplyPower"
 class IndividualLineData:
 
     ### 定数 ###
-    REPLACE_KEY_HEADER = "var_"
-
     FILE_NAME = "IndividualLineData_var_lineName.json"
     LINE_NAME_REPLACE_TEXT = "var_lineName"
 
@@ -75,10 +73,6 @@ class IndividualLineData:
     def GetKeys(self):
         return self._value.keys()
 
-
-    def GetReplaceKey(self,key):
-        return self.REPLACE_KEY_HEADER + key
-    
 
     # ファイルを出力
     def Output(self,path:str):

@@ -89,7 +89,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
             ) -> str:
         
         for key in oLineData.GetKeys():
-            text = text.replace(oLineData.GetReplaceKey(key),str(oLineData.GetValue(key)))
+            text = text.replace(self._GetReplaceKey(key),str(oLineData.GetValue(key)))
 
         return text
 

@@ -8,6 +8,8 @@ from . import RecipeItemModule
 
 # 書類を作成、出力するクラスの基底クラス
 class DocumentMaker(ABC):
+    ### 定数 ###
+    REPLACE_KEY_HEADER = "var_"
 
     # 書類の作成と出力を行う関数
     @abstractmethod
@@ -44,3 +46,7 @@ class DocumentMaker(ABC):
             for line in lines:
                 print(line,file=o)
         return
+    
+    # 置き換えキーを取得
+    def _GetReplaceKey(self,key):
+        return self.REPLACE_KEY_HEADER + key
