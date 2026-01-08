@@ -19,14 +19,10 @@ class OverallLineDocument():
     LINES_KEY_WORD = "var_lines"
     FLOWCHART_KEY_WORD = "var_flowChart"
 
-
-    def __init__(self):
-    
-        return
     
 
-    # 全体ライン書類を保存
-    def OutputDocument(
+    # 書類の作成と出力を行う関数。
+    def MakeDocument(
             self,
             pathData : PathData,
             overallLineData : OLineData.OverallLineData):

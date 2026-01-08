@@ -13,7 +13,8 @@ class IndividualLineDocument():
     OUTPUT_FILE_NAME = '個別製造ライン設計書_var_lineName.md'
 
 
-    def __init__(
+    # 書類の作成と出力を行う関数
+    def MakeDocument(
             self,
             pathData : pathDataModule.PathData,
             iLineData : ILineData.IndividualLineData
