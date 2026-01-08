@@ -56,9 +56,12 @@ class OverallLineData:
 
     ### 関数 ###
 
-    def __init__(self,oLineEssence :OLineEssence.OverallLineEssence):
-        self._value = self._MakeOLineData(oLineEssence)
-        return
+    def __init__(self,data):
+        # 受け入れたデータの形式により個別ラインデータの作成方法を変える
+        if type(data) is OLineEssence.OverallLineEssence:
+            self._value = self._MakeOLineData(data)
+        elif type(data) is dict:
+            self._value = data
     
     # 値を返す
     def GetValue(self,key:str):

@@ -53,6 +53,7 @@ class IndividualLineData:
     ### 関数 ###
 
     def __init__(self,data):
+        # 受け入れたデータの形式により個別ラインデータの作成方法を変える
         if type(data) is ILineEssence.IndividualLineEssence:
             self._value = self._ILineEssenceToData(data)
         elif type(data) is dict:
