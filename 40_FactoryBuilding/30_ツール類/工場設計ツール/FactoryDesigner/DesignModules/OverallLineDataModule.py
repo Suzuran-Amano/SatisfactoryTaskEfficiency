@@ -63,9 +63,26 @@ class OverallLineData:
         elif type(data) is dict:
             self._value = data
     
-    # 値を返す
+
+    def Append(self,key,val):
+        self._value[key] = val
+        return
+    
+
+    # 値を取得
     def GetValue(self,key:str):
-        return self._value[key]
+        if key in self._value:
+            return self._value[key]
+        return None
+    
+    
+    def GetKeys(self):
+        return self._value.keys()
+    
+
+    def GetReplaceKey(self,key):
+        return self.REPLACE_KEY_HEADER + key
+    
     
     # ファイルを出力
     def Output(self,path:str):

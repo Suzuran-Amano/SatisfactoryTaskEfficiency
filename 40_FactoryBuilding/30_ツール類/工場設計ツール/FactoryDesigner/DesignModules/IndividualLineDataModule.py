@@ -58,10 +58,12 @@ class IndividualLineData:
             self._value = self._ILineEssenceToData(data)
         elif type(data) is dict:
             self._value = data
-   
+    
+
     def Append(self,key,val):
         self._value[key] = val
         return
+    
     
     # 値を取得
     def GetValue(self,key:str):
@@ -72,10 +74,12 @@ class IndividualLineData:
     
     def GetKeys(self):
         return self._value.keys()
-    
+
+
     def GetReplaceKey(self,key):
         return self.REPLACE_KEY_HEADER + key
     
+
     # ファイルを出力
     def Output(self,path:str):
         
