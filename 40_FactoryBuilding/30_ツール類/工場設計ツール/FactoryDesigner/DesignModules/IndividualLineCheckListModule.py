@@ -26,7 +26,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
         # テンプレートの読み込みと置換
-        lines = self._ReadTemplateFile()
+        lines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
         lines = self._DuplicateProductItem(lines,iLineData,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData,iLineData)
         lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
@@ -36,18 +36,6 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         self._WriteFile(pathData,iLineData, lines)
 
         return
-
-
-    # テンプレートファイルを読み込み
-    def _ReadTemplateFile(self) -> list:
-        lines = []
-        abs_path = os.path.abspath(__file__)
-        dir_path = os.path.dirname(abs_path)
-        filePath = dir_path + "\\" + self.TEMPLATE_FILE_NAME
-        with open(filePath, encoding="utf-8") as f:
-            for line in f:
-                lines.append(line.rstrip())
-        return lines
 
 
     # 保存
@@ -61,10 +49,8 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
         fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
 
-        os.makedirs(outputPath, exist_ok=True)
-        with open(outputPath + "\\" + fileName , "w", encoding="utf-8") as o:
-            for line in lines:
-                print(line,file=o)
+        super()._WriteFile(outputPath,fileName,lines)
+
         return
 
 
@@ -91,7 +77,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         for key in iLineData.GetKeys():
             text = text.replace(iLineData.GetReplaceKey(key),str(iLineData.GetValue(key)))
 
-        return text  
+        return text
 
 
     # 複数の Product を記載するため、行を複製

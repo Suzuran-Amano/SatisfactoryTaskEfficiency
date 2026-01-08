@@ -27,7 +27,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
             oLineData : OLineDataModule.OverallLineData):
 
         # 全体ラインテンプレートを読み込み
-        templateLines = self._ReadTemplateFile()
+        templateLines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
 
         # 置換用データを作成
         recipeText = self._MakeRecipesText(oLineData)
@@ -51,19 +51,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
 
         return 
        
-    
-    # テンプレートファイルを読み込み
-    def _ReadTemplateFile(self) -> list:
-        lines = []
-        abs_path = os.path.abspath(__file__)
-        dir_path = os.path.dirname(abs_path)
-        filePath = dir_path + "\\" + self.TEMPLATE_FILE_NAME
-        with open(filePath, encoding="utf-8") as f:
-            for line in f:
-                lines.append(line.rstrip())
-        return lines
-
-    
+        
     # 書類データを保存
     def _WriteFile(
             self,
@@ -75,10 +63,8 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         outputPath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
         fileName = self._Replace(self.OUTPUT_FILE_NAME,oLineData)
 
-        os.makedirs(outputPath, exist_ok=True)
-        with open(outputPath + "\\" + fileName , "w", encoding="utf-8") as o:
-            for line in lines:
-                print(line,file=o)
+        super()._WriteFile(outputPath,fileName,lines)
+
         return
     
 
