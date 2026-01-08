@@ -69,16 +69,24 @@ class OverallLineDocument():
                 lines.append(line.rstrip())
         return lines
 
+    
+    # 書類データを保存
+    def _WriteFile(
+            self,
+            pathData : pathDataModule.PathData,
+            oLineData : OLineDataModule.OverallLineData,
+            lines : list
+            ):
 
-    # 保存
-    def _WriteFile(self,filePath,fileName,lines):
-        os.chdir(os.path.dirname(__file__) + "/../")
-        os.chdir(filePath)
-        with open(fileName,"w", encoding="utf-8") as o:
+        outputPath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
+        fileName = self._Replace(self.OUTPUT_FILE_NAME,oLineData)
+
+        os.makedirs(outputPath, exist_ok=True)
+        with open(outputPath + "\\" + fileName , "w", encoding="utf-8") as o:
             for line in lines:
                 print(line,file=o)
         return
-    
+
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(

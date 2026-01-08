@@ -55,7 +55,8 @@ class IndividualLineCheckList:
             self,
             pathData : pathDataModule.PathData,
             iLineData : ILineDataModule.IndividualLineData,
-            lines):
+            lines : list
+            ):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
         fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
