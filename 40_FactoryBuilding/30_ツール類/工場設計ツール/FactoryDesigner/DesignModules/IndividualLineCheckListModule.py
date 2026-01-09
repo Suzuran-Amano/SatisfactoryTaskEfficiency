@@ -30,7 +30,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
         lines = self._DuplicateProductItem(lines,iLineData)
         lines = self._DuplicateInputLines(lines,recipeData)
         lines = self._DuplicateOutputLines(lines,recipeData)
-        lines = self._AllLineReplace(lines,iLineData)
+        lines = self._AllLineReplace(lines,iLineData.GetValueDict())
 
         # 書類の出力
         self._WriteFile(pathData,iLineData, lines)
@@ -53,18 +53,6 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
 
         return
 
-
-    # 置き換え
-    def _AllLineReplace(
-            self,
-            lines : list,
-            iLineData : ILineDataModule.IndividualLineData
-            ) -> list:
-        
-        super()._AllLineReplace(lines,iLineData.GetValueDict())
-
-        return lines
-    
 
     # 複数の Product を記載するため、行を複製
     def _DuplicateProductItem(
