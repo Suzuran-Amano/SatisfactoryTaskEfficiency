@@ -27,9 +27,9 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
 
         # テンプレートの読み込みと置換
         lines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
-        lines = self._DuplicateProductItem(lines,iLineData,iLineData)
-        lines = self._DuplicateInputLines(lines,recipeData,iLineData)
-        lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
+        lines = self._DuplicateProductItem(lines,iLineData)
+        lines = self._DuplicateInputLines(lines,recipeData)
+        lines = self._DuplicateOutputLines(lines,recipeData)
         lines = self._AllLineReplace(lines,iLineData)
 
         # 書類の出力
@@ -47,45 +47,30 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
             ):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_TEST_DIRECTORY_NAME
-        fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
+        fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData.GetValueDict())
 
         super()._WriteFile(outputPath,fileName,lines)
 
         return
 
 
-    # すべての行の置き換え
+    # 置き換え
     def _AllLineReplace(
             self,
             lines : list,
             iLineData : ILineDataModule.IndividualLineData
             ) -> list:
         
-        for index in range(len(lines)):
-            lines[index] = self._Replace(lines[index],iLineData)
+        super()._AllLineReplace(lines,iLineData.GetValueDict())
 
         return lines
     
-
-    # 置き換え
-    def _Replace(
-            self,
-            text : str,
-            iLineData : ILineDataModule.IndividualLineData
-            ) -> str:
-        
-        for key in iLineData.GetKeys():
-            text = text.replace(self._GetReplaceKey(key),str(iLineData.GetValue(key)))
-
-        return text
-
 
     # 複数の Product を記載するため、行を複製
     def _DuplicateProductItem(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem,
-            iLineData : ILineDataModule.IndividualLineData
+            recipeItem : RecipeItemModule.RecipeItem
             ):
 
         length = recipeItem.GetValue(ILineDataModule.RECIPE_NUM_KEY)
@@ -99,8 +84,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
     def _DuplicateInputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineDataModule.IndividualLineData
+            recipeItem : RecipeItemModule.RecipeItem
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
@@ -116,8 +100,7 @@ class IndividualLineCheckList(DocumentMakerModule.DocumentMaker):
     def _DuplicateOutputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineDataModule.IndividualLineData
+            recipeItem : RecipeItemModule.RecipeItem
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))

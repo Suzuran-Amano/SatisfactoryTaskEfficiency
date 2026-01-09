@@ -15,9 +15,9 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
     OUTPUT_FILE_NAME = '全体製造ライン設計書_var_factoryName.md'
 
     FACTORY_NAME_KEY_WORD = "var_factoryName"
-    RECIPIES_KEY_WORD = "var_recipies"
-    LINES_KEY_WORD = "var_lines"
-    FLOWCHART_KEY_WORD = "var_flowChart"
+    RECIPIES_KEY = "recipies"
+    INDIVIDUAL_LINES_KEY = "lines"
+    FLOWCHART_KEY = "flowChart"
 
 
     # 書類の作成と出力を行う関数
@@ -30,26 +30,18 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         templateLines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
 
         # 置換用データを作成
-        recipeText = self._MakeRecipesText(oLineData)
-        linesText = self._MakeIndividualLinesText(oLineData)
-        flowchartText = self._MakeFlowChart(oLineData)
+        replaceDict = oLineData.GetValueDict()
+        replaceDict[self.RECIPIES_KEY] = self._MakeRecipesText(oLineData)
+        replaceDict[self.INDIVIDUAL_LINES_KEY] = self._MakeIndividualLinesText(oLineData)
+        replaceDict[self.FLOWCHART_KEY] = self._MakeFlowChart(oLineData)
 
         # 置き換え
-        result = []
-        for line in templateLines :
-            text = line
-            text = text.replace(self.RECIPIES_KEY_WORD,recipeText)
-            text = text.replace(self.LINES_KEY_WORD,linesText)
-            text = text.replace(self.FLOWCHART_KEY_WORD,flowchartText)
-            text = text.replace(self.FACTORY_NAME_KEY_WORD,oLineData.GetValue(OLineDataModule.FACTORY_NAME_KEY))
-            result.append(text)
-
-        # print(result)
-
+        result = self._AllLineReplace(templateLines,replaceDict)
+        
         # 書類の出力
         self._WriteFile(pathData,oLineData, result)
 
-        return 
+        return
        
         
     # 書類データを保存
@@ -61,38 +53,12 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
             ):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.OVERALL_LINE_DIRECTORY_NAME
-        fileName = self._Replace(self.OUTPUT_FILE_NAME,oLineData)
+        fileName = self._Replace(self.OUTPUT_FILE_NAME,oLineData.GetValueDict())
 
         super()._WriteFile(outputPath,fileName,lines)
 
         return
     
-
-    # すべての行の置き換え
-    def _AllLineReplace(
-            self,
-            lines : list,
-            oLineData : OLineDataModule.OverallLineData
-            ) -> list:
-        
-        for index in range(len(lines)):
-            lines[index] = self._Replace(lines[index],oLineData)
-
-        return lines
-
-    
-    # 置き換え
-    def _Replace(
-            self,
-            text : str,
-            oLineData : OLineDataModule.OverallLineData
-            ) -> str:
-        
-        for key in oLineData.GetKeys():
-            text = text.replace(self._GetReplaceKey(key),str(oLineData.GetValue(key)))
-
-        return text
-
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(

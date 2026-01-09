@@ -69,6 +69,11 @@ class IndividualLineData:
             return self._value[key]
         return None
     
+
+    # 値を取得
+    def GetValueDict(self):
+        return self._value
+    
     
     def GetKeys(self):
         return self._value.keys()

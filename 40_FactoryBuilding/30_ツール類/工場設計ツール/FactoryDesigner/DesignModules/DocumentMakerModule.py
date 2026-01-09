@@ -47,6 +47,34 @@ class DocumentMaker(ABC):
                 print(line,file=o)
         return
     
+
     # 置き換えキーを取得
     def _GetReplaceKey(self,key):
         return self.REPLACE_KEY_HEADER + key
+
+
+    # 置き換え
+    def _AllLineReplace(
+            self,
+            lines : list,
+            data : dict
+            ) -> list:
+
+        for index in range(len(lines)):
+            lines[index] = self._Replace(lines[index],data)
+
+        return lines
+
+
+    # 置き換え
+    def _Replace(
+            self,
+            text : str,
+            data : dict
+            ) -> str:
+                
+        for key,value in data.items():
+            if key in text:
+                text = text.replace(self._GetReplaceKey(key),str(value))
+
+        return text

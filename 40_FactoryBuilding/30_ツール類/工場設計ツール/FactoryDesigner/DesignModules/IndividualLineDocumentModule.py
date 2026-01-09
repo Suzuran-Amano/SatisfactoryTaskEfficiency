@@ -21,15 +21,15 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             pathData : pathDataModule.PathData,
             iLineData : ILineDataModule.IndividualLineData
             ):
-        
+                
         # 使用するデータの読み込み
         recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
         # テンプレートの読み込みと置換
         lines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
         lines = self._MakeFlowChart(lines,iLineData)
-        lines = self._DuplicateInputLines(lines,recipeData,iLineData)
-        lines = self._DuplicateOutputLines(lines,recipeData,iLineData)
+        lines = self._DuplicateInputLines(lines,recipeData)
+        lines = self._DuplicateOutputLines(lines,recipeData)
         lines = self._AllLineReplace(lines,iLineData)
 
         # 書類の出力
@@ -47,7 +47,7 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             ):
 
         outputPath = pathData.GetPath() + "\\" + pathDataModule.INDIVIDUAL_LINE_DIRECTORY_NAME
-        fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData)
+        fileName = self._Replace(self.OUTPUT_FILE_NAME,iLineData.GetValueDict())
 
         super()._WriteFile(outputPath,fileName,lines)
 
@@ -61,31 +61,16 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             iLineData : ILineDataModule.IndividualLineData
             ) -> list:
         
-        for index in range(len(lines)):
-            lines[index] = self._Replace(lines[index],iLineData)
+        super()._AllLineReplace(lines,iLineData.GetValueDict())
 
         return lines
-
-
-    # 置き換え
-    def _Replace(
-            self,
-            text : str,
-            iLineData : ILineDataModule.IndividualLineData
-            ) -> str:
-        
-        for key in iLineData.GetKeys():
-            text = text.replace(self._GetReplaceKey(key),str(iLineData.GetValue(key)))
-
-        return text
-    
+   
 
     # 供給物品の数分を複製する
     def _DuplicateInputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineDataModule.IndividualLineData
+            recipeItem : RecipeItemModule.RecipeItem
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
@@ -101,8 +86,7 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
     def _DuplicateOutputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem,
-            iLineData :ILineDataModule.IndividualLineData
+            recipeItem : RecipeItemModule.RecipeItem
             ):
         
         length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))

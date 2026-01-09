@@ -74,6 +74,11 @@ class OverallLineData:
         return None
     
     
+    # 値を取得
+    def GetValueDict(self):
+        return self._value
+    
+
     def GetKeys(self):
         return self._value.keys()
     
