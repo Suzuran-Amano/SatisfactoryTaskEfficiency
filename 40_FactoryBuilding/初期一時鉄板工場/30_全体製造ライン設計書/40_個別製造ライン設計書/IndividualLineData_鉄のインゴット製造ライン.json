@@ -3,11 +3,22 @@
     "recipeName": "鉄のインゴット",
     "recipeNum": 2,
     "productName": "製錬炉",
+    "costList": [
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 10
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 16
+        }
+    ],
     "totalUsePower": 8,
     "inputName1": "鉄鉱石",
     "inputNum1": 30,
     "totalInput1": 60,
     "outputName1": "鉄のインゴット",
     "outputNum1": 30,
-    "totalOutput1": 60
+    "totalOutput1": 60,
+    "supplyPower": 0
 }

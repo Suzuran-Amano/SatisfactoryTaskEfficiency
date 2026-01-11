@@ -76,7 +76,6 @@ class DocumentMaker(ABC):
         for key,value in data.items():
             if key in text:
                 text = text.replace(self._GetReplaceKey(key),str(value))
-
         return text
     
     

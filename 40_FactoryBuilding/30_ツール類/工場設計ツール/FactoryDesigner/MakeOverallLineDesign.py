@@ -36,7 +36,7 @@ class OverallLineDesignMaker:
         # 全体ラインデータを作成
         overallLineData = OLineData.OverallLineData(oLineEssence)
         overallLineData.Output(pathData.GetPath())
-
+        
         # 全体ライン書類を出力
         overallLineDocument = OLineDoc.OverallLineDocument()
         overallLineDocument.MakeDocument(pathData,overallLineData)

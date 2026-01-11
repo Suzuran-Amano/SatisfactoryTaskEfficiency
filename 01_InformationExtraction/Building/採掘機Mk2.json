@@ -1,10 +1,11 @@
 {
-    "buildingName" :"採掘機Mk.2",
+    "buildingName" :"採掘機Mk2",
     "usePower": 15,
     "cost":[
 	    { "itemName":"携帯式採鉱機", "itemNum":2 },
 	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":10 },
 	    { "itemName":"鋼管", "itemNum":20 },
 	    { "itemName":"モジュラーフレーム", "itemNum":10 }
-	    ]
+	],
+	"productionRatio" : 2
 }

@@ -1,5 +1,16 @@
 {
     "factoryName": "初期一時鉄板工場",
+    "productionList": [
+        {
+            "resourceName": "鉄鉱石",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk1",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 30
+        }
+    ],
     "recipeList": [
         {
             "recipeName": "鉄のインゴット",

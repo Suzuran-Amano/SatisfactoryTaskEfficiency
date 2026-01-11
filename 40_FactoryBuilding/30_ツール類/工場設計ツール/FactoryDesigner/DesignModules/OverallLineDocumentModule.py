@@ -3,6 +3,7 @@ import os
 from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
+from . import ResourceDataModule
 from . import OverallLineDataModule as OLineDataModule
 from . import DocumentMakerModule 
 
@@ -25,16 +26,14 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
             self,
             pathData : pathDataModule.PathData,
             oLineData : OLineDataModule.OverallLineData):
-
+        
         # 全体ラインテンプレートを読み込み
         templateLines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
+        templateLines = self._DuplicateProductLines(templateLines,oLineData)
 
         # 置換用データを作成
-        replaceDict = oLineData.GetValueDict()
-        replaceDict[self.RECIPIES_KEY] = self._MakeRecipesText(oLineData)
-        replaceDict[self.INDIVIDUAL_LINES_KEY] = self._MakeIndividualLinesText(oLineData)
-        replaceDict[self.FLOWCHART_KEY] = self._MakeFlowChart(oLineData)
-
+        replaceDict = self._MakeReplaceDict(oLineData)
+        
         # 置き換え
         result = self._AllLineReplace(templateLines,replaceDict)
         
@@ -42,6 +41,52 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         self._WriteFile(pathData,oLineData, result)
 
         return
+    
+    # 置き換え用辞書の作成
+    def _MakeReplaceDict(
+            self,
+            oLineData : OLineDataModule.OverallLineData
+            ) -> dict:
+                
+        replaceDict = oLineData.GetValueDict().copy()
+
+        # 一時産品リストのキーを削除
+        replaceDict.pop(OLineDataModule.PRODUCTION_LIST)
+        replaceDict = self._AddProductionReplaceDict(replaceDict,oLineData,OLineDataModule.RESOURCE_NAME)
+        replaceDict = self._AddProductionReplaceDict(replaceDict,oLineData,OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM)
+        
+        replaceDict[self.RECIPIES_KEY] = self._MakeRecipesText(oLineData)
+        replaceDict[self.INDIVIDUAL_LINES_KEY] = self._MakeIndividualLinesText(oLineData)
+        replaceDict[self.FLOWCHART_KEY] = self._MakeFlowChart(oLineData)
+
+        
+        return replaceDict
+    
+
+    # Production 関係の置き換え用辞書作成
+    def _AddProductionReplaceDict(
+            self,
+            replaceDict : dict,
+            oLineData : OLineDataModule.OverallLineData,
+            key : str
+            ) -> dict:
+        
+        # 一時産品のリストを取得
+        productionList = oLineData.GetValue(OLineDataModule.PRODUCTION_LIST)
+
+        # 一時産品の数だけ繰り返す
+        for i in range(len(productionList)):
+
+            # キーを作成
+            replaceKey = OLineDataModule.PRODUCTION_LIST + "." + key + str(i+1)
+
+            # 置き換え後の値を作成
+            value = productionList[i][key]
+            
+            # 辞書に登録
+            replaceDict[replaceKey] = value
+
+        return replaceDict
        
         
     # 書類データを保存
@@ -58,6 +103,22 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         super()._WriteFile(outputPath,fileName,lines)
 
         return
+    
+
+    # 一次産品群を複製する
+    def _DuplicateProductLines(
+            self,
+            lines,
+            oLineData : OLineDataModule.OverallLineData
+            ):
+        
+        keys = []
+
+        length = len(oLineData.GetValue(OLineDataModule.PRODUCTION_LIST))
+        keys.append(self._GetReplaceKey(OLineDataModule.PRODUCTION_LIST + "." + OLineDataModule.RESOURCE_NAME))
+        keys.append(self._GetReplaceKey(OLineDataModule.PRODUCTION_LIST + "." + OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM))
+
+        return self._DuplicateLines(lines,length,keys)
     
 
     # レシピ群の置き換え用の文字列を返す

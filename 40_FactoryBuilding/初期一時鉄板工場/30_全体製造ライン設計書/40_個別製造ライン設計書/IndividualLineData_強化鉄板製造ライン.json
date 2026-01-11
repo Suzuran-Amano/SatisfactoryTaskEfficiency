@@ -3,14 +3,29 @@
     "recipeName": "強化鉄板",
     "recipeNum": 2,
     "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 16
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 8
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 20
+        }
+    ],
     "totalUsePower": 30,
     "inputName1": "鉄板",
     "inputNum1": 30,
     "totalInput1": 60,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 120,
     "outputName1": "強化鉄板",
     "outputNum1": 5,
     "totalOutput1": 10,
-    "inputName2": "ネジ",
-    "inputNum2": 60,
-    "totalInput2": 120
+    "supplyPower": 0
 }

@@ -4,6 +4,8 @@ import json
 from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
+from . import BuildingDataManagerModule as BuildingDataModule
+from . import ResourceDataModule
 from . import OverallLineEssenceModule as OLineEssence
 
 
@@ -12,9 +14,13 @@ FACTORY_NAME_KEY = "factoryName"
 
 # 一時産品関係
 PRODUCTION_LIST = "productionList"
-BUILDING_NAME = "buildingName"
+RESOURCE_NAME = "resourceName"
+RESOURCE_BASE_OUTPUT_NUM = "resourceBaseOutputNum"
 RESOURCE_RATIO = "resourceRatio"
+BUILDING_NAME = "buildingName"
+BUILDING_RATIO = "buildingRatio"
 OVERCLOCK_RATIO = "overclockRatio"
+TOTAL_RESOURCE_OUTPUT_NUM = "totalResourceOutputNum"
 
 # レシピ関係
 RECIPE_LIST_KEY = "recipeList"
@@ -109,8 +115,8 @@ class OverallLineData:
         # 工場名
         result[FACTORY_NAME_KEY] = oLineEssence.GetValue(OLineEssence.FACTORY_NAME_KEY)
 
-        # 一時産品リスト
-        result[PRODUCTION_LIST] = oLineEssence.GetValue(OLineEssence.PRODUCTION_LIST)
+        # 資源リスト
+        result = self._AppendResourceDataList(result,oLineEssence)
 
         # 使用レシピ
         recipeList = []
@@ -127,7 +133,6 @@ class OverallLineData:
             recipeList.append(recipeDict)
 
         result[RECIPE_LIST_KEY] = recipeList
-
 
         # 個別ラインリスト
         iLineList = []
@@ -157,6 +162,67 @@ class OverallLineData:
         return result
     
 
+    # 資源データリストを追加
+    def _AppendResourceDataList(
+            self,
+            oLine : list,
+            oLineEssence :OLineEssence.OverallLineEssence
+            ):
+        
+        # 資源辞書を準備
+        list = []
+
+        productionList = oLineEssence.GetValue(OLineEssence.PRODUCTION_LIST)
+        for productionData in productionList:
+            list.append(self._AppendResourceData(productionData))
+
+        oLine[PRODUCTION_LIST] = list
+        
+        return oLine
+
+
+    # 資源データ単品を追加
+    def _AppendResourceData(
+            self,
+            resourceDict : dict
+            ):
+        
+        # 資源辞書を準備
+        lines = {}
+
+        # 資源名
+        resourceName = resourceDict[OLineEssence.RESOURCE_NAME]
+        lines[RESOURCE_NAME] = resourceName
+
+        # 資源基本産出量
+        resourceData = InfoReader.GetResourceData(resourceName)
+        resourceBaseOutputNum = resourceData.GetValue(ResourceDataModule.ITEM_NUM_KEY)
+        lines[RESOURCE_BASE_OUTPUT_NUM] = resourceBaseOutputNum
+
+        # 資源倍率
+        resourceRatio = resourceDict[OLineEssence.RESOURCE_RATIO]
+        lines[RESOURCE_RATIO] = resourceRatio
+        
+        # 設備名
+        buildingName = resourceDict[OLineEssence.BUILDING_NAME]
+        lines[BUILDING_NAME] = buildingName
+
+        # 設備倍率
+        buildingData = InfoReader.GetBuildingData(buildingName)
+        buildingRatio = buildingData.jsonData[BuildingDataModule.PRODUCTION_RATIO]
+        lines[BUILDING_RATIO] = buildingRatio
+
+        # オーバークロック倍率
+        overclockRatio = resourceDict[OLineEssence.OVERCLOCK_RATIO]
+        lines[OVERCLOCK_RATIO] = overclockRatio
+
+        # 合計産出量
+        lines[TOTAL_RESOURCE_OUTPUT_NUM] = resourceBaseOutputNum * resourceRatio * buildingRatio * overclockRatio
+
+
+        return lines
+
+
     # レシピ情報から、入出力の物品情報を返す
     def _GetItemList(self,itemList : list,recipeNum = 1):
         result = []
@@ -167,7 +233,7 @@ class OverallLineData:
             result.append(itemData)
 
         return result
-
+    
 
 # 全体ラインデータファイルを読み込み
 def ReadOverallLineData(oLineDataName) -> OverallLineData:

@@ -4,6 +4,7 @@ import json
 FACTORY_NAME_KEY = "factoryName"
 
 PRODUCTION_LIST = "productionList"
+RESOURCE_NAME = "resourceName"
 BUILDING_NAME = "buildingName"
 RESOURCE_RATIO = "resourceRatio"
 OVERCLOCK_RATIO = "overclockRatio"

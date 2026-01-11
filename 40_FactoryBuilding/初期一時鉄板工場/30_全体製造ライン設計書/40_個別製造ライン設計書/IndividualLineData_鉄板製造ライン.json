@@ -3,11 +3,22 @@
     "recipeName": "鉄板",
     "recipeNum": 2,
     "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 4
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 16
+        }
+    ],
     "totalUsePower": 8,
     "inputName1": "鉄のインゴット",
     "inputNum1": 30,
     "totalInput1": 60,
     "outputName1": "鉄板",
     "outputNum1": 20,
-    "totalOutput1": 40
+    "totalOutput1": 40,
+    "supplyPower": 0
 }
