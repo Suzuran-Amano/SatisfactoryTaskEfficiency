@@ -21,7 +21,7 @@ class OverallLineDesignMaker:
     individualLineEssences = 0
     
 
-    def Main(self,pathData : pathDataModule.PathData) -> OLineData:
+    def Main(self,pathData : pathDataModule.PathData) -> OLineData.OverallLineData:
 
         # ファイルのフルパスを取得
         inputDataFileName = pathData.GetFullPath()
