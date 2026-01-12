@@ -51,7 +51,6 @@ class OverallLineDesignMaker:
         return overallLineData
     
 
-
     # 個別ライン本質ファイルの作成
     def MakeILineEssence(self,oLineData :OLineData) -> list:
         
@@ -59,6 +58,12 @@ class OverallLineDesignMaker:
 
         # 個別ラインの情報を取得
         iLines = oLineData.GetValue(OLineData.INDIVIDUAL_LINE_LIST)
+
+        # 個別ラインがないのなら、処理を抜ける
+        if iLines == None:
+            return result
+        if len(iLines) == 0:
+            return result
 
         # 個別ラインの情報から、個別ライン本質を作成し、リストへ加える
         for iLine in iLines:
