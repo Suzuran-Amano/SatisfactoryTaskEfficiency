@@ -45,4 +45,5 @@ class OverallLineEssence:
     
     # 値を返す
     def GetValue(self,key:str):
-        return self._value[key]
+        if key in self._value:
+            return self._value[key]

@@ -16,6 +16,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
     OUTPUT_FILE_NAME = '全体製造ライン設計書_var_factoryName.md'
 
     FACTORY_NAME_KEY_WORD = "var_factoryName"
+    PRODUCTION_KEY = "production"
     RECIPIES_KEY = "recipies"
     INDIVIDUAL_LINES_KEY = "lines"
     FLOWCHART_KEY = "flowChart"
@@ -42,19 +43,22 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
 
         return
     
+
     # 置き換え用辞書の作成
     def _MakeReplaceDict(
             self,
             oLineData : OLineDataModule.OverallLineData
             ) -> dict:
-                
+        
         replaceDict = oLineData.GetValueDict().copy()
 
         # 一時産品リストのキーを削除
-        replaceDict.pop(OLineDataModule.PRODUCTION_LIST)
+        if OLineDataModule.PRODUCTION_LIST in replaceDict:
+            replaceDict.pop(OLineDataModule.PRODUCTION_LIST)
         replaceDict = self._AddProductionReplaceDict(replaceDict,oLineData,OLineDataModule.RESOURCE_NAME)
         replaceDict = self._AddProductionReplaceDict(replaceDict,oLineData,OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM)
         
+        replaceDict[self.PRODUCTION_KEY] = self._MakeProductLines(oLineData)
         replaceDict[self.RECIPIES_KEY] = self._MakeRecipesText(oLineData)
         replaceDict[self.INDIVIDUAL_LINES_KEY] = self._MakeIndividualLinesText(oLineData)
         replaceDict[self.FLOWCHART_KEY] = self._MakeFlowChart(oLineData)
@@ -73,6 +77,8 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         
         # 一時産品のリストを取得
         productionList = oLineData.GetValue(OLineDataModule.PRODUCTION_LIST)
+        if productionList == None:
+            return replaceDict
 
         # 一時産品の数だけ繰り返す
         for i in range(len(productionList)):
@@ -105,7 +111,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         return
     
 
-    # 一次産品群を複製する
+    # 資源群を複製する
     def _DuplicateProductLines(
             self,
             lines,
@@ -114,28 +120,74 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         
         keys = []
 
-        length = len(oLineData.GetValue(OLineDataModule.PRODUCTION_LIST))
+        productionList = oLineData.GetValue(OLineDataModule.PRODUCTION_LIST)
+        # リストがないなら、複製しない
+        if productionList == None : 
+            return lines
+        
+        length = len(productionList)
         keys.append(self._GetReplaceKey(OLineDataModule.PRODUCTION_LIST + "." + OLineDataModule.RESOURCE_NAME))
         keys.append(self._GetReplaceKey(OLineDataModule.PRODUCTION_LIST + "." + OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM))
 
         return self._DuplicateLines(lines,length,keys)
     
+    # 資源群の置き換え用の文字列を返す
+    def _MakeProductLines(
+            self,
+            overallData:OLineDataModule.OverallLineData
+            ) -> str:
+        
+        # 返す用変数を作成
+        result = "## 資源\n"
+        result += "|資源名|産出量|\n"
+        result += "|---|---|\n"
+
+        # 資源リストの取得 
+        resourceList = overallData.GetValue(OLineDataModule.PRODUCTION_LIST)
+        if resourceList == None:
+            return ""
+        if len(resourceList) == 0:
+            return ""
+        
+        # 資源ごとに合算
+        resourceDict = {}
+        for resource in resourceList:
+            if resource[OLineDataModule.RESOURCE_NAME] in resourceDict:
+                resourceDict[resource[OLineDataModule.RESOURCE_NAME]] += resource[OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM]
+            else : 
+                resourceDict[resource[OLineDataModule.RESOURCE_NAME]] = resource[OLineDataModule.TOTAL_RESOURCE_OUTPUT_NUM]
+
+        # レシピごとの文章を加算
+        for key,item in resourceDict.items():
+            result += "|" + key + "|" + str(item) + "|\n"
+
+        
+        result += "\n\n"
+
+        return result
+
 
     # レシピ群の置き換え用の文字列を返す
     def _MakeRecipesText(
             self,overallData:OLineDataModule.OverallLineData
-            ) -> list:
+            ) -> str:
         
         # 返す用変数を作成
-        result = ""
+        result = "## 使用レシピ\n"
 
         # レシピリストの取得 
         recipeList = overallData.GetValue(OLineDataModule.RECIPE_LIST_KEY)
+        if recipeList == None:
+            return ""
+        if len(recipeList) == 0:
+            return ""
 
         # レシピごとの文章を加算
         for recipe in recipeList:
             result += self._MakeRecipeText(recipe[OLineDataModule.RECIPE_NAME_KEY])
         
+        result += "\n\n"
+
         return result
     
 
@@ -170,14 +222,20 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
     def _MakeIndividualLinesText(self,overallData:OLineDataModule.OverallLineData) -> list:
         
         # 返す用変数を作成
-        result = ""
+        result = "## 必要製造ライン\n"
 
         # 個別ラインリストの取得 
         lineList = overallData.GetValue(OLineDataModule.INDIVIDUAL_LINE_LIST)
+        if lineList == None:
+            return ""
+        if len(lineList) == 0:
+            return ""
 
         # 個別ラインごとの文章を加算
         for line in lineList:
             result += self._MakeIndividualLineText(line)
+        
+        result += "\n\n"
         
         return result
     
@@ -232,30 +290,34 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
 
 
         # input
-        result += "subgraph Input\n"
-        for inputName in inputList:
-            result += "    " + inputName +"([" + inputName + "])\n"
-        result += "end\n\n"
+        if inputList != None:
+            result += "subgraph Input\n"
+            for inputName in inputList:
+                result += "    " + inputName +"([" + inputName + "])\n"
+            result += "end\n\n"
 
         # product
-        for line in lineList:
-            result += line[OLineDataModule.INDIVIDUAL_LINE_NAME] + "\n"
-        result += "\n"
+        if lineList != None:
+            for line in lineList:
+                result += line[OLineDataModule.INDIVIDUAL_LINE_NAME] + "\n"
+            result += "\n"
 
         # output
-        result += "subgraph Output\n"
-        for outputName in outputList:
-            result += "    " + outputName +"([" + outputName + "])\n"
-        result += "end\n\n"
+        if outputList != None:
+            result += "subgraph Output\n"
+            for outputName in outputList:
+                result += "    " + outputName +"([" + outputName + "])\n"
+            result += "end\n\n"
 
 
         # flow
-        for relation in relationships:
-            supplierLine = relation[OLineDataModule.SUPPLYER_LINE_KEY]
-            destinationLine = relation[OLineDataModule.DESTINATION_LINE_KEY]
-            supplyItem = relation[OLineDataModule.SUPPLY_ITEM_KEY]
-            supplyNum = relation[OLineDataModule.SUPPLY_NUM_KEY]
-            result += supplierLine + "-->|" + supplyItem + str(supplyNum) + "|" + destinationLine + "\n"
+        if relationships != None:
+            for relation in relationships:
+                supplierLine = relation[OLineDataModule.SUPPLYER_LINE_KEY]
+                destinationLine = relation[OLineDataModule.DESTINATION_LINE_KEY]
+                supplyItem = relation[OLineDataModule.SUPPLY_ITEM_KEY]
+                supplyNum = relation[OLineDataModule.SUPPLY_NUM_KEY]
+                result += supplierLine + "-->|" + supplyItem + str(supplyNum) + "|" + destinationLine + "\n"
 
         result += "```\n"
         
