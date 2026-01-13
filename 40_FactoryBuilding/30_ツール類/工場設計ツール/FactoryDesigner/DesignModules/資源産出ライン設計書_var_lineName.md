@@ -1,22 +1,19 @@
 # 資源産出ライン設計書 var_lineName
 
 ## 概要
-以下の物品を生産する
+以下の資源を生産する
 
-- var_outputName
+- var_resourceName
 
-## Input
-- var_inputName var_totalInput/m
+## 資源リスト
+|資源倍率|設備名|オーバークロック倍率|
+|---|---|---|
+|var_resourceRatio|var_buildingName|var_overclockRatio|
 
-## Output
-- var_outputName var_totalOutput/m
-
-## 必要設備
-- var_productName var_recipeNumケ
-- ベルトコンベア類 適量
-
-
-## 製造ライン
+## 合計
+|資源名|合計産出量|
+|---|---|
+|var_resourceName|var_totalResourceOutputNum|
 
 
 ## 情報

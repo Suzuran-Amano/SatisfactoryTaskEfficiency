@@ -4,36 +4,36 @@ import json
 from . import pathDataModule
 from . import InfomationReaderModule as InfoReader
 from . import RecipeItemModule
+from . import ResourceDataModule
 from . import BuildingDataManagerModule as BuildingData
-from . import ResourceLineEssenceModule as ILineEssence
+from . import ResourceLineEssenceModule as RLineEssence
 
 
 ### 定数 ###
 LINE_NAME_KEY = "lineName"
 
-# レシピ関係
-RECIPE_NAME_KEY = "recipeName"
-RECIPE_NUM_KEY = "recipeNum"
+# 一時産品関係
+LINE_NAME_KEY = "lineName"
+RESOURCE_NAME_KEY = "resourceName"
+RESOURCE_BASE_OUTPUT_NUM = "resourceBaseOutputNum"
+
+RESOURCE_LIST_KEY = "resourceList"
+RESOURCE_RATIO_KEY = "resourceRatio"
+BUILDING_NAME_KEY = "buildingName"
+OVERCLOCK_RATIO_KEY = "overclockRatio"
+SINGLE_RESOURCE_OUTPUT_NUM = "singleResourceOutputNum"
+TOTAL_RESOURCE_OUTPUT_NUM = "totalResourceOutputNum"
+USE_POWER_KEY = "usePower"
+TOTAL_USE_POWER_KEY = "totalUsePower"
 
 # 設備関係
 PRODUCT_NAME_KEY = "productName"
 TOTAL_USE_POWER_KEY = "totalUsePower"
 
-# 物品関係
-INPUT_NAME_KEY = "inputName"
-INPUT_NUM_KEY = "inputNum"
-OUTPUT_NAME_KEY = "outputName"
-OUTPUT_NUM_KEY = "outputNum"
-TOTAL_INPUT_KEY = "totalInput"
-TOTAL_OUTPUT_KEY = "totalOutput"
-
 # コスト関係
 COST_LIST_KEY = "costList"
 ITEM_NAME_KEY = "itemName"
 ITEM_NUM_KEY = "itemNum"
-
-# その他
-SUPPLY_POWER_KEY = "supplyPower"
 
 
 # 個別製造ラインデータを管理するクラス
@@ -52,8 +52,8 @@ class ResourceLineData:
 
     def __init__(self,data):
         # 受け入れたデータの形式により資源産出ラインデータの作成方法を変える
-        if type(data) is ILineEssence.ResourceLineEssence:
-            self._value = self._ILineEssenceToData(data)
+        if type(data) is RLineEssence.ResourceLineEssence:
+            self._value = self._RLineDataToEssence(data)
         elif type(data) is dict:
             self._value = data
     
@@ -98,90 +98,55 @@ class ResourceLineData:
 
 
     # 資源産出ライン本質から資源産出ラインデータを作成
-    def _ILineEssenceToData(
+    def _RLineDataToEssence(
             self,
-            iLineEssence : ILineEssence.ResourceLineEssence
+            rLineEssence : RLineEssence.ResourceLineEssence
             ) -> dict:
         
+        # 必要な情報を取得
+        resourceData = InfoReader.GetResourceData(rLineEssence.GetValue(RLineEssence.RESOURCE_NAME_KEY))
+        buildingList = {}
+        resourceList = rLineEssence.GetValue(RLineEssence.RESOURCE_LIST_KEY)
+        for resourceItem in resourceList:
+            if not(resourceItem[BUILDING_NAME_KEY] in buildingList):
+                buildingList[resourceItem[BUILDING_NAME_KEY]] = InfoReader.GetBuildingData(resourceItem[BUILDING_NAME_KEY])
+
         # 返す用のデータ
-        iLineData = {}
-
-        # 基礎情報を取得
-        recipeItem = InfoReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
-        buildingData = InfoReader.GetBuildingData(recipeItem.GetValue(RecipeItemModule.PRODUCT_NAME_KEY))
-
+        rLineData = {}
 
         # ライン名を追加
-        iLineData[LINE_NAME_KEY] = iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY)
+        rLineData[LINE_NAME_KEY] = rLineEssence.GetValue(RLineEssence.LINE_NAME_KEY)
 
-        # レシピ名を追加
-        iLineData[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)
-        recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
-        iLineData[RECIPE_NUM_KEY] = recipeNum
+        # 資源情報
+        rLineData[RESOURCE_NAME_KEY] = resourceData.GetValue(ResourceDataModule.RESOURCE_NAME_KEY)
+        resourceBaseOutputNum = resourceData.GetValue(ResourceDataModule.ITEM_NUM_KEY)
+        rLineData[RESOURCE_BASE_OUTPUT_NUM] = resourceBaseOutputNum
 
-        # 制作物を追加
-        productName = recipeItem.GetValue(RecipeItemModule.PRODUCT_NAME_KEY)
-        iLineData[PRODUCT_NAME_KEY] = productName
+        # 資源リスト
+        rLineData[RESOURCE_LIST_KEY] = resourceList
 
-        # 合計コストを追加
-        buildingData = InfoReader.GetBuildingData(productName)
-        costList = []
-        for cost in buildingData.GetValue(BuildingData.COST_KEY):
-            costList.append({
-                ITEM_NAME_KEY : cost[BuildingData.ITEM_NAME_KEY],
-                ITEM_NUM_KEY : cost[BuildingData.ITEM_NUM_KEY] * recipeNum
-
-            })
-        iLineData[COST_LIST_KEY] = costList
-
-
-        # 合計消費電力を追加
-        totalUsePower = buildingData.GetValue(BuildingData.USE_POWER_KEY) * recipeNum
-        iLineData[TOTAL_USE_POWER_KEY] = totalUsePower
-
-        # 搬入物を追加
-        index = 0
-        for data in recipeItem.GetValue(RecipeItemModule.INPUT_KEY):
-            inputNameKey = INPUT_NAME_KEY + str(index+1)
-            inputName = data[RecipeItemModule.ITEM_NAME_KEY]
-            iLineData[inputNameKey] = inputName
+        # 各資源の情報
+        rLineData[TOTAL_RESOURCE_OUTPUT_NUM] = 0
+        rLineData[TOTAL_USE_POWER_KEY] = 0
+        for resourceItem in resourceList:
+            resourceRatio = resourceItem[RESOURCE_RATIO_KEY]
+            overclockRatio = resourceItem[OVERCLOCK_RATIO_KEY]
+            buildingData = buildingList[resourceItem[BUILDING_NAME_KEY]]
+            buildingUsePower = buildingData.GetValue(BuildingData.USE_POWER_KEY)
+            buildingRatio = buildingData.GetValue(BuildingData.PRODUCTION_RATIO)
             
-            inputNumKey = INPUT_NUM_KEY + str(index+1)
-            inputNum = data[RecipeItemModule.ITEM_NUM_KEY]
-            iLineData[inputNumKey] = inputNum
-            
-            inputTotalKey = TOTAL_INPUT_KEY + str(index+1)
-            inputTotal = recipeNum*inputNum
-            iLineData[inputTotalKey] = inputTotal
-            
-            index = index + 1
-        
-        # 搬出物を追加
-        index = 0
-        for data in recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY):
-            outputNameKey = OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[RecipeItemModule.ITEM_NAME_KEY]
-            iLineData[outputNameKey] = outputName
-            
-            outputNumKey = OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[RecipeItemModule.ITEM_NUM_KEY]
-            iLineData[outputNumKey] = outputNum
-            
-            outputTotalKey = TOTAL_OUTPUT_KEY + str(index+1)
-            outputTotal = recipeNum*outputNum
-            iLineData[outputTotalKey] = outputTotal
+            # 産出量を計算
+            singleOutput = resourceBaseOutputNum * resourceRatio * buildingRatio * overclockRatio
+            resourceItem[SINGLE_RESOURCE_OUTPUT_NUM] = singleOutput
+            rLineData[TOTAL_RESOURCE_OUTPUT_NUM] += singleOutput
 
-            index = index + 1
+            # 消費電力            
+            usePower = buildingUsePower * overclockRatio ** 1.321928
+            resourceItem[USE_POWER_KEY] = usePower
+            rLineData[TOTAL_USE_POWER_KEY] += usePower
 
-        # 供給電力を追加
-        supplyPower = recipeItem.GetValue(RecipeItemModule.SUPPLY_POWER_KEY)
-        if supplyPower == None:
-            supplyPower = 0
-        supplyPower = supplyPower * recipeNum
-        iLineData[SUPPLY_POWER_KEY] = supplyPower
-
-                    
-        return iLineData
+                  
+        return rLineData
     
     
 # 資源産出ラインデータファイルを読み込み

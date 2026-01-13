@@ -11,8 +11,8 @@ RESOURCE_NAME_KEY = "resourceName"
 
 RESOURCE_LIST_KEY = "resourceList"
 RESOURCE_RATIO_KEY = "resourceRatio"
-BUILDING_RATIO_KEY = "buildingName"
-OVERCLOCK_RATIO = "overclockRatio"
+BUILDING_NAME_KEY = "buildingName"
+OVERCLOCK_RATIO_KEY = "overclockRatio"
 
 
 # 資源産出ライン本質ファイルを読み込み
@@ -31,6 +31,7 @@ class ResourceLineEssence:
 
     # 変数
     _value = {}
+
 
     def __init__(self,data,resourceName=None):
         # 受け入れたデータの形式により個別ラインデータの作成方法を変える
@@ -59,12 +60,11 @@ class ResourceLineEssence:
         for resourceItem in resourceList:
             resourceDict = {}
             resourceDict[RESOURCE_RATIO_KEY] = resourceItem[OLineDataModule.RESOURCE_RATIO]
-            resourceDict[BUILDING_RATIO_KEY] = resourceItem[OLineDataModule.BUILDING_RATIO]
-            resourceDict[OVERCLOCK_RATIO]    = resourceItem[OLineDataModule.OVERCLOCK_RATIO]
+            resourceDict[BUILDING_NAME_KEY] = resourceItem[OLineDataModule.BUILDING_NAME]
+            resourceDict[OVERCLOCK_RATIO_KEY]    = resourceItem[OLineDataModule.OVERCLOCK_RATIO]
             resourceLine.append(resourceDict)
 
         result[RESOURCE_LIST_KEY] = resourceLine
-
 
         return result
     

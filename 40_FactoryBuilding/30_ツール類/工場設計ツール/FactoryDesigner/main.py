@@ -4,6 +4,8 @@ import json
 from DesignModules import pathDataModule
 from DesignModules import OverallLineDataModule as OLineData
 from DesignModules import ResourceLineEssenceModule as RLineEssence
+from DesignModules import ResourceLineDataModule as RLineData
+from DesignModules import ResourceLineDocumentModule as RLineDoc
 from DesignModules import IndividualLineDataModule as ILineData
 import MakeOverallLineDesign
 import MakeIndividualLineDesign
@@ -25,7 +27,7 @@ oLineData = oDesignMaker.Main(pathData)
 
 
 # 資源産出ライン設計書作成
-rLineDataList = []
+rLineEssenceList = []
 
 resourceNameList = []
 for productionItem in oLineData.GetValue(OLineData.PRODUCTION_LIST):
@@ -34,9 +36,12 @@ for productionItem in oLineData.GetValue(OLineData.PRODUCTION_LIST):
         resourceNameList.append(resourceName)
 
 for resourceName in resourceNameList:
-    rLineData = RLineEssence.ResourceLineEssence(oLineData,resourceName)
+    rLineEssence = RLineEssence.ResourceLineEssence(oLineData,resourceName)
+    rLineEssence.Output(pathData.GetPath())
+    rLineData = RLineData.ResourceLineData(rLineEssence)
     rLineData.Output(pathData.GetPath())
-
+    rlineDoc = RLineDoc.ResourceLineDocument()
+    rlineDoc.MakeDocument(pathData,rLineData)
     
 
 
