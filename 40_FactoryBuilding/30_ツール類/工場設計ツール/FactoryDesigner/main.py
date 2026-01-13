@@ -30,18 +30,20 @@ oLineData = oDesignMaker.Main(pathData)
 rLineEssenceList = []
 
 resourceNameList = []
-for productionItem in oLineData.GetValue(OLineData.PRODUCTION_LIST):
-    resourceName = productionItem[OLineData.RESOURCE_NAME]
-    if not(resourceName in resourceNameList):
-        resourceNameList.append(resourceName)
-
-for resourceName in resourceNameList:
-    rLineEssence = RLineEssence.ResourceLineEssence(oLineData,resourceName)
-    rLineEssence.Output(pathData.GetPath())
-    rLineData = RLineData.ResourceLineData(rLineEssence)
-    rLineData.Output(pathData.GetPath())
-    rlineDoc = RLineDoc.ResourceLineDocument()
-    rlineDoc.MakeDocument(pathData,rLineData)
+productionList = oLineData.GetValue(OLineData.PRODUCTION_LIST)
+if not(productionList == None):
+    for productionItem in oLineData.GetValue(OLineData.PRODUCTION_LIST):
+        resourceName = productionItem[OLineData.RESOURCE_NAME]
+        if not(resourceName in resourceNameList):
+            resourceNameList.append(resourceName)
+    
+    for resourceName in resourceNameList:
+        rLineEssence = RLineEssence.ResourceLineEssence(oLineData,resourceName)
+        rLineEssence.Output(pathData.GetPath())
+        rLineData = RLineData.ResourceLineData(rLineEssence)
+        rLineData.Output(pathData.GetPath())
+        rlineDoc = RLineDoc.ResourceLineDocument()
+        rlineDoc.MakeDocument(pathData,rLineData)
     
 
 
