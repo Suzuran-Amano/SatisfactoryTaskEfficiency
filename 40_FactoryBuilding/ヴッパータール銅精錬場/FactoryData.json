@@ -1,0 +1,9 @@
+{
+    "factoryName": "ヴッパータール銅精錬場",
+    "usePower": 48,
+    "costList": {
+        "鉄のロッド": 60,
+        "ワイヤー": 96
+    },
+    "supplyPower": 0
+}

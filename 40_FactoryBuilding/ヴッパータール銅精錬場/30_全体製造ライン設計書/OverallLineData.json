@@ -1,0 +1,59 @@
+{
+    "factoryName": "ヴッパータール銅精錬場",
+    "recipeList": [
+        {
+            "recipeName": "銅のインゴット",
+            "inputList": [
+                {
+                    "itemName": "銅鉱石",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 30
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "銅のインゴット製造ライン",
+            "recipeName": "銅のインゴット",
+            "recipeNum": 12,
+            "inputList": [
+                {
+                    "itemName": "銅鉱石",
+                    "itemNum": 360
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 360
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_銅鉱石"
+    ],
+    "outputLineList": [
+        "鉄道駅_銅のインゴット"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_銅鉱石",
+            "destinationLine": "銅のインゴット製造ライン",
+            "supplyItem": "銅鉱石",
+            "supplyNum": 360
+        },
+        {
+            "supplierLine": "銅のインゴット製造ライン",
+            "destinationLine": "鉄道駅_銅のインゴット",
+            "supplyItem": "銅のインゴット",
+            "supplyNum": 360
+        }
+    ]
+}
