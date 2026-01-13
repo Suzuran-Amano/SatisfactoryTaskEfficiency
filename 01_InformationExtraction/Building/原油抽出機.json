@@ -5,5 +5,6 @@
 	    { "itemName":"モーター", "itemNum":15 },
 	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":20 },
 	    { "itemName":"ケーブル", "itemNum":60 }
-	    ]
+	    ],
+	"productionRatio" : 1
 }
