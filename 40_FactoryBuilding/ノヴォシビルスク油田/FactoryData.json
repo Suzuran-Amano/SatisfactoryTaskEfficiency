@@ -1,0 +1,9 @@
+{
+    "factoryName": "ノヴォシビルスク油田",
+    "usePower": 40,
+    "costList": {
+        "強化鉄板": 20,
+        "ケーブル": 80
+    },
+    "supplyPower": 0
+}

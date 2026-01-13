@@ -1,0 +1,25 @@
+{
+	"factoryName"	: "シェブデ製油所",
+	"productionList" :[
+		{
+			"resourceName" : "石灰岩",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 2.5
+		}
+	],
+
+	"outputLineList" :[
+		"鉄道駅_石灰岩"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "石灰岩採掘場",
+			"destinationLine" : "鉄道駅_石灰岩",
+			"supplyItem" : "石灰岩",
+			"supplyNum" : 300
+		}
+
+	]
+}

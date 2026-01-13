@@ -1,0 +1,24 @@
+{
+    "lineName": "ケーブル製造ライン",
+    "recipeName": "ケーブル",
+    "recipeNum": 10,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 20
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 80
+        }
+    ],
+    "totalUsePower": 40,
+    "inputName1": "ワイヤー",
+    "inputNum1": 60,
+    "totalInput1": 600,
+    "outputName1": "ケーブル",
+    "outputNum1": 30,
+    "totalOutput1": 300,
+    "supplyPower": 0
+}

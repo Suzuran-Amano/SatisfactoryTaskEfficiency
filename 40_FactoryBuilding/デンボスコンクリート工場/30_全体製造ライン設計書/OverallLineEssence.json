@@ -1,0 +1,33 @@
+{
+	"factoryName"	: "デンボスコンクリート工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "コンクリート",
+			"recipeNum" : 10
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_石灰岩"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_コンクリート"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_石灰岩",
+			"destinationLine" : "コンクリート製造ライン",
+			"supplyItem" : "石灰岩",
+			"supplyNum" : 450
+		},
+		{
+			"supplierLine" : "コンクリート製造ライン",
+			"destinationLine" : "鉄道駅_コンクリート",
+			"supplyItem" : "コンクリート",
+			"supplyNum" : 150
+		}
+	]
+}

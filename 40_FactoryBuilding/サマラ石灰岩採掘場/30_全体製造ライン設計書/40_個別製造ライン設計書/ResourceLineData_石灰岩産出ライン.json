@@ -1,0 +1,16 @@
+{
+    "lineName": "石灰岩産出ライン",
+    "resourceName": "石灰岩",
+    "resourceBaseOutputNum": 30,
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 2.5,
+            "singleResourceOutputNum": 300.0,
+            "usePower": 50.36621312173901
+        }
+    ],
+    "totalResourceOutputNum": 300.0,
+    "totalUsePower": 50.36621312173901
+}

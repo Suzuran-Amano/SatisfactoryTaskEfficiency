@@ -1,0 +1,26 @@
+{
+    "lineName": "原油産出ライン",
+    "resourceName": "原油",
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "overclockRatio": 1
+        }
+    ]
+}

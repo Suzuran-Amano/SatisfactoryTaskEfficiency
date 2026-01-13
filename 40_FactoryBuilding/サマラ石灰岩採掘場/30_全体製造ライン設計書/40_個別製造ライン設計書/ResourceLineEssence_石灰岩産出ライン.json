@@ -1,0 +1,11 @@
+{
+    "lineName": "石灰岩産出ライン",
+    "resourceName": "石灰岩",
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 2.5
+        }
+    ]
+}

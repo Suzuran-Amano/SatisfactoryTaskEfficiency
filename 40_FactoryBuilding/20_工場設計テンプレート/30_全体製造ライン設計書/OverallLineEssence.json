@@ -1,6 +1,34 @@
 {
 	"factoryName"	: "ローター工場",
 
+	"productionList" :[
+		{
+			"resourceName" : "原油",
+			"resourceRatio" : 2,
+			"buildingName" : "原油抽出機",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "原油",
+			"resourceRatio" : 2,
+			"buildingName" : "原油抽出機",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "原油",
+			"resourceRatio" : 1,
+			"buildingName" : "原油抽出機",
+			"overclockRatio" : 1
+		},
+				{
+			"resourceName" : "原油",
+			"resourceRatio" : 1,
+			"buildingName" : "原油抽出機",
+			"overclockRatio" : 1
+		}
+
+	],
+	
 	"recipeList" : [
 		{
 			"recipeName" : "ローター",

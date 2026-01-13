@@ -1,0 +1,9 @@
+{
+    "factoryName": "ドルトレヒト銅製品工場",
+    "usePower": 120,
+    "costList": {
+        "強化鉄板": 60,
+        "ケーブル": 240
+    },
+    "supplyPower": 0
+}

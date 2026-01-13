@@ -1,0 +1,53 @@
+{
+    "factoryName": "ノヴォシビルスク油田",
+    "productionList": [
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        }
+    ],
+    "inputlLineList": null,
+    "outputLineList": [
+        "鉄道駅_原油"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_原油",
+            "destinationLine": "原油抽出ライン",
+            "supplyItem": "原油",
+            "supplyNum": 360
+        }
+    ]
+}

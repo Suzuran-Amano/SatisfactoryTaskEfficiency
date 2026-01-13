@@ -1,0 +1,91 @@
+{
+    "factoryName": "ノヴォシビルスク油田",
+    "productionList": [
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 2,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        },
+        {
+            "resourceName": "原油",
+            "resourceBaseOutputNum": 60,
+            "resourceRatio": 1,
+            "buildingName": "原油抽出機",
+            "buildingRatio": 1,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        }
+    ],
+    "recipeList": [
+        {
+            "recipeName": "鉄のロッド",
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 15
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 15
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "鉄のロッド製造ライン",
+            "recipeName": "鉄のロッド",
+            "recipeNum": 10,
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 150
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 150
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "なし"
+    ],
+    "outputLineList": [
+        "鉄道駅_原油"
+    ],
+    "relationships": [
+        {
+            "destinationLine": "鉄道駅_原油",
+            "supplierLine": "原油抽出ライン",
+            "supplyItem": "原油",
+            "supplyNum": 180
+        }
+    ]
+}

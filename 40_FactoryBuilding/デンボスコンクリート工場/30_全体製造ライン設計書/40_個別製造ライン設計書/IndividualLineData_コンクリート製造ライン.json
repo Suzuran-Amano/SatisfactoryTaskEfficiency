@@ -1,0 +1,24 @@
+{
+    "lineName": "コンクリート製造ライン",
+    "recipeName": "コンクリート",
+    "recipeNum": 10,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 20
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 80
+        }
+    ],
+    "totalUsePower": 40,
+    "inputName1": "石灰岩",
+    "inputNum1": 45,
+    "totalInput1": 450,
+    "outputName1": "コンクリート",
+    "outputNum1": 15,
+    "totalOutput1": 150,
+    "supplyPower": 0
+}

@@ -1,0 +1,73 @@
+{
+    "factoryName": "ドルトレヒト銅製品工場",
+    "recipeList": [],
+    "individualLineList": [
+        {
+            "individualLineName": "ケーブル製造ライン",
+            "recipeName": "ケーブル",
+            "recipeNum": 20,
+            "inputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 300
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 600
+                }
+            ]
+        },
+        {
+            "individualLineName": "ケーブル製造ライン",
+            "recipeName": "ケーブル",
+            "recipeNum": 10,
+            "inputList": [
+                {
+                    "itemName": "ワイヤー",
+                    "itemNum": 600
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 300
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_銅のインゴット"
+    ],
+    "outputLineList": [
+        "鉄道駅_ワイヤー",
+        "鉄道駅_ケーブル"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_銅のインゴット",
+            "destinationLine": "ワイヤー製造ライン",
+            "supplyItem": "銅のインゴット",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "ワイヤー製造ライン",
+            "destinationLine": "ケーブル製造ライン",
+            "supplyItem": "ワイヤー",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "ワイヤー製造ライン",
+            "destinationLine": "鉄道駅_ワイヤー",
+            "supplyItem": "ワイヤー",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "ケーブル製造ライン",
+            "destinationLine": "鉄道駅_ケーブル",
+            "supplyItem": "ケーブル",
+            "supplyNum": 0
+        }
+    ]
+}
