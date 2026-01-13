@@ -1,0 +1,32 @@
+{
+    "lineName": "石油コークス製造ライン",
+    "recipeName": "石油コークス",
+    "recipeNum": 5,
+    "productName": "精製機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 50
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 50
+        },
+        {
+            "itemName": "鋼管",
+            "itemNum": 150
+        },
+        {
+            "itemName": "銅板",
+            "itemNum": 100
+        }
+    ],
+    "totalUsePower": 150,
+    "inputName1": "廃重油",
+    "inputNum1": 40,
+    "totalInput1": 200,
+    "outputName1": "石油コークス",
+    "outputNum1": 120,
+    "totalOutput1": 600,
+    "supplyPower": 0
+}

@@ -1,0 +1,171 @@
+{
+    "factoryName": "リヨン石油加工場",
+    "recipeList": [
+        {
+            "recipeName": "ゴム",
+            "inputList": [
+                {
+                    "itemName": "原油",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ゴム",
+                    "itemNum": 20
+                },
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 20
+                }
+            ]
+        },
+        {
+            "recipeName": "プラスチック",
+            "inputList": [
+                {
+                    "itemName": "原油",
+                    "itemNum": 30
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 20
+                },
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 10
+                }
+            ]
+        },
+        {
+            "recipeName": "石油コークス",
+            "inputList": [
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 40
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "石油コークス",
+                    "itemNum": 120
+                }
+            ]
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "ゴム製造ライン",
+            "recipeName": "ゴム",
+            "recipeNum": 6,
+            "inputList": [
+                {
+                    "itemName": "原油",
+                    "itemNum": 180
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ゴム",
+                    "itemNum": 120
+                },
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 120
+                }
+            ]
+        },
+        {
+            "individualLineName": "プラスチック製造ライン",
+            "recipeName": "プラスチック",
+            "recipeNum": 6,
+            "inputList": [
+                {
+                    "itemName": "原油",
+                    "itemNum": 180
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 120
+                },
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 60
+                }
+            ]
+        },
+        {
+            "individualLineName": "石油コークス製造ライン",
+            "recipeName": "石油コークス",
+            "recipeNum": 5,
+            "inputList": [
+                {
+                    "itemName": "廃重油",
+                    "itemNum": 200
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "石油コークス",
+                    "itemNum": 600
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_原油"
+    ],
+    "outputLineList": [
+        "鉄道駅_ゴム",
+        "鉄道駅_プラスチック",
+        "AWESOMEシンク"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_原油",
+            "destinationLine": "ゴム製造ライン",
+            "supplyItem": "原油",
+            "supplyNum": 180
+        },
+        {
+            "supplierLine": "鉄道駅_原油",
+            "destinationLine": "プラスチック製造ライン",
+            "supplyItem": "原油",
+            "supplyNum": 180
+        },
+        {
+            "supplierLine": "ゴム製造ライン",
+            "destinationLine": "鉄道駅_ゴム",
+            "supplyItem": "ゴム",
+            "supplyNum": 120
+        },
+        {
+            "supplierLine": "ゴム製造ライン",
+            "destinationLine": "石油コークス製造ライン",
+            "supplyItem": "廃重油",
+            "supplyNum": 120
+        },
+        {
+            "supplierLine": "プラスチック製造ライン",
+            "destinationLine": "鉄道駅_プラスチック",
+            "supplyItem": "プラスチック",
+            "supplyNum": 120
+        },
+        {
+            "supplierLine": "プラスチック製造ライン",
+            "destinationLine": "石油コークス製造ライン",
+            "supplyItem": "廃重油",
+            "supplyNum": 60
+        },
+        {
+            "supplierLine": "石油コークス製造ライン",
+            "destinationLine": "AWESOMEシンク",
+            "supplyItem": "石油コークス",
+            "supplyNum": 720
+        }
+    ]
+}

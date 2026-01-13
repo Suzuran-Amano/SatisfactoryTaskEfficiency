@@ -1,0 +1,35 @@
+{
+    "lineName": "プラスチック製造ライン",
+    "recipeName": "プラスチック",
+    "recipeNum": 6,
+    "productName": "精製機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 60
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 60
+        },
+        {
+            "itemName": "鋼管",
+            "itemNum": 180
+        },
+        {
+            "itemName": "銅板",
+            "itemNum": 120
+        }
+    ],
+    "totalUsePower": 180,
+    "inputName1": "原油",
+    "inputNum1": 30,
+    "totalInput1": 180,
+    "outputName1": "プラスチック",
+    "outputNum1": 20,
+    "totalOutput1": 120,
+    "outputName2": "廃重油",
+    "outputNum2": 10,
+    "totalOutput2": 60,
+    "supplyPower": 0
+}

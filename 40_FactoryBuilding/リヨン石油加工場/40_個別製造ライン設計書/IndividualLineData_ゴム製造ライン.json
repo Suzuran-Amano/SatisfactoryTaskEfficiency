@@ -1,0 +1,35 @@
+{
+    "lineName": "ゴム製造ライン",
+    "recipeName": "ゴム",
+    "recipeNum": 6,
+    "productName": "精製機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 60
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 60
+        },
+        {
+            "itemName": "鋼管",
+            "itemNum": 180
+        },
+        {
+            "itemName": "銅板",
+            "itemNum": 120
+        }
+    ],
+    "totalUsePower": 180,
+    "inputName1": "原油",
+    "inputNum1": 30,
+    "totalInput1": 180,
+    "outputName1": "ゴム",
+    "outputNum1": 20,
+    "totalOutput1": 120,
+    "outputName2": "廃重油",
+    "outputNum2": 20,
+    "totalOutput2": 120,
+    "supplyPower": 0
+}
