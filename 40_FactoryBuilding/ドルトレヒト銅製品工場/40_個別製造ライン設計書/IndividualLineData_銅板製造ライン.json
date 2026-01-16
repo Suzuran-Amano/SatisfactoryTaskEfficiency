@@ -1,0 +1,24 @@
+{
+    "lineName": "銅板製造ライン",
+    "recipeName": "銅板",
+    "recipeNum": 10,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 20
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 80
+        }
+    ],
+    "totalUsePower": 40,
+    "inputName1": "銅のインゴット",
+    "inputNum1": 30,
+    "totalInput1": 300,
+    "outputName1": "銅板",
+    "outputNum1": 15,
+    "totalOutput1": 150,
+    "supplyPower": 0
+}

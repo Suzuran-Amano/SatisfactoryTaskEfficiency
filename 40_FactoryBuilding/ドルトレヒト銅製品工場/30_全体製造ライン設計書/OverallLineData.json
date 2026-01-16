@@ -35,6 +35,23 @@
                     "itemNum": 300
                 }
             ]
+        },
+        {
+            "individualLineName": "銅板製造ライン",
+            "recipeName": "銅板",
+            "recipeNum": 10,
+            "inputList": [
+                {
+                    "itemName": "銅のインゴット",
+                    "itemNum": 300
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "銅板",
+                    "itemNum": 150
+                }
+            ]
         }
     ],
     "inputlLineList": [
@@ -42,7 +59,8 @@
     ],
     "outputLineList": [
         "鉄道駅_ワイヤー",
-        "鉄道駅_ケーブル"
+        "鉄道駅_ケーブル",
+        "鉄道駅_銅板"
     ],
     "relationships": [
         {
@@ -67,6 +85,12 @@
             "supplierLine": "ケーブル製造ライン",
             "destinationLine": "鉄道駅_ケーブル",
             "supplyItem": "ケーブル",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_銅のインゴット",
+            "destinationLine": "鉄道駅_銅板",
+            "supplyItem": "銅板",
             "supplyNum": 0
         }
     ]
