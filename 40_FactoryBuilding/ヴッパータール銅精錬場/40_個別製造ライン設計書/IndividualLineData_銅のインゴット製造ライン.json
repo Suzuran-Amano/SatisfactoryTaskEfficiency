@@ -1,24 +1,24 @@
 {
     "lineName": "銅のインゴット製造ライン",
     "recipeName": "銅のインゴット",
-    "recipeNum": 12,
+    "recipeNum": 24,
     "productName": "製錬炉",
     "costList": [
         {
             "itemName": "鉄のロッド",
-            "itemNum": 60
+            "itemNum": 120
         },
         {
             "itemName": "ワイヤー",
-            "itemNum": 96
+            "itemNum": 192
         }
     ],
-    "totalUsePower": 48,
+    "totalUsePower": 96,
     "inputName1": "銅鉱石",
     "inputNum1": 30,
-    "totalInput1": 360,
+    "totalInput1": 720,
     "outputName1": "銅のインゴット",
     "outputNum1": 30,
-    "totalOutput1": 360,
+    "totalOutput1": 720,
     "supplyPower": 0
 }
