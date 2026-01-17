@@ -5,6 +5,7 @@ from . import pathDataModule
 from .BasicData import BasicDataReader
 from .BasicData import RecipeData
 from .BasicData import BuildingData
+from .BasicData import BlueprintData
 from . import IndividualLineEssenceModule as ILineEssence
 
 
@@ -13,6 +14,8 @@ LINE_NAME_KEY = "lineName"
 
 # レシピ関係
 RECIPE_NAME_KEY = "recipeName"
+BLUEPRINT_NAME = "blueprintName"
+BLUEPRINT_NUM = "blueprintNum"
 RECIPE_NUM_KEY = "recipeNum"
 
 # 設備関係
@@ -116,23 +119,55 @@ class IndividualLineData:
 
         # レシピ名を追加
         iLineData[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)
-        recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
+
+        # 青写真データ情報があれば追加
+        isBlueprint = False
+        if BLUEPRINT_NAME in iLineEssence.value:
+            isBlueprint = True
+
+            blueprintName = iLineEssence.GetValue(ILineEssence.BLUEPRINT_NAME)
+            iLineData[BLUEPRINT_NAME] = blueprintName
+
+            blueprintNum = iLineEssence.GetValue(ILineEssence.BLUEPRINT_NUM)
+            iLineData[BLUEPRINT_NUM] = blueprintNum
+            
+            blueprintData = BasicDataReader.GetBlueprintData(blueprintName)
+
+        # レシピ数を追加
+        if isBlueprint:
+            count = blueprintData.GetValue(BlueprintData.COUNT)
+            recipeNum = count * blueprintNum
+        else:
+            recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
         iLineData[RECIPE_NUM_KEY] = recipeNum
 
         # 制作物を追加
-        productName = recipeData.GetValue(RecipeData.PRODUCT_NAME_KEY)
+        if isBlueprint:
+            productName = blueprintData.GetValue(BlueprintData.BUILDING_NAME)
+        else:
+            productName = recipeData.GetValue(RecipeData.PRODUCT_NAME_KEY)
         iLineData[PRODUCT_NAME_KEY] = productName
 
         # 合計コストを追加
-        buildingData = BasicDataReader.GetBuildingData(productName)
-        costList = []
-        for cost in buildingData.GetValue(BuildingData.COST_KEY):
-            costList.append({
-                ITEM_NAME_KEY : cost[BuildingData.ITEM_NAME_KEY],
-                ITEM_NUM_KEY : cost[BuildingData.ITEM_NUM_KEY] * recipeNum
+        if isBlueprint:
+            costList = []
+            for blueprintCost in blueprintData.GetValue(BlueprintData.COST):
+                costList.append({
+                    ITEM_NAME_KEY : blueprintCost[BlueprintData.ITEM_NAME],
+                    ITEM_NUM_KEY : blueprintCost[BlueprintData.AMOUNT] * blueprintNum
 
-            })
-        iLineData[COST_LIST_KEY] = costList
+                })
+            iLineData[COST_LIST_KEY] = costList
+        else:
+            buildingData = BasicDataReader.GetBuildingData(productName)
+            costList = []
+            for cost in buildingData.GetValue(BuildingData.COST_KEY):
+                costList.append({
+                    ITEM_NAME_KEY : cost[BuildingData.ITEM_NAME_KEY],
+                    ITEM_NUM_KEY : cost[BuildingData.ITEM_NUM_KEY] * recipeNum
+
+                })
+            iLineData[COST_LIST_KEY] = costList
 
 
         # 合計消費電力を追加

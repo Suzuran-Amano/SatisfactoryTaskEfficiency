@@ -12,6 +12,8 @@ OVERCLOCK_RATIO = "overclockRatio"
 RECIPE_LIST_KEY = "recipeList"
 RECIPE_NAME_KEY = "recipeName"
 RECIPE_NUM_KEY = "recipeNum"
+BLUEPRINT_NAME = "blueprintName"
+BLUEPRINT_NUM = "blueprintNum"
 
 INPUT_LINE_LIST = "inputlLineList"
 OUTPUT_LINE_LIST = "outputLineList"

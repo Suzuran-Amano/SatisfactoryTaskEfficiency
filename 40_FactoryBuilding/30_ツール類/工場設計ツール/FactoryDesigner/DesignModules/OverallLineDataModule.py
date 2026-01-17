@@ -5,6 +5,7 @@ from . import pathDataModule
 from .BasicData import BasicDataReader
 from .BasicData import RecipeData
 from .BasicData import BuildingData
+from .BasicData import BlueprintData
 from .BasicData import ResourceData
 from . import OverallLineEssenceModule as OLineEssence
 
@@ -25,6 +26,8 @@ TOTAL_RESOURCE_OUTPUT_NUM = "totalResourceOutputNum"
 # レシピ関係
 RECIPE_LIST_KEY = "recipeList"
 RECIPE_NAME_KEY = "recipeName"
+BLUEPRINT_NAME = "blueprintName"
+BLUEPRINT_NUM = "blueprintNum"
 INPUT_LIST_KEY = "inputList"
 OUTPUT_LIST_KEY = "outputList"
 ITEM_NAME_KEY = "itemName"
@@ -245,11 +248,22 @@ class OverallLineData:
             recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
 
             # レシピ情報を追加
-            iLineDict = {}            
+            iLineDict = {}
             iLineDict[INDIVIDUAL_LINE_NAME] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
             iLineDict[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)    # レシピ名
-            recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  # レシピ数
-            iLineDict[RECIPE_NUM_KEY] = recipeNum
+            recipeNum = 0
+            if OLineEssence.RECIPE_NUM_KEY in useRecipe:  # レシピ数で指定されている場合
+                recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  # レシピ数
+                iLineDict[RECIPE_NUM_KEY] = recipeNum
+            else: # 青写真で指定されている場合
+                blueprintName = useRecipe[OLineEssence.BLUEPRINT_NAME]  # 青写真名
+                iLineDict[BLUEPRINT_NAME] = blueprintName
+                blueprintNum = useRecipe[OLineEssence.BLUEPRINT_NUM]  # 青写真数
+                iLineDict[BLUEPRINT_NUM] = blueprintNum
+                blueprintData = BasicDataReader.GetBlueprintData(blueprintName)
+                count = blueprintData.GetValue(BlueprintData.COUNT)
+                recipeNum = count * blueprintNum
+                iLineDict[RECIPE_NUM_KEY] = recipeNum# レシピ数
             iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY),recipeNum)  # 要求物品
             iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY),recipeNum)    # 加工物品
 

@@ -8,6 +8,8 @@ from .pathDataModule import PathData
 # 定数
 LINE_NAME_KEY = "lineName"
 RECIPE_NAME_KEY = "recipeName"
+BLUEPRINT_NAME = "blueprintName"
+BLUEPRINT_NUM = "blueprintNum"
 RECIPE_NUM_KEY = "recipeNum"
 SUPPLY_POWER_KEY = "supplyPower"
 

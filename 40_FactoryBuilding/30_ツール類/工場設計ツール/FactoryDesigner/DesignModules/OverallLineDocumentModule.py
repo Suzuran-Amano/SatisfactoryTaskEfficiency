@@ -249,7 +249,12 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
         
         # 基本情報
         result += "レシピ名 : " + iLineData[OLineDataModule.RECIPE_NAME_KEY] + "  \n"
-        result += "レシピ数 : " + str(iLineData[OLineDataModule.RECIPE_NUM_KEY]) + "\n"
+        if OLineDataModule.RECIPE_NUM_KEY in iLineData:  # 辞書にキーがある場合
+            result += "レシピ数 : " + str(iLineData[OLineDataModule.RECIPE_NUM_KEY]) + "\n"
+        else:
+            result += iLineData[OLineDataModule.BLUEPRINT_NAME]  # 青写真名
+            result += str(iLineData[OLineDataModule.BLUEPRINT_NUM])  # 青写真数
+        
         result += "\n"
         
         # ヘッダー

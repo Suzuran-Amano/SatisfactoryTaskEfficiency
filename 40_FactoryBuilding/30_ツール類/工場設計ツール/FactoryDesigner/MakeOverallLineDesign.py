@@ -52,7 +52,7 @@ class OverallLineDesignMaker:
     
 
     # 個別ライン本質ファイルの作成
-    def MakeILineEssence(self,oLineData :OLineData) -> list:
+    def MakeILineEssence(self,oLineData :OLineData.OverallLineData) -> list:
         
         result = []
 
@@ -70,7 +70,12 @@ class OverallLineDesignMaker:
             lineEssense = {}
             lineEssense[ILineEssence.LINE_NAME_KEY] = iLine[OLineData.INDIVIDUAL_LINE_NAME]
             lineEssense[ILineEssence.RECIPE_NAME_KEY] = iLine[OLineData.RECIPE_NAME_KEY]
-            lineEssense[ILineEssence.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]
+            if OLineEssence.BLUEPRINT_NAME in iLine:  # 青写真で指定されている場合
+                lineEssense[ILineEssence.BLUEPRINT_NAME] = iLine[OLineData.BLUEPRINT_NAME]  # 青写真名
+                lineEssense[ILineEssence.BLUEPRINT_NUM] = iLine[OLineData.BLUEPRINT_NUM]  # 青写真数
+            else: # レシピ数で指定されている場合
+                lineEssense[ILineEssence.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]  # レシピ数
+            #lineEssense[ILineEssence.RECIPE_NUM_KEY] = iLine[OLineData.RECIPE_NUM_KEY]
             result.append(ILineEssence.IndividualLineEssence(lineEssense))
 
         return result
