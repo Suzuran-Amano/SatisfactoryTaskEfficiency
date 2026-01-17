@@ -2,9 +2,9 @@ import os
 import json
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
-from . import BuildingDataManagerModule as BuildingData
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
+from .BasicData import BuildingData
 from . import IndividualLineEssenceModule as ILineEssence
 
 
@@ -107,24 +107,24 @@ class IndividualLineData:
         iLineData = {}
 
         # 基礎情報を取得
-        recipeItem = InfoReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
-        buildingData = InfoReader.GetBuildingData(recipeItem.GetValue(RecipeItemModule.PRODUCT_NAME_KEY))
+        recipeData = BasicDataReader.GetRecipe(iLineEssence.GetValue(ILineEssence.RECIPE_NAME_KEY))
+        buildingData = BasicDataReader.GetBuildingData(recipeData.GetValue(RecipeData.PRODUCT_NAME_KEY))
 
 
         # ライン名を追加
         iLineData[LINE_NAME_KEY] = iLineEssence.GetValue(ILineEssence.LINE_NAME_KEY)
 
         # レシピ名を追加
-        iLineData[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)
+        iLineData[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)
         recipeNum = iLineEssence.GetValue(ILineEssence.RECIPE_NUM_KEY)
         iLineData[RECIPE_NUM_KEY] = recipeNum
 
         # 制作物を追加
-        productName = recipeItem.GetValue(RecipeItemModule.PRODUCT_NAME_KEY)
+        productName = recipeData.GetValue(RecipeData.PRODUCT_NAME_KEY)
         iLineData[PRODUCT_NAME_KEY] = productName
 
         # 合計コストを追加
-        buildingData = InfoReader.GetBuildingData(productName)
+        buildingData = BasicDataReader.GetBuildingData(productName)
         costList = []
         for cost in buildingData.GetValue(BuildingData.COST_KEY):
             costList.append({
@@ -141,13 +141,13 @@ class IndividualLineData:
 
         # 搬入物を追加
         index = 0
-        for data in recipeItem.GetValue(RecipeItemModule.INPUT_KEY):
+        for data in recipeData.GetValue(RecipeData.INPUT_KEY):
             inputNameKey = INPUT_NAME_KEY + str(index+1)
-            inputName = data[RecipeItemModule.ITEM_NAME_KEY]
+            inputName = data[RecipeData.ITEM_NAME_KEY]
             iLineData[inputNameKey] = inputName
             
             inputNumKey = INPUT_NUM_KEY + str(index+1)
-            inputNum = data[RecipeItemModule.ITEM_NUM_KEY]
+            inputNum = data[RecipeData.ITEM_NUM_KEY]
             iLineData[inputNumKey] = inputNum
             
             inputTotalKey = TOTAL_INPUT_KEY + str(index+1)
@@ -158,13 +158,13 @@ class IndividualLineData:
         
         # 搬出物を追加
         index = 0
-        for data in recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY):
+        for data in recipeData.GetValue(RecipeData.OUTPUT_KEY):
             outputNameKey = OUTPUT_NAME_KEY + str(index+1)
-            outputName = data[RecipeItemModule.ITEM_NAME_KEY]
+            outputName = data[RecipeData.ITEM_NAME_KEY]
             iLineData[outputNameKey] = outputName
             
             outputNumKey = OUTPUT_NUM_KEY + str(index+1)
-            outputNum = data[RecipeItemModule.ITEM_NUM_KEY]
+            outputNum = data[RecipeData.ITEM_NUM_KEY]
             iLineData[outputNumKey] = outputNum
             
             outputTotalKey = TOTAL_OUTPUT_KEY + str(index+1)
@@ -174,7 +174,7 @@ class IndividualLineData:
             index = index + 1
 
         # 供給電力を追加
-        supplyPower = recipeItem.GetValue(RecipeItemModule.SUPPLY_POWER_KEY)
+        supplyPower = recipeData.GetValue(RecipeData.SUPPLY_POWER_KEY)
         if supplyPower == None:
             supplyPower = 0
         supplyPower = supplyPower * recipeNum

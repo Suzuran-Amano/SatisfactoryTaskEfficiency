@@ -2,10 +2,10 @@ import os
 import json
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
-from . import BuildingDataManagerModule as BuildingDataModule
-from . import ResourceDataModule
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
+from .BasicData import BuildingData
+from .BasicData import ResourceData
 from . import OverallLineEssenceModule as OLineEssence
 
 
@@ -169,8 +169,8 @@ class OverallLineData:
         lines[RESOURCE_NAME] = resourceName
 
         # 資源基本産出量
-        resourceData = InfoReader.GetResourceData(resourceName)
-        resourceBaseOutputNum = resourceData.GetValue(ResourceDataModule.ITEM_NUM_KEY)
+        resourceData = BasicDataReader.GetResourceData(resourceName)
+        resourceBaseOutputNum = resourceData.GetValue(ResourceData.ITEM_NUM_KEY)
         lines[RESOURCE_BASE_OUTPUT_NUM] = resourceBaseOutputNum
 
         # 資源倍率
@@ -182,8 +182,8 @@ class OverallLineData:
         lines[BUILDING_NAME] = buildingName
 
         # 設備倍率
-        buildingData = InfoReader.GetBuildingData(buildingName)
-        buildingRatio = buildingData.jsonData[BuildingDataModule.PRODUCTION_RATIO]
+        buildingData = BasicDataReader.GetBuildingData(buildingName)
+        buildingRatio = buildingData.jsonData[BuildingData.PRODUCTION_RATIO]
         lines[BUILDING_RATIO] = buildingRatio
 
         # オーバークロック倍率
@@ -212,13 +212,13 @@ class OverallLineData:
         recipeList = []
         for useRecipe in recipeList:
 
-            recipeItem = InfoReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            RecipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
             
             # レシピ情報を追加
             recipeDict = {}
-            recipeDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)   # レシピ名
-            recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.INPUT_KEY)) # 要求物品
-            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY)) # 加工物品
+            recipeDict[RECIPE_NAME_KEY] = RecipeData.GetValue(RecipeData.RECIPE_NAME_KEY)   # レシピ名
+            recipeDict[INPUT_LIST_KEY] = self._GetItemList(RecipeData.GetValue(RecipeData.INPUT_KEY)) # 要求物品
+            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(RecipeData.GetValue(RecipeData.OUTPUT_KEY)) # 加工物品
 
             recipeList.append(recipeDict)
 
@@ -242,16 +242,16 @@ class OverallLineData:
         iLineList = []
         for useRecipe in recipeList:
 
-            recipeItem = InfoReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
 
             # レシピ情報を追加
             iLineDict = {}            
-            iLineDict[INDIVIDUAL_LINE_NAME] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
-            iLineDict[RECIPE_NAME_KEY] = recipeItem.GetValue(RecipeItemModule.RECIPE_NAME_KEY)    # レシピ名
+            iLineDict[INDIVIDUAL_LINE_NAME] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
+            iLineDict[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)    # レシピ名
             recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  # レシピ数
             iLineDict[RECIPE_NUM_KEY] = recipeNum
-            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.INPUT_KEY),recipeNum)  # 要求物品
-            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY),recipeNum)    # 加工物品
+            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY),recipeNum)  # 要求物品
+            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY),recipeNum)    # 加工物品
 
             iLineList.append(iLineDict)
 
@@ -263,10 +263,10 @@ class OverallLineData:
     # レシピ情報から、入出力の物品情報を返す
     def _GetItemList(self,itemList : list,recipeNum = 1):
         result = []
-        for recipeItemData in itemList:
+        for recipeDataData in itemList:
             itemData = {}
-            itemData[ITEM_NAME_KEY] = recipeItemData[RecipeItemModule.ITEM_NAME_KEY]
-            itemData[ITEM_NUM_KEY] = recipeItemData[RecipeItemModule.ITEM_NUM_KEY] * recipeNum
+            itemData[ITEM_NAME_KEY] = recipeDataData[RecipeData.ITEM_NAME_KEY]
+            itemData[ITEM_NUM_KEY] = recipeDataData[RecipeData.ITEM_NUM_KEY] * recipeNum
             result.append(itemData)
 
         return result

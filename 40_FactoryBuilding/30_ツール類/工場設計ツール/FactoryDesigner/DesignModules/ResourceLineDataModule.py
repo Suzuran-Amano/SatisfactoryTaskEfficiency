@@ -2,10 +2,10 @@ import os
 import json
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
-from . import ResourceDataModule
-from . import BuildingDataManagerModule as BuildingData
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
+from .BasicData import ResourceData
+from .BasicData import BuildingData
 from . import ResourceLineEssenceModule as RLineEssence
 
 
@@ -104,12 +104,12 @@ class ResourceLineData:
             ) -> dict:
         
         # 必要な情報を取得
-        resourceData = InfoReader.GetResourceData(rLineEssence.GetValue(RLineEssence.RESOURCE_NAME_KEY))
+        resourceData = BasicDataReader.GetResourceData(rLineEssence.GetValue(RLineEssence.RESOURCE_NAME_KEY))
         buildingList = {}
         resourceList = rLineEssence.GetValue(RLineEssence.RESOURCE_LIST_KEY)
         for resourceItem in resourceList:
             if not(resourceItem[BUILDING_NAME_KEY] in buildingList):
-                buildingList[resourceItem[BUILDING_NAME_KEY]] = InfoReader.GetBuildingData(resourceItem[BUILDING_NAME_KEY])
+                buildingList[resourceItem[BUILDING_NAME_KEY]] = BasicDataReader.GetBuildingData(resourceItem[BUILDING_NAME_KEY])
 
         # 返す用のデータ
         rLineData = {}
@@ -118,8 +118,8 @@ class ResourceLineData:
         rLineData[LINE_NAME_KEY] = rLineEssence.GetValue(RLineEssence.LINE_NAME_KEY)
 
         # 資源情報
-        rLineData[RESOURCE_NAME_KEY] = resourceData.GetValue(ResourceDataModule.RESOURCE_NAME_KEY)
-        resourceBaseOutputNum = resourceData.GetValue(ResourceDataModule.ITEM_NUM_KEY)
+        rLineData[RESOURCE_NAME_KEY] = resourceData.GetValue(ResourceData.RESOURCE_NAME_KEY)
+        resourceBaseOutputNum = resourceData.GetValue(ResourceData.ITEM_NUM_KEY)
         rLineData[RESOURCE_BASE_OUTPUT_NUM] = resourceBaseOutputNum
 
         # 資源リスト

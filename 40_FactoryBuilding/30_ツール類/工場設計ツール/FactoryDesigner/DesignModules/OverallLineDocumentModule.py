@@ -1,9 +1,9 @@
 import os
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
-from . import ResourceDataModule
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
+from .BasicData import ResourceData
 from . import OverallLineDataModule as OLineDataModule
 from . import DocumentMakerModule 
 
@@ -195,25 +195,25 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
     def _MakeRecipeText(self,recipeName:str) -> str:
         
         # レシピデータ取得
-        recipe = InfoReader.GetRecipe(recipeName)
+        recipe = BasicDataReader.GetRecipe(recipeName)
 
         # ヘッダー
-        result = "### " + recipe.GetValue(RecipeItemModule.RECIPE_NAME_KEY) + "\n"
+        result = "### " + recipe.GetValue(RecipeData.RECIPE_NAME_KEY) + "\n"
         result += "|I/O|物品名|要求数|\n"
         result += "|---|---|---|\n"
 
         
         # input 
-        items = recipe.GetValue(RecipeItemModule.INPUT_KEY)
+        items = recipe.GetValue(RecipeData.INPUT_KEY)
         for item in items:
-            result += "|input|" + str(item[RecipeItemModule.ITEM_NAME_KEY]) + "|" + str(item[RecipeItemModule.ITEM_NUM_KEY]) + "|\n"
+            result += "|input|" + str(item[RecipeData.ITEM_NAME_KEY]) + "|" + str(item[RecipeData.ITEM_NUM_KEY]) + "|\n"
 
         result += "|---|---|---|\n"
 
         # input 
-        items = recipe.GetValue(RecipeItemModule.OUTPUT_KEY)
+        items = recipe.GetValue(RecipeData.OUTPUT_KEY)
         for item in items:
-            result += "|output|" + str(item[RecipeItemModule.ITEM_NAME_KEY]) + "|" + str(item[RecipeItemModule.ITEM_NUM_KEY]) + "|\n"
+            result += "|output|" + str(item[RecipeData.ITEM_NAME_KEY]) + "|" + str(item[RecipeData.ITEM_NUM_KEY]) + "|\n"
 
         return result
     

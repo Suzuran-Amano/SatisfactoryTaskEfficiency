@@ -2,8 +2,8 @@ import os
 from abc import ABC, abstractmethod
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
 
 
 # 書類を作成、出力するクラスの基底クラス

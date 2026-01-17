@@ -1,9 +1,10 @@
 import os
 import json
 
-from .RecipeItemModule import RecipeItem
-from .BuildingDataManagerModule import BuildingDataItem as BuildingData
-from .ResourceDataModule import ResourceData
+from .RecipeData import RecipeData
+from .BuildingData import BuildingData
+from .ResourceData import ResourceData
+from .BlueprintData import BlueprintData
 
 
 ### 定数 ###
@@ -15,13 +16,14 @@ INFOMATION_FILE_NAME = "01_InformationExtraction"
 RECIPES_DIRECTORY_NAME = "Recipes"
 BUILDING_DIRECTORY_NAME = "Building"
 RESOURCE_DIRECTORY_NAME = "Resources"
+BLUEPRINT_DIRECTORY_NAME = "Blueprint"
 
 
 ### 関数 ###
 
 # レシピを追加
 def GetRecipe(recipeName:str):
-    return RecipeItem(_OpenFile(_GetRecipesDirectoryPath(),recipeName))
+    return RecipeData(_OpenFile(_GetRecipesDirectoryPath(),recipeName))
 
 # 設備情報を追加
 def GetBuildingData(buildingName:str):
@@ -30,6 +32,10 @@ def GetBuildingData(buildingName:str):
 # 資源情報を追加
 def GetResourceData(resourceName:str):
     return ResourceData(_OpenFile(_GetResourcesDirectoryPath(),resourceName))
+
+# 青写真情報を追加
+def GetBlueprintData(resourceName:str):
+    return ResourceData(_OpenFile(_GetBlueprintDirectoryPath(),resourceName))
 
 # ファイルを開く
 def _OpenFile(dirPath:str,fileName:str):
@@ -48,6 +54,10 @@ def _GetBuildingsDirectoryPath():
 # 資源集のディレクトリを返す
 def _GetResourcesDirectoryPath():
     return _GetInfomationDirectoryPath() + "\\" + RESOURCE_DIRECTORY_NAME
+
+# 資源集のディレクトリを返す
+def _GetBlueprintDirectoryPath():
+    return _GetInfomationDirectoryPath() + "\\" + BLUEPRINT_DIRECTORY_NAME
 
 # 情報ディレクトリのパスを返す
 def _GetInfomationDirectoryPath() -> str:

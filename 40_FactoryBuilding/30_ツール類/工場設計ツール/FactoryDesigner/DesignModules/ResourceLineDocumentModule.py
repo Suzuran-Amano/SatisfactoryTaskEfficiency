@@ -1,8 +1,8 @@
 import os
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
 from . import ResourceLineDataModule as RLineDataModule
 from . import DocumentMakerModule 
 

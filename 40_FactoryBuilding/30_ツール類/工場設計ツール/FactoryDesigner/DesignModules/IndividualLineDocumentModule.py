@@ -1,8 +1,8 @@
 import os
 
 from . import pathDataModule
-from . import InfomationReaderModule as InfoReader
-from . import RecipeItemModule
+from .BasicData import BasicDataReader
+from .BasicData import RecipeData
 from . import IndividualLineDataModule as ILineDataModule
 from . import DocumentMakerModule 
 
@@ -23,7 +23,7 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
             ):
                 
         # 使用するデータの読み込み
-        recipeData = InfoReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
+        recipeData = BasicDataReader.GetRecipe(iLineData.GetValue(ILineDataModule.RECIPE_NAME_KEY))
 
         # テンプレートの読み込みと置換
         lines = self._ReadTemplateFile(self.TEMPLATE_FILE_NAME)
@@ -58,10 +58,10 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
     def _DuplicateInputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem
+            recipeData : RecipeData.RecipeData
             ):
         
-        length = len(recipeItem.GetValue(RecipeItemModule.INPUT_KEY))
+        length = len(recipeData.GetValue(RecipeData.INPUT_KEY))
         keys = []
         keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NAME_KEY))
         keys.append(self._GetReplaceKey(ILineDataModule.INPUT_NUM_KEY))
@@ -74,10 +74,10 @@ class IndividualLineDocument(DocumentMakerModule.DocumentMaker):
     def _DuplicateOutputLines(
             self,
             lines,
-            recipeItem : RecipeItemModule.RecipeItem
+            recipeData : RecipeData.RecipeData
             ):
         
-        length = len(recipeItem.GetValue(RecipeItemModule.OUTPUT_KEY))
+        length = len(recipeData.GetValue(RecipeData.OUTPUT_KEY))
         keys = []
         keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NAME_KEY))
         keys.append(self._GetReplaceKey(ILineDataModule.OUTPUT_NUM_KEY))
