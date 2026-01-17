@@ -212,13 +212,13 @@ class OverallLineData:
         recipeList = []
         for useRecipe in recipeList:
 
-            RecipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+            recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
             
             # レシピ情報を追加
             recipeDict = {}
-            recipeDict[RECIPE_NAME_KEY] = RecipeData.GetValue(RecipeData.RECIPE_NAME_KEY)   # レシピ名
-            recipeDict[INPUT_LIST_KEY] = self._GetItemList(RecipeData.GetValue(RecipeData.INPUT_KEY)) # 要求物品
-            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(RecipeData.GetValue(RecipeData.OUTPUT_KEY)) # 加工物品
+            recipeDict[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)   # レシピ名
+            recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY)) # 要求物品
+            recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY)) # 加工物品
 
             recipeList.append(recipeDict)
 
