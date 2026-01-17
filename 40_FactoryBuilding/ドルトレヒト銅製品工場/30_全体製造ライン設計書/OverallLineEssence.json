@@ -4,7 +4,8 @@
 	"recipeList" : [
 		{
 			"recipeName" : "ワイヤー",
-			"recipeNum" : 20
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 2
 		},
 		{
 			"recipeName" : "ケーブル",
