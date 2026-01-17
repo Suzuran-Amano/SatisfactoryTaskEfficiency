@@ -1,0 +1,44 @@
+{
+  "blueprintName": "製作機5",
+  "description": "単一設備のシンプルなサンプル",
+  "version": 1,
+
+  "buildingName": "製作機",
+  "count": 5,
+
+  "cost": [
+    {
+      "itemName": "強化鉄板",
+      "amount": 10
+    },
+    {
+      "itemName": "ケーブル",
+      "amount": 74
+    },
+    {
+      "itemName": "コンクリート被覆型鋼梁",
+      "amount": 54
+    },
+    {
+      "itemName": "鉄のロッド",
+      "amount": 14
+    },
+    {
+      "itemName": "鉄板",
+      "amount": 20
+    },
+    {
+      "itemName": "コンクリート",
+      "amount": 4
+    },
+    {
+      "itemName": "クイックワイヤー",
+      "amount": 12
+    }
+  ],
+
+  "power": {
+    "consumptionMw": 20.0,
+    "productionMw": 0.0
+  }
+}
