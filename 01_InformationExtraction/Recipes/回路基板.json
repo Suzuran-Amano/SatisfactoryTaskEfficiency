@@ -1,0 +1,12 @@
+{
+    "recipeName" :"回路基板",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"回路基板", "itemNum":7.5 }
+	    ],
+    "input":[
+	    { "itemName":"銅板", "itemNum":15 },
+	    { "itemName":"プラスチック", "itemNum":30 }
+	    ]
+
+}

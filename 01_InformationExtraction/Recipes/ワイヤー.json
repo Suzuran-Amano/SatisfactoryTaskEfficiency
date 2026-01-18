@@ -1,5 +1,5 @@
 {
-    "recipeName" :"ケーブル",
+    "recipeName" :"ワイヤー",
     "productName":"製作機" ,
     "input":[
         { "itemName":"銅のインゴット", "itemNum":15 }

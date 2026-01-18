@@ -1,0 +1,13 @@
+{
+    "recipeName" :"コンピューター",
+    "productName":"製造機" ,
+    "output":[
+	    { "itemName":"コンピューター", "itemNum":2.5 }
+	    ],
+    "input":[
+	    { "itemName":"回路基板", "itemNum":10 },
+	    { "itemName":"ケーブル", "itemNum":20 },
+	    { "itemName":"プラスチック", "itemNum":40 }
+	    ]
+
+}

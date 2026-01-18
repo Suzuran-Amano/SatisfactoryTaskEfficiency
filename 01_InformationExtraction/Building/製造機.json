@@ -1,0 +1,10 @@
+{
+    "buildingName" :"製造機",
+    "usePower": 55,
+    "cost":[
+	    { "itemName":"モーター", "itemNum":10 },
+	    { "itemName":"モジュラーフレーム", "itemNum":20 },
+	    { "itemName":"プラスチック", "itemNum":50 },
+	    { "itemName":"ケーブル", "itemNum":50 }
+	    ]
+}
