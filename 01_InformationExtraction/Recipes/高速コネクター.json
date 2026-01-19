@@ -1,8 +1,8 @@
 {
-    "recipeName" :"包装済み燃料",
-    "productName":"充填機" ,
+    "recipeName" :"高速コネクター",
+    "productName":"製造機" ,
     "output":[
-	    { "itemName":"包装済み燃料", "itemNum":40 }
+	    { "itemName":"高速コネクター", "itemNum":3.75 }
 	    ],
     "input":[
 	    { "itemName":"ケーブル", "itemNum":37.5 },
