@@ -1,0 +1,109 @@
+{
+    "factoryName": "ノーショーピング電子機器工場",
+    "recipeList": [],
+    "individualLineList": [
+        {
+            "individualLineName": "回路基板製造ライン",
+            "recipeName": "回路基板",
+            "blueprintName": "組立機4",
+            "blueprintNum": 2,
+            "recipeNum": 8,
+            "inputList": [
+                {
+                    "itemName": "銅板",
+                    "itemNum": 120
+                },
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 240
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "回路基板",
+                    "itemNum": 60.0
+                }
+            ]
+        },
+        {
+            "individualLineName": "コンピューター製造ライン",
+            "recipeName": "コンピューター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 2,
+            "recipeNum": 4,
+            "inputList": [
+                {
+                    "itemName": "回路基板",
+                    "itemNum": 40
+                },
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 80
+                },
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 160
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "コンピューター",
+                    "itemNum": 10.0
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_銅板",
+        "鉄道駅_プラスチック",
+        "鉄道駅_ケーブル"
+    ],
+    "outputLineList": [
+        "鉄道駅_回路基板",
+        "鉄道駅_コンピューター"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_銅板",
+            "destinationLine": "回路基板製造ライン",
+            "supplyItem": "銅板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_プラスチック",
+            "destinationLine": "回路基板製造ライン",
+            "supplyItem": "プラスチック",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "回路基板製造ライン",
+            "destinationLine": "鉄道駅_回路基板",
+            "supplyItem": "回路基板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "回路基板製造ライン",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "回路基板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_プラスチック",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "プラスチック",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_ケーブル",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "ケーブル",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "コンピューター製造ライン",
+            "destinationLine": "鉄道駅_コンピューター",
+            "supplyItem": "コンピューター",
+            "supplyNum": 0
+        }
+    ]
+}
