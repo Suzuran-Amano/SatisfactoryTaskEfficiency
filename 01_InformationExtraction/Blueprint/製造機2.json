@@ -5,7 +5,7 @@
 
   "buildingName": "製造機",
   "count": 2,
-  "width": 3,
+  "width": 4.5,
 
   "cost": [
     { "itemName": "モーター", "amount": 20 },
