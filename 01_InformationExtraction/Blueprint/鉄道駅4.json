@@ -1,0 +1,24 @@
+{
+  "blueprintName": "組立機4",
+  "description": "機関車2両を含めた6両編成の個体/液体貨物駅。運用上青写真とまとめて管理しているが、青写真にはなっていない",
+  "version": 1,
+
+  "buildingName": "鉄道駅。",
+  "count": 4,
+  "width": 7,
+
+  "cost": [
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 65 },
+    { "itemName": "プラスチック ", "amount": 150 },
+    { "itemName": "コンクリート ", "amount": 320 },
+    { "itemName": "ワイヤー ", "amount": 600 },
+    { "itemName": "モーター ", "amount": 20 },
+    { "itemName": "鋼管 ", "amount": 6 },
+    { "itemName": "コンピューター ", "amount": 2 }
+  ],
+
+  "power": {
+    "consumptionMw": 250.0,
+    "productionMw": 0.0
+  }
+}

@@ -5,6 +5,7 @@
 
   "buildingName": "製作機",
   "count": 5,
+  "width": 3,
 
   "cost": [
     { "itemName": "鉄のロッド", "amount": 48 },

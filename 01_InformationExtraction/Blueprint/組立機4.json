@@ -1,0 +1,25 @@
+{
+  "blueprintName": "組立機4",
+  "description": "組立機を4基まとめたブループリント",
+  "version": 1,
+
+  "buildingName": "組立機",
+  "count": 4,
+  "width": 3.5,
+
+  "cost": [
+    { "itemName": "強化鉄板", "amount": 32 },
+    { "itemName": "ローター", "amount": 16 },
+    { "itemName": "ケーブル", "amount": 74 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 76 },
+    { "itemName": "鉄板", "amount": 24 },
+    { "itemName": "鉄のロッド", "amount": 12 },
+    { "itemName": "コンクリート", "amount": 4 },
+    { "itemName": "クイックワイヤー", "amount": 12 }
+  ],
+
+  "power": {
+    "consumptionMw": 30.0,
+    "productionMw": 0.0
+  }
+}

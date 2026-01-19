@@ -1,0 +1,26 @@
+{
+  "blueprintName": "製造機2",
+  "description": "製造機を2つまとめたブループリント",
+  "version": 1,
+
+  "buildingName": "製造機",
+  "count": 2,
+  "width": 3,
+
+  "cost": [
+    { "itemName": "モーター", "amount": 20 },
+    { "itemName": "モジュラーフレーム", "amount": 40 },
+    { "itemName": "プラスチック", "amount": 100 },
+    { "itemName": "ケーブル", "amount": 128 },
+    { "itemName": "鉄のロッド", "amount": 6 },
+    { "itemName": "鉄板", "amount": 20 },
+    { "itemName": "コンクリート", "amount": 2 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 123 },
+    { "itemName": "ワイヤー", "amount": 6 }
+  ],
+
+  "power": {
+    "consumptionMw": 110.0,
+    "productionMw": 0.0
+  }
+}
