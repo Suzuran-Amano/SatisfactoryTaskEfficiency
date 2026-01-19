@@ -1,0 +1,11 @@
+{
+    "recipeName" :"AIリミッター",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"AIリミッター", "itemNum":5 }
+	],
+    "input":[
+	    { "itemName":"銅板", "itemNum":25 },        
+	    { "itemName":"クイックワイヤー", "itemNum":100 }
+	   ]
+}
