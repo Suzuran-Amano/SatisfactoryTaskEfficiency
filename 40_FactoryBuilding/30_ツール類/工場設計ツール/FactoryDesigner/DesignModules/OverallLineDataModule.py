@@ -13,6 +13,8 @@ from . import OverallLineEssenceModule as OLineEssence
 ### 定数 ###
 FACTORY_NAME_KEY = "factoryName"
 
+TOTAL_WIDTH_KEY = "totalWidth"
+
 # 一時産品関係
 PRODUCTION_LIST = "productionList"
 RESOURCE_NAME = "resourceName"
@@ -37,6 +39,7 @@ ITEM_NUM_KEY = "itemNum"
 INDIVIDUAL_LINE_LIST = "individualLineList"
 INDIVIDUAL_LINE_NAME = "individualLineName"
 RECIPE_NUM_KEY = "recipeNum"
+WIDTH_KEY = "width"
 
 # 物品関係
 INPUT_LINE_LIST = "inputlLineList"
@@ -48,6 +51,9 @@ SUPPLYER_LINE_KEY = "supplierLine"
 DESTINATION_LINE_KEY = "destinationLine"
 SUPPLY_ITEM_KEY = "supplyItem"
 SUPPLY_NUM_KEY = "supplyNum"
+
+# キーでない定数
+LOAD_WIDTH = 2
 
 
 # 全体製造ラインデータを管理するクラス
@@ -127,6 +133,8 @@ class OverallLineData:
         # 個別ラインリスト
         result = self._AppendIndividualLineDataList(result,oLineEssence)
 
+        # 全体ライン幅
+        result[TOTAL_WIDTH_KEY] = sum(line.get(WIDTH_KEY, 0) for line in result[INDIVIDUAL_LINE_LIST]) + (len(result)+1)*LOAD_WIDTH
 
         # その他
         result[INPUT_LINE_LIST] = oLineEssence.GetValue(OLineEssence.INPUT_LINE_LIST)       # 入力ライン
@@ -212,9 +220,8 @@ class OverallLineData:
         if recipeList == None:
             return  oLine
 
-        recipeList = []
+        recipeLine = []
         for useRecipe in recipeList:
-
             recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
             
             # レシピ情報を追加
@@ -223,7 +230,7 @@ class OverallLineData:
             recipeDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY)) # 要求物品
             recipeDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY)) # 加工物品
 
-            recipeList.append(recipeDict)
+            recipeLine.append(recipeDict)
 
         oLine[RECIPE_LIST_KEY] = recipeList
 
@@ -241,38 +248,58 @@ class OverallLineData:
         recipeList = oLineEssence.GetValue(OLineEssence.RECIPE_LIST_KEY)
         if recipeList == None:
             return  oLine
-        
-        iLineList = []
-        for useRecipe in recipeList:
 
-            recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
-
-            # レシピ情報を追加
-            iLineDict = {}
-            iLineDict[INDIVIDUAL_LINE_NAME] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY) + "製造ライン"    # 製造ライン名
-            iLineDict[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)    # レシピ名
-            recipeNum = 0
-            if OLineEssence.RECIPE_NUM_KEY in useRecipe:  # レシピ数で指定されている場合
-                recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  # レシピ数
-                iLineDict[RECIPE_NUM_KEY] = recipeNum
-            else: # 青写真で指定されている場合
-                blueprintName = useRecipe[OLineEssence.BLUEPRINT_NAME]  # 青写真名
-                iLineDict[BLUEPRINT_NAME] = blueprintName
-                blueprintNum = useRecipe[OLineEssence.BLUEPRINT_NUM]  # 青写真数
-                iLineDict[BLUEPRINT_NUM] = blueprintNum
-                blueprintData = BasicDataReader.GetBlueprintData(blueprintName)
-                count = blueprintData.GetValue(BlueprintData.COUNT)
-                recipeNum = count * blueprintNum
-                iLineDict[RECIPE_NUM_KEY] = recipeNum# レシピ数
-            iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY),recipeNum)  # 要求物品
-            iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY),recipeNum)    # 加工物品
-
-            iLineList.append(iLineDict)
+        iLineList = [self._AppendIndividualLineDataItem(useRecipe) for useRecipe in recipeList]
 
         oLine[INDIVIDUAL_LINE_LIST] = iLineList
 
         return oLine
 
+
+    # 個別ラインのデータを1つ作成
+    def _AppendIndividualLineDataItem(self, useRecipe):
+        recipeData = BasicDataReader.GetRecipe(useRecipe[OLineEssence.RECIPE_NAME_KEY])
+
+        # レシピ情報を追加
+        iLineDict = {}
+        # 製造ライン名
+        iLineDict[INDIVIDUAL_LINE_NAME] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY) + "製造ライン"
+
+        # レシピ名
+        iLineDict[RECIPE_NAME_KEY] = recipeData.GetValue(RecipeData.RECIPE_NAME_KEY)
+
+        # レシピ数など
+        recipeNum = 0
+        if OLineEssence.RECIPE_NUM_KEY in useRecipe:  # レシピ数で指定されている場合
+            # レシピ数
+            recipeNum = useRecipe[OLineEssence.RECIPE_NUM_KEY]  
+            iLineDict[RECIPE_NUM_KEY] = recipeNum
+
+        else: # 青写真で指定されている場合
+            # 青写真名
+            blueprintName = useRecipe[OLineEssence.BLUEPRINT_NAME]  
+            iLineDict[BLUEPRINT_NAME] = blueprintName
+
+            # 青写真数
+            blueprintNum = useRecipe[OLineEssence.BLUEPRINT_NUM]  
+            iLineDict[BLUEPRINT_NUM] = blueprintNum
+
+            # レシピ数
+            blueprintData = BasicDataReader.GetBlueprintData(blueprintName)
+            count = blueprintData.GetValue(BlueprintData.COUNT)
+            recipeNum = count * blueprintNum
+            iLineDict[RECIPE_NUM_KEY] = recipeNum
+            
+            # 青写真幅
+            iLineDict[WIDTH_KEY] = blueprintData.GetValue(BlueprintData.WIDTH)
+
+        # 要求物品
+        iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY), recipeNum)
+        # 加工物品 
+        iLineDict[OUTPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.OUTPUT_KEY), recipeNum)
+
+        return iLineDict
+    
 
     # レシピ情報から、入出力の物品情報を返す
     def _GetItemList(self,itemList : list,recipeNum = 1):
@@ -284,7 +311,8 @@ class OverallLineData:
             result.append(itemData)
 
         return result
-    
+
+
 
 # 全体ラインデータファイルを読み込み
 def ReadOverallLineData(oLineDataName) -> OverallLineData:

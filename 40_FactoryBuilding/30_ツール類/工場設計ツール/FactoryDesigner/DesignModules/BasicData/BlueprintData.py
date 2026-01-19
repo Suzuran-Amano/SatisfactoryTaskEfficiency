@@ -8,6 +8,7 @@ VERSION = "version"
 # 設備情報
 BUILDING_NAME = "buildingName"
 COUNT = "count"
+WIDTH = "width"
 
 # 資材コスト
 COST = "cost"

@@ -322,7 +322,7 @@ class OverallLineDocument(DocumentMakerModule.DocumentMaker):
                 destinationLine = relation[OLineDataModule.DESTINATION_LINE_KEY]
                 supplyItem = relation[OLineDataModule.SUPPLY_ITEM_KEY]
                 supplyNum = relation[OLineDataModule.SUPPLY_NUM_KEY]
-                result += supplierLine + "-->|" + supplyItem + str(supplyNum) + "|" + destinationLine + "\n"
+                result += supplierLine + "-->|" + supplyItem + "|" + destinationLine + "\n"
 
         result += "```\n"
         
