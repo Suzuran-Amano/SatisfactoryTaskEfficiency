@@ -1,0 +1,19 @@
+{
+  "blueprintName": "土台",
+  "description": "運用上青写真とまとめて管理しているが、青写真にはなっていない",
+  "version": 1,
+
+  "buildingName": "土台",
+  "count": 1,
+  "width": 1,
+
+  "cost": [
+    { "itemName": "コンクリート", "amount": 5 },
+    { "itemName": "鉄板", "amount": 2 }
+  ],
+
+  "power": {
+    "consumptionMw": 0.0,
+    "productionMw": 0.0
+  }
+}

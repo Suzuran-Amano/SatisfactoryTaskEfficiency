@@ -9,12 +9,12 @@
 
   "cost": [
     { "itemName": "コンクリート被覆型鋼梁", "amount": 65 },
-    { "itemName": "プラスチック ", "amount": 150 },
-    { "itemName": "コンクリート ", "amount": 320 },
-    { "itemName": "ワイヤー ", "amount": 600 },
-    { "itemName": "モーター ", "amount": 20 },
-    { "itemName": "鋼管 ", "amount": 6 },
-    { "itemName": "コンピューター ", "amount": 2 }
+    { "itemName": "プラスチック", "amount": 150 },
+    { "itemName": "コンクリート", "amount": 320 },
+    { "itemName": "ワイヤー", "amount": 600 },
+    { "itemName": "モーター", "amount": 20 },
+    { "itemName": "鋼管", "amount": 6 },
+    { "itemName": "コンピューター", "amount": 2 }
   ],
 
   "power": {
