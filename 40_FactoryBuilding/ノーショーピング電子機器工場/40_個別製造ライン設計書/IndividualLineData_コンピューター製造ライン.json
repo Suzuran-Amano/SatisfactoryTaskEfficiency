@@ -1,0 +1,60 @@
+{
+    "lineName": "コンピューター製造ライン",
+    "recipeName": "コンピューター",
+    "blueprintName": "製造機2",
+    "blueprintNum": 4,
+    "recipeNum": 8,
+    "productName": "製造機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 80
+        },
+        {
+            "itemName": "モジュラーフレーム",
+            "itemNum": 160
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 400
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 512
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 24
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 80
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 8
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 492
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 24
+        }
+    ],
+    "totalUsePower": 440,
+    "inputName1": "回路基板",
+    "inputNum1": 10,
+    "totalInput1": 80,
+    "inputName2": "ケーブル",
+    "inputNum2": 20,
+    "totalInput2": 160,
+    "inputName3": "プラスチック",
+    "inputNum3": 40,
+    "totalInput3": 320,
+    "outputName1": "コンピューター",
+    "outputNum1": 2.5,
+    "totalOutput1": 20.0,
+    "supplyPower": 0
+}

@@ -1,0 +1,53 @@
+{
+    "lineName": "回路基板製造ライン",
+    "recipeName": "回路基板",
+    "blueprintName": "組立機4",
+    "blueprintNum": 8,
+    "recipeNum": 32,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 256
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 128
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 592
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 608
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 192
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 96
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 32
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 96
+        }
+    ],
+    "totalUsePower": 480,
+    "inputName1": "銅板",
+    "inputNum1": 15,
+    "totalInput1": 480,
+    "inputName2": "プラスチック",
+    "inputNum2": 30,
+    "totalInput2": 960,
+    "outputName1": "回路基板",
+    "outputNum1": 7.5,
+    "totalOutput1": 240.0,
+    "supplyPower": 0
+}

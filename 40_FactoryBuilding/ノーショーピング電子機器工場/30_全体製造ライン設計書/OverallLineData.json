@@ -1,0 +1,239 @@
+{
+    "factoryName": "ノーショーピング電子機器工場",
+    "recipeList": [
+        {
+            "recipeName": "回路基板",
+            "blueprintName": "組立機4",
+            "blueprintNum": 8,
+            "columnNum": 4
+        },
+        {
+            "recipeName": "コンピューター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 4,
+            "columnNum": 2
+        },
+        {
+            "recipeName": "AIリミッター",
+            "blueprintName": "組立機4",
+            "blueprintNum": 4,
+            "columnNum": 2
+        },
+        {
+            "recipeName": "高速コネクター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 2,
+            "columnNum": 1
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "回路基板製造ライン",
+            "recipeName": "回路基板",
+            "blueprintName": "組立機4",
+            "blueprintNum": 8,
+            "recipeNum": 32,
+            "width": 3.5,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "銅板",
+                    "itemNum": 480
+                },
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 960
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "回路基板",
+                    "itemNum": 240.0
+                }
+            ]
+        },
+        {
+            "individualLineName": "コンピューター製造ライン",
+            "recipeName": "コンピューター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 4,
+            "recipeNum": 8,
+            "width": 4.5,
+            "columnNum": 2,
+            "inputList": [
+                {
+                    "itemName": "回路基板",
+                    "itemNum": 80
+                },
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 160
+                },
+                {
+                    "itemName": "プラスチック",
+                    "itemNum": 320
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "コンピューター",
+                    "itemNum": 20.0
+                }
+            ]
+        },
+        {
+            "individualLineName": "AIリミッター製造ライン",
+            "recipeName": "AIリミッター",
+            "blueprintName": "組立機4",
+            "blueprintNum": 4,
+            "recipeNum": 16,
+            "width": 3.5,
+            "columnNum": 2,
+            "inputList": [
+                {
+                    "itemName": "銅板",
+                    "itemNum": 400
+                },
+                {
+                    "itemName": "クイックワイヤー",
+                    "itemNum": 1600
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "AIリミッター",
+                    "itemNum": 80
+                }
+            ]
+        },
+        {
+            "individualLineName": "高速コネクター製造ライン",
+            "recipeName": "高速コネクター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 2,
+            "recipeNum": 4,
+            "width": 4.5,
+            "columnNum": 1,
+            "inputList": [
+                {
+                    "itemName": "ケーブル",
+                    "itemNum": 150.0
+                },
+                {
+                    "itemName": "回路基板",
+                    "itemNum": 15.0
+                },
+                {
+                    "itemName": "クイックワイヤー",
+                    "itemNum": 840
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "高速コネクター",
+                    "itemNum": 15.0
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_銅板",
+        "鉄道駅_プラスチック",
+        "鉄道駅_ケーブル",
+        "鉄道駅_クイックワイヤー"
+    ],
+    "outputLineList": [
+        "鉄道駅_回路基板",
+        "鉄道駅_コンピューター",
+        "鉄道駅_AIリミッター",
+        "鉄道駅_高速コネクター"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_銅板",
+            "destinationLine": "回路基板製造ライン",
+            "supplyItem": "銅板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_プラスチック",
+            "destinationLine": "回路基板製造ライン",
+            "supplyItem": "プラスチック",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "回路基板製造ライン",
+            "destinationLine": "鉄道駅_回路基板",
+            "supplyItem": "回路基板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "回路基板製造ライン",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "回路基板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_プラスチック",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "プラスチック",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_ケーブル",
+            "destinationLine": "コンピューター製造ライン",
+            "supplyItem": "ケーブル",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "コンピューター製造ライン",
+            "destinationLine": "鉄道駅_コンピューター",
+            "supplyItem": "コンピューター",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_クイックワイヤー",
+            "destinationLine": "AIリミッター製造ライン",
+            "supplyItem": "クイックワイヤー",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_銅板",
+            "destinationLine": "AIリミッター製造ライン",
+            "supplyItem": "銅板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "AIリミッター製造ライン",
+            "destinationLine": "鉄道駅_AIリミッター",
+            "supplyItem": "AIリミッター",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_クイックワイヤー",
+            "destinationLine": "高速コネクター製造ライン",
+            "supplyItem": "クイックワイヤー",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "回路基板製造ライン",
+            "destinationLine": "高速コネクター製造ライン",
+            "supplyItem": "回路基板",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_ケーブル",
+            "destinationLine": "高速コネクター製造ライン",
+            "supplyItem": "ケーブル",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "高速コネクター製造ライン",
+            "destinationLine": "鉄道駅_高速コネクター",
+            "supplyItem": "高速コネクター",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 8,
+    "totalWidth": 61
+}

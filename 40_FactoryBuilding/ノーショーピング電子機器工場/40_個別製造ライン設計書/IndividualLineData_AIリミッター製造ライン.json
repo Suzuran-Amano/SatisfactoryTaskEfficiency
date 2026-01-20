@@ -1,0 +1,53 @@
+{
+    "lineName": "AIリミッター製造ライン",
+    "recipeName": "AIリミッター",
+    "blueprintName": "組立機4",
+    "blueprintNum": 4,
+    "recipeNum": 16,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 128
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 64
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 296
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 304
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 96
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 48
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 16
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 48
+        }
+    ],
+    "totalUsePower": 240,
+    "inputName1": "銅板",
+    "inputNum1": 25,
+    "totalInput1": 400,
+    "inputName2": "クイックワイヤー",
+    "inputNum2": 100,
+    "totalInput2": 1600,
+    "outputName1": "AIリミッター",
+    "outputNum1": 5,
+    "totalOutput1": 80,
+    "supplyPower": 0
+}

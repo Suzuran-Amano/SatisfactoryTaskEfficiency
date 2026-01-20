@@ -1,0 +1,60 @@
+{
+    "lineName": "高速コネクター製造ライン",
+    "recipeName": "高速コネクター",
+    "blueprintName": "製造機2",
+    "blueprintNum": 2,
+    "recipeNum": 4,
+    "productName": "製造機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 40
+        },
+        {
+            "itemName": "モジュラーフレーム",
+            "itemNum": 80
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 200
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 256
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 12
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 40
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 4
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 246
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 12
+        }
+    ],
+    "totalUsePower": 220,
+    "inputName1": "ケーブル",
+    "inputNum1": 37.5,
+    "totalInput1": 150.0,
+    "inputName2": "回路基板",
+    "inputNum2": 3.75,
+    "totalInput2": 15.0,
+    "inputName3": "クイックワイヤー",
+    "inputNum3": 210,
+    "totalInput3": 840,
+    "outputName1": "高速コネクター",
+    "outputNum1": 3.75,
+    "totalOutput1": 15.0,
+    "supplyPower": 0
+}
