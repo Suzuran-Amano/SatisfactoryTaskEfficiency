@@ -1,0 +1,16 @@
+{
+    "lineName": "鉄鉱石産出ライン",
+    "resourceName": "鉄鉱石",
+    "resourceBaseOutputNum": 30,
+    "resourceList": [
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk1",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 30,
+            "usePower": 5.0
+        }
+    ],
+    "totalResourceOutputNum": 30,
+    "totalUsePower": 5.0
+}

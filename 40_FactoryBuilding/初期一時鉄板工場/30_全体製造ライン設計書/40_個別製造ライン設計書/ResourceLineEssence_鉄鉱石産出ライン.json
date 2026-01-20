@@ -1,0 +1,11 @@
+{
+    "lineName": "鉄鉱石産出ライン",
+    "resourceName": "鉄鉱石",
+    "resourceList": [
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk1",
+            "overclockRatio": 1
+        }
+    ]
+}

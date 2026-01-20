@@ -11,57 +11,7 @@
             "totalResourceOutputNum": 30
         }
     ],
-    "recipeList": [
-        {
-            "recipeName": "鉄のインゴット",
-            "inputList": [
-                {
-                    "itemName": "鉄鉱石",
-                    "itemNum": 30
-                }
-            ],
-            "outputList": [
-                {
-                    "itemName": "鉄のインゴット",
-                    "itemNum": 30
-                }
-            ]
-        },
-        {
-            "recipeName": "鉄板",
-            "inputList": [
-                {
-                    "itemName": "鉄のインゴット",
-                    "itemNum": 30
-                }
-            ],
-            "outputList": [
-                {
-                    "itemName": "鉄板",
-                    "itemNum": 20
-                }
-            ]
-        },
-        {
-            "recipeName": "強化鉄板",
-            "inputList": [
-                {
-                    "itemName": "鉄板",
-                    "itemNum": 30
-                },
-                {
-                    "itemName": "ネジ",
-                    "itemNum": 60
-                }
-            ],
-            "outputList": [
-                {
-                    "itemName": "強化鉄板",
-                    "itemNum": 5
-                }
-            ]
-        }
-    ],
+    "recipeList": [],
     "individualLineList": [
         {
             "individualLineName": "鉄のインゴット製造ライン",
