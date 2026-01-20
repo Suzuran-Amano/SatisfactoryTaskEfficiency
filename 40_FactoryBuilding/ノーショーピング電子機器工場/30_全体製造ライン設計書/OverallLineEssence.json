@@ -5,24 +5,41 @@
 		{
 			"recipeName" : "回路基板",
 			"blueprintName" : "組立機4",
-			"blueprintNum" : 2
+			"blueprintNum" : 8,
+            "columnNum" : 4
 		},
 		{
 			"recipeName" : "コンピューター",
 			"blueprintName" : "製造機2",
-			"blueprintNum" : 2
-		}
+			"blueprintNum" : 4,			
+            "columnNum" : 2
+		},
+        {
+            "recipeName": "AIリミッター",
+            "blueprintName": "組立機4",
+            "blueprintNum": 4,
+            "columnNum": 2
+        },
+        {
+            "recipeName": "高速コネクター",
+            "blueprintName": "製造機2",
+            "blueprintNum": 2,
+            "columnNum": 1
+        }
 	],
 
 	"inputlLineList" : [
 		"鉄道駅_銅板",
 		"鉄道駅_プラスチック",
-		"鉄道駅_ケーブル"
+		"鉄道駅_ケーブル",
+		"鉄道駅_クイックワイヤー"
 	],
 
 	"outputLineList" :[
 		"鉄道駅_回路基板",
-		"鉄道駅_コンピューター"
+		"鉄道駅_コンピューター",
+		"鉄道駅_AIリミッター",
+		"鉄道駅_高速コネクター"
 	],
 
 	"relationships"	: [
@@ -68,6 +85,55 @@
 			"supplierLine" : "コンピューター製造ライン",
 			"destinationLine" : "鉄道駅_コンピューター",
 			"supplyItem" : "コンピューター",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "鉄道駅_クイックワイヤー",
+			"destinationLine" : "AIリミッター製造ライン",
+			"supplyItem" : "クイックワイヤー",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "鉄道駅_銅板",
+			"destinationLine" : "AIリミッター製造ライン",
+			"supplyItem" : "銅板",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "AIリミッター製造ライン",
+			"destinationLine" : "鉄道駅_AIリミッター",
+			"supplyItem" : "AIリミッター",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "鉄道駅_クイックワイヤー",
+			"destinationLine" : "高速コネクター製造ライン",
+			"supplyItem" : "クイックワイヤー",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "回路基板製造ライン",
+			"destinationLine" : "高速コネクター製造ライン",
+			"supplyItem" : "回路基板",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "鉄道駅_ケーブル",
+			"destinationLine" : "高速コネクター製造ライン",
+			"supplyItem" : "ケーブル",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "高速コネクター製造ライン",
+			"destinationLine" : "鉄道駅_高速コネクター",
+			"supplyItem" : "高速コネクター",
 			"supplyNum" : 0
 		}
 
