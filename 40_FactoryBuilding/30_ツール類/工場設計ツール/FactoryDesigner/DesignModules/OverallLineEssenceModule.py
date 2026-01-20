@@ -14,6 +14,7 @@ RECIPE_NAME_KEY = "recipeName"
 RECIPE_NUM_KEY = "recipeNum"
 BLUEPRINT_NAME = "blueprintName"
 BLUEPRINT_NUM = "blueprintNum"
+COLUMN_NUM = "columnNum"
 
 INPUT_LINE_LIST = "inputlLineList"
 OUTPUT_LINE_LIST = "outputLineList"

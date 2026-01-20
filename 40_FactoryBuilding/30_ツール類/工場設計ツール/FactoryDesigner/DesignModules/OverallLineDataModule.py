@@ -13,6 +13,7 @@ from . import OverallLineEssenceModule as OLineEssence
 ### 定数 ###
 FACTORY_NAME_KEY = "factoryName"
 
+# 合計幅
 TOTAL_WIDTH_KEY = "totalWidth"
 
 # 一時産品関係
@@ -30,6 +31,7 @@ RECIPE_LIST_KEY = "recipeList"
 RECIPE_NAME_KEY = "recipeName"
 BLUEPRINT_NAME = "blueprintName"
 BLUEPRINT_NUM = "blueprintNum"
+COLUMN_NUM = "columnNum"
 INPUT_LIST_KEY = "inputList"
 OUTPUT_LIST_KEY = "outputList"
 ITEM_NAME_KEY = "itemName"
@@ -40,6 +42,9 @@ INDIVIDUAL_LINE_LIST = "individualLineList"
 INDIVIDUAL_LINE_NAME = "individualLineName"
 RECIPE_NUM_KEY = "recipeNum"
 WIDTH_KEY = "width"
+
+# 駅数
+STATION_NUM = "stationNum"
 
 # 物品関係
 INPUT_LINE_LIST = "inputlLineList"
@@ -133,13 +138,24 @@ class OverallLineData:
         # 個別ラインリスト
         result = self._AppendIndividualLineDataList(result,oLineEssence)
 
-        # 全体ライン幅
-        result[TOTAL_WIDTH_KEY] = sum(line.get(WIDTH_KEY, 0) for line in result[INDIVIDUAL_LINE_LIST]) + (len(result)+1)*LOAD_WIDTH
-
         # その他
         result[INPUT_LINE_LIST] = oLineEssence.GetValue(OLineEssence.INPUT_LINE_LIST)       # 入力ライン
         result[OUTPUT_LINE_LIST] = oLineEssence.GetValue(OLineEssence.OUTPUT_LINE_LIST)     # 出力ライン
         result[RELATIONSHIPS_KEY] = oLineEssence.GetValue(OLineEssence.RELATIONSHIPS_KEY)   # 製造ライン関係性
+
+        # 駅数計算
+        station_count = 0
+        input_lines = result[INPUT_LINE_LIST] or []
+        output_lines = result[OUTPUT_LINE_LIST] or []
+        for line in input_lines + output_lines:
+            if "鉄道駅" in str(line):
+                station_count += 1
+        result[STATION_NUM] = station_count
+
+        # 全体ライン幅
+        existing_width = sum((line.get(WIDTH_KEY, 0) + LOAD_WIDTH) * line.get(COLUMN_NUM, 1) for line in result[INDIVIDUAL_LINE_LIST]) + LOAD_WIDTH
+        station_based_width = station_count * 7 + 5
+        result[TOTAL_WIDTH_KEY] = max(existing_width, station_based_width)
 
         return result
     
@@ -292,6 +308,12 @@ class OverallLineData:
             
             # 青写真幅
             iLineDict[WIDTH_KEY] = blueprintData.GetValue(BlueprintData.WIDTH)
+
+        # 列数
+        columnNum = 1
+        if OLineEssence.COLUMN_NUM in useRecipe:
+            columnNum = useRecipe[OLineEssence.COLUMN_NUM]
+        iLineDict[COLUMN_NUM] = columnNum
 
         # 要求物品
         iLineDict[INPUT_LIST_KEY] = self._GetItemList(recipeData.GetValue(RecipeData.INPUT_KEY), recipeNum)
