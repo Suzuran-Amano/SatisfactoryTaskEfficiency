@@ -1,0 +1,11 @@
+{
+    "lineName": "硫黄産出ライン",
+    "resourceName": "硫黄",
+    "resourceList": [
+        {
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        }
+    ]
+}

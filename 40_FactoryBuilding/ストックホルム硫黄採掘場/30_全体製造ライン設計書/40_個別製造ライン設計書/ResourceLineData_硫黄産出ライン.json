@@ -1,0 +1,16 @@
+{
+    "lineName": "硫黄産出ライン",
+    "resourceName": "硫黄",
+    "resourceBaseOutputNum": 30,
+    "resourceList": [
+        {
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 240,
+            "usePower": 15.0
+        }
+    ],
+    "totalResourceOutputNum": 240,
+    "totalUsePower": 15.0
+}

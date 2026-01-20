@@ -1,0 +1,26 @@
+{
+    "factoryName": "ストックホルム硫黄採掘場",
+    "productionList": [
+        {
+            "resourceName": "硫黄",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 240
+        }
+    ],
+    "inputlLineList": null,
+    "outputLineList": [
+        "鉄道駅_硫黄"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "硫黄採掘ライン",
+            "destinationLine": "鉄道駅_硫黄",
+            "supplyItem": "硫黄",
+            "supplyNum": 300
+        }
+    ]
+}
