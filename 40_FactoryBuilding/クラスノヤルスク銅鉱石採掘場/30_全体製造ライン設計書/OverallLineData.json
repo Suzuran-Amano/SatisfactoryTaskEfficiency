@@ -1,0 +1,53 @@
+{
+    "factoryName": "クラスノヤルスク銅鉱石採掘場",
+    "productionList": [
+        {
+            "resourceName": "銅鉱石",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 240
+        },
+        {
+            "resourceName": "銅鉱石",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "銅鉱石",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        },
+        {
+            "resourceName": "銅鉱石",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        }
+    ],
+    "inputlLineList": null,
+    "outputLineList": [
+        "鉄道駅_銅鉱石"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "銅鉱石採掘ライン",
+            "destinationLine": "鉄道駅_銅鉱石",
+            "supplyItem": "銅鉱石",
+            "supplyNum": 240
+        }
+    ]
+}

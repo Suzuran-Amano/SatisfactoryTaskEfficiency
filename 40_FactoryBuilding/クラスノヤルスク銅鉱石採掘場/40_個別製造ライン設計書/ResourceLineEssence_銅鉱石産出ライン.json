@@ -1,0 +1,26 @@
+{
+    "lineName": "銅鉱石産出ライン",
+    "resourceName": "銅鉱石",
+    "resourceList": [
+        {
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        }
+    ]
+}
