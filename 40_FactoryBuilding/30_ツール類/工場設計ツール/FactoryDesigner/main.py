@@ -7,6 +7,8 @@ from DesignModules import ResourceLineEssenceModule as RLineEssence
 from DesignModules import ResourceLineDataModule as RLineData
 from DesignModules import ResourceLineDocumentModule as RLineDoc
 from DesignModules import IndividualLineDataModule as ILineData
+from DesignModules.BasicData import BasicDataReader
+from DesignModules.BasicData import BlueprintData
 import MakeOverallLineDesign
 import MakeIndividualLineDesign
 import MakeIndividualLineCheckList
@@ -66,6 +68,47 @@ for iLineEssence in iLineEssences:
             costList[cost[itemNameKey]] += cost[itemNumKey]
         else:            
             costList[cost[itemNameKey]] = cost[itemNumKey]
+
+# 鉄道駅のコストを追加
+stationNum = oLineData.GetValue(OLineData.STATION_NUM)
+if stationNum > 0:
+    blueprintData = BasicDataReader.GetBlueprintData("鉄道駅4")
+    costs = blueprintData.GetValue(BlueprintData.COST)
+    for cost in costs:
+        itemName = cost[BlueprintData.ITEM_NAME]
+        itemNum = cost[BlueprintData.AMOUNT] * stationNum
+        if itemName in costList:
+            costList[itemName] += itemNum
+        else:
+            costList[itemName] = itemNum
+
+# 床のコストを追加
+totalWidth = oLineData.GetValue(OLineData.TOTAL_WIDTH_KEY)
+depth = 22
+floorArea = totalWidth * depth
+blueprintData = BasicDataReader.GetBlueprintData("土台")
+costs = blueprintData.GetValue(BlueprintData.COST)
+for cost in costs:
+    itemName = cost[BlueprintData.ITEM_NAME]
+    itemNum = cost[BlueprintData.AMOUNT] * floorArea
+    if itemName in costList:
+        costList[itemName] += itemNum
+    else:
+        costList[itemName] = itemNum
+
+# 壁のコストを追加
+perimeter = (totalWidth + depth) * 2
+height = 6
+wallArea = perimeter * height
+blueprintData = BasicDataReader.GetBlueprintData("壁")
+costs = blueprintData.GetValue(BlueprintData.COST)
+for cost in costs:
+    itemName = cost[BlueprintData.ITEM_NAME]
+    itemNum = cost[BlueprintData.AMOUNT] * wallArea
+    if itemName in costList:
+        costList[itemName] += itemNum
+    else:
+        costList[itemName] = itemNum
 
 # 個別製造ラインテスト項目書作成
 for iLineData in iLineDataList:
