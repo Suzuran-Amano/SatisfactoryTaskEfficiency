@@ -1,0 +1,11 @@
+{
+    "lineName": "カテリウム鉱石産出ライン",
+    "resourceName": "カテリウム鉱石",
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        }
+    ]
+}

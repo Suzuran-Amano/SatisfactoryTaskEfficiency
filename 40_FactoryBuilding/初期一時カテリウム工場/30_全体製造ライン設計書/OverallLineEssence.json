@@ -1,24 +1,29 @@
 {
 	"factoryName"	: "初期一時カテリウム工場",
 
+	"productionList" :[
+		{
+			"resourceName" : "カテリウム鉱石",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		}
+
+	],
+
 	"recipeList" : [
 		{
 			"recipeName" : "カテリウムのインゴット",
-			"recipeNum" : 1
+			"recipeNum" : 3
 		},
 		{
 			"recipeName" : "クイックワイヤー",
-			"recipeNum" : 1
+			"recipeNum" : 4
 		}
 	],
 
-	"inputlLineList" : [
-		"採掘機_カテリウム鉱石"
-	],
-
 	"outputLineList" :[
-		"コンテナ_クイックワイヤー",		
-		"コンテナ_カテリウムのインゴット"
+		"鉄道駅_クイックワイヤー"
 	],
 
 	"relationships"	: [
@@ -26,28 +31,21 @@
 			"supplierLine" : "採掘機_カテリウム鉱石",
 			"destinationLine" : "カテリウムのインゴット製造ライン",
 			"supplyItem" : "カテリウム鉱石",
-			"supplyNum" : 45
+			"supplyNum" : 0
 		},
 
 		{
 			"supplierLine" : "カテリウムのインゴット製造ライン",
 			"destinationLine" : "クイックワイヤー製造ライン",
 			"supplyItem" : "カテリウムのインゴット",
-			"supplyNum" : 15
-		},
-
-		{
-			"supplierLine" : "カテリウムのインゴット製造ライン",
-			"destinationLine" : "コンテナ_カテリウムのインゴット",
-			"supplyItem" : "カテリウムのインゴット",
-			"supplyNum" : 15
+			"supplyNum" : 0
 		},
 
 		{
 			"supplierLine" : "クイックワイヤー製造ライン",
 			"destinationLine" : "コンテナ_クイックワイヤー",
 			"supplyItem" : "クイックワイヤー",
-			"supplyNum" : 60
+			"supplyNum" : 0
 		}
 
 	]
