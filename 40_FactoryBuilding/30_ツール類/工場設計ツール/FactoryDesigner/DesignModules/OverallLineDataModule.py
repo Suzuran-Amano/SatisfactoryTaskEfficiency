@@ -153,8 +153,8 @@ class OverallLineData:
         result[STATION_NUM] = station_count
 
         # 全体ライン幅
-        existing_width = sum((line.get(WIDTH_KEY, 0) + LOAD_WIDTH) * line.get(COLUMN_NUM, 1) for line in result[INDIVIDUAL_LINE_LIST]) + LOAD_WIDTH
-        station_based_width = station_count * 7 + 5
+        existing_width = sum((line.get(WIDTH_KEY, 0) + LOAD_WIDTH) * line.get(COLUMN_NUM, 1) for line in result.get(INDIVIDUAL_LINE_LIST, [])) + LOAD_WIDTH
+        station_based_width = station_count * 7 + 7
         result[TOTAL_WIDTH_KEY] = max(existing_width, station_based_width)
 
         return result
