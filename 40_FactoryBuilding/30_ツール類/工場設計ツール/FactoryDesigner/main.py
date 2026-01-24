@@ -1,14 +1,12 @@
 import sys
-import json
 
 from DesignModules import pathDataModule
+from DesignModules import FactoryDataOutputModule
 from DesignModules import OverallLineDataModule as OLineData
 from DesignModules import ResourceLineEssenceModule as RLineEssence
 from DesignModules import ResourceLineDataModule as RLineData
 from DesignModules import ResourceLineDocumentModule as RLineDoc
-from DesignModules import IndividualLineDataModule as ILineData
-from DesignModules.BasicData import BasicDataReader
-from DesignModules.BasicData import BlueprintData
+
 import MakeOverallLineDesign
 import MakeIndividualLineDesign
 import MakeIndividualLineCheckList
@@ -16,11 +14,6 @@ import MakeIndividualLineCheckList
 
 # パス情報を作成
 pathData = pathDataModule.PathData(sys.argv)
-
-# 工場データの準備
-usePow = 0
-costList = {}
-supplyPower = 0
 
 
 # 全体製造ライン設計書作成
@@ -57,58 +50,7 @@ for iLineEssence in iLineEssences:
     iLineData = iDesignMaker.Main(pathData,iLineEssence)
     iLineDataList.append(iLineData)
 
-    # 工場データ計算
-    usePow += iLineData.GetValue(ILineData.TOTAL_USE_POWER_KEY)
-    supplyPower += iLineData.GetValue(ILineData.SUPPLY_POWER_KEY)
 
-    itemNameKey = ILineData.ITEM_NAME_KEY
-    itemNumKey = ILineData.ITEM_NUM_KEY
-    for cost in iLineData.GetValue(ILineData.COST_LIST_KEY):
-        if cost[itemNameKey] in costList:
-            costList[cost[itemNameKey]] += cost[itemNumKey]
-        else:            
-            costList[cost[itemNameKey]] = cost[itemNumKey]
-
-# 鉄道駅のコストを追加
-stationNum = oLineData.GetValue(OLineData.STATION_NUM)
-if stationNum > 0:
-    blueprintData = BasicDataReader.GetBlueprintData("鉄道駅4")
-    costs = blueprintData.GetValue(BlueprintData.COST)
-    for cost in costs:
-        itemName = cost[BlueprintData.ITEM_NAME]
-        itemNum = cost[BlueprintData.AMOUNT] * stationNum
-        if itemName in costList:
-            costList[itemName] += itemNum
-        else:
-            costList[itemName] = itemNum
-
-# 床のコストを追加
-totalWidth = oLineData.GetValue(OLineData.TOTAL_WIDTH_KEY)
-depth = 22
-floorArea = totalWidth * depth
-blueprintData = BasicDataReader.GetBlueprintData("土台")
-costs = blueprintData.GetValue(BlueprintData.COST)
-for cost in costs:
-    itemName = cost[BlueprintData.ITEM_NAME]
-    itemNum = cost[BlueprintData.AMOUNT] * floorArea
-    if itemName in costList:
-        costList[itemName] += itemNum
-    else:
-        costList[itemName] = itemNum
-
-# 壁のコストを追加
-perimeter = (totalWidth + depth) * 2
-height = 6
-wallArea = perimeter * height
-blueprintData = BasicDataReader.GetBlueprintData("壁")
-costs = blueprintData.GetValue(BlueprintData.COST)
-for cost in costs:
-    itemName = cost[BlueprintData.ITEM_NAME]
-    itemNum = cost[BlueprintData.AMOUNT] * wallArea
-    if itemName in costList:
-        costList[itemName] += itemNum
-    else:
-        costList[itemName] = itemNum
 
 # 個別製造ラインテスト項目書作成
 for iLineData in iLineDataList:
@@ -117,11 +59,4 @@ for iLineData in iLineDataList:
 
 
 # 工場データ出力
-factoryData = {}
-factoryData["factoryName"] = oLineData.GetValue(OLineData.FACTORY_NAME_KEY) # 工場名
-factoryData["usePower"] = usePow    # 消費電力
-factoryData["costList"] = costList
-factoryData["supplyPower"] = supplyPower
-
-jsonfile = open(pathData.GetPath() + '/' + "FactoryData" + '.json', 'w',encoding='utf-8')
-json.dump(factoryData, jsonfile, indent=4,ensure_ascii=False)
+FactoryDataOutputModule.OutputFactoryData(pathData, oLineData, iLineDataList)
