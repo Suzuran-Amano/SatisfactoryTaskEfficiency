@@ -24,10 +24,9 @@ def _CalculateIndividualLineCosts(iLineDataList, costList, usePow, supplyPower):
         itemNameKey = ILineData.ITEM_NAME_KEY
         itemNumKey = ILineData.ITEM_NUM_KEY
         for cost in iLineData.GetValue(ILineData.COST_LIST_KEY):
-            if cost[itemNameKey] in costList:
-                costList[cost[itemNameKey]] += cost[itemNumKey]
-            else:
-                costList[cost[itemNameKey]] = cost[itemNumKey]
+            itemName = cost[itemNameKey]
+            itemNum = cost[itemNumKey]
+            costList = _AddCost(costList,itemName,itemNum)
 
     return costList, usePow, supplyPower
 
@@ -43,16 +42,23 @@ def _CalculateStationCost(oLineData, costList):
         costList: 更新されたコストリスト
     """
     stationNum = oLineData.GetValue(OLineData.STATION_NUM)
-    if stationNum > 0:
-        blueprintData = BasicDataReader.GetBlueprintData("鉄道駅4")
-        costs = blueprintData.GetValue(BlueprintData.COST)
+    if stationNum == 0:
+        return costList
+
+    blueprintData = [
+        BasicDataReader.GetBlueprintData("鉄道駅4"),
+        BasicDataReader.GetBlueprintData("駅橋"),
+        BasicDataReader.GetBlueprintData("駅用スマート整流機"),
+        BasicDataReader.GetBlueprintData("搬出橋"),
+        BasicDataReader.GetBlueprintData("搬入橋ジャンクション")
+        ]
+    
+    for blueprint in blueprintData:
+        costs = blueprint.GetValue(BlueprintData.COST)
         for cost in costs:
             itemName = cost[BlueprintData.ITEM_NAME]
             itemNum = cost[BlueprintData.AMOUNT] * stationNum
-            if itemName in costList:
-                costList[itemName] += itemNum
-            else:
-                costList[itemName] = itemNum
+            costList = _AddCost(costList,itemName,itemNum)
 
     return costList
 
@@ -75,12 +81,23 @@ def _CalculateFloorCost(oLineData, costList):
     for cost in costs:
         itemName = cost[BlueprintData.ITEM_NAME]
         itemNum = cost[BlueprintData.AMOUNT] * floorArea
-        if itemName in costList:
-            costList[itemName] += itemNum
-        else:
-            costList[itemName] = itemNum
+        costList = _AddCost(costList,itemName,itemNum)
 
     return costList
+
+def _AddCost(
+        costList : list,
+        itemName : str,
+        itemNum 
+        ):
+    
+    if itemName in costList:
+        costList[itemName] += itemNum
+    else:
+        costList[itemName] = itemNum
+
+    return costList
+
 
 def _CalculateWallCost(oLineData, costList):
     """
