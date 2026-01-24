@@ -1,9 +1,9 @@
 {
-  "blueprintName": "組立機4",
+  "blueprintName": "鉄道駅4",
   "description": "機関車2両を含めた6両編成の個体/液体貨物駅。運用上青写真とまとめて管理しているが、青写真にはなっていない",
   "version": 1,
 
-  "buildingName": "鉄道駅。",
+  "buildingName": "鉄道駅",
   "count": 4,
   "width": 7,
 

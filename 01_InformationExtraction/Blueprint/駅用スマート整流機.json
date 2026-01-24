@@ -1,0 +1,23 @@
+{
+  "blueprintName": "駅用スマート整流機",
+  "description": "",
+  "version": 1,
+
+  "buildingName": "駅用スマート整流機",
+  "count": 0,
+  "width": 0,
+
+  "cost": [
+    { "itemName": "強化鉄板", "amount": 24 },
+    { "itemName": "ローター", "amount": 12 },
+    { "itemName": "AIリミッター", "amount": 6 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 10 },
+    { "itemName": "水晶発振器", "amount": 6 },
+    { "itemName": "モジューラーフレーム", "amount": 150 }
+  ],
+
+  "power": {
+    "consumptionMw": 250.0,
+    "productionMw": 0.0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "blueprintName": "駅橋",
+  "description": "",
+  "version": 1,
+
+  "buildingName": "駅橋",
+  "count": 0,
+  "width": 0,
+
+  "cost": [
+    { "itemName": "コンクリート", "amount": 56 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 144 },
+    { "itemName": "鉄板", "amount": 32 },
+    { "itemName": "鉄のロッド", "amount": 16 }
+  ],
+
+  "power": {
+    "consumptionMw": 250.0,
+    "productionMw": 0.0
+  }
+}

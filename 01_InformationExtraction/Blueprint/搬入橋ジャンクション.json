@@ -1,0 +1,20 @@
+{
+  "blueprintName": "搬入橋ジャンクション",
+  "description": "",
+  "version": 1,
+
+  "buildingName": "搬入橋ジャンクション",
+  "count": 0,
+  "width": 0,
+
+  "cost": [
+    { "itemName": "コンクリート", "amount": 88 },
+    { "itemName": "鉄板", "amount": 20 },
+    { "itemName": "鉄のロッド", "amount": 8 }
+  ],
+
+  "power": {
+    "consumptionMw": 250.0,
+    "productionMw": 0.0
+  }
+}

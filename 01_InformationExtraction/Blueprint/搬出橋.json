@@ -1,0 +1,21 @@
+{
+  "blueprintName": "搬出橋",
+  "description": "",
+  "version": 1,
+
+  "buildingName": "搬出橋",
+  "count": 0,
+  "width": 0,
+
+  "cost": [
+    { "itemName": "コンクリート", "amount": 150 },
+    { "itemName": "鋼梁", "amount": 8 },
+    { "itemName": "鉄板", "amount": 68 },
+    { "itemName": "鉄のロッド", "amount": 56 }
+  ],
+
+  "power": {
+    "consumptionMw": 250.0,
+    "productionMw": 0.0
+  }
+}
