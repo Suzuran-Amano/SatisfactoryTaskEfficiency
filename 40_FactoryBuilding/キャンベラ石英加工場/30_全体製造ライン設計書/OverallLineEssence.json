@@ -1,0 +1,93 @@
+{
+	"factoryName"	: "キャンベラ石英加工場",
+	
+	"recipeList" : [
+		{
+			"recipeName" : "シリカ",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 2,
+            "columnNum" : 1
+		},
+		{
+			"recipeName" : "石英結晶",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 2,			
+            "columnNum" : 1
+		},
+        {
+            "recipeName": "水晶発振器",
+            "blueprintName": "製造機2",
+            "blueprintNum": 2,
+            "columnNum": 1
+        }
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_未加工石英",
+		"鉄道駅_強化鉄板",
+		"鉄道駅_ケーブル"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_シリカ",
+		"鉄道駅_石英結晶",
+		"鉄道駅_水晶発振器"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_未加工石英",
+			"destinationLine" : "シリカ製造ライン",
+			"supplyItem" : "未加工石英",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "シリカ製造ライン",
+			"destinationLine" : "鉄道駅_シリカ",
+			"supplyItem" : "シリカ",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鉄道駅_未加工石英",
+			"destinationLine" : "石英結晶製造ライン",
+			"supplyItem" : "未加工石英",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "石英結晶製造ライン",
+			"destinationLine" : "鉄道駅_石英結晶",
+			"supplyItem" : "石英結晶",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "石英結晶製造ライン",
+			"destinationLine" : "水晶発振器製造ライン",
+			"supplyItem" : "石英結晶",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_強化鉄板",
+			"destinationLine" : "水晶発振器製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_ケーブル",
+			"destinationLine" : "水晶発振器製造ライン",
+			"supplyItem" : "ケーブル",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "水晶発振器製造ライン",
+			"destinationLine" : "鉄道駅_水晶発振器",
+			"supplyItem" : "水晶発振器",
+			"supplyNum" : 0
+		}
+
+	]
+}

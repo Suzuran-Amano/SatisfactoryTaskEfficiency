@@ -1,0 +1,58 @@
+{
+	"factoryName"	: "キール鉄鉱石保管場",
+
+	"productionList" :[
+		{
+			"resourceName" : "鉄鉱石",
+			"resourceRatio" : 4,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "鉄鉱石",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "鉄鉱石",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "鉄鉱石",
+			"resourceRatio" : 1,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		}
+	],
+
+	"recipeList" : [
+		{
+			"recipeName" : "鉄板",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 8,
+            "columnNum" : 4
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_鉄鉱石"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_鉄鉱石",
+		"鉄道駅_鉄のインゴット"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_鉄鉱石",
+			"destinationLine" : "鉄道駅_鉄鉱石",
+			"supplyItem" : "鉄鉱石",
+			"supplyNum" : 0
+		}
+
+	]
+}

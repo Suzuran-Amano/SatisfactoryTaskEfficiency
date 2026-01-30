@@ -1,0 +1,46 @@
+{
+    "lineName": "石英結晶製造ライン",
+    "recipeName": "石英結晶",
+    "blueprintName": "製作機5",
+    "blueprintNum": 2,
+    "recipeNum": 10,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 20
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 148
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 108
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 28
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 40
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 8
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 24
+        }
+    ],
+    "totalUsePower": 40,
+    "inputName1": "未加工石英",
+    "inputNum1": 37.5,
+    "totalInput1": 375.0,
+    "outputName1": "石英結晶",
+    "outputNum1": 22.5,
+    "totalOutput1": 225.0,
+    "supplyPower": 0
+}

@@ -1,0 +1,13 @@
+{
+    "recipeName" :"水晶発振器",
+    "productName":"製作機" ,
+    "output":[
+	    { "itemName":"水晶発振器", "itemNum":1 }
+	    ],
+    "input":[
+	    { "itemName":"石英結晶", "itemNum":18 },
+	    { "itemName":"ケーブル", "itemNum":14 },
+	    { "itemName":"強化鉄板", "itemNum":2.5 }
+	    ]
+
+}

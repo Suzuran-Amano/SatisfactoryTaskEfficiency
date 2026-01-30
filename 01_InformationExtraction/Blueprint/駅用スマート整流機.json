@@ -13,7 +13,7 @@
     { "itemName": "AIリミッター", "amount": 6 },
     { "itemName": "コンクリート被覆型鋼梁", "amount": 10 },
     { "itemName": "水晶発振器", "amount": 6 },
-    { "itemName": "モジューラーフレーム", "amount": 150 }
+    { "itemName": "モジュラーフレーム", "amount": 150 }
   ],
 
   "power": {

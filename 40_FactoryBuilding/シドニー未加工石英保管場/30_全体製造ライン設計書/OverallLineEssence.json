@@ -1,0 +1,35 @@
+{
+	"factoryName"	: "シドニー未加工石英保管場",
+
+	"productionList" :[
+		{
+			"resourceName" : "未加工石英",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		},
+		{
+			"resourceName" : "未加工石英",
+			"resourceRatio" : 2,
+			"buildingName" : "採掘機Mk2",
+			"overclockRatio" : 1
+		}
+	],
+
+    "inputlLineList": [
+		"鉄道駅_未加工石英"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_未加工石英"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "未加工石英産出ライン",
+			"destinationLine" : "鉄道駅_未加工石英",
+			"supplyItem" : "未加工石英",
+			"supplyNum" : 0
+		}
+	]
+}

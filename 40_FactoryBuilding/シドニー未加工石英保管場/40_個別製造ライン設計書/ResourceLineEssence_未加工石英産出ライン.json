@@ -1,0 +1,16 @@
+{
+    "lineName": "未加工石英産出ライン",
+    "resourceName": "未加工石英",
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1
+        }
+    ]
+}

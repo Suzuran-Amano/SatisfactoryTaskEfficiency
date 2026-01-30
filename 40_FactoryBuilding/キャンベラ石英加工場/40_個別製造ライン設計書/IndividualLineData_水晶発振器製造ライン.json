@@ -1,0 +1,60 @@
+{
+    "lineName": "水晶発振器製造ライン",
+    "recipeName": "水晶発振器",
+    "blueprintName": "製造機2",
+    "blueprintNum": 2,
+    "recipeNum": 4,
+    "productName": "製造機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 40
+        },
+        {
+            "itemName": "モジュラーフレーム",
+            "itemNum": 80
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 200
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 256
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 12
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 40
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 4
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 246
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 12
+        }
+    ],
+    "totalUsePower": 16,
+    "inputName1": "石英結晶",
+    "inputNum1": 18,
+    "totalInput1": 72,
+    "inputName2": "ケーブル",
+    "inputNum2": 14,
+    "totalInput2": 56,
+    "inputName3": "強化鉄板",
+    "inputNum3": 2.5,
+    "totalInput3": 10.0,
+    "outputName1": "水晶発振器",
+    "outputNum1": 1,
+    "totalOutput1": 4,
+    "supplyPower": 0
+}

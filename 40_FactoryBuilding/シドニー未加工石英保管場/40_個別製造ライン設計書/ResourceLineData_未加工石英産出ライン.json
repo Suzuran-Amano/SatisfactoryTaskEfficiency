@@ -1,0 +1,23 @@
+{
+    "lineName": "未加工石英産出ライン",
+    "resourceName": "未加工石英",
+    "resourceBaseOutputNum": 30,
+    "resourceList": [
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        }
+    ],
+    "totalResourceOutputNum": 240,
+    "totalUsePower": 30.0
+}
