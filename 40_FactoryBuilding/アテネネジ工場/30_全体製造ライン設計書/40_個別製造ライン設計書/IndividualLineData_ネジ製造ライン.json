@@ -1,0 +1,46 @@
+{
+    "lineName": "ネジ製造ライン",
+    "recipeName": "ネジ",
+    "blueprintName": "製作機5",
+    "blueprintNum": 8,
+    "recipeNum": 40,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 80
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 592
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 432
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 112
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 160
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 32
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 96
+        }
+    ],
+    "totalUsePower": 160,
+    "inputName1": "鉄のロッド",
+    "inputNum1": 10,
+    "totalInput1": 400,
+    "outputName1": "ネジ",
+    "outputNum1": 40,
+    "totalOutput1": 1600,
+    "supplyPower": 0
+}

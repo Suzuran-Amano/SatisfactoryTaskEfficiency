@@ -1,0 +1,96 @@
+{
+    "factoryName": "アテネネジ工場",
+    "recipeList": [
+        {
+            "recipeName": "鉄のロッド",
+            "blueprintName": "製作機5",
+            "blueprintNum": 4,
+            "columnNum": 3
+        },
+        {
+            "recipeName": "ネジ",
+            "blueprintName": "製作機5",
+            "blueprintNum": 8,
+            "columnNum": 4
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "鉄のロッド製造ライン",
+            "recipeName": "鉄のロッド",
+            "blueprintName": "製作機5",
+            "blueprintNum": 4,
+            "recipeNum": 20,
+            "width": 3,
+            "columnNum": 3,
+            "inputList": [
+                {
+                    "itemName": "鉄のインゴット",
+                    "itemNum": 300
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 300
+                }
+            ]
+        },
+        {
+            "individualLineName": "ネジ製造ライン",
+            "recipeName": "ネジ",
+            "blueprintName": "製作機5",
+            "blueprintNum": 8,
+            "recipeNum": 40,
+            "width": 3,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "鉄のロッド",
+                    "itemNum": 400
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ネジ",
+                    "itemNum": 1600
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_鉄のインゴット"
+    ],
+    "outputLineList": [
+        "鉄道駅_鉄のロッド",
+        "鉄道駅_ネジ"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_鉄のインゴット",
+            "destinationLine": "鉄のロッド製造ライン",
+            "supplyItem": "鉄のインゴット",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄のロッド製造ライン",
+            "destinationLine": "鉄道駅_鉄のロッド",
+            "supplyItem": "鉄のロッド",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄のロッド製造ライン",
+            "destinationLine": "ネジ製造ライン",
+            "supplyItem": "鉄のロッド",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "ネジ製造ライン",
+            "destinationLine": "鉄道駅_ネジ",
+            "supplyItem": "ネジ",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 3,
+    "totalWidth": 37
+}
