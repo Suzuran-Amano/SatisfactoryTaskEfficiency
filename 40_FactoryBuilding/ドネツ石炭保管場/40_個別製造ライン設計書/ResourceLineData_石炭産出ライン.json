@@ -1,0 +1,58 @@
+{
+    "lineName": "石炭産出ライン",
+    "resourceName": "石炭",
+    "resourceBaseOutputNum": 30,
+    "resourceList": [
+        {
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 240,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 120,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 60,
+            "usePower": 15.0
+        },
+        {
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "overclockRatio": 1,
+            "singleResourceOutputNum": 60,
+            "usePower": 15.0
+        }
+    ],
+    "totalResourceOutputNum": 840,
+    "totalUsePower": 105.0
+}

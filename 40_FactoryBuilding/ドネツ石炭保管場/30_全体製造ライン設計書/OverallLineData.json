@@ -1,0 +1,84 @@
+{
+    "factoryName": "ドネツ石炭保管場",
+    "productionList": [
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 4,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 240
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 2,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 120
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        },
+        {
+            "resourceName": "石炭",
+            "resourceBaseOutputNum": 30,
+            "resourceRatio": 1,
+            "buildingName": "採掘機Mk2",
+            "buildingRatio": 2,
+            "overclockRatio": 1,
+            "totalResourceOutputNum": 60
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_I石炭"
+    ],
+    "outputLineList": [
+        "鉄道駅_O石炭"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_I石炭",
+            "destinationLine": "鉄道駅_O石炭",
+            "supplyItem": "石炭",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 2,
+    "totalWidth": 21
+}
