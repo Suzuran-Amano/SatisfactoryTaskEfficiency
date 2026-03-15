@@ -1,0 +1,97 @@
+{
+    "factoryName": "アレキサンドリアカテリウム保管場",
+    "recipeList": [
+        {
+            "recipeName": "カテリウムのインゴット",
+            "blueprintName": "製錬炉6",
+            "blueprintNum": 8,
+            "columnNum": 4
+        },
+        {
+            "recipeName": "クイックワイヤー",
+            "blueprintName": "製作機5",
+            "blueprintNum": 8,
+            "columnNum": 4
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "カテリウムのインゴット製造ライン",
+            "recipeName": "カテリウムのインゴット",
+            "blueprintName": "製錬炉6",
+            "blueprintNum": 8,
+            "recipeNum": 40,
+            "width": 3,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "カテリウム鉱石",
+                    "itemNum": 1800
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "カテリウムのインゴット",
+                    "itemNum": 600
+                }
+            ]
+        },
+        {
+            "individualLineName": "クイックワイヤー製造ライン",
+            "recipeName": "クイックワイヤー",
+            "blueprintName": "製作機5",
+            "blueprintNum": 8,
+            "recipeNum": 40,
+            "width": 3,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "カテリウムのインゴット",
+                    "itemNum": 480
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "クイックワイヤー",
+                    "itemNum": 2400
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_カテリウム鉱石"
+    ],
+    "outputLineList": [
+        "鉄道駅_カテリウム鉱石",
+        "鉄道駅_カテリウムのインゴット",
+        "鉄道駅_クイックワイヤー"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_カテリウム鉱石",
+            "destinationLine": "カテリウムのインゴット製造ライン",
+            "supplyItem": "カテリウム鉱石",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "カテリウムのインゴット製造ライン",
+            "destinationLine": "鉄道駅_カテリウムのインゴット",
+            "supplyItem": "カテリウムのインゴット",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "カテリウムのインゴット製造ライン",
+            "destinationLine": "クイックワイヤー製造ライン",
+            "supplyItem": "クイックワイヤー",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "クイックワイヤー製造ライン",
+            "destinationLine": "鉄道駅_クイックワイヤー",
+            "supplyItem": "クイックワイヤー",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 4,
+    "totalWidth": 42
+}

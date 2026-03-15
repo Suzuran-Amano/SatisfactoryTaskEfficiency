@@ -1,0 +1,46 @@
+{
+    "lineName": "カテリウムのインゴット製造ライン",
+    "recipeName": "カテリウムのインゴット",
+    "blueprintName": "製錬炉6",
+    "blueprintNum": 8,
+    "recipeNum": 40,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 384
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 384
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 288
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 192
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 448
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 48
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 144
+        }
+    ],
+    "totalUsePower": 160,
+    "inputName1": "カテリウム鉱石",
+    "inputNum1": 45,
+    "totalInput1": 1800,
+    "outputName1": "カテリウムのインゴット",
+    "outputNum1": 15,
+    "totalOutput1": 600,
+    "supplyPower": 0
+}

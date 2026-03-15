@@ -1,0 +1,65 @@
+{
+	"factoryName"	: "ハンブルグ鉄板工場",
+	
+	"recipeList" : [
+		{
+			"recipeName" : "鉄板",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 20,
+            "columnNum" : 4
+		},
+		{
+			"recipeName" : "強化鉄板",
+			"blueprintName" : "組立機4",
+			"blueprintNum" : 20,
+            "columnNum" : 4
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_鉄のインゴット",
+		"鉄道駅_ネジ"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_鉄板",
+		"鉄道駅_強化鉄板"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_鉄のインゴット",
+			"destinationLine" : "鉄板製造ライン",
+			"supplyItem" : "鉄のインゴット",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鉄板製造ライン",
+			"destinationLine" : "鉄道駅_鉄板",
+			"supplyItem" : "鉄板",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鉄板製造ライン",
+			"destinationLine" : "強化鉄板製造ライン",
+			"supplyItem" : "鉄板",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_ネジ",
+			"destinationLine" : "強化鉄板製造ライン",
+			"supplyItem" : "ネジ",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "強化鉄板製造ライン",
+			"destinationLine" : "鉄道駅_強化鉄板",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 0
+		}
+
+	]
+}

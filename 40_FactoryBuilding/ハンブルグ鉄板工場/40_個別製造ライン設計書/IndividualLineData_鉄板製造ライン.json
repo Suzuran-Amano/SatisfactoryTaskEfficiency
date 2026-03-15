@@ -1,0 +1,46 @@
+{
+    "lineName": "鉄板製造ライン",
+    "recipeName": "鉄板",
+    "blueprintName": "製作機5",
+    "blueprintNum": 20,
+    "recipeNum": 100,
+    "productName": "製作機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 200
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 1480
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 1080
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 280
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 400
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 80
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 240
+        }
+    ],
+    "totalUsePower": 400,
+    "inputName1": "鉄のインゴット",
+    "inputNum1": 30,
+    "totalInput1": 3000,
+    "outputName1": "鉄板",
+    "outputNum1": 20,
+    "totalOutput1": 2000,
+    "supplyPower": 0
+}

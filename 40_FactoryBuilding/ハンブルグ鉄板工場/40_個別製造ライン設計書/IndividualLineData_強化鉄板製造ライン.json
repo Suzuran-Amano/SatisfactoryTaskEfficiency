@@ -1,0 +1,53 @@
+{
+    "lineName": "強化鉄板製造ライン",
+    "recipeName": "強化鉄板",
+    "blueprintName": "組立機4",
+    "blueprintNum": 20,
+    "recipeNum": 80,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 640
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 320
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 1480
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 1520
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 480
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 240
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 80
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 240
+        }
+    ],
+    "totalUsePower": 1200,
+    "inputName1": "鉄板",
+    "inputNum1": 30,
+    "totalInput1": 2400,
+    "inputName2": "ネジ",
+    "inputNum2": 60,
+    "totalInput2": 4800,
+    "outputName1": "強化鉄板",
+    "outputNum1": 5,
+    "totalOutput1": 400,
+    "supplyPower": 0
+}
