@@ -1,0 +1,61 @@
+{
+    "factoryName": "ドバイ原油保管場",
+    "recipeList": [
+        {
+            "recipeName": "燃料",
+            "blueprintName": "精製機4",
+            "blueprintNum": 8,
+            "columnNum": 4
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "燃料製造ライン",
+            "recipeName": "燃料",
+            "blueprintName": "精製機4",
+            "blueprintNum": 8,
+            "recipeNum": 32,
+            "width": 5,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "原油",
+                    "itemNum": 1920
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "燃料",
+                    "itemNum": 1280
+                },
+                {
+                    "itemName": "合成樹脂",
+                    "itemNum": 960
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_原油"
+    ],
+    "outputLineList": [
+        "鉄道駅_原油",
+        "鉄道駅_燃料"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_原油",
+            "destinationLine": "燃料製造ライン",
+            "supplyItem": "原油",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "燃料製造ライン",
+            "destinationLine": "鉄道駅_燃料",
+            "supplyItem": "燃料",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 3,
+    "totalWidth": 30
+}

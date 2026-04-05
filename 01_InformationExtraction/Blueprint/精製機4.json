@@ -1,0 +1,24 @@
+{
+  "blueprintName": "精製機4",
+  "description": "精製機を4基まとめたブループリント",
+  "version": 1,
+
+  "buildingName": "精製機",
+  "count": 4,
+  "width": 5,
+
+  "cost": [
+    { "itemName": "モーター", "amount": 40 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 136 },
+    { "itemName": "銅板", "amount": 176 },
+    { "itemName": "鉄板", "amount": 16 },
+    { "itemName": "ケーブル", "amount": 8 },
+    { "itemName": "プラスチック", "amount": 28 },
+    { "itemName": "鉄のロッド", "amount": 8 }
+  ],
+
+  "power": {
+    "consumptionMw": 120.0,
+    "productionMw": 0.0
+  }
+}

@@ -1,0 +1,118 @@
+{
+    "factoryName": "リヤドターボ燃料工場",
+    "recipeList": [
+        {
+            "recipeName": "圧縮石炭",
+            "blueprintName": "組立機4",
+            "blueprintNum": 8,
+            "columnNum": 4
+        },
+        {
+            "recipeName": "ターボ燃料",
+            "blueprintName": "精製機4",
+            "blueprintNum": 8,
+            "columnNum": 4
+        }
+    ],
+    "individualLineList": [
+        {
+            "individualLineName": "圧縮石炭製造ライン",
+            "recipeName": "圧縮石炭",
+            "blueprintName": "組立機4",
+            "blueprintNum": 8,
+            "recipeNum": 32,
+            "width": 3.5,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "石炭",
+                    "itemNum": 800
+                },
+                {
+                    "itemName": "硫黄",
+                    "itemNum": 800
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "圧縮石炭",
+                    "itemNum": 800
+                }
+            ]
+        },
+        {
+            "individualLineName": "ターボ燃料製造ライン",
+            "recipeName": "ターボ燃料",
+            "blueprintName": "精製機4",
+            "blueprintNum": 8,
+            "recipeNum": 32,
+            "width": 5,
+            "columnNum": 4,
+            "inputList": [
+                {
+                    "itemName": "燃料",
+                    "itemNum": 720.0
+                },
+                {
+                    "itemName": "圧縮石炭",
+                    "itemNum": 480
+                }
+            ],
+            "outputList": [
+                {
+                    "itemName": "ターボ燃料",
+                    "itemNum": 600.0
+                }
+            ]
+        }
+    ],
+    "inputlLineList": [
+        "鉄道駅_石炭",
+        "鉄道駅_硫黄",
+        "鉄道駅_燃料"
+    ],
+    "outputLineList": [
+        "鉄道駅_圧縮石炭",
+        "鉄道駅_ターボ燃料"
+    ],
+    "relationships": [
+        {
+            "supplierLine": "鉄道駅_石炭",
+            "destinationLine": "圧縮石炭燃料製造ライン",
+            "supplyItem": "石炭",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_硫黄",
+            "destinationLine": "圧縮石炭燃料製造ライン",
+            "supplyItem": "硫黄",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "圧縮石炭燃料製造ライン",
+            "destinationLine": "鉄道駅_圧縮石炭",
+            "supplyItem": "圧縮石炭",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "圧縮石炭燃料製造ライン",
+            "destinationLine": "ターボ燃料製造ライン",
+            "supplyItem": "圧縮石炭",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "鉄道駅_燃料",
+            "destinationLine": "ターボ燃料製造ライン",
+            "supplyItem": "燃料",
+            "supplyNum": 0
+        },
+        {
+            "supplierLine": "ターボ燃料製造ライン",
+            "destinationLine": "鉄道駅_ターボ燃料",
+            "supplyItem": "ターボ燃料",
+            "supplyNum": 0
+        }
+    ],
+    "stationNum": 5,
+    "totalWidth": 52.0
+}

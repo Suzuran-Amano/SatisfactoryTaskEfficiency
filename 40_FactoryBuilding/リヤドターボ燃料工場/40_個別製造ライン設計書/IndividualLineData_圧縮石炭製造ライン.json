@@ -1,0 +1,53 @@
+{
+    "lineName": "圧縮石炭製造ライン",
+    "recipeName": "圧縮石炭",
+    "blueprintName": "組立機4",
+    "blueprintNum": 8,
+    "recipeNum": 32,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 256
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 128
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 592
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 608
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 192
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 96
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 32
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 96
+        }
+    ],
+    "totalUsePower": 480,
+    "inputName1": "石炭",
+    "inputNum1": 25,
+    "totalInput1": 800,
+    "inputName2": "硫黄",
+    "inputNum2": 25,
+    "totalInput2": 800,
+    "outputName1": "圧縮石炭",
+    "outputNum1": 25,
+    "totalOutput1": 800,
+    "supplyPower": 0
+}

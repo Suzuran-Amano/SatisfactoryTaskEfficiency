@@ -1,0 +1,49 @@
+{
+    "lineName": "燃料製造ライン",
+    "recipeName": "燃料",
+    "blueprintName": "精製機4",
+    "blueprintNum": 8,
+    "recipeNum": 32,
+    "productName": "精製機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 320
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 1088
+        },
+        {
+            "itemName": "銅板",
+            "itemNum": 1408
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 128
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 64
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 224
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 64
+        }
+    ],
+    "totalUsePower": 960,
+    "inputName1": "原油",
+    "inputNum1": 60,
+    "totalInput1": 1920,
+    "outputName1": "燃料",
+    "outputNum1": 40,
+    "totalOutput1": 1280,
+    "outputName2": "合成樹脂",
+    "outputNum2": 30,
+    "totalOutput2": 960,
+    "supplyPower": 0
+}

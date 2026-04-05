@@ -1,0 +1,11 @@
+{
+    "recipeName" :"ターボ燃料",
+    "productName":"精製機" ,
+    "output":[
+	    { "itemName":"ターボ燃料", "itemNum":18.75 }
+	],
+    "input":[
+	    { "itemName":"燃料", "itemNum":22.5 },        
+	    { "itemName":"圧縮石炭", "itemNum":15 }
+	   ]
+}

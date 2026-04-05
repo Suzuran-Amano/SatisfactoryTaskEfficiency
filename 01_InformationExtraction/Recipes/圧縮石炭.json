@@ -1,0 +1,11 @@
+{
+    "recipeName" :"圧縮石炭",
+    "productName":"組立機" ,
+    "output":[
+	    { "itemName":"圧縮石炭", "itemNum":25 }
+	],
+    "input":[
+	    { "itemName":"石炭", "itemNum":25 },        
+	    { "itemName":"硫黄", "itemNum":25 }
+	   ]
+}
