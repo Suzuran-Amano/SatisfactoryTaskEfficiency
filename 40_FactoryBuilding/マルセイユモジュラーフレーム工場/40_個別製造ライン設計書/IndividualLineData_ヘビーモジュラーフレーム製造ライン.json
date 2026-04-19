@@ -1,0 +1,63 @@
+{
+    "lineName": "ヘビーモジュラーフレーム製造ライン",
+    "recipeName": "ヘビーモジュラーフレーム",
+    "blueprintName": "製造機2",
+    "blueprintNum": 8,
+    "recipeNum": 16,
+    "productName": "製造機",
+    "costList": [
+        {
+            "itemName": "モーター",
+            "itemNum": 160
+        },
+        {
+            "itemName": "モジュラーフレーム",
+            "itemNum": 320
+        },
+        {
+            "itemName": "プラスチック",
+            "itemNum": 800
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 1024
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 48
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 160
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 16
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 984
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 48
+        }
+    ],
+    "totalUsePower": 880,
+    "inputName1": "モジュラーフレーム",
+    "inputNum1": 10,
+    "totalInput1": 160,
+    "inputName2": "鋼管",
+    "inputNum2": 20,
+    "totalInput2": 320,
+    "inputName3": "コンクリート被覆型鋼梁",
+    "inputNum3": 10,
+    "totalInput3": 160,
+    "inputName4": "ネジ",
+    "inputNum4": 240,
+    "totalInput4": 3840,
+    "outputName1": "ヘビーモジュラーフレーム",
+    "outputNum1": 2,
+    "totalOutput1": 32,
+    "supplyPower": 0
+}

@@ -1,0 +1,79 @@
+{
+	"factoryName"	: "マルセイユモジュラーフレーム工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "モジュラーフレーム",
+			"blueprintName" : "組立機4",
+			"blueprintNum" : 8,
+            "columnNum" : 4
+		},
+		{
+			"recipeName" : "ヘビーモジュラーフレーム",
+			"blueprintName" : "製造機2",
+			"blueprintNum" : 8,
+            "columnNum" : 4
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_強化鉄板",
+		"鉄道駅_鉄のロッド",
+		"鉄道駅_鋼管",
+		"鉄道駅_コンクリート被覆型鋼梁",
+		"鉄道駅_ネジ"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_モジュラーフレーム",
+		"鉄道駅_ヘビーモジュラーフレーム"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_強化鉄板",
+			"destinationLine" : "モジュラーフレーム製造ライン",
+			"supplyItem" : "強化鉄板",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_鉄のロッド",
+			"destinationLine" : "モジュラーフレーム製造ライン",
+			"supplyItem" : "鉄のロッド",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "モジュラーフレーム製造ライン",
+			"destinationLine" : "ヘビーモジュラーフレーム製造ライン",
+			"supplyItem" : "モジュラーフレーム",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_鋼管",
+			"destinationLine" : "ヘビーモジュラーフレーム製造ライン",
+			"supplyItem" : "鋼管",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_コンクリート被覆型鋼梁",
+			"destinationLine" : "ヘビーモジュラーフレーム製造ライン",
+			"supplyItem" : "コンクリート被覆型鋼梁",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_ネジ",
+			"destinationLine" : "ヘビーモジュラーフレーム製造ライン",
+			"supplyItem" : "ネジ",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "ヘビーモジュラーフレーム製造ライン",
+			"destinationLine" : "鉄道駅_ヘビーモジュラーフレーム",
+			"supplyItem" : "ヘビーモジュラーフレーム",
+			"supplyNum" : 0
+		}
+
+	]
+}
