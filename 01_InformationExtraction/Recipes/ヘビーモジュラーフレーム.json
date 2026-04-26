@@ -1,0 +1,14 @@
+{
+    "recipeName" :"ヘビーモジュラーフレーム",
+    "productName":"製造機" ,
+    "output":[
+	    { "itemName":"ヘビーモジュラーフレーム", "itemNum":2 }
+	    ],
+    "input":[
+	    { "itemName":"モジュラーフレーム", "itemNum":10 },
+	    { "itemName":"鋼管", "itemNum":20 },
+	    { "itemName":"コンクリート被覆型鋼梁", "itemNum":10 },
+	    { "itemName":"ネジ", "itemNum":240 }
+	    ]
+
+}

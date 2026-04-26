@@ -1,0 +1,53 @@
+{
+    "lineName": "コンクリート被覆型鋼梁製造ライン",
+    "recipeName": "コンクリート被覆型鋼梁",
+    "blueprintName": "組立機4",
+    "blueprintNum": 2,
+    "recipeNum": 8,
+    "productName": "組立機",
+    "costList": [
+        {
+            "itemName": "強化鉄板",
+            "itemNum": 64
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 32
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 148
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 152
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 48
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 24
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 8
+        },
+        {
+            "itemName": "クイックワイヤー",
+            "itemNum": 24
+        }
+    ],
+    "totalUsePower": 120,
+    "inputName1": "鋼梁",
+    "inputNum1": 18,
+    "totalInput1": 144,
+    "inputName2": "コンクリート",
+    "inputNum2": 36,
+    "totalInput2": 288,
+    "outputName1": "コンクリート被覆型鋼梁",
+    "outputNum1": 6,
+    "totalOutput1": 48,
+    "supplyPower": 0
+}

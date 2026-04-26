@@ -1,0 +1,86 @@
+{
+	"factoryName"	: "キルナ鋼鉄工場",
+
+	"recipeList" : [
+		{
+			"recipeName" : "鋼鉄のインゴット",
+			"blueprintName" : "鋳造炉4",
+			"blueprintNum" : 4,
+            "columnNum" : 2
+		},
+		{
+			"recipeName" : "鋼管",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 4,
+            "columnNum" : 2
+		},
+		{
+			"recipeName" : "鋼梁",
+			"blueprintName" : "製作機5",
+			"blueprintNum" : 4,
+            "columnNum" : 2
+		}
+	],
+
+	"inputlLineList" : [
+		"鉄道駅_鉄鉱石",
+		"鉄道駅_石炭"
+	],
+
+	"outputLineList" :[
+		"鉄道駅_鋼鉄のインゴット",
+		"鉄道駅_鋼管",
+		"鉄道駅_鋼梁"
+	],
+
+	"relationships"	: [
+		{
+			"supplierLine" : "鉄道駅_鉄鉱石",
+			"destinationLine" : "鋼鉄のインゴット製造ライン",
+			"supplyItem" : "鉄鉱石",
+			"supplyNum" : 0
+		},
+		{
+			"supplierLine" : "鉄道駅_石炭",
+			"destinationLine" : "鋼鉄のインゴット製造ライン",
+			"supplyItem" : "石炭",
+			"supplyNum" : 0
+		},
+		
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "鉄道駅_鋼鉄",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "鋼管製造ライン",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鋼管製造ライン",
+			"destinationLine" : "鉄道駅_鋼管",
+			"supplyItem" : "鋼管",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鋼鉄のインゴット製造ライン",
+			"destinationLine" : "鋼梁製造ライン",
+			"supplyItem" : "鋼鉄のインゴット",
+			"supplyNum" : 0
+		},
+
+		{
+			"supplierLine" : "鋼梁製造ライン",
+			"destinationLine" : "鉄道駅_鋼梁",
+			"supplyItem" : "鋼鉄",
+			"supplyNum" : 0
+		}
+
+	]
+}

@@ -1,0 +1,25 @@
+{
+  "blueprintName": "鋳造炉4",
+  "description": "鋳造炉を4基まとめたブループリント",
+  "version": 1,
+
+  "buildingName": "鋳造炉",
+  "count": 4,
+  "width": 3,
+
+  "cost": [
+    { "itemName": "モジュラーフレーム", "amount": 40 },
+    { "itemName": "ローター", "amount": 40 },
+    { "itemName": "コンクリート", "amount": 82 },
+    { "itemName": "ケーブル", "amount": 34 },
+    { "itemName": "コンクリート被覆型鋼梁", "amount": 108 },
+    { "itemName": "鉄のロッド", "amount": 10 },
+    { "itemName": "鉄板", "amount": 24 },
+    { "itemName": "ワイヤー", "amount": 6 }
+  ],
+
+  "power": {
+    "consumptionMw": 64.0,
+    "productionMw": 0.0
+  }
+}

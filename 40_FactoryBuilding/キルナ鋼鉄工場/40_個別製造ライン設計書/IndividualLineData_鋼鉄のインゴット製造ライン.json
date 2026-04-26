@@ -1,0 +1,53 @@
+{
+    "lineName": "鋼鉄のインゴット製造ライン",
+    "recipeName": "鋼鉄のインゴット",
+    "blueprintName": "鋳造炉4",
+    "blueprintNum": 4,
+    "recipeNum": 16,
+    "productName": "鋳造炉",
+    "costList": [
+        {
+            "itemName": "モジュラーフレーム",
+            "itemNum": 160
+        },
+        {
+            "itemName": "ローター",
+            "itemNum": 160
+        },
+        {
+            "itemName": "コンクリート",
+            "itemNum": 328
+        },
+        {
+            "itemName": "ケーブル",
+            "itemNum": 136
+        },
+        {
+            "itemName": "コンクリート被覆型鋼梁",
+            "itemNum": 432
+        },
+        {
+            "itemName": "鉄のロッド",
+            "itemNum": 40
+        },
+        {
+            "itemName": "鉄板",
+            "itemNum": 96
+        },
+        {
+            "itemName": "ワイヤー",
+            "itemNum": 24
+        }
+    ],
+    "totalUsePower": 256,
+    "inputName1": "鉄鉱石",
+    "inputNum1": 45,
+    "totalInput1": 720,
+    "inputName2": "石炭",
+    "inputNum2": 45,
+    "totalInput2": 720,
+    "outputName1": "鋼鉄のインゴット",
+    "outputNum1": 45,
+    "totalOutput1": 720,
+    "supplyPower": 0
+}
